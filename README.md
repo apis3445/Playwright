@@ -1,1 +1,1 @@
-# PlaywrightFramewokr
+# PlaywrightFramework
