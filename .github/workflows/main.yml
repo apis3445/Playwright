@@ -10,6 +10,7 @@ jobs:
     name: Test HTML Reporter
     runs-on: ubuntu-latest
     env:
+      BASE_URL: ${{vars.BASE_URL}}
       USER_NAME: ${{secrets.USER_NAME}}
       PASSWORD: ${{secrets.PASSWORD}}
       LT_USERNAME: ${{secrets.LT_USERNAME}}
