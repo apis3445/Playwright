@@ -29,3 +29,19 @@ BASE_URL='https://www.saucedemo.com'
 USER_NAME=valid user in saucedemo
 PASSWORD=password for sauce demo
 ```
+
+## Run tests
+
+Execute the next command to run your tests:
+
+Run tests 
+
+```console
+npx playwright test
+```
+
+Run the test with UI mode
+
+```console
+npx playwright test --ui
+```
