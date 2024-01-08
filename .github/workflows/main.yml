@@ -45,8 +45,8 @@ jobs:
         run: PLAYWRIGHT_HTML_REPORT=firefox npx playwright test --project=firefox --reporter=html
 
       - name: Run Playwright tests in webkit
-         if: always()
-         run: PLAYWRIGHT_HTML_REPORT=webkit npx playwright test --project=webkit
+        if: always()
+        run: PLAYWRIGHT_HTML_REPORT=webkit npx playwright test --project=webkit
 
       - uses: actions/upload-artifact@v3
         if: always()
