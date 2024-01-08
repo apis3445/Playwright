@@ -1,0 +1,77 @@
+name: Playwright Tests HTML Reporter
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  test:
+    timeout-minutes: 60
+    name: Test HTML Reporter
+    runs-on: ubuntu-latest
+    env:
+      USER_NAME: ${{secrets.USER_NAME}}
+      PASSWORD: ${{secrets.PASSWORD}}
+      LT_USERNAME: ${{secrets.LT_USERNAME}}
+      LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      - name: Run Playwright tests in chromium
+        run: PLAYWRIGHT_HTML_REPORT=chromium npx playwright test --project=chromium --reporter=html
+
+      - name: Run Playwright tests in firefox
+        if: always()
+        run: PLAYWRIGHT_HTML_REPORT=firefox npx playwright test --project=firefox --reporter=html
+
+      - name: Run Playwright tests in webkit
+         if: always()
+         run: PLAYWRIGHT_HTML_REPORT=webkit npx playwright test --project=webkit
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report chromium
+          path: chromium/
+          retention-days: 5
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report firefox
+          path: firefox/
+          retention-days: 5
+
+      - uses: actions/upload-artifact@v3
+         if: always()
+         with:
+           name: playwright-report webkit
+           path: webkit/
+           retention-days: 30
+
+      - name: Publish to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/chromium/
