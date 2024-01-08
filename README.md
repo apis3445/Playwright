@@ -45,3 +45,5 @@ Run the test with UI mode
 ```console
 npx playwright test --ui
 ```
+
+Or you can run with the Visual Code Extension
