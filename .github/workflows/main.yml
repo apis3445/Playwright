@@ -63,8 +63,8 @@ jobs:
           retention-days: 5
 
       - uses: actions/upload-artifact@v3
-         if: always()
-         with:
+        if: always()
+        with:
            name: playwright-report webkit
            path: webkit/
            retention-days: 30
