@@ -1,0 +1,35 @@
+import { Page } from '@playwright/test';
+import { BaseComponent } from './BaseComponent';
+import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
+
+export class Button extends BaseComponent {
+
+    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string) {
+        super(page, annotationHelper);
+        this.text = name;
+        this.locator = this.page.getByRole('button', { name: name });
+    }
+
+    /**
+     * Click in a button
+     */
+    async click() {
+        const stepDescription = 'Click: "' + await this.getText() + '"';
+        await this.addStepWithAnnotation(stepDescription, async () => {
+            await this.locator.click();
+        });
+    }
+
+    /**
+     * Get text for the button
+     * @returns Button text
+     */
+    async getText() {
+        const stepDescription = 'Get text for: "' + this.text + '"';
+        return await this.addStep(stepDescription, async () => {
+            if (!this.text)
+                this.text = await this.locator.textContent() ?? '';
+            return this.text;
+        });
+    }
+}

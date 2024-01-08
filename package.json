@@ -1,0 +1,30 @@
+{
+    "name": "playwright_framework",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "npx playwright test --project=chromium",
+        "test:rw": "npx playwright test demoRealWorld --project=chromium",
+        "test:lt": "npx playwright test --project=\"chrome:latest:MacOS Monterey@lambdatest\"",
+        "lint": "eslint . --ext .ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@faker-js/faker": "^8.1.0",
+        "@types/node": "^20.7.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.3",
+        "@typescript-eslint/parser": "^6.7.3",
+        "eslint": "^8.50.0",
+        "typescript": "^5.1.6"
+    },
+    "dependencies": {
+        "@axe-core/playwright": "^4.8.0",
+        "@playwright/test": "^1.39.0",
+        "dotenv": "^16.3.1",
+        "eslint-plugin-playwright": "^0.16.0",
+        "mustache": "^4.2.0"
+    }
+}
