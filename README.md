@@ -47,3 +47,7 @@ npx playwright test --ui
 ```
 
 Or you can run with the Visual Code Extension
+
+You can see the reporter on the GitHub Pages:
+
+https://apis3445.github.io/PlaywrightFramework/
