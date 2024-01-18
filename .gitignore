@@ -1,4 +1,5 @@
 # Node artifact files
 node_modules/
-
+playwright-report/
 *.env
+

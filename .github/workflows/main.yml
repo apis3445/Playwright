@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{vars.BASE_URL}}
+      LOCALE: ${{vars.LOCALE}}
       USER_NAME: ${{secrets.USER_NAME}}
       PASSWORD: ${{secrets.PASSWORD}}
       LT_USERNAME: ${{secrets.LT_USERNAME}}

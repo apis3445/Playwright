@@ -14,7 +14,7 @@ export class HomePage extends BasePage {
         super(page, 'Google');
         //Get the locale from environment variable. 
         //With pipeline can be replaced by parameters.
-        const locale = process.env.LOCALE!
+        const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US'
         //Load the json with custom locators and values
         const localeInfo = require(`../../data/${locale}.json`);
         //Get the elements by locale
