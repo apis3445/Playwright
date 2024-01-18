@@ -8,8 +8,12 @@ export class Password extends BaseComponent {
      * Constructor
      * @param page Playwright page
      * @param annotationHelper annotation helper
-     * @param placeholder placeholder
-     */
+     * @param name Name or css locator for the link
+     * @param [byRole=true] 
+     * True - To locate by role/name
+     * False - To locate by css selector
+     * Default is True
+    */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
         super(page, annotationHelper);
         if (byRole)

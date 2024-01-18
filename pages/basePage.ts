@@ -1,18 +1,25 @@
 import { Page, test, expect } from '@playwright/test';
-import { AnnotationType } from '../../utils/annotations/AnnotationType';
-import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
+import { AnnotationType } from '../utils/annotations/AnnotationType';
+import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
 export class BasePage {
 
     public stepDescription: string;
+
     protected isAnnotationEnabled = true;
     protected annotationHelper = new AnnotationHelper(this.page, this.keyPage);
-    public BASE_URL = process.env.BASE_URL!;
 
     constructor(protected readonly page: Page, public readonly keyPage) {
 
     }
 
+    /**
+     * Go to the base Address
+     */
+    public async goTo(url: string) {
+        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"');
+        await this.page.goto(url);
+    }
 
     /**
      * Add annotation
@@ -63,16 +70,16 @@ export class BasePage {
     }
 
     /**
- * Init annotation to an empty array
- */
+     * Init annotation to an empty array
+     */
     initAnnotations() {
         this.annotationHelper.initAnnotations();
     }
 
     /**
- * Get current annotations
- * @returns Array of current annotations
- */
+     * Get current annotations
+     * @returns Array of current annotations
+     */
     getAnnotations() {
         return this.annotationHelper.getAnnotations();
     }
@@ -87,8 +94,14 @@ export class BasePage {
         await this.page.keyboard.press(key);
     }
 
-    public AssertEqual(expected: string, actual: string, errorMessage: string) {
-        this.annotationHelper.addAnnotation(AnnotationType.Assert, errorMessage);
-        expect(expected, errorMessage).toEqual(actual);
+    /**
+     * Check that 2 values are equal
+     * @param expected Value expected
+     * @param actual Actual Value
+     * @param assertMessage  Message to assert
+     */
+    public AssertEqual(expected: string, actual: string, assertMessage: string) {
+        this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
+        expect(expected, assertMessage).toEqual(actual);
     }
 }

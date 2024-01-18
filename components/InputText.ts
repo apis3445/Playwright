@@ -7,9 +7,13 @@ export class InputText extends BaseComponent {
     /**
      * Constructor
      * @param page Page
-     * @param annotationHelper annotation help that stores steps and custom annotations
-     * @param placeholder placeholder for the input
-     */
+     * @param annotationHelper Annotation that stores steps and custom annotations
+     * @param name Name or locator for the text box
+     * @param [byRole=true] 
+     * True - To locate by role/name
+     * False - To locate by css selector
+     * Default is True
+    */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
         super(page, annotationHelper);
         if (byRole)

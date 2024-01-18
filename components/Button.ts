@@ -4,6 +4,12 @@ import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
 export class Button extends BaseComponent {
 
+    /**
+     * Constructor
+     * @param page Playwright page 
+     * @param annotationHelper Annotation that stores steps and custom annotations
+     * @param name Name for the button
+     */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string) {
         super(page, annotationHelper);
         this.text = name;

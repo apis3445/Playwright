@@ -10,7 +10,7 @@ export class ApiHelper {
     }
 
     /**
-     * Create a request with token from localstorage
+     * Create a request with token from localStorage
      */
     async createRequest() {
         // var localState = await context.storageState()

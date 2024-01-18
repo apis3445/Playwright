@@ -28,6 +28,7 @@ Add .env file with the next values:
 BASE_URL='https://www.saucedemo.com'
 USER_NAME=valid user in saucedemo
 PASSWORD=password for sauce demo
+LOCALE=locale to test. Valid values are: 'en-US', 'de-DE', 'es-MX'
 ```
 
 ## Run tests
