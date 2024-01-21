@@ -13,8 +13,6 @@ export class ApiHelper {
      * Create a request with token from localStorage
      */
     async createRequest() {
-        // var localState = await context.storageState()
-        // var token = localState.origins[0].localStorage[0].value;
         const token = await this.page.evaluate('localStorage["jwtToken"]');
         this.apiRequest = await request.newContext({
             baseURL: 'https://api.realworld.io',

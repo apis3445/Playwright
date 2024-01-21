@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig.json",
+    "include": [
+        // 👇️ add all the directories and files
+        // that you want to lint here
+        "api",
+        "components",
+        "pages",
+        "tests",
+        "utils",
+        // add all files in which you see
+        // the "parserOptions.project" error
+        ".eslintrc.js",
+        "playwright.config.ts"
+    ]
+}

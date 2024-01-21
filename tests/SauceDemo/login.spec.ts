@@ -5,6 +5,7 @@ import { LoginPage } from '../../pages/SauceDemo/loginPage';
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Login', async () => {
+    // eslint-disable-next-line playwright/expect-expect
     test('Login with valid user load inventory page', async ({ page }) => {
         //ACT
         const loginPage = new LoginPage(page);

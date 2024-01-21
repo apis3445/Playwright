@@ -37,7 +37,7 @@ export class AnnotationHelper {
             const element = locator.first();
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (await element.isVisible()) {
-                element.focus();
+                await element.focus();
                 await this.addBorderFocusedElement(backgroundColor);
             }
             await this.page.evaluate(params => {

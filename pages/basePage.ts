@@ -4,12 +4,12 @@ import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
 export class BasePage {
 
-    public stepDescription: string;
+    public stepDescription = '';
 
     protected isAnnotationEnabled = true;
     protected annotationHelper = new AnnotationHelper(this.page, this.keyPage);
 
-    constructor(protected readonly page: Page, public readonly keyPage) {
+    constructor(protected readonly page: Page, public readonly keyPage: string) {
 
     }
 
@@ -47,6 +47,7 @@ export class BasePage {
      * @param stepFunction 
      * @returns 
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async addStepWithAnnotation(type: AnnotationType, description: string, stepFunction: () => Promise<any>) {
         if (this.isAnnotationEnabled) {
             this.addAnnotation(type, description);
@@ -63,9 +64,8 @@ export class BasePage {
         const stepDescription = 'Go to default page';
         this.addAnnotation(AnnotationType.GoTo, stepDescription);
         // eslint-disable-next-line playwright/expect-expect
-        await test.step(stepDescription, async () => {
+        await test.step(stepDescription + '', async () => {
             await this.page.goto('/');
-            await this.page.waitForLoadState('networkidle');
         });
     }
 
