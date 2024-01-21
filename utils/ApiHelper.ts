@@ -1,11 +1,11 @@
-import { APIRequestContext, APIResponse } from '@playwright/test';
+import { APIRequestContext, APIResponse, Page } from '@playwright/test';
 import { request } from '@playwright/test';
 
 export class ApiHelper {
 
     apiRequest: APIRequestContext;
 
-    constructor(private page) {
+    constructor(private page: Page) {
 
     }
 

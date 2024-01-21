@@ -96,7 +96,7 @@ export class BaseComponent {
     public async getPlaceHolder() {
         return await this.addStep('Get placeholder', async () => {
             if (!this.placeHolder) {
-                const placeHolderElement = await this.locator.getAttribute("placeholder");
+                const placeHolderElement = await this.locator.getAttribute('placeholder');
                 this.placeHolder = placeHolderElement ? placeHolderElement! : '';
             }
             return this.placeHolder;

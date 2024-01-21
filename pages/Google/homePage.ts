@@ -1,13 +1,13 @@
-import { Page } from "@playwright/test";
-import { BasePage } from "../basePage";
-import { Button } from "../../components/Button";
-import { InputText } from "../../components/InputText";
+import { Page } from '@playwright/test';
+import { BasePage } from '../basePage';
+import { Button } from '../../components/Button';
+import { InputText } from '../../components/InputText';
 
 export class HomePage extends BasePage {
     readonly search: InputText;
     readonly googleSearch: Button;
 
-    public BASE_URL = "https://www.google.com";
+    public BASE_URL = 'https://www.google.com';
 
     constructor(page: Page) {
         //We need the page, and a friendly name for the page to be used in reports

@@ -1,4 +1,4 @@
-import { Locator, TestInfo, test } from '@playwright/test';
+import { Locator, Page, TestInfo, test } from '@playwright/test';
 import { AnnotationType } from './AnnotationType';
 import { Annotation } from './Annotation';
 import fs from 'fs';
@@ -10,7 +10,7 @@ export class AnnotationHelper {
     private annotations: Annotation[] = [];
     private folderResults = 'test-results/';
 
-    constructor(protected page, protected keyPage) {
+    constructor(protected page: Page, protected keyPage: string) {
 
     }
 

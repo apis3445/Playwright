@@ -1,8 +1,8 @@
-import { Page } from "@playwright/test";
-import { Button } from "../../components/Button";
-import { Password } from "../../components/Password";
-import { InputText } from "../../components/InputText";
-import { BasePage } from "../basePage";
+import { Page } from '@playwright/test';
+import { Button } from '../../components/Button';
+import { Password } from '../../components/Password';
+import { InputText } from '../../components/InputText';
+import { BasePage } from '../basePage';
 
 export class LoginPage extends BasePage {
     readonly userName: InputText;

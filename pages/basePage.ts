@@ -36,7 +36,7 @@ export class BasePage {
      * @returns Data returned by the function
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async addStep(stepDescription: string, stepFunction): Promise<any> {
+    async addStep(stepDescription: string, stepFunction: any): Promise<any> {
         return await test.step(stepDescription, stepFunction);
     }
 
