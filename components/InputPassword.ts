@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
-export class Password extends BaseComponent {
+export class InputPassword extends BaseComponent {
 
     /**
      * Constructor

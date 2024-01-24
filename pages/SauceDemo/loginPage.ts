@@ -1,12 +1,12 @@
 import { Page } from '@playwright/test';
 import { Button } from '../../components/Button';
-import { Password } from '../../components/Password';
+import { InputPassword } from '../../components/InputPassword';
 import { InputText } from '../../components/InputText';
 import { BasePage } from '../basePage';
 
 export class LoginPage extends BasePage {
     readonly userName: InputText;
-    readonly password: Password;
+    readonly password: InputPassword;
     readonly login: Button;
     public BASE_URL = process.env.BASE_URL!;
 
@@ -15,7 +15,7 @@ export class LoginPage extends BasePage {
         super(page, 'Login');
         const noByRole = false;
         this.userName = new InputText(this.page, this.annotationHelper, '[data-test="username"]', noByRole);
-        this.password = new Password(this.page, this.annotationHelper, '[data-test="password"]', noByRole);
+        this.password = new InputPassword(this.page, this.annotationHelper, '[data-test="password"]', noByRole);
         this.login = new Button(this.page, this.annotationHelper, 'Login')
     }
 
