@@ -1,4 +1,4 @@
-name: Playwright Tests HTML Reporter
+name: Tests HTML Reporter
 on:
   push:
     branches: [main, master]
@@ -27,7 +27,7 @@ jobs:
       - run: npx playwright install-deps
 
       - name: Run Playwright tests 
-        run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --reporter=html
+        run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --reporter=html,junit
 
       - uses: actions/upload-artifact@v3
         if: always()
