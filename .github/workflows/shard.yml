@@ -1,0 +1,72 @@
+name: Shard tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+jobs:
+  playwright-tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/2,2/2]
+    env:
+        BASE_URL: ${{vars.BASE_URL}}
+        LOCALE: ${{vars.LOCALE}}
+        USER_NAME: ${{secrets.USER_NAME}}
+        PASSWORD: ${{secrets.PASSWORD}}
+        LT_USERNAME: ${{secrets.LT_USERNAME}}
+        LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        #if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - run: npx playwright install --with-deps
+        #if: steps.playwright-cache.outputs.cache-hit != 'true'
+      
+      - name: Run Playwright tests 
+        run: npx playwright test --shard ${{ matrix.shard }} --reporter=blob
+
+      - name: Upload blob report to GitHub Actions Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: all-blob-reports
+          path: blob-report/
+          retention-days: 5
+
+  merge-reports:
+    # Merge reports after playwright-tests, even if some shards have failed
+    if: always()
+    needs: [playwright-tests]
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download blob reports from GitHub Actions Artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: all-blob-reports
+        path: all-blob-reports
+
+    - name: Merge into HTML Report
+      run: npx playwright merge-reports --reporter html ./all-blob-reports 
+
+    - name: Upload HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: html-report--attempt-${{ github.run_attempt }}
+        path: playwright-report
+        retention-days: 3
