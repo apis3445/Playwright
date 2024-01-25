@@ -26,41 +26,19 @@ jobs:
 
       - run: npx playwright install-deps
 
-      - name: Run Playwright tests in chromium
-        run: PLAYWRIGHT_HTML_REPORT=chromium npx playwright test --project=chromium --reporter=html
-
-      - name: Run Playwright tests in firefox
-        if: always()
-        run: PLAYWRIGHT_HTML_REPORT=firefox npx playwright test --project=firefox --reporter=html
-
-      - name: Run Playwright tests in webkit
-        if: always()
-        run: PLAYWRIGHT_HTML_REPORT=webkit npx playwright test --project=webkit
+      - name: Run Playwright tests 
+        run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --reporter=html
 
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-report chromium
-          path: chromium/
+          name: playwright-report
+          path: report/
           retention-days: 5
-
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report firefox
-          path: firefox/
-          retention-days: 5
-
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-           name: playwright-report webkit
-           path: webkit/
-           retention-days: 30
 
       - name: Publish to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}/chromium/
+          publish_dir: ${{ github.workspace }}/report/
