@@ -17,8 +17,9 @@
         "@types/node": "^20.7.0",
         "@typescript-eslint/eslint-plugin": "^6.19.1",
         "@typescript-eslint/parser": "^6.19.1",
-        "eslint-plugin-playwright": "^0.22.1",
+        "cz-conventional-changelog": "^3.3.0",
         "eslint": "^8.56.0",
+        "eslint-plugin-playwright": "^0.22.1",
         "typescript": "^5.1.6"
     },
     "dependencies": {
@@ -26,5 +27,10 @@
         "@playwright/test": "^1.41.1",
         "dotenv": "^16.4.1",
         "mustache": "^4.2.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }

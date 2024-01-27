@@ -1,6 +1,13 @@
 # Goal
 
+<!-- What purpose will the tests/user story serve? How will they help you find bugs/improve something? Why this is important !-->
+
 # Summary of changes
+
+<!-- Describe your code changes for reviewers. Explain
+- How you implemented the solution?
+- Does it impact any other area of the project?
+!-->
 
 # Checklist
 
@@ -14,4 +21,8 @@
 
 # Notes
 
+<!-- Add any additional information that would be useful to the reviewer !-->
+
 # Screenshots
+
+<!-- Any important changes in the UI (Screenshots)? Any external evidence !-->

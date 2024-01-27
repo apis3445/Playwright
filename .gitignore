@@ -2,5 +2,7 @@
 node_modules/
 playwright-report/
 test-results/
+report/
 *.env
 
+results.xml
