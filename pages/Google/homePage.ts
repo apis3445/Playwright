@@ -14,13 +14,13 @@ export class HomePage extends BasePage {
         super(page, 'Google');
         //Get the locale from environment variable. 
         //With pipeline can be replaced by parameters.
-        const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US'
+        const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US';
         //Load the json with custom locators and values
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const localeInfo = require(`../../data/${locale}.json`);
         //Get the elements by locale
         this.search = new InputText(this.page, this.annotationHelper, `[aria-label="${localeInfo.search}"]`);
-        this.googleSearch = new Button(this.page, this.annotationHelper, localeInfo.googleSearch)
+        this.googleSearch = new Button(this.page, this.annotationHelper, localeInfo.googleSearch);
     }
 
 }

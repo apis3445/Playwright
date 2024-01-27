@@ -12,7 +12,25 @@ module.exports = {
     root: true,
     rules: {
         '@typescript-eslint/no-floating-promises': 'error',
-        'quotes': [2, 'single', { 'avoidEscape': true }]
+        'indent': [
+            'error',
+            4,
+            {
+                'SwitchCase': 1
+            }
+        ],
+        'linebreak-style': [
+            'error',
+            'unix'
+        ],
+        'quotes': [
+            'error',
+            'single'
+        ],
+        'semi': [
+            'error',
+            'always'
+        ]
     },
     parserOptions: {
         project: 'tsconfig.eslint.json',

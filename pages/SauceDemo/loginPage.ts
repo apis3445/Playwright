@@ -16,7 +16,7 @@ export class LoginPage extends BasePage {
         const noByRole = false;
         this.userName = new InputText(this.page, this.annotationHelper, '[data-test="username"]', noByRole);
         this.password = new InputPassword(this.page, this.annotationHelper, '[data-test="password"]', noByRole);
-        this.login = new Button(this.page, this.annotationHelper, 'Login')
+        this.login = new Button(this.page, this.annotationHelper, 'Login');
     }
 
     /**

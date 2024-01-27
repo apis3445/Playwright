@@ -15,6 +15,6 @@ test.describe('Login', async () => {
         await loginPage.loginWithUser(process.env.USER_NAME!, process.env.PASSWORD!);
         const expectedPage = loginPage.BASE_URL + '/inventory.html';
         //ASSERT
-        loginPage.AssertEqual(expectedPage, page.url(), "Check URL Page equal to: '" + expectedPage + "'");
+        loginPage.AssertEqual(expectedPage, page.url(), 'Check URL Page equal to: "' + expectedPage + '"');
     });
 });
