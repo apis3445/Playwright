@@ -1,36 +1,38 @@
 {
-    "name": "playwright_framework",
-    "version": "0.0.1",
-    "description": "Sample for playwright",
-    "main": "index.js",
-    "scripts": {
-        "test": "npx playwright test --project=chromium",
-        "test:rw": "npx playwright test demoRealWorld --project=chromium",
-        "test:lt": "npx playwright test --project=\"chrome:latest:MacOS Monterey@lambdatest\"",
-        "lint": "eslint . --ext .ts"
-    },
-    "keywords": [],
-    "author": "Abigail Armijo",
-    "license": "MIT",
-    "devDependencies": {
-        "@faker-js/faker": "^8.3.1",
-        "@types/node": "^20.7.0",
-        "@typescript-eslint/eslint-plugin": "^6.19.1",
-        "@typescript-eslint/parser": "^6.19.1",
-        "cz-conventional-changelog": "^3.3.0",
-        "eslint": "^8.56.0",
-        "eslint-plugin-playwright": "^0.22.1",
-        "typescript": "^5.1.6"
-    },
-    "dependencies": {
-        "@axe-core/playwright": "^4.8.3",
-        "@playwright/test": "^1.41.1",
-        "dotenv": "^16.4.1",
-        "mustache": "^4.2.0"
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
+  "name": "playwright_framework",
+  "version": "0.0.1",
+  "description": "Sample for playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --project=chromium",
+    "test:rw": "npx playwright test demoRealWorld --project=chromium",
+    "test:lt": "npx playwright test --project=\"chrome:latest:MacOS Monterey@lambdatest\"",
+    "lint": "eslint . --ext .ts",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "Abigail Armijo",
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "@types/node": "^20.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-playwright": "^0.22.1",
+    "husky": "^9.0.6",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.8.3",
+    "@playwright/test": "^1.41.1",
+    "dotenv": "^16.4.1",
+    "mustache": "^4.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
+  }
 }

@@ -17,8 +17,8 @@ jobs:
       LT_USERNAME: ${{secrets.LT_USERNAME}}
       LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
 
       - run: npm ci
 
@@ -29,7 +29,7 @@ jobs:
       - name: Run Playwright tests 
         run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test --reporter=html,junit
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
@@ -44,7 +44,7 @@ jobs:
           publish_dir: ${{ github.workspace }}/report/
 
       # Upload xml as artifact
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: java-junit
           path: ${{ github.workspace }}/report/results.xml
