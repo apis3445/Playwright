@@ -6,3 +6,4 @@ report/
 *.env
 
 results.xml
+.husky/pre-commit
