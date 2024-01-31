@@ -1,7 +1,7 @@
 {
   "name": "playwright_framework",
-  "version": "0.0.1",
-  "description": "Sample for playwright",
+  "version": "0.1.0",
+  "description": "Playwright Framework Boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test --project=chromium",
@@ -28,7 +28,8 @@
     "@axe-core/playwright": "^4.8.3",
     "@playwright/test": "^1.41.1",
     "dotenv": "^16.4.1",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "playwright-qase-reporter": "^1.2.2"
   },
   "config": {
     "commitizen": {

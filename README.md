@@ -29,7 +29,20 @@ BASE_URL='https://www.saucedemo.com'
 USER_NAME=valid user in saucedemo
 PASSWORD=password for sauce demo
 LOCALE=locale to test. Valid values are: 'en-US', 'de-DE', 'es-MX'
+QASE_TOKEN= add the QASE TOKEN
+QASE_PROJECT_CODE
 ```
+
+If you want to connect with QASE add the next variables:
+
+```
+QASE_TOKEN= Qase token for playwright
+QASE_PROJECT_CODE= Qase project to connect 
+```
+
+You can follow the Qase documentation to find the values.
+
+https://docs.qase.io/apps/reporters/playwright
 
 ## Run tests
 

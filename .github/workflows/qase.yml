@@ -1,0 +1,59 @@
+name: Run tests from QASE
+
+on:
+  workflow_dispatch:
+    inputs:
+      qase_api_base_url:
+        description: 'Qase API URL'
+        required: true
+      qase_report:
+        description: 'Enabled/disabled reporting to Qase'
+        required: true
+      qase_project_code:
+        description: 'Qase project code'
+        required: true
+      qase_run_id:
+        description: 'Qase Run ID'
+        required: true
+      qase_run_complete:
+        description: 'Complete Qase Run'
+        required: true
+
+env:
+  QASE_API_BASE_URL: ${{ inputs.qase_api_base_url }}
+  QASE_REPORT: ${{ inputs.qase_report }}
+  QASE_PROJECT_CODE: ${{ inputs.qase_project_code }}
+  QASE_RUN_ID: ${{ inputs.qase_run_id }}
+  QASE_RUN_COMPLETE: ${{ inputs.qase_run_complete }}
+  QASE_API_TOKEN: ${{ secrets.QASE_TOKEN }}
+
+jobs:
+  build-js:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: qase-tms/qase-link-run@main
+        env:
+          QASE_API_TOKEN: ${{ env.QASE_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+      - name: Cache playwright binaries
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+            path: |
+                ~/.cache/ms-playwright
+            key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+      - run: npm ci
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - name: Run Playwright tests
+        run: npx playwright test
