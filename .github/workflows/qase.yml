@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: qase-tms/qase-link-run@main
         env:
-          QASE_API_TOKEN: ${{ env.QASE_TOKEN }}
+          QASE_API_TOKEN: ${{ env.QASE_API_TOKEN }}
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
