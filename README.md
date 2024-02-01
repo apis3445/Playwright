@@ -1,5 +1,7 @@
 # POC to E2E test with Playwright TS
 
+[![Tests](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml/badge.svg)](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml)
+
 # Required software
 
 - Node js -> v.16 or above
