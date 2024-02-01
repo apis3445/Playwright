@@ -26,6 +26,10 @@ env:
   QASE_RUN_ID: ${{ inputs.qase_run_id }}
   QASE_RUN_COMPLETE: ${{ inputs.qase_run_complete }}
   QASE_API_TOKEN: ${{ secrets.QASE_TOKEN }}
+  BASE_URL: ${{vars.BASE_URL}}
+  LOCALE: ${{vars.LOCALE}}
+  USER_NAME: ${{secrets.USER_NAME}}
+  PASSWORD: ${{secrets.PASSWORD}}
 
 jobs:
   build-js:
