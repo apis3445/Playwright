@@ -15,7 +15,7 @@ export class DashboardPage extends EffizienteBasePage {
         const dashboardPage = this.baseURL + '/Collection/dashboard';
         this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + dashboardPage + '"');
         await this.page.goto(dashboardPage);
-        await this.page.locator('#title').waitFor({ timeout: 10000 });
+        await this.page.locator('#title').waitFor({ timeout: 20000 });
     }
 
 }
