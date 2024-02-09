@@ -31,8 +31,15 @@ BASE_URL='https://www.saucedemo.com'
 USER_NAME=valid user in saucedemo
 PASSWORD=password for sauce demo
 LOCALE=locale to test. Valid values are: 'en-US', 'de-DE', 'es-MX'
-QASE_TOKEN= add the QASE TOKEN
-QASE_PROJECT_CODE
+QASE_TOKEN=add the QASE TOKEN
+QASE_PROJECT_CODE=add the Qase code project
+EFFIZIENTE_API_URL='https://effizienteauthdemo.azurewebsites.net'
+EFFIZIENTE_URL='https://effizientedemo.azurewebsites.net'
+EFFIZIENTE_COMPANY='Demo'
+EFFIZIENTE_NORMAL_USER='Demo'
+EFFIZIENTE_NORMAL_PASSWORD='Demo'
+EFFIZIENTE_ADMIN_USER='Admin'
+EFFIZIENTE_ADMIN_PASSWORD='Admin'
 ```
 
 If you want to connect with QASE add the next variables:
