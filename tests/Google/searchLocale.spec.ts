@@ -16,7 +16,7 @@ test.describe('Locale translations', async () => {
         //ACT
         const homePage = new HomePage(page);
         //ARRANGE
-        await homePage.goTo(homePage.BASE_URL);
+        await homePage.goTo();
         //ASSERT
         homePage.addAnnotation(AnnotationType.Assert, `Search button text is equal to: "${localeInfo.googleSearch}"`);
         await expect(homePage.googleSearch.locator).toHaveText(localeInfo.googleSearch);

@@ -2,6 +2,7 @@ import { Page } from '@playwright/test';
 import { BasePage } from '../basePage';
 import { Button } from '../../components/Button';
 import { InputText } from '../../components/InputText';
+import { AnnotationType } from '../../utils/annotations/AnnotationType';
 
 export class HomePage extends BasePage {
     readonly search: InputText;
@@ -21,6 +22,11 @@ export class HomePage extends BasePage {
         //Get the elements by locale
         this.search = new InputText(this.page, this.annotationHelper, `[aria-label="${localeInfo.search}"]`);
         this.googleSearch = new Button(this.page, this.annotationHelper, localeInfo.googleSearch);
+    }
+
+    public async goTo() {
+        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + this.BASE_URL + '"');
+        await this.page.goto(this.BASE_URL);
     }
 
 }
