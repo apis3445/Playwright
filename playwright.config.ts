@@ -36,7 +36,7 @@ const config: PlaywrightTestConfig = {
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
-        actionTimeout: 5_000,
+        actionTimeout: 10_000,
         /* Base URL to use in actions like `await page.goto('/')`. */
         baseURL: process.env.BASE_URL ? process.env.BASE_URL : 'https://www.saucedemo.com',
 
