@@ -4,6 +4,7 @@ playwright-report/
 test-results/
 report/
 *.env
+auth/
 
 results.xml
 .husky/pre-commit

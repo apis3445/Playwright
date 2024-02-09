@@ -18,6 +18,7 @@ export class LoginApi {
      */
     async login(login: Login) {
         const response = await this.apiHelper.post('/api/Usuarios/Login', login);
+        console.log(await response.text());
         const responseBody = await response.json();
         return responseBody.Token;
     }
