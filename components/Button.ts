@@ -12,7 +12,7 @@ export class Button extends BaseComponent {
      */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string) {
         super(page, annotationHelper);
-        this.text = name;
+        this.text = this.name;
         this.locator = this.page.getByRole('button', { name: name });
     }
 

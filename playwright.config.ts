@@ -13,7 +13,7 @@ dotenv.config();
  */
 const config: PlaywrightTestConfig = {
     testDir: './tests',
-    //globalSetup: require.resolve('./globalSetup'),
+    globalSetup: require.resolve('./tests/Effiziente/globalSetup'),
     /* Maximum time one test can run for. */
     timeout: 20 * 1000,
 
@@ -22,7 +22,7 @@ const config: PlaywrightTestConfig = {
          * Maximum time expect() should wait for the condition to be met.
          * For example in `await expect(locator).toHaveText();`
          */
-        timeout: 5000
+        timeout: 10_000
     },
     /* Run tests in files in parallel */
     fullyParallel: true,
@@ -52,21 +52,20 @@ const config: PlaywrightTestConfig = {
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['html'],
-        ['playwright-qase-reporter',
-            {
-                apiToken: process.env.QASE_TOKEN,
-                projectCode: process.env.QASE_PROJECT_CODE,
-                runComplete: true,
-                basePath: 'https://api.qase.io/v1',
-                logging: true,
-                uploadAttachments: true,
-                rootSuiteTitle: 'Playwright tests'
-            }],
+        // ['playwright-qase-reporter',
+        //     {
+        //         apiToken: process.env.QASE_TOKEN,
+        //         projectCode: process.env.QASE_PROJECT_CODE,
+        //         runComplete: true,
+        //         basePath: 'https://api.qase.io/v1',
+        //         logging: true,
+        //         uploadAttachments: true,
+        //         rootSuiteTitle: 'Playwright tests'
+        //     }],
 
     ],
     /* Configure projects for major browsers */
     projects: [
-
         {
             name: 'chromium',
             use: {

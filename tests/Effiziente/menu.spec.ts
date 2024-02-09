@@ -1,0 +1,27 @@
+import { test } from '@playwright/test';
+import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
+
+test.describe('Normal user', async () => {
+    test.use({ storageState: 'auth/user.json' });
+    // eslint-disable-next-line playwright/expect-expect
+    test('Should returns user menu', async ({ page }) => {
+        const dashboardPage = new DashboardPage(page);
+        await dashboardPage.goTo();
+        const menuInPage = await dashboardPage.menu.getTopMenus();
+        const menus = ['Collection', 'Config'];
+        dashboardPage.AssertArrayEqual(menuInPage, menus, 'Menu is equal to: ' + menus.toString());
+    });
+});
+
+test.describe('Admin user', async () => {
+    test.use({ storageState: 'auth/admin.json' });
+    // eslint-disable-next-line playwright/expect-expect
+    test('Should returns admin menu', async ({ page }) => {
+        const dashboardPage = new DashboardPage(page);
+        await dashboardPage.goTo();
+        const menuInPage = await dashboardPage.menu.getTopMenus();
+        const menus = ['Collection', 'Security', 'Config'];
+        dashboardPage.AssertArrayEqual(menuInPage, menus, 'Menu is equal to:' + menus.toString());
+    });
+});
+

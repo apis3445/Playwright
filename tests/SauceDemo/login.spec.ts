@@ -9,7 +9,7 @@ test.describe('Login', async () => {
     test('Login with valid user load inventory page', async ({ page }) => {
         //ACT
         const loginPage = new LoginPage(page);
-        await loginPage.goTo(loginPage.BASE_URL);
+        await loginPage.goTo();
         //For security is better add your user info in environment variables or some Key Value service 
         //ARRANGE
         await loginPage.loginWithUser(process.env.USER_NAME!, process.env.PASSWORD!);

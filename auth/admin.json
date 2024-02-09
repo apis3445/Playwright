@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://effizientedemo.azurewebsites.net",
+      "localStorage": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIyIiwiRW1wcmVzYUlkIjoiMSIsIkF1eCI6IlVmeGhWT29RbDA4TEUxUzFaUSt2dXc9PSIsIlVSTCI6Imh0dHBzOi8vZWZmaXppZW50ZXJlc3QuYXp1cmV3ZWJzaXRlcy5uZXQvYXBpLyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6WyJBZG1pbmlzdHJhZG9yIiwiU3VwZXJ2aXNvciJdLCJleHAiOjE3MDg3NDU1MzksImlzcyI6Imh0dHBzOi8vZWZmaXppZW50ZWF1dGhkZW1vLmF6dXJld2Vic2l0ZXMubmV0IiwiYXVkIjoiaHR0cHM6Ly9lZmZpemllbnRlYXV0aGRlbW8uYXp1cmV3ZWJzaXRlcy5uZXQifQ.J0RO5QEgyoXa1ixcwtRiT0LFTQMKYOw-jFTZNjaezdY"
+        }
+      ]
+    }
+  ]
+}

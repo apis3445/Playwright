@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://effizientedemo.azurewebsites.net",
+      "localStorage": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxIiwiRW1wcmVzYUlkIjoiMSIsIkF1eCI6IlVmeGhWT29RbDA4TEUxUzFaUSt2dXc9PSIsIlVSTCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMi9hcGkvIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjpbIlNhbGlkYXMiLCJDb2JyYW56YSJdLCJleHAiOjE3MDg2NjExODUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCJ9.s3evGyvvLZddGC0liJ8_AHgGoWw8qhrTggglpx4tnEY"
+        }
+      ]
+    }
+  ]
+}

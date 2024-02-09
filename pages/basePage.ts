@@ -16,7 +16,8 @@ export class BasePage {
     /**
      * Go to the base Address
      */
-    public async goTo(url: string) {
+    public async goTo() {
+        const url = process.env.BASE_URL ?? 'https://www.saucedemo.com';
         this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"');
         await this.page.goto(url);
     }
@@ -101,6 +102,11 @@ export class BasePage {
      * @param assertMessage  Message to assert
      */
     public AssertEqual(expected: string, actual: string, assertMessage: string) {
+        this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
+        expect(expected, assertMessage).toEqual(actual);
+    }
+
+    public AssertArrayEqual(expected: string[], actual: string[], assertMessage: string) {
         this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
         expect(expected, assertMessage).toEqual(actual);
     }

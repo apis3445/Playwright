@@ -3,23 +3,22 @@ import { request } from '@playwright/test';
 
 export class ApiHelper {
 
-    apiRequest: APIRequestContext;
 
-    constructor(private page: Page) {
+    constructor(private page: Page, private baseUrl: string) {
 
     }
 
     /**
      * Create a request with token from localStorage
      */
-    async createRequest() {
-        const token = await this.page.evaluate('localStorage["jwtToken"]');
-        this.apiRequest = await request.newContext({
-            baseURL: 'https://api.realworld.io',
-            extraHTTPHeaders: {
-                'Authorization': `Bearer ${token}`,
-            }
+    async createRequest(baseURL: string) {
+        const apiRequest: APIRequestContext = await request.newContext({
+            baseURL: baseURL
+            // extraHTTPHeaders: {
+            //     'Authorization': `Bearer ${token}`,
+            // }
         });
+        return apiRequest;
     }
 
     /**
@@ -28,8 +27,8 @@ export class ApiHelper {
      * @param statusCode Status code returned by the api
      * @returns responsePromise
      */
-    async waitForResponse(apiUrl: string, statusCode = 200) {
-        const responsePromise = this.page.waitForResponse(response => response.url().includes(apiUrl) && response.request().method() == 'POST'
+    async waitForResponse(apiUrl: string, statusCode = 200, method: 'POST' | 'GET' | 'PUT' | 'DELETE' = 'POST') {
+        const responsePromise = this.page.waitForResponse(response => response.url().includes(apiUrl) && response.request().method() == method
             && response.status() == statusCode);
         return responsePromise;
     }
@@ -42,8 +41,20 @@ export class ApiHelper {
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async post(url: string, data: any): Promise<APIResponse> {
-        await this.createRequest();
-        return await this.apiRequest.post(url, { data: data });
+        const apiRequest = await this.createRequest(this.baseUrl);
+        return await apiRequest.post(url, { data: data });
+    }
+
+    /**
+     * Call to api post
+     * @param url post url (not base url is needed)
+     * @param data data to post
+     * @returns 
+     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async put(url: string, data: any): Promise<APIResponse> {
+        const apiRequest = await this.createRequest(this.baseUrl);
+        return await apiRequest.put(url, { data: data });
     }
 
     /**
@@ -52,8 +63,8 @@ export class ApiHelper {
      * @returns 
      */
     async delete(url: string): Promise<APIResponse> {
-        await this.createRequest();
-        return await this.apiRequest.delete(url);
+        const apiRequest = await this.createRequest(this.baseUrl);
+        return await apiRequest.delete(url);
     }
 
 } 
