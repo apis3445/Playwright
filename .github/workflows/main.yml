@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    name: Test HTML Reporter
+    name: Run Test
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{vars.BASE_URL}}
