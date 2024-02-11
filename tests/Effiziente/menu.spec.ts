@@ -8,7 +8,7 @@ test.describe('Normal user', async () => {
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();
-        const menus = ['Collection', 'Config'];
+        const menus = ['AccountsReceivable', 'Config'];
         dashboardPage.AssertArrayEqual(menuInPage, menus, 'Menu is equal to: ' + menus.toString());
     });
 });
@@ -20,7 +20,7 @@ test.describe('Admin user', async () => {
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();
-        const menus = ['Collection', 'Security', 'Config'];
+        const menus = ['AccountsReceivable', 'Security', 'Config'];
         dashboardPage.AssertArrayEqual(menuInPage, menus, 'Menu is equal to:' + menus.toString());
     });
 });
