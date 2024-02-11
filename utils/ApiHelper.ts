@@ -12,11 +12,12 @@ export class ApiHelper {
      * Create a request with token from localStorage
      */
     async createRequest(baseURL: string) {
+        const token = await this.page.evaluate('localStorage["token"]');
         const apiRequest: APIRequestContext = await request.newContext({
-            baseURL: baseURL
-            // extraHTTPHeaders: {
-            //     'Authorization': `Bearer ${token}`,
-            // }
+            baseURL: baseURL,
+            extraHTTPHeaders: {
+                'Authorization': `Bearer ${token}`,
+            }
         });
         return apiRequest;
     }
