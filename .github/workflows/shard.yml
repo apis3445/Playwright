@@ -43,8 +43,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: all-blob-reports
-          path: blob-report/
+          name: blob-report-${{ matrix.shard }}
+          path: blob-report
           retention-days: 5
 
   merge-reports:
@@ -64,8 +64,9 @@ jobs:
     - name: Download blob reports from GitHub Actions Artifacts
       uses: actions/download-artifact@v4
       with:
-        name: all-blob-reports
         path: all-blob-reports
+        pattern: blob-report-*
+        merge-multiple: true
 
     - name: Merge into HTML Report
       run: npx playwright merge-reports --reporter html ./all-blob-reports 
