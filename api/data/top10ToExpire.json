@@ -1,0 +1,44 @@
+[
+    {
+        "ClienteId": 18,
+        "Cliente": "Blanca Castro Gutiérrez",
+        "Total": 23630.96,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 3,
+        "Cliente": "Océano Atlántico Ltda.",
+        "Total": 12854.56,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 1,
+        "Cliente": "Centro Comercial Moctezuma",
+        "Total": 7231.44,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 20,
+        "Cliente": "Marketing 2.0",
+        "Total": 7231.44,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 16,
+        "Cliente": "Bits Consultores",
+        "Total": 5220,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 12,
+        "Cliente": "Consultorio Médico",
+        "Total": 2320,
+        "Atraso": 0
+    },
+    {
+        "ClienteId": 9,
+        "Cliente": "E-Mart",
+        "Total": 1345.6,
+        "Atraso": 0
+    }
+]

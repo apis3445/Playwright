@@ -1,0 +1,32 @@
+[
+    {
+        "ClienteId": 8,
+        "Cliente": "Electronics Depot",
+        "Total": 3480,
+        "Atraso": 69
+    },
+    {
+        "ClienteId": 7,
+        "Cliente": "ACME",
+        "Total": 2668,
+        "Atraso": 64
+    },
+    {
+        "ClienteId": 4,
+        "Cliente": "Comercio Mineiro",
+        "Total": 2900,
+        "Atraso": 37
+    },
+    {
+        "ClienteId": 5,
+        "Cliente": "Ana Trujillo Cruz",
+        "Total": 1345.6,
+        "Atraso": 36
+    },
+    {
+        "ClienteId": 6,
+        "Cliente": "Carlos González Alvarado",
+        "Total": 10382,
+        "Atraso": 35
+    }
+]

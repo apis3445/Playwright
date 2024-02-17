@@ -1,0 +1,38 @@
+[
+    {
+        "ClienteId": 11,
+        "Cliente": "Tom's Club",
+        "Total": 11498,
+        "Atraso": 20
+    },
+    {
+        "ClienteId": 19,
+        "Cliente": "Diseño Web Barcelona",
+        "Total": 6148,
+        "Atraso": 2
+    },
+    {
+        "ClienteId": 14,
+        "Cliente": "Ferretería Especializada",
+        "Total": 4640,
+        "Atraso": 9
+    },
+    {
+        "ClienteId": 15,
+        "Cliente": "Sistemas Axis",
+        "Total": 3480,
+        "Atraso": 8
+    },
+    {
+        "ClienteId": 2,
+        "Cliente": "Ricardo Adocicados",
+        "Total": 2886,
+        "Atraso": 21
+    },
+    {
+        "ClienteId": 13,
+        "Cliente": "Fábrica de Pinturas",
+        "Total": 1116,
+        "Atraso": 10
+    }
+]
