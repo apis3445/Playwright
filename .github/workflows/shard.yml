@@ -11,7 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1-2,2-2]
+        shardIndex: [1, 2]
+        shardTotal: [2]
     env:
         BASE_URL: ${{vars.BASE_URL}}
         LOCALE: ${{vars.LOCALE}}
@@ -37,13 +38,13 @@ jobs:
         run: npx playwright install --with-deps
       
       - name: Run Playwright tests 
-        run: npx playwright test --shard ${{ matrix.shard }} --reporter=blob
+        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: blob-report-${{ matrix.shard }}
+          name: blob-report-${{ matrix.shardIndex }}
           path: blob-report
           retention-days: 5
 
@@ -72,8 +73,8 @@ jobs:
       run: npx playwright merge-reports --reporter html ./all-blob-reports 
 
     - name: Upload HTML report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: html-report${{ github.run_attempt }}
+        name: html-report-${{ github.run_attempt }}
         path: playwright-report
         retention-days: 3
