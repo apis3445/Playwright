@@ -26,7 +26,7 @@ export class VisualHelper {
                     maxDiffPixelRatio: maxDiffPixelsRatio,
                     timeout: timeout,
                     fullPage: true,
-                    maxDiffPixels: maxDiffPixelsRatio
+                    animations: 'disabled',
                 });
         });
     }
