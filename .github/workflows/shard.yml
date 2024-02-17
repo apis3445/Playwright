@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [1/2,2/2]
+        shard: [1-2,2-2]
     env:
         BASE_URL: ${{vars.BASE_URL}}
         LOCALE: ${{vars.LOCALE}}
