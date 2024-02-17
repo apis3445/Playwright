@@ -1,10 +1,17 @@
+# 0.3.0 (2024-02-17)
+
+
+### Features
+
+* add visual testing ([e3e3280](https://github.com/apis3445/PlaywrightFramework/commit/e3e3280f0e55299f690d6bf1aff0292e71cee853))
+
+
+
 # 0.2.0 (2024-02-10)
 
 ### Features
 
-* skip login tests ([ba3f465
-](https://github.com/apis3445/PlaywrightFramework/commit/ba3f465c0ad0b88c44abf1d7ba04f1f322c6b8ae))
-
+* skip login tests ([ba3f465](https://github.com/apis3445/PlaywrightFramework/commit/ba3f465c0ad0b88c44abf1d7ba04f1f322c6b8ae))
 
 
 # 0.2.0 (2024-02-09)

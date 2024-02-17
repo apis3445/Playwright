@@ -71,15 +71,7 @@ export class ApiHelper {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async mockApi(url: string, jsonData: any) {
         await this.page.route(url, async route => {
-            const response = await route.fetch();
-            await route.fulfill({
-                status: 200,
-                contentType: 'application/json',
-                headers: response.headers(),
-                body: JSON.stringify(
-                    jsonData
-                )
-            });
+            await route.fulfill({ body: JSON.stringify(jsonData) });
         });
     }
 
