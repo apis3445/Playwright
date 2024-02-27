@@ -52,20 +52,36 @@ const config: PlaywrightTestConfig = {
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['html'],
-        ['playwright-qase-reporter',
-            {
-                apiToken: process.env.QASE_TOKEN,
-                projectCode: process.env.QASE_PROJECT_CODE,
-                runComplete: true,
-                basePath: 'https://api.qase.io/v1',
-                logging: true,
-                uploadAttachments: true,
-                rootSuiteTitle: 'Playwright tests'
-            }],
+        // ['playwright-qase-reporter',
+        //     {
+        //         apiToken: process.env.QASE_TOKEN,
+        //         projectCode: process.env.QASE_PROJECT_CODE,
+        //         runComplete: true,
+        //         basePath: 'https://api.qase.io/v1',
+        //         logging: true,
+        //         uploadAttachments: true,
+        //         rootSuiteTitle: 'Playwright tests'
+        //     }],
 
     ],
     /* Configure projects for major browsers */
     projects: [
+        {
+            name: 'chrome:latest:MacOS Catalina@lambdatest',
+            testMatch: /.*LambdaTestFixture.spec.ts/,
+            use: {
+                viewport: { width: 1920, height: 1080 },
+
+            },
+        },
+        {
+            name: 'chrome:latest:Windows 10@lambdatest',
+            testMatch: /.*LambdaTestFixture.spec.ts/,
+            use: {
+                viewport: { width: 1280, height: 720 },
+
+            },
+        },
         {
             name: 'chromium',
             use: {

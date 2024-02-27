@@ -8,6 +8,7 @@
         "pages",
         "tests",
         "utils",
+        "fixtures",
         // add all files in which you see
         // the "parserOptions.project" error
         ".eslintrc.js",
