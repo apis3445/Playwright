@@ -38,6 +38,8 @@ EFFIZIENTE_NORMAL_USER='Demo'
 EFFIZIENTE_NORMAL_PASSWORD='Demo'
 EFFIZIENTE_ADMIN_USER='Admin'
 EFFIZIENTE_ADMIN_PASSWORD='Admin'
+LT_USERNAME = Your lambdatest user name
+LT_ACCESS_KEY = Your lambdatest access key
 ```
 
 If you want to connect with QASE add the next variables:
