@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessibility images alt for Page: {{page}}</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        img {
+            width: fit-content;
+            max-width: 200px;
+            height: auto;
+            box-shadow: rgb(0 0 0 / 10%) 0px 1.8px 1.9px, rgb(0 0 0 / 15%) 0px 6.1px 6.3px, rgb(0 0 0 / 10%) 0px -2px 4px, rgb(0 0 0 / 15%) 0px -6.1px 12px, rgb(0 0 0 / 25%) 0px 6px 12px;
+        }
+        .material-symbols-outlined {
+            margin: 4px;
+            font-size: 36px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        footer {
+            border-top: 1px solid;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Accessibility images alt for Page: {{page}}</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 3%">#</th>
+                <th style="width: 15%">Image</th>
+                <th style="width: 15%">Element Target</th>
+                <th>Alt text</th>
+                <th>Aria-label</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#altImages}}
+            <tr>
+                <td>{{imageNumber}}</td>
+                <td scope="row"><img src="{{screenshot}}" width="150"/></td>
+                <td>{{target}}</td>
+                <td>{{altText}}</td>
+                <td>{{ariaLabel}}</td>
+            </tr>
+            {{/altImages}}
+        </tbody>
+    </table>
+    <footer>
+     Made with ♥ to improve accessibility. Made with <a href="https://www.deque.com/axe/">axe deque</a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+name: Run a11y tool
+on:
+  workflow_dispatch:
+    inputs:
+      PAGE_URL:
+        description: 'URL to test'
+        required: true
+jobs:
+  test:
+    timeout-minutes: 60
+    name: Test Accessibility
+    runs-on: ubuntu-latest
+    env:
+       PAGE_URL: ${{ inputs.PAGE_URL }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - run: npm ci
+
+      - run: npx playwright install --with-deps
+
+      - name: Run accessibility tests
+        run: PLAYWRIGHT_HTML_REPORT=chromium npx playwright test Accessibility/pageAccessibility --project=chromium --workers=1
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Axe accessibility report
+          path: chromium/
+          retention-days: 5
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Test Results
+          path: test-results/
+          retention-days: 5
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Test Annotations
+          path: test-annotations/
+          retention-days: 5
+
+          

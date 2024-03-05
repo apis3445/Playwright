@@ -75,6 +75,14 @@ const config: PlaywrightTestConfig = {
             },
         },
         {
+            name: 'pw-webkit:latest:MacOS Monterey@lambdatest',
+            testMatch: /.*LambdaTestFixture.spec.ts/,
+            use: {
+                viewport: { width: 1920, height: 1080 },
+
+            },
+        },
+        {
             name: 'chrome:latest:Windows 10@lambdatest',
             testMatch: /.*LambdaTestFixture.spec.ts/,
             use: {
