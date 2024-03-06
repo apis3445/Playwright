@@ -34,7 +34,7 @@ jobs:
       - run: npx playwright install-deps
 
       - name: Run Playwright tests 
-        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test --reporter=html,junit
+        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test tests/Effiziente tests/Google tests/SauceDemo --reporter=html,junit
 
       - uses: actions/upload-artifact@v4
         if: always()
