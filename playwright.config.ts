@@ -52,16 +52,16 @@ const config: PlaywrightTestConfig = {
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['html'],
-        // ['playwright-qase-reporter',
-        //     {
-        //         apiToken: process.env.QASE_TOKEN,
-        //         projectCode: process.env.QASE_PROJECT_CODE,
-        //         runComplete: true,
-        //         basePath: 'https://api.qase.io/v1',
-        //         logging: true,
-        //         uploadAttachments: true,
-        //         rootSuiteTitle: 'Playwright tests'
-        //     }],
+        ['playwright-qase-reporter',
+            {
+                apiToken: process.env.QASE_TOKEN,
+                projectCode: process.env.QASE_PROJECT_CODE,
+                runComplete: true,
+                basePath: 'https://api.qase.io/v1',
+                logging: true,
+                uploadAttachments: true,
+                rootSuiteTitle: 'Playwright tests'
+            }],
 
     ],
     /* Configure projects for major browsers */
