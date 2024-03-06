@@ -38,7 +38,7 @@ jobs:
         run: npx playwright install --with-deps
       
       - name: Run Playwright tests 
-        run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob
+        run: npx playwright test tests/Effiziente tests/Google tests/SauceDemo --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()

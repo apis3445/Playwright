@@ -22,6 +22,7 @@ export class TabHelper {
     private textBoxes: any[] = [];
     private tabElements: any[] = [];
     private inputTexts: any[] = [];
+    private inputPasswords: any[] = [];
 
     constructor(protected page: Page, protected keyPage: string) {
 
@@ -31,10 +32,11 @@ export class TabHelper {
     async getElementsInPage() {
         this.links = await this.page.locator('a:visible').all();
         this.buttons = await this.page.locator('button:visible').all();
-        this.checkBoxes = await this.page.locator('input[type="checbox"]:visible').all();
+        this.checkBoxes = await this.page.locator('input[type="checkbox"]:visible').all();
         this.comboBoxes = await this.page.locator('combobox:visible').all();
         this.listBoxes = await this.page.locator('listbox:visible').all();
         this.radios = await this.page.locator('input[type="radio"]:visible').all();
+        this.inputPasswords = await this.page.locator('input[type="password"]:visible').all();
         this.sliders = await this.page.locator('slider:visible').all();
         this.textBoxes = await this.page.locator('textbox:visible').all();
         this.inputTexts = await this.page.locator('input[type="text"]:visible').all();

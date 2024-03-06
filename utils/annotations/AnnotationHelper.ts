@@ -8,7 +8,6 @@ export class AnnotationHelper {
 
     private debugElement = 'playwright-debug';
     private annotations: Annotation[] = [];
-    private folderResults = 'test-results/';
 
     constructor(protected page: Page, protected keyPage: string) {
 
@@ -72,7 +71,7 @@ export class AnnotationHelper {
             borderColor: borderColor
         };
         await this.page.evaluate(params => {
-            const activeElement = document.activeElement;
+            const activeElement = document.activeElement as HTMLElement;
             if (activeElement) {
                 activeElement['style'].border = '2px solid ' + params.borderColor;
             }
@@ -93,24 +92,25 @@ export class AnnotationHelper {
                 elementId: 'tab' + description
             };
             await this.page.evaluate(params => {
-                const activeElement = document.activeElement;
+                const activeElement = document.activeElement as HTMLElement;
                 let debugElement = document.getElementById(params.elementId);
-                if (!debugElement) {
-                    debugElement = document.createElement('div');
-                    debugElement.id = params.elementId;
-                    debugElement.style.color = '#fff';
-                    debugElement.style.fontSize = '16px';
-                    debugElement.style.position = 'absolute';
-                    debugElement.style.textAlign = 'center';
-                    debugElement.style.opacity = '0.8';
-                    debugElement.style.zIndex = '3000';
-                    debugElement.style.width = '20px';
-                    activeElement?.appendChild(debugElement);
-                    //TODO: Check this option to append tag number
-                    //activeElement?.parentNode?.insertBefore(debugElement, activeElement.nextSibling);
-                }
+                debugElement = document.createElement('div');
+                debugElement.id = params.elementId;
+                debugElement.style.top = `${activeElement.offsetTop}px`;
+                debugElement.style.left = `${activeElement.offsetLeft}px`;
+                debugElement.style.color = '#fff';
+                debugElement.style.fontSize = '16px';
+                debugElement.style.fontWeight = 'bold';
+                debugElement.style.position = 'absolute';
+                debugElement.style.width = '30px';
+                debugElement.style.textAlign = 'center';
+                debugElement.style.opacity = '0.8';
+                debugElement.style.zIndex = '3000';
+                debugElement.style.width = '20px';
+                debugElement.style.pointerEvents = 'none';
                 debugElement.style.backgroundColor = params.backgroundColor;
                 debugElement.innerHTML = params.description;
+                activeElement?.parentNode?.appendChild(debugElement);
             }, params);
         });
     }
@@ -145,9 +145,9 @@ export class AnnotationHelper {
     }
 
     /**
- * Get list of annotations
- * @returns List of annotations
- */
+     * Get list of annotations
+     * @returns List of annotations
+     */
     getAnnotations() {
         return this.annotations;
     }
