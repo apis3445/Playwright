@@ -5,6 +5,9 @@ on:
       PAGE_URL:
         description: 'URL to test'
         required: true
+      DEBUG_PAUSE:
+          description: 'Miliseconds to pause'
+          required: true
 jobs:
   test:
     timeout-minutes: 60
@@ -12,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
        PAGE_URL: ${{ inputs.PAGE_URL }}
+       DEBUG_PAUSE: ${{ inputs.DEBUG_PAUSE }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3

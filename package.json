@@ -1,6 +1,6 @@
 {
   "name": "playwright_framework",
-  "version": "0.6.0",
+  "version": "0.5.0",
   "description": "Playwright Framework Boilerplate",
   "main": "index.js",
   "scripts": {

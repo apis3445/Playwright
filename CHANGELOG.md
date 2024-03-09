@@ -1,3 +1,16 @@
+# 0.5.0 (2024-03-09)
+
+### Features
+
+### Features
+
+* add a pause and fix color description ([bc5bbba](https://github.com/apis3445/PlaywrightFramework/commit/bc5bbba7e9cfaf96f3d7dcf712b182ab4d2f28c9))
+* add accessibility tool ([a605817](https://github.com/apis3445/PlaywrightFramework/commit/a605817e03e65198abd6aaff30081c86e928d40d))
+* Add env variables to qase pipeline ([2bfae25](https://github.com/apis3445/PlaywrightFramework/commit/2bfae255aa403c40c7259a16de89133f7405f88f))
+* Add husky and eslint rules ([a7cca9d](https://github.com/apis3445/PlaywrightFramework/commit/a7cca9d4442a566f36afd960de7c4adb6cb88d62))
+* add Junit Report, commitizen ([8e3473a](https://github.com/apis3445/PlaywrightFramework/commit/8e3473ab831d25c28cb63e83435ad329b04d90ce))
+
+
 # 0.4.0 (2024-02-27)
 
 
