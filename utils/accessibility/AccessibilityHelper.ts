@@ -53,6 +53,8 @@ export class AccessibilityHelper {
      */
     async addAnnotations() {
         await test.step('Add accessibility annotations', async () => {
+            // eslint-disable-next-line playwright/no-conditional-in-test
+            const pause = process.env.DEBUG_PAUSE ? +process.env.DEBUG_PAUSE : 2000;
             for (const axeError of this.currentAxeErrors) {
                 const targetLocator = this.page.locator(axeError.target).first();
                 const type = `${axeError.errorNumber}.${axeError.id}`;
@@ -63,6 +65,8 @@ export class AccessibilityHelper {
                 await this.annotationHelper.addScreenshot(targetLocator, fileName, this.testInfo);
                 await this.annotationHelper.addDescription(targetLocator, stepDescription, axeError.impact);
                 this.annotationHelper.addAnnotation(type, howToFix);
+                // eslint-disable-next-line playwright/no-wait-for-timeout
+                await this.page.waitForTimeout(pause);
                 expect.soft(axeError.id, stepDescription).toBeNull();
             }
         });

@@ -3,6 +3,7 @@ import { AnnotationType } from './AnnotationType';
 import { Annotation } from './Annotation';
 import fs from 'fs';
 import path from 'path';
+import { ImpactType } from '../accessibility/models/ImpactType';
 
 export class AnnotationHelper {
 
@@ -27,7 +28,7 @@ export class AnnotationHelper {
      * @param description Description of the error
      * @param backgroundColor Background color
      */
-    async addDescription(locator: Locator, description: string, backgroundColor: string) {
+    async addDescription(locator: Locator, description: string, backgroundColor: ImpactType) {
         await test.step('Add Description', async () => {
             const params = {
                 description: description,

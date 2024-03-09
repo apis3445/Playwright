@@ -1,6 +1,7 @@
 import { Result } from 'axe-core';
 import { Annotation } from '../annotations/Annotation';
 import { AxeError } from './models/AxeError';
+import { ImpactType } from './models/ImpactType';
 
 export class AxeErrors {
 
@@ -44,7 +45,7 @@ export class AxeErrors {
                 errorDescription: accessibilityError.description,
                 help: accessibilityError.help,
                 helpUrl: accessibilityError.helpUrl,
-                impact: accessibilityError.impact,
+                impact: ImpactType[accessibilityError.impact as keyof typeof ImpactType],
                 summary: accessibilityError.nodes[i].failureSummary,
                 tags: accessibilityError.tags,
                 url: this.currentUrl,
