@@ -14,6 +14,10 @@
         :root {
             --levelA: #b83bbe;
             --levelAA: #6D07C7;
+            --minor-color: {{ minorColor }};
+            --moderate-color: {{ moderateColor }};
+            --serious-color: {{ seriousColor }};
+            --critical-color: {{ criticalColor }};
         }
 
         .wcag2a {
@@ -114,25 +118,24 @@
         .material-symbols-outlined {
             font-size: 48px;
             line-height: normal;
-            font-weight: 420;
+            font-weight: 400;
         }
 
         .minor {
             border-bottom: none;
-
-            background-color: {{ minorColor }};
+            background-color: var(--minor-color);
         }
 
         .moderate {
-            background-color: {{ moderateColor }};
+            background: var(--moderate-color);
         }
 
         .serious {
-            background-color: {{ seriousColor }};
+            background: var(--serious-color) !important;
         }
 
         .critical {
-            background-color: {{ criticalColor }};
+            background: var(--critical-color) !important;
         }
 
         textarea {

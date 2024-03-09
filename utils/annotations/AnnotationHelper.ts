@@ -8,6 +8,7 @@ export class AnnotationHelper {
 
     private debugElement = 'playwright-debug';
     private annotations: Annotation[] = [];
+    private resultsFolder = 'test-results';
 
     constructor(protected page: Page, protected keyPage: string) {
 
@@ -160,7 +161,7 @@ export class AnnotationHelper {
     async attachPageScreenshot(fileName: string, testInfo: TestInfo) {
         // eslint-disable-next-line playwright/expect-expect
         await test.step('Add Page screenshot', async () => {
-            const file = testInfo.outputPath(fileName);
+            const file = path.join(this.resultsFolder, fileName);
             const screenshot = await this.page.screenshot({ path: file, fullPage: true });
             await fs.promises.writeFile(file, screenshot);
             await testInfo.attach(fileName, { contentType: 'image/png', path: file });
@@ -177,7 +178,7 @@ export class AnnotationHelper {
     async attachScreenshot(targetLocator: Locator, fileName: string, testInfo: TestInfo) {
         if (!await targetLocator.isVisible())
             return;
-        const file = testInfo.outputPath(fileName);
+        const file = path.join(this.resultsFolder, fileName);
         const pathFile = path.dirname(file);
         const pathAttachments = path.join(pathFile, 'attachments');
         const attachmentFile = path.join(pathAttachments, fileName);
@@ -199,7 +200,7 @@ export class AnnotationHelper {
     async addScreenshot(targetLocator: Locator, fileName: string, testInfo: TestInfo) {
         if (!await targetLocator.isVisible())
             return;
-        const file = testInfo.outputPath(fileName);
+        const file = path.join(this.resultsFolder, fileName);
         const pathFile = path.dirname(file);
         const pathAttachments = path.join(pathFile, 'attachments');
         const attachmentFile = path.join(pathAttachments, fileName);
