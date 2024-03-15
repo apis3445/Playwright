@@ -53,6 +53,13 @@ You can follow the Qase documentation to find the values.
 
 https://docs.qase.io/apps/reporters/playwright
 
+To run accessibility test:
+
+PAGE_URL= Page to test example: "https://www.google.com"
+DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
+
+Dashboard and summaries will be stored in test-results folder
+
 ## Run tests
 
 Execute the next command to run your tests:
