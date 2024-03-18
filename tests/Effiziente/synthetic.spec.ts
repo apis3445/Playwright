@@ -7,9 +7,9 @@ test.describe('Synthetic testing', () => {
 
     test.beforeEach(async ({ request }) => {
         const userLogin = {
-            Company: process.env.EFFIZIENTE_COMPANY ?? 'Demo',
-            UserName: process.env.EFFIZIENTE_ADMIN_USER ?? 'Demo',
-            Password: process.env.EFFIZIENTE_ADMIN_PASSWORD ?? 'Demo',
+            Company: process.env.EFFIZIENTE_COMPANY ?? '',
+            UserName: process.env.EFFIZIENTE_ADMIN_USER ?? '',
+            Password: process.env.EFFIZIENTE_ADMIN_PASSWORD ?? '',
             KeepSession: true,
             Code: 0
         };
