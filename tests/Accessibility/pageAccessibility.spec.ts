@@ -6,7 +6,7 @@ import { TabHelper } from '../../utils/accessibility/TabHelper';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 
-test.describe('Test Accessibility By Page', async () => {
+test.describe('Test Accessibility By Page', () => {
     // All tests in this describe group will get 0 retry attempts
     test.describe.configure({ retries: 0 });
 

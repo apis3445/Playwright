@@ -36,4 +36,5 @@ module.exports = {
         project: 'tsconfig.eslint.json',
         sourceType: 'module',
     },
+    'ignorePatterns': ['checkly.config.ts']
 };

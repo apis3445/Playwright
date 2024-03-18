@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { EffizienteBasePage } from './effizienteBasePage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { Heading } from '../../components/Heading';
@@ -38,10 +38,10 @@ export class DashboardPage extends EffizienteBasePage {
      * Wait to load the charts
      */
     public async waitForCharts() {
-        await this.page.locator(this.top5.name).waitFor();
-        await this.page.locator(this.top5Debt.name).waitFor();
-        await this.page.locator(this.top5DaysDelay.name).waitFor();
-        await this.page.locator(this.summaryExpiration.name).waitFor();
+        await expect(this.page.locator(this.top5.name)).toBeVisible();
+        await expect(this.page.locator(this.top5Debt.name)).toBeVisible();
+        await expect(this.page.locator(this.top5DaysDelay.name)).toBeVisible();
+        await expect(this.page.locator(this.summaryExpiration.name)).toBeVisible();
     }
 
     /**

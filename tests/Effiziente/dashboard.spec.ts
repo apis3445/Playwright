@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
 import { AccountReceivableApi } from '../../api/Effiziente/AccountsReceivable.api';
 
-test.describe('Check Dashboard', async () => {
+test.describe('Check Dashboard', () => {
     test.use({ storageState: 'auth/user.json' });
     // eslint-disable-next-line playwright/expect-expect
     test('Should show dashboard', async ({ page }) => {

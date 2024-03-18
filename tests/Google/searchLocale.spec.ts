@@ -6,7 +6,7 @@ const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const localeInfo = require(`../../data/${locale}.json`);
 
-test.describe('Locale translations', async () => {
+test.describe('Locale translations', () => {
     test.use({
         locale: locale,
         timezoneId: localeInfo.timezoneId,

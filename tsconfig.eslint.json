@@ -12,6 +12,7 @@
         // add all files in which you see
         // the "parserOptions.project" error
         ".eslintrc.js",
-        "playwright.config.ts"
+        "playwright.config.ts",
+        "checkly.config.ts"
     ]
 }

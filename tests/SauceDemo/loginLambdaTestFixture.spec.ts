@@ -3,7 +3,7 @@ import { test } from '../../fixtures/lambdaTestFixture';
 // doesn't share the logged-in session
 test.use({ storageState: { cookies: [], origins: [] } });
 
-test.describe('Login', async () => {
+test.describe('Login', () => {
     // eslint-disable-next-line playwright/expect-expect
     test('Login with valid user load inventory page', async ({ page, loginPage }) => {
         //ACT

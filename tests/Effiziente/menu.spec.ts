@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
 
-test.describe('Normal user', async () => {
+test.describe('Normal user', () => {
     test.use({ storageState: 'auth/user.json' });
     // eslint-disable-next-line playwright/expect-expect
     test('Should returns user menu', async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe('Normal user', async () => {
     });
 });
 
-test.describe('Admin user', async () => {
+test.describe('Admin user', () => {
     test.use({ storageState: 'auth/admin.json' });
     // eslint-disable-next-line playwright/expect-expect
     test('Should returns admin menu', async ({ page }) => {
