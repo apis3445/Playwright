@@ -33,7 +33,7 @@ test.describe('Synthetic testing', () => {
         await expect(page.locator('#summaryExpiration')).toBeVisible();
         const topMenuLocator = 'app-menu > p-menubar > .p-menubar > p-menubarsub > ul > li > .p-menuitem-content > a > .p-menuitem-text';
         const menusInPage = await page.locator(topMenuLocator).allInnerTexts();
-        const menus = ['AccountsReceivable', 'Config'];
+        const menus = ['AccountsReceivable', 'Security', 'Config'];
         await expect(menusInPage).toEqual(menus);
     });
 
