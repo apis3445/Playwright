@@ -20,12 +20,21 @@ test.describe('Synthetic testing', () => {
     });
 
     // eslint-disable-next-line playwright/expect-expect
-    test('Should show dashboard', async ({ page }) => {
+    test('Should show dashboard', {
+        annotation: [
+            { type: 'docs', description: 'Test for synthetic testing ' },
+        ],
+    }, async ({ page }) => {
         const dashboardPageUrl = baseURL + '/AccountsReceivable/dashboard';
-        await page.goto(baseURL);
-        await page.evaluate(token => {
-            localStorage.setItem('token', token);
-        }, token);
+        const stepDescription = 'Go to:' + baseURL;
+        await test.step(stepDescription, async () => {
+            test.info().annotations.push({ type: 'Navigation', description: stepDescription });
+            await page.goto(baseURL);
+            await page.evaluate(token => {
+                localStorage.setItem('token', token);
+            }, token);
+
+        });
         await page.goto(dashboardPageUrl);
         await expect(page.locator('#top5 canvas')).toBeVisible();
         await expect(page.locator('#top5Debt canvas')).toBeVisible();
