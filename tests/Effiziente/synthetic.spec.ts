@@ -7,24 +7,21 @@ test.describe('Synthetic testing', () => {
 
     test.beforeEach(async ({ request }) => {
         const userLogin = {
-            Company: process.env.EFFIZIENTE_COMPANY ?? '',
-            UserName: process.env.EFFIZIENTE_ADMIN_USER ?? '',
-            Password: process.env.EFFIZIENTE_ADMIN_PASSWORD ?? '',
+            Company: process.env.EFFIZIENTE_COMPANY ?? 'Demo',
+            UserName: process.env.EFFIZIENTE_NORMAL_USER ?? 'Demo',
+            Password: process.env.EFFIZIENTE_NORMAL_PASSWORD ?? 'Demo',
             KeepSession: true,
             Code: 0
         };
         const loginAPi = baseAPIURL + '/api/Usuarios/Login';
+
         const response = await request.post(loginAPi, { data: userLogin });
         const responseBody = await response.json();
         token = responseBody.Token;
     });
 
     // eslint-disable-next-line playwright/expect-expect
-    test('Should show dashboard', {
-        annotation: [
-            { type: 'docs', description: 'Test for synthetic testing ' },
-        ],
-    }, async ({ page }) => {
+    test('Should show dashboard', async ({ page }) => {
         const dashboardPageUrl = baseURL + '/AccountsReceivable/dashboard';
         const stepDescription = 'Go to:' + baseURL;
         await test.step(stepDescription, async () => {
