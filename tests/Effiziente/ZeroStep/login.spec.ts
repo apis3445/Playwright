@@ -3,7 +3,10 @@ import { expect, test } from '@playwright/test';
 import { ai } from '@zerostep/playwright';
 
 test.describe('AI Zero Step', () => {
-    test('Should show dashboard after login', async ({ page }) => {
+    test('Should show dashboard after login', async ({ page, browserName }) => {
+        // eslint-disable-next-line playwright/no-skipped-test
+        test.skip(browserName !== 'chromium', 'Zero Steps only works in chromium');
+
         // eslint-disable-next-line playwright/no-conditional-in-test
         const baseURL = process.env.EFFIZIENTE_URL ? process.env.EFFIZIENTE_URL : 'https://effizientedemo.azurewebsites.net';
         const company = process.env.EFFIZIENTE_COMPANY;
