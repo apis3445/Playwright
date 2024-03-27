@@ -84,6 +84,12 @@ Run the test with UI mode
 npx playwright test --ui
 ```
 
+Run your test with Checkly
+
+```console
+ npx checkly test --record;  
+```
+
 Or you can run with the Visual Code Extension
 
 You can see the reporter on the GitHub Pages:

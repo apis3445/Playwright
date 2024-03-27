@@ -16,7 +16,7 @@ export default defineConfig({
         ignoreDirectoriesMatch: [],
         browserChecks: {
             frequency: Frequency.EVERY_10M,
-            testMatch: '**/tests/Effiziente/synthetic.spec.ts',
+            testMatch: '**/tests/Effiziente/Synthetic/login.spec.ts',
         },
     },
     cli: {
