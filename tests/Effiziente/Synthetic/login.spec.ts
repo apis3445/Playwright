@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('Synthetic login testing', () => {
 
@@ -9,7 +9,7 @@ test.describe('Synthetic login testing', () => {
         await page.getByLabel('User').fill('Demo');
         await page.getByPlaceholder('Password').fill('Demo');
         await page.getByRole('button', { name: 'Login' }).click();
-        await expect(page.locator('app-card-pie').getByRole('img')).toBeVisible({ timeout: 20_000 });
+        await page.locator('app-card-pie').getByRole('img').click({ timeout: 20_000 });
 
     });
 

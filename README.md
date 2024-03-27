@@ -60,6 +60,10 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 
 Dashboard and summaries will be stored in test-results folder
 
+To check the ZeroStep you need to register your account at https://zerostep.com and add your access token:
+
+ZEROSTEP_TOKEN=Your Zero step token
+
 ## Run tests
 
 Execute the next command to run your tests:
