@@ -23,6 +23,7 @@ jobs:
       EFFIZIENTE_NORMAL_PASSWORD: ${{secrets.EFFIZIENTE_NORMAL_PASSWORD}}
       EFFIZIENTE_ADMIN_USER: ${{secrets.EFFIZIENTE_ADMIN_USER}}
       EFFIZIENTE_ADMIN_PASSWORD: ${{secrets.EFFIZIENTE_ADMIN_PASSWORD}}
+      ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

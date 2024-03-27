@@ -1,6 +1,13 @@
-# 0.5.0 (2024-03-09)
+'# 0.6.0 (2024-03-27)
 
 ### Features
+
+* Add ZeroSteps AI ([23af9b7](https://github.com/apis3445/PlaywrightFramework/commit/23af9b78be439b3eaf0f0faee3edd2fc6f6875b2))
+* add login synthetic test ([847bb57](https://github.com/apis3445/PlaywrightFramework/commit/847bb57c131fc916aaa97002c2a0759574f510e6)) 
+* Add synthetic testing ([a723114](https://github.com/apis3445/PlaywrightFramework/commit/a723114fd2b320e6f1350903dd9048160e2eb433)) 
+
+
+# 0.5.0 (2024-03-09)
 
 ### Features
 

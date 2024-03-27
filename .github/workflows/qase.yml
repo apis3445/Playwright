@@ -39,7 +39,7 @@ env:
   EFFIZIENTE_ADMIN_PASSWORD: ${{secrets.EFFIZIENTE_ADMIN_PASSWORD}}
   LT_USERNAME: ${{secrets.LT_USERNAME}}
   LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
-  
+  ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
 jobs:
   build-js:
     runs-on: ubuntu-latest
