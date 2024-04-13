@@ -13,7 +13,7 @@ test.describe('Synthetic testing', () => {
             KeepSession: true,
             Code: 0
         };
-        const loginAPi = baseAPIURL + '/api/Usuarios/Login';
+        const loginAPi = baseAPIURL + '/api/Users/Login';
 
         const response = await request.post(loginAPi, { data: userLogin });
         const responseBody = await response.json();

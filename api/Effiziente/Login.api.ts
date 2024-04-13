@@ -17,7 +17,7 @@ export class LoginApi {
      * @returns Response
      */
     async login(login: Login) {
-        const response = await this.apiHelper.post('/api/Usuarios/Login', login);
+        const response = await this.apiHelper.post('/api/Users/Login', login);
         const statusCode = response.status();
         if (statusCode == 200) {
             const responseBody = await response.json();

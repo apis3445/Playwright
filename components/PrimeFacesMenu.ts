@@ -11,6 +11,10 @@ export class PirmeFacesMenu extends BaseComponent implements Menu {
         super(page, annotationHelper);
     }
 
+    /**
+     * Get top menus
+     * @returns Top menus texts
+     */
     getTopMenus(): Promise<string[]> {
         const stepDescription = 'Get top menus';
         return this.addStepWithAnnotation(stepDescription, async () => {
