@@ -6,7 +6,7 @@ test.describe('Synthetic login testing', () => {
     test('Should show dashboard', async ({ page }) => {
         await page.goto('https://effizientedemo.azurewebsites.net/login');
         await page.getByLabel('Company').fill('Demo');
-        await page.getByLabel('User').fill('Demo1');
+        await page.getByLabel('User').fill('Demo');
         await page.getByPlaceholder('Password').fill('Demo');
         await page.getByRole('button', { name: 'Login' }).click();
         await page.locator('app-card-pie').getByRole('img').click({ timeout: 25_000 });
