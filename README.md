@@ -38,18 +38,23 @@ EFFIZIENTE_NORMAL_USER='Demo'
 EFFIZIENTE_NORMAL_PASSWORD='Demo'
 EFFIZIENTE_ADMIN_USER='Admin'
 EFFIZIENTE_ADMIN_PASSWORD='Admin'
+```
+
+To connect to Lambdatest add the next variables
+
+```
 LT_USERNAME = Your lambdatest user name
 LT_ACCESS_KEY = Your lambdatest access key
 ```
 
-If you want to connect with QASE add the next variables:
+If you want to connect with QASE a test management tool add the next variables:
 
 ```
 QASE_TOKEN= Qase token for playwright
 QASE_PROJECT_CODE= Qase project to connect 
 ```
 
-You can follow the Qase documentation to find the values.
+You can follow the Qase documentation to get these values.
 
 https://docs.qase.io/apps/reporters/playwright
 
@@ -62,7 +67,7 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 
 Dashboard and summaries will be stored in test-results folder
 
-To check the ZeroStep you need to register your account at https://zerostep.com and add your access token:
+To check the ZeroStep to execute your test with AI you need to register your account at https://zerostep.com and add your access token:
 
 ```
 ZEROSTEP_TOKEN=Your Zero step token
