@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.describe('Synthetic testing', () => {
     const baseURL = process.env.EFFIZIENTE_URL ? process.env.EFFIZIENTE_URL : 'https://effizientedemo.azurewebsites.net';
-    const baseAPIURL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
+    const baseAPI_URL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
     let token = '';
 
     test.beforeEach(async ({ request }) => {
@@ -13,7 +13,7 @@ test.describe('Synthetic testing', () => {
             KeepSession: true,
             Code: 0
         };
-        const loginAPi = baseAPIURL + '/api/Users/Login';
+        const loginAPi = baseAPI_URL + '/api/Users/Login';
 
         const response = await request.post(loginAPi, { data: userLogin });
         const responseBody = await response.json();

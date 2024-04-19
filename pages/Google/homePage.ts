@@ -19,8 +19,8 @@ export class HomePage extends BasePage {
         //Load the json with custom locators and values
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const localeInfo = require(`../../data/${locale}.json`);
-        //Get the elements by locale
-        this.search = new InputText(this.page, this.annotationHelper, `[aria-label="${localeInfo.search}"]`);
+        //Get the elements by locale 
+        this.search = new InputText(this.page, this.annotationHelper, `[aria-label="${localeInfo.search}"]`, false);
         this.googleSearch = new Button(this.page, this.annotationHelper, localeInfo.googleSearch);
     }
 

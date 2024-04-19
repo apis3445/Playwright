@@ -6,7 +6,7 @@ export class BaseComponent {
     type: string;
     locator: Locator;
     text: string;
-    placeHolder: string;
+    label: string;
     protected isAnnotationEnabled = true;
     protected isHighlightEnabled = false;
 
@@ -93,13 +93,13 @@ export class BaseComponent {
      * Get place holder for the element
      * @returns Place holder 
      */
-    public async getPlaceHolder() {
-        return await this.addStep('Get placeholder', async () => {
-            if (!this.placeHolder) {
+    public async getLabel() {
+        return await this.addStep('Get label', async () => {
+            if (!this.label) {
                 const placeHolderElement = await this.locator.getAttribute('placeholder');
-                this.placeHolder = placeHolderElement ? placeHolderElement! : '';
+                this.label = placeHolderElement ? placeHolderElement! : '';
             }
-            return this.placeHolder;
+            return this.label;
         });
     }
 }

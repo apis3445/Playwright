@@ -28,7 +28,7 @@ export class ApiHelper {
      * @param statusCode Status code returned by the api
      * @returns responsePromise
      */
-    async waitForResponse(apiUrl: string, statusCode = 200, method: 'POST' | 'GET' | 'PUT' | 'DELETE' = 'POST') {
+    waitForResponse(apiUrl: string, statusCode = 200, method: 'POST' | 'GET' | 'PUT' | 'DELETE' = 'GET') {
         const responsePromise = this.page.waitForResponse(response => response.url().includes(apiUrl) && response.request().method() == method
             && response.status() == statusCode);
         return responsePromise;

@@ -41,8 +41,8 @@ export class Link extends BaseComponent {
      * @returns link text
      */
     async getText() {
-        this.placeHolder = await this.getPlaceHolder();
-        const stepDescription = 'Get text for: "' + this.placeHolder + '"';
+        this.label = await this.getLabel();
+        const stepDescription = 'Get text for: "' + this.label + '"';
         return await this.addStep(stepDescription, async () => {
             const textContent = await this.locator.textContent();
             this.text = textContent ?? this.type;
