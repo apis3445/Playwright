@@ -16,9 +16,8 @@ export class Table extends BaseComponent {
      * Click in edit by key 
      * @param keyValue 
      */
-    async clickInEditById(keyValue: number, keyColumnTitle = 'Key') {
-        const idIndex = await this.getColumnIndex(keyColumnTitle);
-        const row = await this.getRowByColumnIndex(keyValue.toString(), idIndex);
+    async clickInEditByKey(keyValue: number) {
+        const row = this.page.getByRole('row', { name: keyValue.toString() });
         await row?.locator('[aria-label="Edit"]').click();
     }
 

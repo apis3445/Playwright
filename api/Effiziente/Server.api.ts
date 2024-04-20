@@ -1,9 +1,11 @@
 import test, { Page } from '@playwright/test';
 import { ApiHelper } from '../../utils/ApiHelper';
+import { Server } from '../models/Effiziente/Server';
 
 export class ServerApi {
 
     apiHelper: ApiHelper;
+    api = 'api/Server';
 
     constructor(private page: Page) {
         const baseURL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
@@ -14,28 +16,35 @@ export class ServerApi {
      * Wait for the server is created
      */
     waitForCreateServer() {
-        const api = 'api/Server';
-        return this.apiHelper.waitForResponse(api, 201, 'POST');
+        return this.apiHelper.waitForResponse(this.api, 201, 'POST');
     }
 
     /**
      * Wait for the server is created
      */
     waitForGetServers() {
-        const api = 'api/Server';
-        return this.apiHelper.waitForResponse(api);
+        return this.apiHelper.waitForResponse(this.api);
     }
 
     /**
      * Delete a server by api
      * @param id Server id
      */
-    async deleteServerByApi(id: number) {
-        const api = 'api/Server/';
+    async deleteServer(id: number) {
         await test.step('Delete server with id: "' + id + '"', async () => {
-            const apiResponse = await this.apiHelper.delete(api + id.toString());
+            const apiResponse = await this.apiHelper.delete(this.api + id.toString());
             return apiResponse;
         });
+    }
+
+    /**
+     * Create a server with api
+     * @param server Data for the server
+     * @returns api response
+     */
+    async createServer(server: Server) {
+        const apiResponse = await this.apiHelper.post(this.api, server);
+        return apiResponse;
     }
 
 }
