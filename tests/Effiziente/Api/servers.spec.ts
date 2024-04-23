@@ -17,6 +17,8 @@ test.describe('Servers', () => {
         const key = 2;
         const name = faker.company.name();
         const url = faker.internet.url();
+        //Delete a server with key 2 if exists to isolate the test
+        await serversPage.deleteServerByKey(key.toString());
         await serversPage.add.click();
         await addServerPage.key.fill(key.toString());
         await addServerPage.name.fill(name);
@@ -37,18 +39,28 @@ test.describe('Servers', () => {
         const serversPage = new ServersPage(page);
         const key = 3;
         const newKey = 4;
-        //Create and server by api to test edit we don't need to test a create or add dependency 
-        //to the create server test
-        const server: Server = {
-            Clave: key,
-            Nombre: faker.company.name(),
-            Url: faker.internet.url(),
-            Activo: true
-        };
+        await serversPage.goTo();
+        //Check if exists a server with key 3 if not exists create one with API
+        const response = await serversPage.serverApi.getServerByKey(key.toString());
+        // eslint-disable-next-line playwright/no-conditional-in-test
+        if (response.status() == 204) {
+            //Create and server by api to test edit to remove dependenciees for the create with UI
+            const server: Server = {
+                Clave: key,
+                Nombre: faker.company.name(),
+                Url: faker.internet.url(),
+                Activo: true
+            };
+            id = await serversPage.createServer(server);
+        }
+        else {
+            //Get the id for the server key with id 3 to delete and isolate the test
+            const responseText = JSON.parse(await response.text());
+            id = +responseText.Id;
+        }
         const newName = faker.company.name();
         const newUrl = faker.internet.url();
-        await serversPage.goTo();
-        id = await serversPage.createServer(server);
+        //Go to page again to get the server by api
         await serversPage.goTo();
         await serversPage.table.clickInEditByKey(key);
         await serversPage.key.fill(newKey.toString());

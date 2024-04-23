@@ -44,9 +44,10 @@ export class ServersPage extends EffizienteBasePage {
      */
     public async goTo() {
         const serversPage = this.baseURL + '/Security/servers';
-        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + serversPage + '"');
-        await this.page.goto(serversPage);
-        await this.title.locator.waitFor({ timeout: 30_000 });
+        await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the page: "' + serversPage + '"', async () => {
+            await this.page.goto(serversPage);
+            await this.title.locator.waitFor({ timeout: 30_000 });
+        });
     }
 
     /**
@@ -54,10 +55,13 @@ export class ServersPage extends EffizienteBasePage {
      * @param server Data for the server
      */
     async createServer(server: Server) {
-        const response = await this.serverApi.createServer(server);
-        const responseText = JSON.parse(await response.text());
-        const id = +responseText.Id;
-        return id;
+        return await this.addStepWithAnnotation(AnnotationType.Step, 'Create server with API', async () => {
+            const response = await this.serverApi.createServer(server);
+            const responseText = JSON.parse(await response.text());
+            const id = +responseText.Id;
+            return id;
+        });
+
     }
 
     /**
@@ -77,6 +81,19 @@ export class ServersPage extends EffizienteBasePage {
         expect(rowValues.Name, assertDescription).toBe(name);
         assertDescription = `The server urls for the key: "${key}" is: "${url}"`;
         expect(rowValues.Url, assertDescription).toBe(url);
+    }
+
+    /**
+     * Deletes the server by key if exists
+     * @param key Server key to delete
+     */
+    async deleteServerByKey(key: string) {
+        const response = await this.serverApi.getServerByKey(key);
+        if (response.status() == 200) {
+            const responseText = JSON.parse(await response.text());
+            const id = +responseText.Id;
+            await this.serverApi.deleteServer(id);
+        }
     }
 
 }

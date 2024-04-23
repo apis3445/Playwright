@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { APIRequestContext, APIResponse, Page } from '@playwright/test';
 import { request } from '@playwright/test';
 
@@ -40,7 +41,17 @@ export class ApiHelper {
      * @param data data to post
      * @returns 
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async get(url: string): Promise<APIResponse> {
+        const apiRequest = await this.createRequest(this.baseUrl);
+        return await apiRequest.get(url);
+    }
+
+    /**
+     * Call to api post
+     * @param url post url (not base url is needed)
+     * @param data data to post
+     * @returns 
+     */
     async post(url: string, data: any): Promise<APIResponse> {
         const apiRequest = await this.createRequest(this.baseUrl);
         return await apiRequest.post(url, { data: data });

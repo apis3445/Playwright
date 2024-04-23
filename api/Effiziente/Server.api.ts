@@ -32,7 +32,7 @@ export class ServerApi {
      */
     async deleteServer(id: number) {
         await test.step('Delete server with id: "' + id + '"', async () => {
-            const apiResponse = await this.apiHelper.delete(this.api + id.toString());
+            const apiResponse = await this.apiHelper.delete(this.api + '/' + id.toString());
             return apiResponse;
         });
     }
@@ -47,4 +47,15 @@ export class ServerApi {
         return apiResponse;
     }
 
+    /**
+     * Get a server by key
+     * @param key Server key
+     * @returns 
+     */
+    async getServerByKey(key: string) {
+        return await test.step('Get server with the key:' + key, async () => {
+            const apiResponse = await this.apiHelper.get(`${this.api}/ByKey/${key}`);
+            return apiResponse;
+        });
+    }
 }
