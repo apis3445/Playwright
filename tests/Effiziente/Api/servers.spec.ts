@@ -35,7 +35,6 @@ test.describe('Servers', () => {
         await serversPage.checkRow(key, name, url);
     });
 
-
     // eslint-disable-next-line playwright/expect-expect
     test('Should edit a server', async ({ page }) => {
         const serversPage = new ServersPage(page);
