@@ -11,14 +11,15 @@ export class Table extends BaseComponent {
         this.columnsText = [];
     }
 
-
     /**
      * Click in edit by key 
      * @param keyValue 
      */
     async clickInEditByKey(keyValue: number) {
-        const row = this.page.getByRole('row', { name: keyValue.toString() });
-        await row?.locator('[aria-label="Edit"]').click();
+        await this.addStep('Click in the edit table for the row with the key: "' + keyValue + '"', async () => {
+            const row = this.page.getByRole('row', { name: keyValue.toString() });
+            await row?.locator('[aria-label="Edit"]').click();
+        });
     }
 
     /**
@@ -26,8 +27,17 @@ export class Table extends BaseComponent {
      * @returns columns headers
      */
     async getColumnsHeaders(): Promise<string[]> {
-        this.columnsText = await this.page.locator('th').allInnerTexts();
-        return this.columnsText;
+        return await this.addStep('Get the columns headers of the table', async () => {
+            this.columnsText = await this.page.locator('th').allInnerTexts();
+            for (let i = 0; i < this.columnsText.length; i++) {
+                const columnHeader = this.columnsText[i];
+                if (columnHeader.trim() != '') {
+                    // Webkit adds '\n' so we need to remove 
+                    this.columnsText[i] = this.columnsText![i].replace(/\n/g, '');
+                }
+            }
+            return this.columnsText;
+        });
     }
 
     /**
@@ -48,14 +58,16 @@ export class Table extends BaseComponent {
      * @returns the row for the column index
      */
     async getRowByColumnIndex(value: string, index: number) {
-        const totalRows = await this.getTotalRows();
-        for (let i = 0; i < totalRows; i++) {
-            const row = this.page.locator('tbody > tr').nth(i);
-            const columnValue = await row.locator('td').nth(index).innerText();
-            if (columnValue == value)
-                return row;
-        }
-        return null;
+        return await this.addStep('Get the row with the value: "' + value + ' in the column: "' + index + '"', async () => {
+            const totalRows = await this.getTotalRows();
+            for (let i = 0; i < totalRows; i++) {
+                const row = this.page.locator('tbody > tr').nth(i);
+                const columnValue = await row.locator('td').nth(index).innerText();
+                if (columnValue == value)
+                    return row;
+            }
+            return null;
+        });
     }
 
     /**
@@ -63,7 +75,9 @@ export class Table extends BaseComponent {
      * @returns get total of rows
      */
     async getTotalRows() {
-        return await this.page.getByRole('row').count();
+        return await this.addStep('Get total of rows in the table', async () => {
+            return await this.page.getByRole('row').count();
+        });
     }
 
     /**
@@ -73,9 +87,12 @@ export class Table extends BaseComponent {
      * @returns the row for the key
      */
     async getRowBykey(key: number, keyColumnTitle = 'Key') {
-        const index = await this.getColumnIndex(keyColumnTitle);
-        const row = await this.getRowByColumnIndex(key.toString(), index);
-        return row;
+        return await this.addStep('Get the row with the "' + key + '" in the column: "' + keyColumnTitle + '"', async () => {
+            const index = await this.getColumnIndex(keyColumnTitle);
+            console.log('index:' + index);
+            const row = await this.getRowByColumnIndex(key.toString(), index);
+            return row;
+        });
     }
 
     /**
@@ -84,15 +101,17 @@ export class Table extends BaseComponent {
      * @returns row values as object
      */
     async getRowValues(row: Locator | null) {
-        const rowValues: Record<string, string> = {};
-        const columnValues = await row?.locator('td').allInnerTexts();
-        const totalColumns = await columnValues?.length ?? 0;
-        for (let i = 0; i < totalColumns; i++) {
-            const columnHeader = this.columnsText[i];
-            if (columnHeader.trim() != '')
-                rowValues[columnHeader] = columnValues![i];
-        }
-        return rowValues;
+        return await this.addStep('Get the row values', async () => {
+            const rowValues: Record<string, string> = {};
+            const columnValues = await row?.locator('td').allInnerTexts();
+            const totalColumns = await columnValues?.length ?? 0;
+            for (let i = 0; i < totalColumns; i++) {
+                const columnHeader = this.columnsText[i];
+                if (columnHeader.trim() != '')
+                    rowValues[columnHeader] = columnValues![i];
+            }
+            return rowValues;
+        });
     }
 
     /**
@@ -102,8 +121,10 @@ export class Table extends BaseComponent {
      * @returns 
      */
     async getRowValuesByKey(key: number, keyColumnTitle = 'Key') {
-        const row = await this.getRowBykey(key, keyColumnTitle);
-        const rowValues = this.getRowValues(row);
-        return rowValues;
+        return await this.addStep('Get the row values for the key: "' + key + '" in the column: "' + keyColumnTitle + '" ', async () => {
+            const row = await this.getRowBykey(key, keyColumnTitle);
+            const rowValues = this.getRowValues(row);
+            return rowValues;
+        });
     }
 }

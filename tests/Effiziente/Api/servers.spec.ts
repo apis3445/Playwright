@@ -14,7 +14,7 @@ test.describe('Servers', () => {
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
         //Add server with a random data with faker
-        const key = 2;
+        const key = faker.number.int({ min: 2, max: 999_999 });
         const name = faker.company.name();
         const url = faker.internet.url();
         //Delete a server with key 2 if exists to isolate the test
@@ -25,6 +25,7 @@ test.describe('Servers', () => {
         await addServerPage.url.fill(url);
         //Click and save and wait for the id returned by the api to delete this server
         id = await addServerPage.saveClick();
+        await serversPage.checkSuccessMessage();
         let assertDescription = 'Server id should be a number greater than 1';
         addServerPage.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(id, assertDescription).toBeGreaterThan(1);
@@ -35,10 +36,11 @@ test.describe('Servers', () => {
     });
 
 
+    // eslint-disable-next-line playwright/expect-expect
     test('Should edit a server', async ({ page }) => {
         const serversPage = new ServersPage(page);
-        const key = 3;
-        const newKey = 4;
+        const key = faker.number.int({ min: 2, max: 999_998 });
+        const newKey = key + 1;
         await serversPage.goTo();
         //Check if exists a server with key 3 if not exists create one with API
         const response = await serversPage.serverApi.getServerByKey(key.toString());
@@ -67,9 +69,7 @@ test.describe('Servers', () => {
         await serversPage.name.fill(newName);
         await serversPage.url.fill(newUrl);
         await serversPage.save.click();
-        const assertDescription = 'Success message is visible';
-        await serversPage.addAnnotation(AnnotationType.Assert, assertDescription);
-        await expect(serversPage.message.locator, assertDescription).toBeVisible();
+        await serversPage.checkSuccessMessage();
         await serversPage.checkRow(newKey, newName, newUrl);
     });
 

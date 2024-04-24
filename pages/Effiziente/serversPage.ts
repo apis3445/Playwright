@@ -44,7 +44,7 @@ export class ServersPage extends EffizienteBasePage {
      */
     public async goTo() {
         const serversPage = this.baseURL + '/Security/servers';
-        await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the page: "' + serversPage + '"', async () => {
+        await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the servers page: "' + serversPage + '"', async () => {
             await this.page.goto(serversPage);
             await this.title.locator.waitFor({ timeout: 30_000 });
         });
@@ -94,6 +94,15 @@ export class ServersPage extends EffizienteBasePage {
             const id = +responseText.Id;
             await this.serverApi.deleteServer(id);
         }
+    }
+
+    /**
+     * Check if the success message is visible
+     */
+    async checkSuccessMessage() {
+        const assertDescription = 'Success message is visible';
+        await this.addAnnotation(AnnotationType.Assert, assertDescription);
+        await expect(this.message.locator, assertDescription).toBeVisible();
     }
 
 }

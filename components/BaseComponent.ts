@@ -96,10 +96,26 @@ export class BaseComponent {
     public async getLabel() {
         return await this.addStep('Get label', async () => {
             if (!this.label) {
-                const placeHolderElement = await this.locator.getAttribute('placeholder');
-                this.label = placeHolderElement ? placeHolderElement! : '';
+                const id = await this.locator.getAttribute('id');
+                if (id) {
+                    this.label = await this.page.locator('label[for="' + id + '"]').innerText();
+                    if (this.label)
+                        return this.label;
+                    const placeHolderAttribute = await this.locator.getAttribute('placeholder');
+                    if (placeHolderAttribute) {
+                        this.label = placeHolderAttribute;
+                        if (this.label)
+                            return placeHolderAttribute;
+                        const ariaLabelElement = await this.locator.getAttribute('aria-label');
+                        if (ariaLabelElement) {
+                            this.label = ariaLabelElement;
+                            if (this.label)
+                                return ariaLabelElement;
+                        }
+                        return '';
+                    }
+                }
             }
-            return this.label;
         });
     }
 }
