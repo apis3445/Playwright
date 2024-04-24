@@ -103,21 +103,21 @@ export class BaseComponent {
                         this.label = await labelElement.innerText();
                         if (this.label)
                             return this.label;
-                        const placeHolderAttribute = await this.locator.getAttribute('placeholder');
-                        if (placeHolderAttribute) {
-                            this.label = placeHolderAttribute;
-                            if (this.label)
-                                return placeHolderAttribute;
-                            const ariaLabelElement = await this.locator.getAttribute('aria-label');
-                            if (ariaLabelElement) {
-                                this.label = ariaLabelElement;
-                                if (this.label)
-                                    return ariaLabelElement;
-                            }
-                            return '';
-                        }
                     }
                 }
+                const placeHolderAttribute = await this.locator.getAttribute('placeholder');
+                if (placeHolderAttribute) {
+                    this.label = placeHolderAttribute;
+                    if (this.label)
+                        return placeHolderAttribute;
+                }
+                const ariaLabelElement = await this.locator.getAttribute('aria-label');
+                if (ariaLabelElement) {
+                    this.label = ariaLabelElement;
+                    if (this.label)
+                        return ariaLabelElement;
+                }
+                return '';
             }
         });
     }
