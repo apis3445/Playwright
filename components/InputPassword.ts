@@ -27,7 +27,7 @@ export class InputPassword extends BaseComponent {
      * @param value Password to fill
      */
     async fill(value: string) {
-        this.label = await this.getLabel();
+        this.label = await this.getInputLabel();
         const stepDescription = 'Fill: "' + this.label + ' with value: *****"';
         await this.addStepWithAnnotation(stepDescription, async () => {
             await this.locator.fill(value);

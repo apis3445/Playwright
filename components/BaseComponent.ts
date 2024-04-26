@@ -89,11 +89,12 @@ export class BaseComponent {
         }
     }
 
+
     /**
      * Get place holder for the element
      * @returns Place holder 
      */
-    public async getLabel() {
+    public async getInputLabel() {
         return await this.addStep('Get label', async () => {
             if (!this.label) {
                 const id = await this.locator.getAttribute('id');

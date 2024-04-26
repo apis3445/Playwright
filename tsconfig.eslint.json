@@ -5,6 +5,7 @@
         // that you want to lint here
         "api",
         "components",
+        "sections",
         "pages",
         "tests",
         "utils",

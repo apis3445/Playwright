@@ -14,14 +14,19 @@ export class Link extends BaseComponent {
      * False - To locate by css selector
      * Default is True
      */
-    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
+    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true, isFirst = false) {
         super(page, annotationHelper);
         if (byRole) {
             this.locator = this.page.getByRole('link', { name: this.name });
+            if (isFirst)
+                this.locator = this.locator.first();
             this.text = this.name;
+            this.label = this.name;
         }
         else {
             this.locator = this.page.locator(this.name);
+            if (isFirst)
+                this.locator = this.locator.first();
         }
     }
 
@@ -36,17 +41,13 @@ export class Link extends BaseComponent {
         });
     }
 
-    /**
-     * Get the text of the link
-     * @returns link text
-     */
     async getText() {
-        this.label = await this.getLabel();
-        const stepDescription = 'Get text for: "' + this.label + '"';
-        return await this.addStep(stepDescription, async () => {
-            const textContent = await this.locator.textContent();
-            this.text = textContent ?? this.type;
-            return this.text;
-        });
+        if (!this.label) {
+            const linkText = await this.locator.textContent();
+            if (linkText)
+                this.label = linkText;
+        }
+        return this.label;
     }
+
 }

@@ -27,7 +27,7 @@ export class InputText extends BaseComponent {
      * @param value Value to fill
      */
     async fill(value: string) {
-        this.label = await this.getLabel();
+        this.label = await this.getInputLabel();
         const stepDescription = 'Fill "' + this.label + ':" with the value: "' + value + '"';
         await this.addStepWithAnnotation(stepDescription, async () => {
             await this.locator.fill(value);

@@ -14,6 +14,7 @@ export class Button extends BaseComponent {
         super(page, annotationHelper);
         this.text = this.name;
         this.locator = this.page.getByRole('button', { name: name });
+        this.label = name;
     }
 
     /**
@@ -31,11 +32,11 @@ export class Button extends BaseComponent {
      * @returns Button text
      */
     async getText() {
-        const stepDescription = 'Get text for: "' + this.text + '"';
+        const stepDescription = 'Get label for the button';
         return await this.addStep(stepDescription, async () => {
-            if (!this.text)
-                this.text = await this.locator.textContent() ?? '';
-            return this.text;
+            if (!this.label)
+                this.label = await this.locator.textContent() ?? '';
+            return this.label;
         });
     }
 }
