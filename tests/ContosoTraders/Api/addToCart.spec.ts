@@ -11,15 +11,21 @@ test.describe('Contoso Traders', () => {
         const homePage = new HomePage(page);
         await homePage.goTo();
         await homePage.allProductsClick();
+        //Select a random product from api results by image
+        //because the name could be the same
         await homePage.selectRandomProduct();
         const productDetailPage = new ProductDetailPage(page);
         await productDetailPage.addToBag.click();
-        await expect(productDetailPage.shoppingCartItems.locator).toContainText('1');
+        let assertDescription = 'There is one item in the bag';
+        await productDetailPage.addAnnotation(AnnotationType.Assert, assertDescription);
+        await expect(productDetailPage.shoppingCartItems.locator, assertDescription).toContainText('1');
         await productDetailPage.bag.click();
         const cartPage = new CartPage(page);
-        let assertDescription = `The name of the item in the cart is: ${homePage.product.name}`;
+        //Check the item in the shopping cart should be the same that was selected
+        assertDescription = `The name of the item in the cart is: ${homePage.product.name}`;
         await cartPage.addAnnotation(AnnotationType.Assert, assertDescription);
         await expect(cartPage.cartItem.name, assertDescription).toHaveText(homePage.product.name);
+        //Format price to currency format
         const price = homePage.product.price.toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD',

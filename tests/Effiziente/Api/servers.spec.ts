@@ -13,11 +13,11 @@ test.describe('Servers', () => {
         const serversPage = new ServersPage(page);
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
-        //Add server with a random data with faker
+        //Add server with a random data from faker
         const key = faker.number.int({ min: 2, max: 999_999 });
         const name = faker.company.name();
         const url = faker.internet.url();
-        //Delete a server with key 2 if exists to isolate the test
+        //Delete a server with key if exists to isolate the test and can be executed in parallel
         await serversPage.deleteServerByKey(key.toString());
         await serversPage.add.click();
         await addServerPage.key.fill(key.toString());
@@ -61,7 +61,7 @@ test.describe('Servers', () => {
         }
         const newName = faker.company.name();
         const newUrl = faker.internet.url();
-        //Go to page again to get the server by api
+        //Go to page again to get the server creted by api
         await serversPage.goTo();
         await serversPage.table.clickInEditByKey(key);
         await serversPage.key.fill(newKey.toString());
@@ -73,7 +73,7 @@ test.describe('Servers', () => {
     });
 
     test.afterEach(async ({ page }) => {
-        //Remove the server after each test 
+        //Delete the server created after each test 
         const addServerPage = new AddServerPage(page);
         if (id > 0)
             await addServerPage.serverApi.deleteServer(id);
