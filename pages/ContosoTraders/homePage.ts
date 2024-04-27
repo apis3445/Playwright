@@ -33,12 +33,12 @@ export class HomePage extends ContosoBasePage {
     }
 
     /**
-     * Select a random product
+     * Select a random product with the image background, (name is not unique but image is unique)
      */
-    async selecctRandomProduct() {
+    async selectRandomProduct() {
         const productIndex = Math.floor(Math.random() * this.products.length);
         this.product = this.products[productIndex];
-        await this.page.getByRole('img', { name: this.product.name }).click();
+        await this.page.locator('div[style*="'+ this.product.imageUrl+'"]').click();
     }
 
 }

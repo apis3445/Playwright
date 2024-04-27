@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_URL: ${{vars.BASE_URL}}
+      CONTOSO_URL: ${{vars.CONTOSO_URL}}
       LOCALE: ${{vars.LOCALE}}
       USER_NAME: ${{secrets.USER_NAME}}
       PASSWORD: ${{secrets.PASSWORD}}
@@ -34,7 +35,7 @@ jobs:
 
       - run: npx playwright install-deps
 
-      - name: Run Playwright tests 
+      - name: Run Playwright tests
         run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test tests/Effiziente tests/Google tests/SauceDemo --reporter=html,junit
 
       - uses: actions/upload-artifact@v4
@@ -59,8 +60,8 @@ jobs:
 
       - name: Test Report Junit
         uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
+        if: success() || failure() # run this step even if previous step failed
         with:
-          name: Junit Tests           # Name of the check run which will be created
-          path: ${{ github.workspace }}/report/*.xml     # Path to test results
-          reporter: java-junit       # Format of test results
+          name: Junit Tests # Name of the check run which will be created
+          path: ${{ github.workspace }}/report/*.xml # Path to test results
+          reporter: java-junit # Format of test results
