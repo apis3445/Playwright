@@ -20,7 +20,7 @@ export class ServerApi {
     }
 
     /**
-     * Wait for the server is created
+     * Wait for get the list of servers
      */
     waitForGetServers() {
         return this.apiHelper.waitForResponse(this.api);

@@ -41,7 +41,7 @@ test.describe('Servers', () => {
         const key = faker.number.int({ min: 2, max: 999_998 });
         const newKey = key + 1;
         await serversPage.goTo();
-        //Check if exists a server with key 3 if not exists create one with API
+        //Check if exists a server with key if not exists create one with API
         const response = await serversPage.serverApi.getServerByKey(key.toString());
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (response.status() == 204) {
@@ -61,7 +61,7 @@ test.describe('Servers', () => {
         }
         const newName = faker.company.name();
         const newUrl = faker.internet.url();
-        //Go to page again to get the server creted by api
+        //Go to page again to get the server created by api
         await serversPage.goTo();
         await serversPage.table.clickInEditByKey(key);
         await serversPage.key.fill(newKey.toString());
