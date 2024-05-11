@@ -1,19 +1,20 @@
-import { Page, expect } from '@playwright/test';
+import { Page, TestInfo, expect } from '@playwright/test';
 import { EffizienteBasePage } from './effizienteBasePage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { Heading } from '../../components/Heading';
 import { Button } from '../../components/Button';
-import { Table } from '../../components/TableComponent';
+import { Table } from '../../components/Table';
 import { Server } from '../../api/models/Effiziente/Server';
 import { ServerApi } from '../../api/Effiziente/Server.api';
 import { InputText } from '../../components/InputText';
 import { Generic } from '../../components/Generic';
+import { ButtonExcel } from '../../components/ButtonExcel';
 
 export class ServersPage extends EffizienteBasePage {
     readonly title: Heading;
     readonly add: Button;
     readonly delete: Button;
-    readonly exportToExcel: Button;
+    readonly exportToExcel: ButtonExcel;
     readonly table: Table;
     readonly key: InputText;
     readonly name: InputText;
@@ -23,12 +24,12 @@ export class ServersPage extends EffizienteBasePage {
     readonly message: Generic;
     serverApi: ServerApi;
 
-    constructor(page: Page) {
+    constructor(page: Page, testInfo: TestInfo) {
         super(page, 'Servers');
         this.title = new Heading(page, this.annotationHelper, 'Servers');
         this.add = new Button(page, this.annotationHelper, 'Add');
         this.delete = new Button(page, this.annotationHelper, 'Delete');
-        this.exportToExcel = new Button(page, this.annotationHelper, 'Export to Excel');
+        this.exportToExcel = new ButtonExcel(page, testInfo, this.annotationHelper, 'Export to Excel');
         this.table = new Table(page, this.annotationHelper);
         this.key = new InputText(page, this.annotationHelper, '#minmax', false);
         this.name = new InputText(page, this.annotationHelper, '[placeholder="Name"]', false);
@@ -71,14 +72,16 @@ export class ServersPage extends EffizienteBasePage {
      * @param url url for the server
      */
     async checkRow(key: number, name: string, url: string) {
-        const row = await this.table.getRowBykey(key);
+        const row = await this.table.getRowByKey(key);
         let assertDescription = `Row with the key: ${key} exists`;
         this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(row, assertDescription).not.toBeNull();
         //Get the row values as a object the header title are the property of the object
         const rowValues = await this.table.getRowValues(row);
         assertDescription = `The server name for the key: "${key}" is: "${name}"`;
+        await this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(rowValues.Name, assertDescription).toBe(name);
+        await this.addAnnotation(AnnotationType.Assert, assertDescription);
         assertDescription = `The server urls for the key: "${key}" is: "${url}"`;
         expect(rowValues.Url, assertDescription).toBe(url);
     }

@@ -122,4 +122,17 @@ export class BaseComponent {
             }
         });
     }
+
+    /**
+     * Get text for the button
+     * @returns Button text
+     */
+    async getText() {
+        const stepDescription = 'Get label for the button';
+        return await this.addStep(stepDescription, async () => {
+            if (!this.label)
+                this.label = await this.locator.textContent() ?? '';
+            return this.label;
+        });
+    }
 }

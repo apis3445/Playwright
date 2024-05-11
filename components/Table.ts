@@ -86,7 +86,7 @@ export class Table extends BaseComponent {
      * @param keyColumnTitle Key column header title
      * @returns the row for the key
      */
-    async getRowBykey(key: number, keyColumnTitle = 'Key') {
+    async getRowByKey(key: number, keyColumnTitle = 'Key') {
         return await this.addStep('Get the row with the "' + key + '" in the column: "' + keyColumnTitle + '"', async () => {
             const index = await this.getColumnIndex(keyColumnTitle);
             console.log('index:' + index);
@@ -107,10 +107,37 @@ export class Table extends BaseComponent {
             const totalColumns = await columnValues?.length ?? 0;
             for (let i = 0; i < totalColumns; i++) {
                 const columnHeader = this.columnsText[i];
-                if (columnHeader.trim() != '')
-                    rowValues[columnHeader] = columnValues![i];
+                if (columnHeader.trim() != '') {
+                    let columnValue =  columnValues![i].trim();
+                    if (columnValue == 'Yes')
+                        columnValue = 'true';
+                    if (columnValue == 'Yes')
+                        columnValue = 'false';
+                    rowValues[columnHeader] = columnValue;
+                }
+                
             }
             return rowValues;
+        });
+    }
+
+    /**
+     * Get the rows of the table as an array of record <string, string>
+     * @returns The rows in the table as an array of record with the header as properties and the row data as the value
+     */
+    async getRowsValues() :  Promise<Record<string, string>[]> {
+        return await this.addStep('Get all the rows in the table', async () => {
+            const rows: Record<string, string>[] = [];
+            const totalRows = await this.getTotalRows();
+            await this.getColumnsHeaders();
+            //Starts in 1 to exclude header
+            for (let i = 1; i < totalRows; i++) {
+                let rowValues: Record<string, string> = {};
+                const row =  this.page.locator('tr').nth(i);
+                rowValues = await this.getRowValues(row);
+                rows.push(rowValues);
+            }
+            return rows;
         });
     }
 
@@ -122,7 +149,7 @@ export class Table extends BaseComponent {
      */
     async getRowValuesByKey(key: number, keyColumnTitle = 'Key') {
         return await this.addStep('Get the row values for the key: "' + key + '" in the column: "' + keyColumnTitle + '" ', async () => {
-            const row = await this.getRowBykey(key, keyColumnTitle);
+            const row = await this.getRowByKey(key, keyColumnTitle);
             const rowValues = this.getRowValues(row);
             return rowValues;
         });

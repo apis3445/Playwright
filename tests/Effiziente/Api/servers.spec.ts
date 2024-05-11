@@ -9,8 +9,8 @@ test.describe('Servers', () => {
     let id = 0;
     test.use({ storageState: 'auth/admin.json' });
 
-    test('Should add a server', async ({ page }) => {
-        const serversPage = new ServersPage(page);
+    test('Should add a server', async ({ page }, testInfo) => {
+        const serversPage = new ServersPage(page, testInfo);
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
         //Add server with a random data from faker
@@ -36,8 +36,8 @@ test.describe('Servers', () => {
     });
 
     // eslint-disable-next-line playwright/expect-expect
-    test('Should edit a server', async ({ page }) => {
-        const serversPage = new ServersPage(page);
+    test('Should edit a server', async ({ page }, testInfo) => {
+        const serversPage = new ServersPage(page, testInfo);
         const key = faker.number.int({ min: 2, max: 999_998 });
         const newKey = key + 1;
         await serversPage.goTo();
