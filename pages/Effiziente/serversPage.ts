@@ -73,7 +73,7 @@ export class ServersPage extends EffizienteBasePage {
      */
     async checkRow(key: number, name: string, url: string) {
         const row = await this.table.getRowByKey(key);
-        let assertDescription = `Row with the key: ${key} exists`;
+        let assertDescription = `Server with the key: "${key}" exists in the table`;
         this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(row, assertDescription).not.toBeNull();
         //Get the row values as a object the header title are the property of the object
@@ -81,7 +81,7 @@ export class ServersPage extends EffizienteBasePage {
         assertDescription = `The server name for the key: "${key}" is: "${name}"`;
         await this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(rowValues.Name, assertDescription).toBe(name);
-        assertDescription = `The server urls for the key: "${key}" is: "${url}"`;
+        assertDescription = `The server url for the key: "${key}" is: "${url}"`;
         await this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(rowValues.Url, assertDescription).toBe(url);
     }

@@ -17,9 +17,10 @@ test.describe('Locale translations', () => {
         const homePage = new HomePage(page);
         //ARRANGE
         await homePage.goTo();
+        const assertDescription = `Search button text is equal to: "${localeInfo.googleSearch}"`;
         //ASSERT
-        homePage.addAnnotation(AnnotationType.Assert, `Search button text is equal to: "${localeInfo.googleSearch}"`);
-        await expect(homePage.googleSearch.locator).toHaveText(localeInfo.googleSearch);
+        homePage.addAnnotation(AnnotationType.Assert, assertDescription);
+        await expect(homePage.googleSearch.locator, assertDescription).toHaveText(localeInfo.googleSearch);
     });
 });
 
