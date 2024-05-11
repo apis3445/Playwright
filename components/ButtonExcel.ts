@@ -33,6 +33,8 @@ export class ButtonExcel extends BaseComponent {
             const download = await downloadPromise;
             // Wait for the download process to complete and save the downloaded file somewhere.
             await download.saveAs(fileName);
+            //Attach the excel file to the reporter
+            await this.testInfo.attach(fileName, {path: fileName} );
         });
     }
 

@@ -81,8 +81,8 @@ export class ServersPage extends EffizienteBasePage {
         assertDescription = `The server name for the key: "${key}" is: "${name}"`;
         await this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(rowValues.Name, assertDescription).toBe(name);
-        await this.addAnnotation(AnnotationType.Assert, assertDescription);
         assertDescription = `The server urls for the key: "${key}" is: "${url}"`;
+        await this.addAnnotation(AnnotationType.Assert, assertDescription);
         expect(rowValues.Url, assertDescription).toBe(url);
     }
 
