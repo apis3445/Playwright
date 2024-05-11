@@ -2,6 +2,12 @@
 
 ### Features
 
+- Add ExcelHelper to check excel files ([13f3288](https://github.com/apis3445/PlaywrightFramework/commit/13f3288504831dec8ba765b8fbb61eb2c929a61a))
+
+# 0.8.0 (2024-05-11)
+
+### Features
+
 # 0.7.0 (2024-04-27)
 
 ### Bug Fixes
