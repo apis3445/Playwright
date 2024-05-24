@@ -1,6 +1,33 @@
-# POC to E2E test with Playwright TS
-
 [![Tests](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml/badge.svg)](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml)
+
+# POC for accessibility testing tool and end-to-end tests with Playwright.
+
+This boilerplate includes demos to test different testing scenarios with Playwright and an accessibility tool that generates reports for the accessibility bugs and options to copy the bugs.
+
+# Example tests:
+
+[Accessibility](./tests/Accessibility): Although accessibility testing requires manual testing, the sample:
+
+- Finds the bugs with @axe-core/playwright.
+- Dashboard reports.
+- Summary of errors by page with an option to copy bugs.
+- Summary of error by WCAG rule with an option to copy bugs.
+- Summary of alternative texts.
+- POC of visual tab order testing.
+- Video that highlights the elements with accessibility bugs and footer text to explain the bug.
+
+[Select random products from e-commerce](.tests/ContosoTraders/Api): Instead of always selecting the same product, you can get the list of available products from the API. Is it helpful when there are:
+
+- Some items in the shopping cart are promos or informative images.
+- Unavailable items for future presale or special offers.
+- Complex business rules to restrict the items for some users.
+  You can get a random product for your test scenario in each test execution and don't use always the same item.
+
+[Generate tests with AI with ZeroStep](./tests/Effiziente/AI-ZeroStep): With ZeroStep allows you to create your test with plain text.
+
+```
+ai("Fill out the form with realistic values")
+```
 
 # Required software
 
