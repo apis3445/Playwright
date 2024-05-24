@@ -32,8 +32,8 @@ test.describe('Contoso Traders', () => {
         });
         assertDescription = `The price of the item in the cart is: ${price}`;
         await cartPage.addAnnotation(AnnotationType.Assert, assertDescription);
-        const unitPrice = await cartPage.cartItem.unitPrice.first().innerText();
-        await expect(unitPrice, assertDescription).toEqual(price);
+        const unitPrice = cartPage.cartItem.unitPrice.first();
+        await await expect(unitPrice, assertDescription).toHaveText(price);
     });
 
 });

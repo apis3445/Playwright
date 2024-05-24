@@ -16,24 +16,24 @@
     "@faker-js/faker": "^8.4.1",
     "@types/mustache": "^4.2.5",
     "@types/node": "^20.12.7",
-    "@typescript-eslint/eslint-plugin": "^7.6.0",
-    "@typescript-eslint/parser": "^7.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "@zerostep/playwright": "^0.1.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-playwright": "^1.6.0",
+    "eslint-plugin-playwright": "^1.6.2",
     "husky": "^9.0.11",
     "ts-node": "^10.9.2",
     "typescript": "5.3.2"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.9.0",
+    "@axe-core/playwright": "^4.9.1",
     "@playwright/test": "^1.44.0",
     "checkly": "^4.5.2",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "mustache": "^4.2.0",
-    "playwright-qase-reporter": "^1.2.2"
+    "playwright-qase-reporter": "^2.0.0"
   },
   "config": {
     "commitizen": {
