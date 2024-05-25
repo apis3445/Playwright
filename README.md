@@ -20,7 +20,7 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 [Locale](./tests/Locale): Emulates another country for example: de-DE.
 
-[Qase](./tests/QASE): Modern test management tool for manual, automated tests and AI.
+[Qase](./tests/Qase): Modern test management tool for manual, automated tests and AI.
 
 [Synthetic](./tests/Synthetic): Test to monitor your test with [Checkly](https://www.checklyhq.com) and [PerfAgents](https://www.perfagents.com).
 
