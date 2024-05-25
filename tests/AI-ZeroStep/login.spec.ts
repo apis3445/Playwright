@@ -7,8 +7,7 @@ test.describe('AI Zero Step', () => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Zero Steps only works in chromium');
 
-        // eslint-disable-next-line playwright/no-conditional-in-test
-        const baseURL = process.env.EFFIZIENTE_URL ? process.env.EFFIZIENTE_URL : 'https://effizientedemo.azurewebsites.net';
+        const baseURL = process.env.EFFIZIENTE_URL!;
         const company = process.env.EFFIZIENTE_COMPANY;
         const userName = process.env.EFFIZIENTE_NORMAL_USER;
         const password = process.env.EFFIZIENTE_NORMAL_PASSWORD;

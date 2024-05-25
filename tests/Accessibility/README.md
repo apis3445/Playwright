@@ -1,0 +1,24 @@
+# Accessibility tool
+
+It's important and is the law in some countries that your website is accessible to all people
+
+Although accessibility testing requires manual testing, the sample:
+
+- Finds the bugs with @axe-core/playwright.
+- Dashboard reports.
+- Summary of errors by page with an option to copy bugs.
+- Summary of error by WCAG rule with an option to copy bugs.
+- Summary of alternative texts.
+- POC of visual tab order testing.
+- Video that highlights the elements with accessibility bugs and footer text to explain the bug.
+
+# Run tests
+
+To run accessibility test:
+
+```
+PAGE_URL= Page to test example: "https://www.google.com"
+DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
+```
+
+Dashboard and summaries will be stored in test-results folder

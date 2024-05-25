@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
-import { HomePage } from '../../../pages/ContosoTraders/homePage';
-import { ProductDetailPage } from '../../../pages/ContosoTraders/productDetailPage';
-import { CartPage } from '../../../pages/ContosoTraders/cartPage';
-import { AnnotationType } from '../../../utils/annotations/AnnotationType';
+import { HomePage } from '../../pages/ContosoTraders/homePage';
+import { ProductDetailPage } from '../../pages/ContosoTraders/productDetailPage';
+import { CartPage } from '../../pages/ContosoTraders/cartPage';
+import { AnnotationType } from '../../utils/annotations/AnnotationType';
 
 test.describe('Contoso Traders', () => {
 

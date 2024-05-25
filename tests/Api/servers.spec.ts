@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { Server } from '../../../api/models/Effiziente/Server';
-import { AddServerPage } from '../../../pages/Effiziente/addServerPage';
-import { ServersPage } from '../../../pages/Effiziente/serversPage';
-import { AnnotationType } from '../../../utils/annotations/AnnotationType';
+import { Server } from '../../api/models/Effiziente/Server';
+import { ServersPage } from '../../pages/Effiziente/serversPage';
+import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import { AddServerPage } from '../../pages/Effiziente/addServerPage';
 
 test.describe('Servers', () => {
     let id = 0;
@@ -45,7 +45,7 @@ test.describe('Servers', () => {
         const response = await serversPage.serverApi.getServerByKey(key.toString());
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (response.status() == 204) {
-            //Create and server by api to test edit to remove dependenciees for the create with UI
+            //Create and server by api to test edit to remove dependencies for the create with UI
             const server: Server = {
                 Clave: key,
                 Nombre: faker.company.name(),

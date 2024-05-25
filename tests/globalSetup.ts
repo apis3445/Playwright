@@ -1,6 +1,6 @@
 import { Page, chromium } from '@playwright/test';
-import { LoginApi } from '../../api/Effiziente/Login.api';
-import { Login } from '../../api/models/Login';
+import { LoginApi } from '../api/Effiziente/Login.api';
+import { Login } from '../api/models/Login';
 
 const authFolder = 'auth';
 const baseUrl = process.env.EFFIZIENTE_URL ?? 'https://effizientedemo.azurewebsites.net';

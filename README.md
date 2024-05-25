@@ -6,28 +6,25 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 # Example tests:
 
-[Accessibility](./tests/Accessibility): Although accessibility testing requires manual testing, the sample:
+[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-deque. Dashboard, videos with accessibility bugs and copy bugs (POC).
 
-- Finds the bugs with @axe-core/playwright.
-- Dashboard reports.
-- Summary of errors by page with an option to copy bugs.
-- Summary of error by WCAG rule with an option to copy bugs.
-- Summary of alternative texts.
-- POC of visual tab order testing.
-- Video that highlights the elements with accessibility bugs and footer text to explain the bug.
+[AI with ZeroStep](./tests/AI-ZeroStep): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
 
-[Select random products from e-commerce](.tests/ContosoTraders/Api): Instead of always selecting the same product, you can get the list of available products from the API. Is it helpful when there are:
+[API](./tests/Api): Test to select a random item from an e-commerce and generate pre-conditions or post-conditions with API.
 
-- Some items in the shopping cart are promos or informative images.
-- Unavailable items for future presale or special offers.
-- Complex business rules to restrict the items for some users.
-  You can get a random product for your test scenario in each test execution and don't use always the same item.
+[Basic](./tests/Basic): Basic login test to show the Page object model, test steps and assertions.
 
-[Generate tests with AI with ZeroStep](./tests/Effiziente/AI-ZeroStep): With ZeroStep allows you to create your test with plain text.
+[Excel](./tests/Excel): Test to check the export to Excel for a PrimeNG Table with ExcelJS.
 
-```
-ai("Fill out the form with realistic values")
-```
+[Fixture and LambdaTest](./tests/Fixture-LambdaTest): Use a fixture to connect your test with Lambdatest to test in different countries and browsers.
+
+[Locale](./tests/Locale): Emulates another country for example: de-DE.
+
+[Qase](./tests/QASE): Modern test management tool for manual, automated tests and AI.
+
+[Synthetic](./tests/Synthetic): Test to monitor your test with [Checkly](https://www.checklyhq.com) and [PerfAgents](https://www.perfagents.com).
+
+[Visual testing & Mock](./tests/VisualTesting): Mock API for visual testing for a dashboard
 
 # Required software
 
@@ -65,67 +62,6 @@ EFFIZIENTE_NORMAL_USER='Demo'
 EFFIZIENTE_NORMAL_PASSWORD='Demo'
 EFFIZIENTE_ADMIN_USER='Admin'
 EFFIZIENTE_ADMIN_PASSWORD='Admin'
-```
-
-## LambdaTest
-
-Lambda test allows you to execute your test in different browsers and countries.
-
-To connect to Lambdatest add the next variables
-
-```
-LT_USERNAME = Your lambdatest user name
-LT_ACCESS_KEY = Your lambdatest access key
-```
-
-## Qase
-
-Qase is a test management tool to execute your manual and automated tests
-
-If you want to connect with QASE a test management tool add the next variables:
-
-```
-QASE_TOKEN= Qase token for playwright
-QASE_PROJECT_CODE= Qase project to connect
-```
-
-You can follow the Qase documentation to get these values.
-
-https://docs.qase.io/apps/reporters/playwright
-
-## Accessibility tests
-
-It's important and is the law in some countries that your website is accessible to all people
-
-To run accessibility test:
-
-```
-PAGE_URL= Page to test example: "https://www.google.com"
-DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
-```
-
-Dashboard and summaries will be stored in test-results folder
-
-## ZeroStep
-
-ZeroStep allows you to execute your tests with AI
-
-To check the ZeroStep to execute your test with AI you need to register your account at https://zerostep.com and add your access token:
-
-```
-ZEROSTEP_TOKEN=Your Zero step token
-```
-
-## Checkly
-
-Checkly allows you to monitor your test in different countries periodically, for example, every 3 hours and send you alerts if the test fails or is taking more than the expected response time.
-
-This is not the only exists others like PerfAgents
-
-Run your test with Checkly
-
-```console
- npx checkly test --record;
 ```
 
 ## Run tests

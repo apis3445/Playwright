@@ -15,8 +15,7 @@ test.describe('Test Accessibility By Page', () => {
     * @see https://playwright.dev/docs/accessibility-testing
     */
     test('Check Page accessibility', async ({ page }, testInfo) => {
-        // eslint-disable-next-line playwright/no-conditional-in-test
-        const pageToTest = process.env.PAGE_URL ? process.env.PAGE_URL : 'https://www.google.com';
+        const pageToTest = process.env.PAGE_URL!;
         const accessibilityHelper = new AccessibilityHelper(page, testInfo);
         const annotationHelper = new AnnotationHelper(page, pageToTest);
         annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
@@ -26,8 +25,7 @@ test.describe('Test Accessibility By Page', () => {
     });
 
     test('Check tab order', async ({ page }, testInfo) => {
-        // eslint-disable-next-line playwright/no-conditional-in-test
-        const pageToTest = process.env.PAGE_URL ? process.env.PAGE_URL : 'https://demo.realworld.io';
+        const pageToTest = process.env.PAGE_URL!;
         const keyPage = 'CustomPage';
         const annotationHelper = new AnnotationHelper(page, keyPage);
         const tabHelper = new TabHelper(page, keyPage);
@@ -38,8 +36,7 @@ test.describe('Test Accessibility By Page', () => {
     });
 
     test('Check alt text & aria-label', async ({ page }, testInfo) => {
-        // eslint-disable-next-line playwright/no-conditional-in-test
-        const pageToTest = process.env.PAGE_URL ? process.env.PAGE_URL : 'https://demo.realworld.io';
+        const pageToTest = process.env.PAGE_URL!;
         const keyPage = 'CustomPage';
         const annotationHelper = new AnnotationHelper(page, keyPage);
         const altHelper = new AltHelper(page, keyPage, testInfo);
