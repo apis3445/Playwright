@@ -14,10 +14,19 @@
         :root {
             --levelA: #b83bbe;
             --levelAA: #6D07C7;
+            --bestPractice: #0039a6;
             --minor-color: {{ minorColor }};
             --moderate-color: {{ moderateColor }};
             --serious-color: {{ seriousColor }};
             --critical-color: {{ criticalColor }};
+        }
+
+        .best-practice {
+            color: var(--bestPractice);
+        }
+
+        .best-practice.card-footer {
+            border-top: 1px solid var(--bestPractice);
         }
 
         .wcag2a {

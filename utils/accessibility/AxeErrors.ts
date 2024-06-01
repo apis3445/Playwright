@@ -45,6 +45,7 @@ export class AxeErrors {
                 errorDescription: accessibilityError.description,
                 help: accessibilityError.help,
                 helpUrl: accessibilityError.helpUrl,
+                impactKey: accessibilityError.impact,
                 impact: ImpactType[accessibilityError.impact as keyof typeof ImpactType],
                 summary: accessibilityError.nodes[i].failureSummary,
                 tags: accessibilityError.tags,

@@ -1,6 +1,6 @@
 export enum ImpactType {
     minor = '#0071ff',
-    moderate = '#fcb814',
+    moderate = '#CF30CB',
     serious = '#63954a',
     critical = '#ff0019'
 }

@@ -15,4 +15,4 @@ https://docs.qase.io/apps/reporters/playwright
 
 After setting up your project you need to create a pipeline
 
-[Qase Pipeline](./github/workflows/qase.yml)
+[Qase Pipeline](../../.github/workflows/qase.yml)

@@ -3,7 +3,7 @@ import { LoginApi } from '../api/Effiziente/Login.api';
 import { Login } from '../api/models/Login';
 
 const authFolder = 'auth';
-const baseUrl = process.env.EFFIZIENTE_URL ?? 'https://effizientedemo.azurewebsites.net';
+const baseUrl = process.env.EFFIZIENTE_URL!;
 
 async function globalSetup() {
     const browser = await chromium.launch();
@@ -11,9 +11,9 @@ async function globalSetup() {
     const page = await context.newPage();
     await page.goto(baseUrl);
     let userLogin: Login = {
-        Company: process.env.EFFIZIENTE_COMPANY ?? '',
-        UserName: process.env.EFFIZIENTE_NORMAL_USER ?? '',
-        Password: process.env.EFFIZIENTE_NORMAL_PASSWORD ?? '',
+        Company: process.env.EFFIZIENTE_COMPANY!,
+        UserName: process.env.EFFIZIENTE_NORMAL_USER!,
+        Password: process.env.EFFIZIENTE_NORMAL_PASSWORD!,
         KeepSession: true,
         Code: 0
     };

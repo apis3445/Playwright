@@ -8,6 +8,7 @@ export interface AxeError {
     help: string;
     helpUrl: string;
     impact: ImpactType;
+    impactKey: string;
     summary: string;
     tags: string[];
     url: string;

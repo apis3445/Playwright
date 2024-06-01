@@ -37,7 +37,7 @@ export class Dashboard {
         const icons = new Icons();
         for (const currentAxeError of this.currentAxeErrors) {
             const id = currentAxeError.id;
-            const impact = currentAxeError.impact;
+            const impact = currentAxeError.impactKey;
             const helpUrl = currentAxeError.helpUrl;
             const category = currentAxeError.category;
             const rule = currentAxeError.rule;
@@ -97,6 +97,9 @@ export class Dashboard {
         }
     }
 
+    /**
+     * Clean the folder for results
+     */
     cleanFolder() {
         fs.rmSync(this.folderPath, { recursive: true, force: true });
     }

@@ -47,7 +47,6 @@ export class AccessibilityHelper {
         });
     }
 
-
     /**
      * Add annotations to the report
      */

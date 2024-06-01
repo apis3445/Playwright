@@ -1,11 +1,11 @@
 # Accessibility tool
 
-It's important and is the law in some countries that your website is accessible to all people
+It's essential and is the law in some countries that your website is accessible to all people without discriminating against disabled people, for example, deaf or blind.
 
-Although accessibility testing requires manual testing, the sample:
+Although accessibility testing requires manual testing, this tool can help to:
 
 - Finds the bugs with @axe-core/playwright.
-- Dashboard reports.
+- Shows a dashboard with the summary of the errors by WCAG level.
 - Summary of errors by page with an option to copy bugs.
 - Summary of error by WCAG rule with an option to copy bugs.
 - Summary of alternative texts.

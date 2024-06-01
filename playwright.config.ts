@@ -13,7 +13,7 @@ dotenv.config();
  */
 const config: PlaywrightTestConfig = {
     testDir: './tests',
-    globalSetup: require.resolve('./tests/Effiziente/globalSetup'),
+    globalSetup: require.resolve('./tests/globalSetup'),
     /* Maximum time one test can run for. */
     timeout: 50 * 1000,
 
@@ -38,7 +38,7 @@ const config: PlaywrightTestConfig = {
         /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
         actionTimeout: 10_000,
         /* Base URL to use in actions like `await page.goto('/')`. */
-        baseURL: process.env.BASE_URL ? process.env.BASE_URL : 'https://www.saucedemo.com',
+        baseURL: process.env.BASE_URL,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: 'retain-on-failure',
@@ -46,7 +46,6 @@ const config: PlaywrightTestConfig = {
         video: 'retain-on-failure',
 
         screenshot: 'only-on-failure',
-
 
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -62,7 +61,6 @@ const config: PlaywrightTestConfig = {
                 uploadAttachments: true,
                 rootSuiteTitle: 'Playwright tests'
             }],
-
     ],
     /* Configure projects for major browsers */
     projects: [

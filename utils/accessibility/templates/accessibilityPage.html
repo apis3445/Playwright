@@ -159,7 +159,7 @@
                     <td>{{errorNumber}}</td>
                     <td scope="row"><img src="attachments/{{screenshot}}" width="150"
                             alt="screenshot of the html error with the error" /></td>
-                    <td><a class="rounded-pill {{impact}}" href="{{ &helpUrl }}" target="_blank">{{id}}</a></td>
+                    <td><a class="rounded-pill {{impactKey}}" href="{{ &helpUrl }}" target="_blank">{{id}}</a></td>
                     <td>{{target}}</td>
                     <td>{{url}}</td>
                     <td>{{rule}}</td>
@@ -189,7 +189,7 @@
                                             <span class="label"> Help: </span>{{help}} <br />
                                             <span class="label">Fix: </span>{{summary}} <br />
                                             <span class="label">Impact: </span><span
-                                                class="rounded-pill {{impact}}">{{impact}}</span> <br />
+                                                class="rounded-pill {{impactKey}}">{{impactKey}}</span> <br />
                                             <span class="label">Screenshot: </span><img src="attachments/{{screenshot}}"
                                                 width="150" alt="Screenshot for the element with error" /> <br />
                                             <span class="label">Steps: </span>

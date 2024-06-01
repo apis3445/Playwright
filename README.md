@@ -8,11 +8,11 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 [Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-deque. Dashboard, videos with accessibility bugs and copy bugs (POC).
 
-[AI with ZeroStep](./tests/AI-ZeroStep): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
+[AI](./tests/AI): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
 
-[API](./tests/Api): Test to select a random item from an e-commerce and generate pre-conditions or post-conditions with API.
+[API](./tests/Api): Test to select a random item from an e-commerce and generate pre-conditions or post-conditions with API. Includes fakerJS to generate random data for your tests.
 
-[Basic](./tests/Basic): Basic login test to show the Page object model, test steps and assertions.
+[Basic](./tests/Basic): Basic login test to show the Page object model, test steps descriptions, reuse authenticated state by different users with global setup, and assertions.
 
 [Excel](./tests/Excel): Test to check the export to Excel for a PrimeNG Table with ExcelJS.
 
@@ -22,9 +22,11 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 [Qase](./tests/Qase): Modern test management tool for manual, automated tests and AI.
 
-[Synthetic](./tests/Synthetic): Test to monitor your test with [Checkly](https://www.checklyhq.com) and [PerfAgents](https://www.perfagents.com).
+[Synthetic](./tests/Synthetic): Test to monitor your test with [PerfAgents](https://www.perfagents.com) and [Checkly](https://www.checklyhq.com).
 
-[Visual testing & Mock](./tests/VisualTesting): Mock API for visual testing for a dashboard
+[Visual testing & Mock](./tests/VisualTesting): Mock API for visual testing to get the same data for a dynamic dashboard
+
+[Shard](./tests/Shard): Pipeline to execute your tests in different machines simultaneously with GitHub actions
 
 # Required software
 

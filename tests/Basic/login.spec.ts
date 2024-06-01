@@ -1,7 +1,6 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../../pages/SauceDemo/loginPage';
 
-
 // doesn't share the logged-in session
 test.use({ storageState: { cookies: [], origins: [] } });
 
