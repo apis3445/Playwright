@@ -1,12 +1,17 @@
+# 0.8.1 (2024-06-08)
+
+### Bug Fixes
+
+- Fix broken links and add more readme files ([d74a61c](https://github.com/apis3445/Playwright/commit/d74a61ccb179eecd2211f0298d95950efa32232d))
+- update test in pipeline ([73e129a](https://github.com/apis3445/Playwright/commit/73e129a9fd39204049ea1e0272dc73dadad1b7f7))
+
+### Features
+
 # 0.8.0 (2024-05-11)
 
 ### Features
 
 - Add ExcelHelper to check excel files ([13f3288](https://github.com/apis3445/PlaywrightFramework/commit/13f3288504831dec8ba765b8fbb61eb2c929a61a))
-
-# 0.8.0 (2024-05-11)
-
-### Features
 
 # 0.7.0 (2024-04-27)
 
