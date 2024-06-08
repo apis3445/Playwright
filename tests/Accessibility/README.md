@@ -22,3 +22,15 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 ```
 
 Dashboard and summaries will be stored in test-results folder
+
+![Report](report.png)
+![Dashboard 1](dashboard1.png)
+![Dashboard 2](dashboard2.png)
+![Summary by page](pageSummary.png)
+![Copy bug](copyBug.png)
+![Alt summary](altSummary.png)
+![Tab Order](tabOrder.png)
+
+## Articles
+
+[Tools for accessibility testing](https://abigailarmijo.substack.com/p/tools-for-accessibility-testing)

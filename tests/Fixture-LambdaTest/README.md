@@ -12,3 +12,9 @@ To connect to Lambdatest add the next variables
 LT_USERNAME = Your LambdaTest user name
 LT_ACCESS_KEY = Your LambdaTest access key
 ```
+
+## Articles
+
+You can see my articles to explain:
+
+[Execute your Playwright tests with LambdaTest](https://abigailarmijo.substack.com/p/execute-your-playwright-test-with)

@@ -16,3 +16,9 @@ https://docs.qase.io/apps/reporters/playwright
 After setting up your project you need to create a pipeline
 
 [Qase Pipeline](../../.github/workflows/qase.yml)
+
+## Articles
+
+You can see my articles to explain:
+
+[Test management tools for automation framework](https://abigailarmijo.substack.com/p/test-management-tools-for-automation)

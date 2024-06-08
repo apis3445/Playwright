@@ -41,7 +41,7 @@ test.describe('Test Accessibility By Page', () => {
         const annotationHelper = new AnnotationHelper(page, keyPage);
         const altHelper = new AltHelper(page, keyPage, testInfo);
         await page.goto(pageToTest);
-        await altHelper.checkAltTextInImages();
+        await altHelper.checkAltText();
         await altHelper.generateSummaryPage();
         await annotationHelper.attachPageScreenshot('tab.png', testInfo);
     });

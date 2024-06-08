@@ -4,7 +4,7 @@ Check performance issues or bugs monitor your test and get alerts if something i
 
 ## PerfAgents
 
-AI Driven Enterprise Synthetic Monitoring
+AI-Driven Enterprise Synthetic Monitoring
 
 PerfAgents includes options to monitor your tests with Playwright, Selenium, Puppeteer or Cypress. With AI features
 
@@ -19,3 +19,7 @@ Run your test with Checkly
 ```console
  npx checkly test --record;
 ```
+
+## Articles
+
+[Tools for Synthetic Monitoring](https://abigailarmijo.substack.com/p/tools-for-synthetic-monitoring)

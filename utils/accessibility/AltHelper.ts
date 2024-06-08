@@ -26,7 +26,7 @@ export class AltHelper {
     /**
      * Check alternate text
      */
-    async checkAltTextInImages() {
+    async checkAltText() {
         this.annotationHelper.addAnnotation(AnnotationType.Assert, 'Check alt text in images');
         await this.getImagesInPage();
         let index = 0;
@@ -34,8 +34,7 @@ export class AltHelper {
             const altText = await imageLocator.getAttribute('alt');
             const ariaLabel = await imageLocator.getAttribute('aria-label');
             const fileName = index + '.png';
-            const fileNamePath = this.folderResults + fileName;
-            await this.annotationHelper.attachScreenshot(imageLocator, fileNamePath, this.testInfo);
+            await this.annotationHelper.attachScreenshot(imageLocator, fileName, this.testInfo);
             const alt: Alt = {
                 imageNumber: ++index,
                 screenshot: fileName,
