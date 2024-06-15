@@ -10,5 +10,4 @@ export class CartPage extends ContosoBasePage {
     constructor(page: Page) {
         super(page, 'Cart');
     }
-
 }

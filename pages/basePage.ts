@@ -106,6 +106,12 @@ export class BasePage {
         expect(expected, assertMessage).toEqual(actual);
     }
 
+    /**
+     * Assert that 2 arrays are equal
+     * @param expected Expected array
+     * @param actual Actual array
+     * @param assertMessage Assert message for the html reporter
+     */
     public AssertArrayEqual(expected: string[], actual: string[], assertMessage: string) {
         this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
         expect(expected, assertMessage).toEqual(actual);

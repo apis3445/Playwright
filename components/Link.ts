@@ -12,7 +12,6 @@ export class Link extends BaseComponent {
      * @param [byRole=true] 
      * True - To locate by role/name
      * False - To locate by css selector
-     * Default is True
      */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true, isFirst = false) {
         super(page, annotationHelper);
@@ -41,6 +40,10 @@ export class Link extends BaseComponent {
         });
     }
 
+    /**
+     * Get the text of the link
+     * @returns Link text content
+     */
     async getText() {
         if (!this.label) {
             const linkText = await this.locator.textContent();

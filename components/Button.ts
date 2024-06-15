@@ -9,11 +9,15 @@ export class Button extends BaseComponent {
      * @param page Playwright page 
      * @param annotationHelper Annotation that stores steps and custom annotations
      * @param name Name for the button
+     * @param byRole default to true. Allows to search byRole "button" instead of css selector
      */
-    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string) {
+    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string,  byRole = true) {
         super(page, annotationHelper);
         this.text = this.name;
-        this.locator = this.page.getByRole('button', { name: name });
+        if (byRole)
+            this.locator = this.page.getByRole('button', { name: name });
+        else 
+            this.locator = this.page.locator(name);
         this.label = name;
     }
 

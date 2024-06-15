@@ -15,6 +15,9 @@ export class HomePage extends ContosoBasePage {
         super(page, 'Home');
     }
 
+    /**
+     * Go to contoso url
+     */
     async goTo() {
         const url = process.env.CONTOSO_URL ?? 'https://cloudtesting.contosotraders.com';
         await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"', async () => {

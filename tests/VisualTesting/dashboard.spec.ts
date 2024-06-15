@@ -8,9 +8,11 @@ test.describe('Check Dashboard', () => {
     test('Should show dashboard', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
         const accountReceivableApi = new AccountReceivableApi(page);
+        //Replace api with fixed data because the dashboard changes every day
+        //The api can be tested with postman to ensure that the info is correct
         await accountReceivableApi.mockAllApis();
         await dashboardPage.goTo();
-        await dashboardPage.waitForCharts();
+        await dashboardPage.waitForChartsAreVisible();
         await dashboardPage.checkSnapshot();
     });
 });

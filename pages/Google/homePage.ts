@@ -24,6 +24,9 @@ export class HomePage extends BasePage {
         this.googleSearch = new Button(this.page, this.annotationHelper, localeInfo.googleSearch);
     }
 
+    /**
+     * Go to google home page
+     */
     public async goTo() {
         this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + this.BASE_URL + '"');
         await this.page.goto(this.BASE_URL);

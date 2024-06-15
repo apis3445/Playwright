@@ -65,7 +65,7 @@ export class AxeErrors {
 
     /**
      * Get rules
-     * @param accessibilityError 
+     * @param accessibilityError axe accessibility error info
      * @returns 
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

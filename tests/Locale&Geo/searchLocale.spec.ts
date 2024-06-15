@@ -13,13 +13,13 @@ test.describe('Locale translations', () => {
     });
 
     test('Translations with locale and time zone id', async ({ page }) => {
-        //ACT
         const homePage = new HomePage(page);
-        //ARRANGE
+        //Go to google home page in the locale
         await homePage.goTo();
         const assertDescription = `Search button text is equal to: "${localeInfo.googleSearch}"`;
-        //ASSERT
+        //Add the assertion to the html reporter
         homePage.addAnnotation(AnnotationType.Assert, assertDescription);
+        //Check that the google search includes the translated text
         await expect(homePage.googleSearch.locator, assertDescription).toHaveText(localeInfo.googleSearch);
     });
 });

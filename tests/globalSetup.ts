@@ -30,6 +30,12 @@ async function globalSetup() {
     await browser.close();
 }
 
+/**
+ * Set storage
+ * @param page Playwright page
+ * @param userLogin User info for login 
+ * @param fileName File name to store state
+ */
 async function setStorage(page: Page, userLogin: Login, fileName: string) {
     const loginApi = new LoginApi(page);
     const token = await loginApi.login(userLogin);

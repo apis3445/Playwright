@@ -1,9 +1,9 @@
+/* eslint-disable playwright/expect-expect */
 import { test } from '@playwright/test';
 import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
 
 test.describe('Normal user', () => {
     test.use({ storageState: 'auth/user.json' });
-    // eslint-disable-next-line playwright/expect-expect
     test('Should returns user menu', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
@@ -15,7 +15,6 @@ test.describe('Normal user', () => {
 
 test.describe('Admin user', () => {
     test.use({ storageState: 'auth/admin.json' });
-    // eslint-disable-next-line playwright/expect-expect
     test('Should returns admin menu', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();

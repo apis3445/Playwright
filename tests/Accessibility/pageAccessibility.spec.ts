@@ -15,6 +15,7 @@ test.describe('Test Accessibility By Page', () => {
     * @see https://playwright.dev/docs/accessibility-testing
     */
     test('Check Page accessibility', async ({ page }, testInfo) => {
+        //You can test any page in environment variable
         const pageToTest = process.env.PAGE_URL!;
         const accessibilityHelper = new AccessibilityHelper(page, testInfo);
         const annotationHelper = new AnnotationHelper(page, pageToTest);
@@ -29,8 +30,11 @@ test.describe('Test Accessibility By Page', () => {
         const keyPage = 'CustomPage';
         const annotationHelper = new AnnotationHelper(page, keyPage);
         const tabHelper = new TabHelper(page, keyPage);
+        annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
+        //Add a number and blue box to the element after press tab
         await tabHelper.showTabOrder();
+        //Check that the tab is the same that the elements
         await tabHelper.checkTabNumber();
         await annotationHelper.attachPageScreenshot('tab.png', testInfo);
     });
@@ -40,10 +44,12 @@ test.describe('Test Accessibility By Page', () => {
         const keyPage = 'CustomPage';
         const annotationHelper = new AnnotationHelper(page, keyPage);
         const altHelper = new AltHelper(page, keyPage, testInfo);
+        annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
+        //Check that images have alt text attribute
         await altHelper.checkAltText();
+        //Generate a table with all alt texts
         await altHelper.generateSummaryPage();
-        await annotationHelper.attachPageScreenshot('tab.png', testInfo);
     });
 
 });

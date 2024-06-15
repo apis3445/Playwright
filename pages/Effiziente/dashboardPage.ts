@@ -37,7 +37,7 @@ export class DashboardPage extends EffizienteBasePage {
     /**
      * Wait to load the charts
      */
-    public async waitForCharts() {
+    public async waitForChartsAreVisible() {
         await expect(this.page.locator(this.top5.name)).toBeVisible();
         await expect(this.page.locator(this.top5Debt.name)).toBeVisible();
         await expect(this.page.locator(this.top5DaysDelay.name)).toBeVisible();

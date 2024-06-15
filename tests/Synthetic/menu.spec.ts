@@ -1,15 +1,15 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Synthetic testing', () => {
-    const baseURL = process.env.EFFIZIENTE_URL ? process.env.EFFIZIENTE_URL : 'https://effizientedemo.azurewebsites.net';
-    const baseAPI_URL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
+    const baseURL = process.env.EFFIZIENTE_URL!;
+    const baseAPI_URL = process.env.EFFIZIENTE_API_URL!;
     let token = '';
 
     test.beforeEach(async ({ request }) => {
         const userLogin = {
-            Company: process.env.EFFIZIENTE_COMPANY ?? 'Demo',
-            UserName: process.env.EFFIZIENTE_NORMAL_USER ?? 'Demo',
-            Password: process.env.EFFIZIENTE_NORMAL_PASSWORD ?? 'Demo',
+            Company: process.env.EFFIZIENTE_COMPANY,
+            UserName: process.env.EFFIZIENTE_NORMAL_USER,
+            Password: process.env.EFFIZIENTE_NORMAL_PASSWORD,
             KeepSession: true,
             Code: 0
         };
@@ -20,7 +20,6 @@ test.describe('Synthetic testing', () => {
         token = responseBody.Token;
     });
 
-    // eslint-disable-next-line playwright/expect-expect
     test('Should show dashboard', async ({ page }) => {
         const dashboardPageUrl = baseURL + '/AccountsReceivable/dashboard';
         const stepDescription = 'Go to:' + baseURL;
@@ -30,7 +29,6 @@ test.describe('Synthetic testing', () => {
             await page.evaluate(token => {
                 localStorage.setItem('token', token);
             }, token);
-
         });
         await page.goto(dashboardPageUrl);
         const timeout = 35_000;

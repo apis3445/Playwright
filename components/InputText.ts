@@ -12,7 +12,6 @@ export class InputText extends BaseComponent {
      * @param [byRole=true] 
      * True - To locate by role/name
      * False - To locate by css selector
-     * Default is True
     */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
         super(page, annotationHelper);

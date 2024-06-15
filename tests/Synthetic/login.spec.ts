@@ -4,11 +4,10 @@ test.describe('Synthetic login testing', () => {
 
     // eslint-disable-next-line playwright/expect-expect
     test('Should show dashboard', async ({ page }) => {
-        //TODO: replace with environment variables when PerfAgents supports ENV variables
         await page.goto('https://effizientedemo.azurewebsites.net');
-        await page.getByLabel('Company').fill('Demo');
-        await page.getByLabel('User').fill('Demo');
-        await page.getByPlaceholder('Password').fill('Demo');
+        await page.getByLabel('Company').fill(process.env.EFFIZIENTE_COMPANY!);
+        await page.getByLabel('User').fill(process.env.NORMAL_USER!);
+        await page.getByPlaceholder('Password').fill(process.env.NORMAL_PASSWORD!);
         await page.getByRole('button', { name: 'Login' }).click();
         await page.locator('app-card-pie').getByRole('img').click({ timeout: 35_000 });
     });
