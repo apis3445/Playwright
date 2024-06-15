@@ -1,3 +1,9 @@
+# 0.9.0 (2024-06-15)
+
+### Features
+
+- Update documentation and add geolocation test ([556f43b](https://github.com/apis3445/Playwright/commit/556f43b4904b8cfda20462e79cbaaea30d4931c4))
+
 # 0.8.1 (2024-06-08)
 
 ### Bug Fixes
