@@ -12,3 +12,5 @@ results.xml
 servers.xlsx
 .DS_Store
 servers.xlsx
+tests/__screenshots__/VisualTesting/dashboard.spec.ts/linux/dashboard.png
+tests/.DS_Store
