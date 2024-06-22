@@ -1,3 +1,14 @@
+# 0.10.0 (2024-06-22)
+
+### Bug Fixes
+
+- Fix params for CI ([68dcb65](https://github.com/apis3445/Playwright/commit/68dcb651347c6ae766da7ff2341c121fae9cf217))
+- update qase pipeline ([ebbc2e6](https://github.com/apis3445/Playwright/commit/ebbc2e642592fc5991c7b3a49cefdf8f5351e690))
+
+### Features
+
+- add Playwright testing config([63c237f](https://github.com/apis3445/Playwright/commit/63c237f17dea34af18a0f0f459ac8c79d91f8e8b))
+
 # 0.9.0 (2024-06-15)
 
 ### Features
