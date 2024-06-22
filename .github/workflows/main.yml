@@ -33,11 +33,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
 
-      - run: npm ci
+      - name: Install dependencies
+        run: |
+          npm config set @microsoft:registry=https://npm.pkg.github.com
+          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}}
+          npm ci
 
       - run: npx playwright install --with-deps
-
-      - run: npx playwright install-deps
 
       - name: Install reporting package
         run: |

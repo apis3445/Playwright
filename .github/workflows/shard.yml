@@ -38,16 +38,13 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm config set @microsoft:registry=https://npm.pkg.github.com
+          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}}
+          npm ci
 
       - name: Install Playwright
         run: npx playwright install --with-deps
-
-      - name: Install reporting package
-        run: |
-          npm config set @microsoft:registry=https://npm.pkg.github.com
-          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}} 
-          npm install
 
       - name: Run Playwright tests
         run: npx playwright test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/Locale test/Qase test/Shard test/Synthetic test/VisualTesting --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob
