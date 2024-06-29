@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
@@ -15,11 +15,10 @@ export class InputPassword extends BaseComponent {
      * Default is True
     */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
-        super(page, annotationHelper);
-        if (byRole)
-            this.locator = this.page.getByRole('textbox', { name: name });
-        else
-            this.locator = this.page.locator(this.name);
+        let locator: Locator = page.getByRole('textbox', { name: name });
+        if (!byRole)
+            locator = page.locator(name);
+        super(page, annotationHelper, locator);
     }
 
     /**
@@ -33,5 +32,4 @@ export class InputPassword extends BaseComponent {
             await this.locator.fill(value);
         });
     }
-
 }

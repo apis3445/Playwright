@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import { BaseComponent } from './BaseComponent';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
@@ -11,12 +11,10 @@ export class Heading extends BaseComponent {
      * @param name Name for the button
      */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
-        super(page, annotationHelper);
+        let locator: Locator = page.getByRole('heading', { name: name }); 
+        if (!byRole)
+            locator = page.locator(name);
+        super(page, annotationHelper, locator);
         this.text = this.name;
-        if (byRole)
-            this.locator = this.page.getByRole('heading', { name: name });
-        else
-            this.locator = this.page.locator(this.name);
     }
-
 }

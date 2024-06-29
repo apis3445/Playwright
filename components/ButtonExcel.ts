@@ -14,9 +14,9 @@ export class ButtonExcel extends BaseComponent {
      * @param name Name for the button
      */
     constructor(protected page: Page, private testInfo: TestInfo, annotationHelper: AnnotationHelper, private name: string) {
-        super(page, annotationHelper);
+        const locator = page.getByRole('button', { name: name });
+        super(page, annotationHelper, locator);
         this.text = this.name;
-        this.locator = this.page.getByRole('button', { name: name });
         this.label = name;
     }
 

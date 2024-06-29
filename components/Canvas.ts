@@ -11,9 +11,8 @@ export class Canvas extends BaseComponent {
      * @param name Name for the button
      */
     constructor(page: Page, annotationHelper: AnnotationHelper, public name: string) {
-        super(page, annotationHelper);
+        const locator = page.locator(name);
+        super(page, annotationHelper, locator);
         this.text = this.name;
-        this.locator = this.page.locator(name);
     }
-
 }

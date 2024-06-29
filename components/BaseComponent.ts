@@ -1,77 +1,88 @@
 import { Locator, Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
+/**
+ * BaseComponent class provides a foundational structure for UI components in a Playwright testing environment.
+ * It integrates with AnnotationHelper to add annotations and highlights for debugging and reporting purposes.
+ */
 export class BaseComponent {
-
-    type: string;
     locator: Locator;
-    text: string;
-    label: string;
+    type: string;
+    text?: string;
+    label?: string;
     protected isAnnotationEnabled = true;
     protected isHighlightEnabled = false;
 
-    constructor(protected page: Page, protected annotationHelper: AnnotationHelper) {
+    /**
+     * Constructor for BaseComponent class.
+     * @param page Playwright Page object
+     * @param annotationHelper AnnotationHelper object
+     */
+    constructor(protected page: Page, protected annotationHelper: AnnotationHelper, locator: Locator) {
         this.type = this.constructor.name;
+        this.locator = locator;
     }
 
     /**
-     * Add annotation
-     * @param description Description to add as annotation
+     * Add an annotation for the html reporter.
+     * 
+     * @param annotationDescription Description of the annotation to add
      */
-    addAnnotation(description: string) {
-        if (this.isAnnotationEnabled)
-            this.annotationHelper.addAnnotation(this.type.toString(), description);
-    }
-
-    /**
-     * Add step and annotation
-     * @param description Description to add as annotation
-     * @param stepFunction Function to encapsulate as step
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async addStepWithAnnotation(description: string, stepFunction: () => Promise<any>) {
+    addAnnotation(annotationDescription: string): void {
         if (this.isAnnotationEnabled) {
-            await this.highlightStep(description);
-            this.addAnnotation(description);
-            return await test.step(description, stepFunction);
+            this.annotationHelper.addAnnotation(this.type, annotationDescription);
         }
-        else
-            await stepFunction();
     }
 
     /**
-     * Encapsulate function as a step in html report
-     * @param description Description to add as annotation
+     * Add a step with annotation.
+     * @param stepDescription Description to add as annotation
      * @param stepFunction Function to encapsulate as step
+     * @returns Promise with step execution
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async addStep(description: string, stepFunction: () => Promise<any>) {
-        if (this.isAnnotationEnabled)
-            return await test.step(description, stepFunction);
-        else
-            return await stepFunction();
+    async addStepWithAnnotation(stepDescription: string, stepFunction: () => Promise<any>): Promise<any> {
+        if (this.isAnnotationEnabled) {
+            this.addAnnotation(stepDescription);
+            await this.highlightStep(stepDescription);
+            return await this.addStep(stepDescription, stepFunction);
+        } else {
+            return stepFunction();
+        }
     }
 
     /**
-     * Disable annotations for the component
+     * Encapsulate a function as a step in the HTML report.
+     * @param description Description to add as annotation
+     * @param stepFunction Function to encapsulate as step
+     * @returns Promise with step execution
      */
-    disableAnnotations() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async addStep(stepDescription: string, stepFunction: () => Promise<any>): Promise<any> {
+        return await test.step(stepDescription, stepFunction);
+    }
+
+    /**
+     * Disable annotations for the component.
+     */
+    disableAnnotations(): void {
         this.isAnnotationEnabled = false;
     }
 
     /**
-     * Highlight step for demo/debug
-     * @param description step description
+     * Highlight a step for demo/debug purposes.
+     * @param stepDescription Step description
      */
-    async highlightStep(description: string) {
+    async highlightStep(stepDescription: string): Promise<void> {
         if (this.isHighlightEnabled) {
-            await test.step('Highlight: ' + description, async () => {
+            const debugElementId = 'playright-debug';
+            await test.step('Highlight: ' + stepDescription, async () => {
                 await this.locator.highlight();
-                await this.page.evaluate(description => {
-                    let debugElement = document.getElementById('playright-debug');
+                await this.page.evaluate(([description, debugElementId]) => {
+                    let debugElement = document.getElementById(debugElementId);
                     if (!debugElement) {
                         debugElement = document.createElement('div');
-                        debugElement.id = 'playright-debug';
+                        debugElement.id = debugElementId;
                         debugElement.style.backgroundColor = '#000';
                         debugElement.style.color = '#fff';
                         debugElement.style.position = 'fixed';
@@ -84,55 +95,48 @@ export class BaseComponent {
                         document.body.appendChild(debugElement);
                     }
                     debugElement.innerHTML = description;
-                }, description);
+                }, [stepDescription, debugElementId]);
             });
         }
     }
 
-
     /**
-     * Get place holder for the element
-     * @returns Place holder 
+     * Get the placeholder or label for an input element.
+     * @returns Promise with input label
      */
-    public async getInputLabel() {
-        return await this.addStep('Get label', async () => {
-            if (!this.label) {
-                const id = await this.locator.getAttribute('id');
-                if (id) {
-                    const labelElement = this.page.locator('label[for="' + id + '"]');
-                    if (await labelElement.isVisible()) {
-                        this.label = await labelElement.innerText();
-                        if (this.label)
-                            return this.label;
-                    }
-                }
-                const placeHolderAttribute = await this.locator.getAttribute('placeholder');
-                if (placeHolderAttribute) {
-                    this.label = placeHolderAttribute;
-                    if (this.label)
-                        return placeHolderAttribute;
-                }
-                const ariaLabelElement = await this.locator.getAttribute('aria-label');
-                if (ariaLabelElement) {
-                    this.label = ariaLabelElement;
-                    if (this.label)
-                        return ariaLabelElement;
-                }
-                return '';
+    async getInputLabel(): Promise<string> {
+        return await this.addStep('Get the input label', async () => {
+            if (this.label) 
+                return this.label;
+
+            const id = await this.locator.getAttribute('id');
+            if (id) {
+                const labelElement = this.page.locator(`label[for="${id}"]`);
+                if (await labelElement.isVisible()) 
+                    return await labelElement.innerText();
             }
+
+            const placeHolderAttribute = await this.locator.getAttribute('placeholder');
+            if (placeHolderAttribute) 
+                return placeHolderAttribute;
+
+            const ariaLabelAttribute = await this.locator.getAttribute('aria-label');
+            if (ariaLabelAttribute) 
+                return ariaLabelAttribute;
+            return '';
         });
     }
 
     /**
-     * Get text for the button
-     * @returns Button text
+     * Get the text content of the component
+     * @returns Promise with button text
      */
-    async getText() {
+    async getText(): Promise<string> {
         const stepDescription = 'Get label for the button';
         return await this.addStep(stepDescription, async () => {
-            if (!this.label)
-                this.label = await this.locator.textContent() ?? '';
-            return this.label;
+            if (this.label) 
+                return this.label;
+            this.label = await this.locator.textContent() ?? '';
         });
     }
 }
