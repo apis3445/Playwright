@@ -8,6 +8,7 @@ export class BingMapsPage extends BasePage {
      
     readonly locateMe: Button = new Button(this.page, this.annotationHelper, 'button.locateMeBtn', false);
     readonly geoName: Generic = new Generic(this.page, this.annotationHelper, '.geochainContainer', 'Geo Name');
+    readonly unCollapse: Button = new Button(this.page, this.annotationHelper, 'button.geochainUncollapse', false);
 
     public BASE_URL = 'https://www.bing.com/maps';
     
