@@ -1,7 +1,6 @@
 import test, { expect } from '@playwright/test';
 import { BingMapsPage } from '../../pages/Google/bingMapsPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
-import exp from 'constants';
 
 test.describe('Geo Location Test', () => {
     //You need the longitude, latitude and geolocation permission to access to the geolocation
