@@ -1,4 +1,4 @@
-name: Tests HTML Reporter
+name: Tests HTML & Junit Reporter
 on:
   push:
     branches: [main]
