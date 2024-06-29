@@ -1,17 +1,21 @@
 name: Tests HTML Reporter
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 jobs:
   test:
     timeout-minutes: 60
     name: Run Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [test, stage]
     env:
       BASE_URL: ${{vars.BASE_URL}}
       CONTOSO_URL: ${{vars.CONTOSO_URL}}
+      CONTOSO_API_URL: ${{vars.CONTOSO_API_URL}}
       LOCALE: ${{vars.LOCALE}}
       USER_NAME: ${{secrets.USER_NAME}}
       PASSWORD: ${{secrets.PASSWORD}}
@@ -30,49 +34,49 @@ jobs:
       PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
       PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Check out repository
+        uses: actions/checkout@v4
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+
+      # for playwright reporting service beta is needed the npm config
       - name: Install dependencies
         run: |
-          npm config set @microsoft:registry=https://npm.pkg.github.com
+          npm config set @microsoft:registry=https://npm.pkg.github.com 
           npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}}
           npm ci
 
-      - run: npx playwright install --with-deps
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
 
-      - name: Install reporting package
-        run: |
-          npm config set @microsoft:registry=https://npm.pkg.github.com
-          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}} 
-          npm install
+      - name: Run playwright tests
+        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/Locale&Geo test/Qase test/Shard test/Synthetic test/VisualTesting --reporter=html,junit
 
-      - name: Run Playwright tests
-        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/Locale test/Qase test/Shard test/Synthetic test/VisualTesting --reporter=html,junit
-
-      - uses: actions/upload-artifact@v4
+      - name: Upload html report as artifact
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
           path: report/
           retention-days: 5
 
-      - name: Publish to Github Pages
+      - name: Publish html reporter to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ github.workspace }}/report/
 
-      # Upload xml as artifact
-      - uses: actions/upload-artifact@v4
+      - name: Upload xml junit result as artifact
+        uses: actions/upload-artifact@v4
         with:
           name: java-junit
           path: ${{ github.workspace }}/report/results.xml
 
-      - name: Test Report Junit
+      - name: Generate Junit Report in Github
         uses: dorny/test-reporter@v1
-        if: success() || failure() # run this step even if previous step failed
+        if: success() || failure() #run this step even if previous step failed
         with:
           name: Junit Tests # Name of the check run which will be created
           path: ${{ github.workspace }}/report/*.xml # Path to test results

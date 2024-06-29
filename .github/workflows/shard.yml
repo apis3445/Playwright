@@ -1,9 +1,9 @@
 name: Shard tests
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 jobs:
   playwright-tests:
     name: Run tests
@@ -16,6 +16,7 @@ jobs:
     env:
       BASE_URL: ${{vars.BASE_URL}}
       CONTOSO_URL: ${{vars.CONTOSO_URL}}
+      CONTOSO_API_URL: ${{vars.CONTOSO_API_URL}}
       LOCALE: ${{vars.LOCALE}}
       USER_NAME: ${{secrets.USER_NAME}}
       PASSWORD: ${{secrets.PASSWORD}}

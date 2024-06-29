@@ -1,0 +1,44 @@
+name: Tests HTML Reporter
+on: [push]
+jobs:
+  Test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{vars.BASE_URL}}
+      CONTOSO_URL: ${{vars.CONTOSO_URL}}
+      CONTOSO_API_URL: ${{vars.CONTOSO_API_URL}}
+      LOCALE: ${{vars.LOCALE}}
+      USER_NAME: ${{secrets.USER_NAME}}
+      PASSWORD: ${{secrets.PASSWORD}}
+      EFFIZIENTE_API_URL: ${{vars.EFFIZIENTE_API_URL}}
+      EFFIZIENTE_URL: ${{vars.EFFIZIENTE_URL}}
+      EFFIZIENTE_COMPANY: ${{secrets.EFFIZIENTE_COMPANY}}
+      EFFIZIENTE_NORMAL_USER: ${{secrets.EFFIZIENTE_NORMAL_USER}}
+      EFFIZIENTE_NORMAL_PASSWORD: ${{secrets.EFFIZIENTE_NORMAL_PASSWORD}}
+      EFFIZIENTE_ADMIN_USER: ${{secrets.EFFIZIENTE_ADMIN_USER}}
+      EFFIZIENTE_ADMIN_PASSWORD: ${{secrets.EFFIZIENTE_ADMIN_PASSWORD}}
+      ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run playwright tests
+        run: npx playwright test --reporter=html
+
+      - name: Upload html report as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report #artifact name
+          path: report/ # relative folder path for the html report
+          retention-days: 5 # save the report for 5 days
