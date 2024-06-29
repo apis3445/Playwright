@@ -43,5 +43,5 @@ jobs:
         if: always()
         with:
           name: playwright-report #artifact name
-          path: report/ # relative folder path for the html report
+          path: playwright-report/ # relative folder path for the html report
           retention-days: 5 # save the report for 5 days
