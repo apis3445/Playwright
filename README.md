@@ -18,7 +18,7 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 [Fixture and LambdaTest](./tests/Fixture-LambdaTest): Use a fixture to connect your test with Lambdatest to test in different countries and browsers.
 
-[Locale&Geo](./tests/Locale&Geo): Emulates another country for example: de-DE.
+[Locale and Geo](./tests/LocaleGeo): Emulates another country for example: de-DE.
 
 [Qase](./tests/Qase): Modern test management tool for manual, automated tests and AI.
 

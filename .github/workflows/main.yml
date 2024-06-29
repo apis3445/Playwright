@@ -51,7 +51,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run playwright tests
-        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/Locale&Geo test/Qase test/Shard test/Synthetic test/VisualTesting --reporter=html,junit
+        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/LocaleGeo test/Qase test/Shard test/Synthetic test/VisualTesting --reporter=html,junit
 
       - name: Upload html report as artifact
         uses: actions/upload-artifact@v4
