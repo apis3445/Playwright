@@ -1,6 +1,7 @@
 import test, { expect } from '@playwright/test';
 import { BingMapsPage } from '../../pages/Google/bingMapsPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import exp from 'constants';
 
 test.describe('Geo Location Test', () => {
     //You need the longitude, latitude and geolocation permission to access to the geolocation
@@ -16,6 +17,7 @@ test.describe('Geo Location Test', () => {
         await bingMapsPage.goTo();
         //With click in the locate button the map will be centered in your current geolocation
         await bingMapsPage.locateMe.click();
+        await expect(bingMapsPage.locateMe.locator).toBeVisible();
         const assertionDescription = 'Geo name is equal to:' + geoName; 
         //Add the assertion to the html reporter annotations
         bingMapsPage.addAnnotation(AnnotationType.Assert, assertionDescription);
