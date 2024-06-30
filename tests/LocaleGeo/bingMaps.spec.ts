@@ -9,7 +9,10 @@ test.describe('Geo Location Test', () => {
         permissions: ['geolocation'],
     });
       
-    test('The bing maps is located to munich', async ({ page }) => {
+    test('The bing maps is located to munich', async ({ page, browserName }) => {
+        // eslint-disable-next-line playwright/no-skipped-test
+        test.skip(browserName == 'firefox', 'Geolocation not work in firefox');
+
         //This is the location label for the munich geolocation
         const geoName = 'GermanyBavariaMunich (District)';
         const bingMapsPage = new BingMapsPage(page);
