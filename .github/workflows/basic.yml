@@ -19,6 +19,7 @@ jobs:
       EFFIZIENTE_ADMIN_USER: ${{secrets.EFFIZIENTE_ADMIN_USER}}
       EFFIZIENTE_ADMIN_PASSWORD: ${{secrets.EFFIZIENTE_ADMIN_PASSWORD}}
       ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
+      PAT_TOKEN_PACKAGE: ${{secrets.PAT_TOKEN_PACKAGE}}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
