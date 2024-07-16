@@ -3,24 +3,28 @@ on:
   workflow_dispatch:
     inputs:
       PAGE_URL:
-        description: 'URL to test'
+        description: "URL to test"
         required: true
       DEBUG_PAUSE:
-          description: 'Miliseconds to pause'
-          required: true
+        description: "Miliseconds to pause"
+        required: true
 jobs:
   test:
     timeout-minutes: 60
     name: Test Accessibility
     runs-on: ubuntu-latest
     env:
-       PAGE_URL: ${{ inputs.PAGE_URL }}
-       DEBUG_PAUSE: ${{ inputs.DEBUG_PAUSE }}
+      PAGE_URL: ${{ inputs.PAGE_URL }}
+      DEBUG_PAUSE: ${{ inputs.DEBUG_PAUSE }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
 
-      - run: npm ci
+      - name: Install dependencies
+        run: |
+          npm config set @microsoft:registry=https://npm.pkg.github.com
+          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}}
+          npm ci
 
       - run: npx playwright install --with-deps
 
@@ -47,5 +51,3 @@ jobs:
           name: Test Annotations
           path: test-annotations/
           retention-days: 5
-
-          
