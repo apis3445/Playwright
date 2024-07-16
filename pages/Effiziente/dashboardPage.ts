@@ -21,7 +21,7 @@ export class DashboardPage extends EffizienteBasePage {
         this.top5 = new Canvas(page, this.annotationHelper, '#top5 canvas');
         this.top5Debt = new Canvas(page, this.annotationHelper, '#top5Debt canvas');
         this.top5DaysDelay = new Canvas(page, this.annotationHelper, '#top5DaysDelay canvas');
-        this.summaryExpiration = new Canvas(page, this.annotationHelper, '#summaryExpiration');
+        this.summaryExpiration = new Canvas(page, this.annotationHelper, '#summaryExpiration canvas');
     }
 
     /**
@@ -48,7 +48,7 @@ export class DashboardPage extends EffizienteBasePage {
      * Check snapshot
      */
     public async checkSnapshot() {
-        await this.visualHelper.checkPageSnapshot('dashboard.png', 20_000);
+        await this.visualHelper.checkPageSnapshot('dashboard.png', 10_000);
     }
 
 }
