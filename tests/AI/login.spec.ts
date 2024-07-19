@@ -2,7 +2,7 @@
 import { expect, test } from '@playwright/test';
 import { ai } from '@zerostep/playwright';
 
-test.describe('AI Zero Step', () => {
+test.describe('AI Zero sStep', () => {
     test('Should show dashboard after login', async ({ page, browserName }) => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Zero Steps only works in chromium');
