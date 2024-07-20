@@ -1,3 +1,25 @@
+# 0.11.0 (2024-07-20)
+
+### Bug Fixes
+
+- Add page URL environment variable ([aab2340](https://github.com/apis3445/Playwright/commit/aab2340225c6a07f6c8206769411f6ac5a5b37c7))
+- Add secret variable ([b559d5d](https://github.com/apis3445/Playwright/commit/b559d5d7b29a8032de7755c5f866773b484d4d5b))
+- Basic pipeline artifact ([bdde590](https://github.com/apis3445/Playwright/commit/bdde59036630d8ad17d7a679b0aae75d636e8ee1))
+- Environment variable ([d3686e6](https://github.com/apis3445/Playwright/commit/d3686e61623bfefd7dd6cd45a49b0f6efe26af12))
+- Fix basic pipeline ([25dc942](https://github.com/apis3445/Playwright/commit/25dc9423f3080d85b01c5f368a0ff8ee2dd2c28d))
+- Fix npm install in shard tests ([9517992](https://github.com/apis3445/Playwright/commit/951799209a45d2eea00d06dbba2b0c0c1ec19920))
+- Update images for visual testing due to changes in the UI ([3b7c48d](https://github.com/apis3445/Playwright/commit/3b7c48d436fa60cdfce5d96dbccbfd37ec8ee6ff))
+- Pipeline test execution ([21b7531](https://github.com/apis3445/Playwright/commit/21b753180115251e304c1bef9be6fa17e5378a24))
+- Remove extra import ([dff4476](https://github.com/apis3445/Playwright/commit/dff4476d8f1d454d071173952d4a2cc5c4e85a3b))
+- Rename folder 'Locale&Geo' to 'Locale_Geo' to avoid issues with special characters in folder names ([a5b614d](https://github.com/apis3445/Playwright/commit/a5b614d986c9b3ab23b5316d2d7134077f1a25f7))
+- Skip geo test in firefox ([51fc0ad](https://github.com/apis3445/Playwright/commit/51fc0ade2caee8d28533450b8d7f10b8ce208afc))
+- Steps in pipeline ([1afd28d](https://github.com/apis3445/Playwright/commit/1afd28d7bf1083212dac3e29f25875492b0cc27e))
+- Update snapshots ([9bec3d8](https://github.com/apis3445/Playwright/commit/9bec3d8ffe62d3b091724db34cb97aa4a1b39189))
+
+### Features
+
+- Update packages to latest versions and add a basic pipeline setup for continuous integration ([a773ef1](https://github.com/apis3445/Playwright/commit/a773ef151a8c4254255e669096813fd88c50c5ed))
+
 # 0.10.0 (2024-06-22)
 
 ### Bug Fixes
@@ -13,6 +35,8 @@
 
 ### Features
 
+- bing maps test ([9e71e72](https://github.com/apis3445/Playwright/commit/9e71e726d7e267c6830af439e5e4dbb6d4e8314f))
+- bingmaps tests click in uncollapse ([7712854](https://github.com/apis3445/Playwright/commit/771285482e139afb4b8bf93b5c7bdd4d4f88a1b1))
 - Update documentation and add geolocation test ([556f43b](https://github.com/apis3445/Playwright/commit/556f43b4904b8cfda20462e79cbaaea30d4931c4))
 
 # 0.8.1 (2024-06-08)
@@ -28,6 +52,7 @@
 
 ### Features
 
+- attach excel to the html reporter ([46a2abd](https://github.com/apis3445/Playwright/commit/46a2abd88d9ad668197ef58c10c8fbf79e261f52))
 - Add ExcelHelper to check excel files ([13f3288](https://github.com/apis3445/PlaywrightFramework/commit/13f3288504831dec8ba765b8fbb61eb2c929a61a))
 
 # 0.7.0 (2024-04-27)
@@ -47,7 +72,6 @@
 - get label for input text ([5dbe862](https://github.com/apis3445/PlaywrightFramework/commit/5dbe86213d387d62bb05f36a23f395dd98ab42c4))
 - images in the report ([3d38a68](https://github.com/apis3445/PlaywrightFramework/commit/3d38a68a1fb79ff09aa892e7a97a8c7c8cc1c9ff))
 - Increase timeout ([de6d45a](https://github.com/apis3445/PlaywrightFramework/commit/de6d45a86773ca8c553bc10340eeab5bca3ea686))
-- Increase timeout ([2592136](https://github.com/apis3445/PlaywrightFramework/commit/25921366d37c8321fc52f9dceccd4fb17a5e4127))
 - increase timeouts ([c2e4c27](https://github.com/apis3445/PlaywrightFramework/commit/c2e4c27ccb597c302756ce9a1fbb5aac226ea677))
 - increase timeouts ([6d6e508](https://github.com/apis3445/PlaywrightFramework/commit/6d6e508e8413a5ea3e7159bbcc140cbaa31a7c48))
 - increase timeouts for wait dashboard ([3937413](https://github.com/apis3445/PlaywrightFramework/commit/393741313738cfc85da3603b228f5bdff9f87271))
