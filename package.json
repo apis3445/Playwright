@@ -29,12 +29,12 @@
   "dependencies": {
     "@axe-core/playwright": "^4.9.1",
     "@microsoft/mpt-reporter": "0.1.0-22052024-private-preview",
-    "@playwright/test": "^1.45.0",
+    "@playwright/test": "^1.45.1",
     "checkly": "^4.5.2",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "mustache": "^4.2.0",
-    "playwright-qase-reporter": "^2.0.4"
+    "playwright-qase-reporter": "^2.0.6"
   },
   "config": {
     "commitizen": {
