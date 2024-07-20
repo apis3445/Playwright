@@ -35,7 +35,7 @@ test.describe('Synthetic testing', () => {
         await expect(page.locator('#top5 canvas')).toBeVisible({ timeout: timeout });
         await expect(page.locator('#top5Debt canvas')).toBeVisible({ timeout: timeout });
         await expect(page.locator('#top5DaysDelay canvas')).toBeVisible({ timeout: timeout });
-        await expect(page.locator('#summaryExpiration')).toBeVisible();
+        await expect(page.locator('#summaryExpiration canvas')).toBeVisible({ timeout: timeout });
         const topMenuLocator = 'app-menu > p-menubar > .p-menubar > p-menubarsub > ul > li > .p-menuitem-content > a > .p-menuitem-text';
         const menusInPage = await page.locator(topMenuLocator).allInnerTexts();
         const menus = ['AccountsReceivable', 'Config'];

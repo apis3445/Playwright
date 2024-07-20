@@ -3,22 +3,22 @@
 ### Bug Fixes
 
 - Add page URL environment variable ([aab2340](https://github.com/apis3445/Playwright/commit/aab2340225c6a07f6c8206769411f6ac5a5b37c7))
-- add secret variable ([b559d5d](https://github.com/apis3445/Playwright/commit/b559d5d7b29a8032de7755c5f866773b484d4d5b))
-- basic pipeline artifact ([bdde590](https://github.com/apis3445/Playwright/commit/bdde59036630d8ad17d7a679b0aae75d636e8ee1))
+- Add secret variable ([b559d5d](https://github.com/apis3445/Playwright/commit/b559d5d7b29a8032de7755c5f866773b484d4d5b))
+- Basic pipeline artifact ([bdde590](https://github.com/apis3445/Playwright/commit/bdde59036630d8ad17d7a679b0aae75d636e8ee1))
 - Environment variable ([d3686e6](https://github.com/apis3445/Playwright/commit/d3686e61623bfefd7dd6cd45a49b0f6efe26af12))
 - Fix basic pipeline ([25dc942](https://github.com/apis3445/Playwright/commit/25dc9423f3080d85b01c5f368a0ff8ee2dd2c28d))
-- fix npm install in shard tests ([9517992](https://github.com/apis3445/Playwright/commit/951799209a45d2eea00d06dbba2b0c0c1ec19920))
+- Fix npm install in shard tests ([9517992](https://github.com/apis3445/Playwright/commit/951799209a45d2eea00d06dbba2b0c0c1ec19920))
 - Update images for visual testing due to changes in the UI ([3b7c48d](https://github.com/apis3445/Playwright/commit/3b7c48d436fa60cdfce5d96dbccbfd37ec8ee6ff))
-- pipeline test execution ([21b7531](https://github.com/apis3445/Playwright/commit/21b753180115251e304c1bef9be6fa17e5378a24))
-- remove extra import ([dff4476](https://github.com/apis3445/Playwright/commit/dff4476d8f1d454d071173952d4a2cc5c4e85a3b))
-- rename folder Locale&Geo ([a5b614d](https://github.com/apis3445/Playwright/commit/a5b614d986c9b3ab23b5316d2d7134077f1a25f7))
-- skip geo test in firefox ([51fc0ad](https://github.com/apis3445/Playwright/commit/51fc0ade2caee8d28533450b8d7f10b8ce208afc))
+- Pipeline test execution ([21b7531](https://github.com/apis3445/Playwright/commit/21b753180115251e304c1bef9be6fa17e5378a24))
+- Remove extra import ([dff4476](https://github.com/apis3445/Playwright/commit/dff4476d8f1d454d071173952d4a2cc5c4e85a3b))
+- Rename folder 'Locale&Geo' to 'Locale_Geo' to avoid issues with special characters in folder names ([a5b614d](https://github.com/apis3445/Playwright/commit/a5b614d986c9b3ab23b5316d2d7134077f1a25f7))
+- Skip geo test in firefox ([51fc0ad](https://github.com/apis3445/Playwright/commit/51fc0ade2caee8d28533450b8d7f10b8ce208afc))
 - Steps in pipeline ([1afd28d](https://github.com/apis3445/Playwright/commit/1afd28d7bf1083212dac3e29f25875492b0cc27e))
-- update snapshots ([9bec3d8](https://github.com/apis3445/Playwright/commit/9bec3d8ffe62d3b091724db34cb97aa4a1b39189))
+- Update snapshots ([9bec3d8](https://github.com/apis3445/Playwright/commit/9bec3d8ffe62d3b091724db34cb97aa4a1b39189))
 
 ### Features
 
-- update packages & add basic pipeline ([a773ef1](https://github.com/apis3445/Playwright/commit/a773ef151a8c4254255e669096813fd88c50c5ed))
+- Update packages to latest versions and add a basic pipeline setup for continuous integration ([a773ef1](https://github.com/apis3445/Playwright/commit/a773ef151a8c4254255e669096813fd88c50c5ed))
 
 # 0.10.0 (2024-06-22)
 
