@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { APIRequestContext, APIResponse, Page } from '@playwright/test';
+import test, { APIRequestContext, APIResponse, Page } from '@playwright/test';
 import { request } from '@playwright/test';
+import { AnnotationHelper } from './annotations/AnnotationHelper';
+import { AnnotationType } from './annotations/AnnotationType';
 
 export class ApiHelper {
 
 
-    constructor(private page: Page, private baseUrl: string) {
+    constructor(private page: Page, private baseUrl: string, private annotationHelper: AnnotationHelper) {
 
     }
 
@@ -80,9 +82,12 @@ export class ApiHelper {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async mockApi(url: string, jsonData: any) {
-        await this.page.route(url, async route => {
-            await route.fulfill({ body: JSON.stringify(jsonData) });
+    async mockApi(description: string, url: string, jsonData: any) {
+        this.annotationHelper.addAnnotation(AnnotationType.Mock, description);
+        await test.step(description, async () => {
+            await this.page.route(url, async route => {
+                await route.fulfill({ body: JSON.stringify(jsonData) });
+            });
         });
     }
 

@@ -1,7 +1,6 @@
-import { Page, test } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { ApiHelper } from '../../utils/ApiHelper';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
-import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import summary from '../../api/data/summary.json';
 import summaryExpiration from '../../api/data/summaryExpiration.json';
 import top5Type from '../../api/data/top5Type.json';
@@ -19,7 +18,7 @@ export class AccountReceivableApi {
 
     constructor(private page: Page) {
         const baseURL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
-        this.apiHelper = new ApiHelper(this.page, baseURL);
+        this.apiHelper = new ApiHelper(this.page, baseURL, this.annotationHelper);
     }
 
     /**
@@ -27,11 +26,7 @@ export class AccountReceivableApi {
      */
     async mockSummary() {
         const stepDescription = 'Modify the summary with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Resumen', summary);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Resumen', summary);
     }
 
     /**
@@ -39,11 +34,7 @@ export class AccountReceivableApi {
      */
     async mockSummaryExpiration() {
         const stepDescription = 'Modify the "Sumary Expiration" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/ResumenVencimientos', summaryExpiration);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/ResumenVencimientos', summaryExpiration);
     }
 
     /**
@@ -51,11 +42,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Delay() {
         const stepDescription = 'Modify the "Top 5 delay" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top5Atraso', top5Delay);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top5Atraso', top5Delay);
     }
 
     /**
@@ -63,11 +50,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Total() {
         const stepDescription = 'Modify the "Top 5 total" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top5Total', top5Total);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top5Total', top5Total);
     }
 
     /**
@@ -75,11 +58,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Type() {
         const stepDescription = 'Modify the "Top 5 type" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top5Tipo', top5Type);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top5Tipo', top5Type);
     }
 
     /**
@@ -87,11 +66,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit1() {
         const stepDescription = 'Modify the "Top 10 Limit 1" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top10Limite1', top10Limit1);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top10Limite1', top10Limit1);
     }
 
     /**
@@ -99,11 +74,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit2() {
         const stepDescription = 'Modify the "Top 10 Limit 2" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top10Limite2', top10Limit2);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top10Limite2', top10Limit2);
     }
 
     /**
@@ -111,11 +82,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit3() {
         const stepDescription = 'Modify the "Top 10 Limit 3" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top10Limite3', top10Limit3);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top10Limite3', top10Limit3);
     }
 
     /**
@@ -123,15 +90,11 @@ export class AccountReceivableApi {
      */
     async mockTop10ToExpire() {
         const stepDescription = 'Modify the "Top 10 To Expire" with fixed data';
-        this.annotationHelper.addAnnotation(AnnotationType.Mock, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
-        await test.step(stepDescription, async () => {
-            await this.apiHelper.mockApi('*/**/api/Cobranza/Top10PorVencer', top10ToExpire);
-        });
+        await this.apiHelper.mockApi(stepDescription, '*/**/api/Cobranza/Top10PorVencer', top10ToExpire);
     }
 
     /**
-     * Mock all apis
+     * Mock all apis for dashboard
      */
     async mockAllApis() {
         await this.mockSummary();
