@@ -6,7 +6,6 @@ import { AnnotationType } from './annotations/AnnotationType';
 
 export class ApiHelper {
 
-
     constructor(private page: Page, private baseUrl: string, private annotationHelper: AnnotationHelper) {
 
     }

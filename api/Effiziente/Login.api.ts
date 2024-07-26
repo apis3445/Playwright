@@ -6,7 +6,7 @@ import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 export class LoginApi {
 
     apiHelper: ApiHelper;
-    private annotationHelper = new AnnotationHelper(this.page, '');
+    private annotationHelper = new AnnotationHelper(this.page, 'login');
 
     constructor(private page: Page) {
         const baseURL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
