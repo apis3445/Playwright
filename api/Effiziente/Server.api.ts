@@ -1,26 +1,28 @@
 import test, { Page } from '@playwright/test';
 import { ApiHelper } from '../../utils/ApiHelper';
 import { Server } from '../models/Effiziente/Server';
+import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 
 export class ServerApi {
 
     apiHelper: ApiHelper;
     api = 'api/Server';
+    private annotationHelper = new AnnotationHelper(this.page, '');
 
     constructor(private page: Page) {
-        const baseURL = process.env.EFFIZIENTE_API_URL ? process.env.EFFIZIENTE_API_URL : 'https://effizienteauthdemo.azurewebsites.net';
-        this.apiHelper = new ApiHelper(this.page, baseURL);
+        const baseURL = process.env.EFFIZIENTE_API_URL ?? 'https://effizienteauthdemo.azurewebsites.net';
+        this.apiHelper = new ApiHelper(this.page, baseURL, this.annotationHelper);
     }
 
     /**
-     * Wait for the server is created
+     * Wait for the server to be created
      */
     waitForCreateServer() {
         return this.apiHelper.waitForResponse(this.api, 201, 'POST');
     }
 
     /**
-     * Wait for get the list of servers
+     * Wait to get the list of servers
      */
     waitForGetServers() {
         return this.apiHelper.waitForResponse(this.api);
@@ -28,7 +30,7 @@ export class ServerApi {
 
     /**
      * Delete a server by api
-     * @param id Server id
+     * @param {number} id Server id
      */
     async deleteServer(id: number) {
         await test.step('Delete server with id: "' + id + '"', async () => {
@@ -39,7 +41,7 @@ export class ServerApi {
 
     /**
      * Create a server with api
-     * @param server Data for the server
+     * @param server Data to create a server
      * @returns api response
      */
     async createServer(server: Server) {
