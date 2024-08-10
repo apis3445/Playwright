@@ -46,7 +46,6 @@ export class BaseComponent {
         if (this.isAnnotationEnabled) {
             this.addAnnotation(stepDescription);
             await this.highlightStep(stepDescription);
-            await this.addDescription('Show description');
             return this.addStep(stepDescription, stepFunction);
         } else {
             return stepFunction();
@@ -79,32 +78,31 @@ export class BaseComponent {
         if (this.isHighlightEnabled) {
             await test.step('Highlight: ' + stepDescription, async () => {
                 await this.locator.highlight();
+                await this.addDescription(stepDescription);
             });
         }
     }
 
     private async addDescription(stepDescription: string) {
-        if (this.isHighlightEnabled) {
-            const debugElementId = 'playright-debug';
-            await this.page.evaluate(([description, debugElementId]) => {
-                let debugElement = document.getElementById(debugElementId);
-                if (!debugElement) {
-                    debugElement = document.createElement('div');
-                    debugElement.id = debugElementId;
-                    debugElement.style.backgroundColor = '#000';
-                    debugElement.style.color = '#fff';
-                    debugElement.style.position = 'fixed';
-                    debugElement.style.left = '0';
-                    debugElement.style.right = '0';
-                    debugElement.style.bottom = '0';
-                    debugElement.style.padding = '15px 30px';
-                    debugElement.style.opacity = '0.8';
-                    debugElement.style.zIndex = '1000';
-                    document.body.appendChild(debugElement);
-                }
-                debugElement.innerHTML = description;
-            }, [stepDescription, debugElementId]);
-        }
+        const debugElementId = 'playright-debug';
+        await this.page.evaluate(([description, debugElementId]) => {
+            let debugElement = document.getElementById(debugElementId);
+            if (!debugElement) {
+                debugElement = document.createElement('div');
+                debugElement.id = debugElementId;
+                debugElement.style.backgroundColor = '#000';
+                debugElement.style.color = '#fff';
+                debugElement.style.position = 'fixed';
+                debugElement.style.left = '0';
+                debugElement.style.right = '0';
+                debugElement.style.bottom = '0';
+                debugElement.style.padding = '15px 30px';
+                debugElement.style.opacity = '0.8';
+                debugElement.style.zIndex = '1000';
+                document.body.appendChild(debugElement);
+            }
+            debugElement.innerHTML = description;
+        }, [stepDescription, debugElementId]);
     }
 
     /**
@@ -147,6 +145,4 @@ export class BaseComponent {
             return this.label;
         });
     }
-
-
 }
