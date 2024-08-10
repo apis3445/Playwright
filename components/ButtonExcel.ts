@@ -6,6 +6,7 @@ import { ExcelHelper } from '../utils/ExcelHelper';
 export class ButtonExcel extends BaseComponent {
 
     fileName = '';
+    private excelHelper: ExcelHelper;
 
     /**
      * Constructor
@@ -18,6 +19,7 @@ export class ButtonExcel extends BaseComponent {
         super(page, annotationHelper, locator);
         this.text = this.name;
         this.label = name;
+        this.excelHelper = new ExcelHelper();
     }
 
     /**
@@ -25,7 +27,7 @@ export class ButtonExcel extends BaseComponent {
      */
     async click(fileName: string) {
         this.fileName = fileName;
-        const stepDescription = 'Click: "' + await this.getText() + '"';
+        const stepDescription = `Click: "${await this.getText()}"`;
         await this.addStepWithAnnotation(stepDescription, async () => {
             // Start waiting for download before clicking. Note no await.
             const downloadPromise = this.page.waitForEvent('download');
@@ -34,15 +36,13 @@ export class ButtonExcel extends BaseComponent {
             // Wait for the download process to complete and save the downloaded file somewhere.
             await download.saveAs(fileName);
             //Attach the excel file to the reporter
-            await this.testInfo.attach(fileName, {path: fileName} );
+            await this.testInfo.attach(fileName, { path: fileName });
         });
     }
 
     /** Gets the Excel rows */
     async getExcelRows() {
-        const excelHelper = new ExcelHelper();
-        const excelRows = await excelHelper.readExcel(this.fileName, 'Servers');
-        return excelRows;
+        return await this.excelHelper.readExcel(this.fileName, 'Servers');
     }
 
 }

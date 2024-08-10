@@ -13,7 +13,7 @@ export class Link extends BaseComponent {
      * True - To locate by role/name
      * False - To locate by css selector
      */
-    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true, isFirst = false) { 
+    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true, isFirst = false) {
         let locator: Locator = page.getByRole('link', { name: name });
         if (!byRole)
             locator = page.locator(name);
@@ -29,7 +29,7 @@ export class Link extends BaseComponent {
      */
     async click() {
         const linkText = await this.getText();
-        const stepDescription = 'Click: "' + linkText + '"';
+        const stepDescription = `Click: "${linkText}"`;
         await this.addStepWithAnnotation(stepDescription, async () => {
             await this.locator.click();
         });
@@ -50,5 +50,4 @@ export class Link extends BaseComponent {
             return this.label;
         });
     }
-
 }

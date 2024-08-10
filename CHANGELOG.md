@@ -1,3 +1,20 @@
+# 0.12.0 (2024-08-10)
+
+### Enhancements
+
+- Refactored multiple components for better naming conventions and readability.
+- Removed unused code and imports.
+- Updated dependencies and versions.
+
+### Bug Fixes
+
+- Fixed typos in class names and improved string interpolation in log messages.
+
+### Documentation
+
+- Added and updated JSDoc comments for better documentation.
+- Removed outdated images from Accessibility README.
+
 # 0.11.0 (2024-07-20)
 
 ### Bug Fixes

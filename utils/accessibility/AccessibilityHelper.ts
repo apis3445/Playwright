@@ -5,7 +5,6 @@ import { PageErrors } from './PageErrors';
 import { AxeErrors } from './AxeErrors';
 import { AxeError } from './models/AxeError';
 import { Annotation } from '../annotations/Annotation';
-import { Dashboard } from './Dashboard';
 import AxeBuilder from '@axe-core/playwright';
 
 export class AccessibilityHelper {
@@ -40,9 +39,6 @@ export class AccessibilityHelper {
             this.totalErrors += this.currentAxeErrors.length;
             await this.addAnnotations();
             await this.pageErrors.attachBugsByPage(keyPage, this.currentAxeErrors);
-            const dashboard = new Dashboard(this.testInfo);
-            await dashboard.saveToFile(keyPage, this.currentAxeErrors);
-            await dashboard.generateDashboard();
             expect.soft(accessibilityErrors.length, 'Accessibility errors should be 0').toBe(0);
         });
     }
