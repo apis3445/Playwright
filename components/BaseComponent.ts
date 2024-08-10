@@ -2,12 +2,13 @@ import { Locator, Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
 /**
- * BaseComponent class provides a foundational structure for UI components in a Playwright testing environment.
+ * Provides a foundational structure for UI components that can be reused for different components
+ * for example input text, combo box, calendar.
  * It integrates with AnnotationHelper to add annotations and highlights for debugging and reporting purposes.
  */
 export class BaseComponent {
     locator: Locator;
-    type: string;
+    componentType: string;
     text?: string;
     label?: string;
     protected isAnnotationEnabled = true;
@@ -19,7 +20,7 @@ export class BaseComponent {
      * @param annotationHelper AnnotationHelper object
      */
     constructor(protected page: Page, protected annotationHelper: AnnotationHelper, locator: Locator) {
-        this.type = this.constructor.name;
+        this.componentType = this.constructor.name;
         this.locator = locator;
     }
 
@@ -30,7 +31,7 @@ export class BaseComponent {
      */
     addAnnotation(annotationDescription: string): void {
         if (this.isAnnotationEnabled) {
-            this.annotationHelper.addAnnotation(this.type, annotationDescription);
+            this.annotationHelper.addAnnotation(this.componentType, annotationDescription);
         }
     }
 
@@ -45,7 +46,8 @@ export class BaseComponent {
         if (this.isAnnotationEnabled) {
             this.addAnnotation(stepDescription);
             await this.highlightStep(stepDescription);
-            return await this.addStep(stepDescription, stepFunction);
+            await this.addDescription('Show description');
+            return this.addStep(stepDescription, stepFunction);
         } else {
             return stepFunction();
         }
@@ -75,28 +77,33 @@ export class BaseComponent {
      */
     async highlightStep(stepDescription: string): Promise<void> {
         if (this.isHighlightEnabled) {
-            const debugElementId = 'playright-debug';
             await test.step('Highlight: ' + stepDescription, async () => {
                 await this.locator.highlight();
-                await this.page.evaluate(([description, debugElementId]) => {
-                    let debugElement = document.getElementById(debugElementId);
-                    if (!debugElement) {
-                        debugElement = document.createElement('div');
-                        debugElement.id = debugElementId;
-                        debugElement.style.backgroundColor = '#000';
-                        debugElement.style.color = '#fff';
-                        debugElement.style.position = 'fixed';
-                        debugElement.style.left = '0';
-                        debugElement.style.right = '0';
-                        debugElement.style.bottom = '0';
-                        debugElement.style.padding = '15px 30px';
-                        debugElement.style.opacity = '0.8';
-                        debugElement.style.zIndex = '1000';
-                        document.body.appendChild(debugElement);
-                    }
-                    debugElement.innerHTML = description;
-                }, [stepDescription, debugElementId]);
             });
+        }
+    }
+
+    private async addDescription(stepDescription: string) {
+        if (this.isHighlightEnabled) {
+            const debugElementId = 'playright-debug';
+            await this.page.evaluate(([description, debugElementId]) => {
+                let debugElement = document.getElementById(debugElementId);
+                if (!debugElement) {
+                    debugElement = document.createElement('div');
+                    debugElement.id = debugElementId;
+                    debugElement.style.backgroundColor = '#000';
+                    debugElement.style.color = '#fff';
+                    debugElement.style.position = 'fixed';
+                    debugElement.style.left = '0';
+                    debugElement.style.right = '0';
+                    debugElement.style.bottom = '0';
+                    debugElement.style.padding = '15px 30px';
+                    debugElement.style.opacity = '0.8';
+                    debugElement.style.zIndex = '1000';
+                    document.body.appendChild(debugElement);
+                }
+                debugElement.innerHTML = description;
+            }, [stepDescription, debugElementId]);
         }
     }
 
@@ -106,22 +113,22 @@ export class BaseComponent {
      */
     async getInputLabel(): Promise<string> {
         return await this.addStep('Get the input label', async () => {
-            if (this.label) 
+            if (this.label)
                 return this.label;
 
             const id = await this.locator.getAttribute('id');
             if (id) {
                 const labelElement = this.page.locator(`label[for="${id}"]`);
-                if (await labelElement.isVisible()) 
+                if (await labelElement.isVisible())
                     return await labelElement.innerText();
             }
 
             const placeHolderAttribute = await this.locator.getAttribute('placeholder');
-            if (placeHolderAttribute) 
+            if (placeHolderAttribute)
                 return placeHolderAttribute;
 
             const ariaLabelAttribute = await this.locator.getAttribute('aria-label');
-            if (ariaLabelAttribute) 
+            if (ariaLabelAttribute)
                 return ariaLabelAttribute;
             return '';
         });
@@ -134,9 +141,12 @@ export class BaseComponent {
     async getText(): Promise<string> {
         const stepDescription = 'Get label for the button';
         return await this.addStep(stepDescription, async () => {
-            if (this.label) 
+            if (this.label)
                 return this.label;
             this.label = await this.locator.textContent() ?? '';
+            return this.label;
         });
     }
+
+
 }

@@ -5,8 +5,8 @@ import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 
 export class ServerApi {
 
-    apiHelper: ApiHelper;
-    api = 'api/Server';
+    private apiHelper: ApiHelper;
+    private api = 'api/Server';
     private annotationHelper = new AnnotationHelper(this.page, '');
 
     constructor(private page: Page) {
@@ -33,9 +33,8 @@ export class ServerApi {
      * @param {number} id Server id
      */
     async deleteServer(id: number) {
-        await test.step('Delete server with id: "' + id + '"', async () => {
-            const apiResponse = await this.apiHelper.delete(this.api + '/' + id.toString());
-            return apiResponse;
+        return await test.step(`Delete server with Id: "${id}"`, async () => {
+            return await this.apiHelper.delete(`${this.api}/${id}`);
         });
     }
 
@@ -45,14 +44,13 @@ export class ServerApi {
      * @returns api response
      */
     async createServer(server: Server) {
-        const apiResponse = await this.apiHelper.post(this.api, server);
-        return apiResponse;
+        return await this.apiHelper.post(this.api, server);
     }
 
     /**
      * Get a server by key
-     * @param key Server key
-     * @returns 
+     * @param {string} key Server key
+     * @returns API response
      */
     async getServerByKey(key: string) {
         return await test.step('Get server with the key:' + key, async () => {

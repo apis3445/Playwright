@@ -4,6 +4,7 @@ playwright-report/
 test-results/
 test-annotations/
 report/
+logs/
 *.env
 auth/
 
