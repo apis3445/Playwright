@@ -1,4 +1,19 @@
-# 0.12.0 (2024-08-10)
+# 0.12.0 (2024-08-24)
+
+### Features
+
+- Introduced new page classes for WebdriverIO Shop including HomePage, CartPage, and ProductDetailPage.
+- Added ProductsApi class for handling product-related API calls.
+- Implemented Select component for dropdown interactions.
+- Updated addToCart test to use new WebdriverIO Shop pages and components.
+- Refactored accessibility and annotation helpers for better error processing.
+- Change the yml to include the new url for the webdriver shop
+
+### Documentation
+
+- Improve the readme to include youtube video and change to axe-core® to be compliant with Deque trademark
+
+# 0.11.2 (2024-08-10)
 
 ### Enhancements
 
