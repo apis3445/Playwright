@@ -14,18 +14,15 @@ export class HomePage extends WebDriverBasePage {
         super(page, 'Home');
     }
 
-
     /**
      * Go to the WebDriver shop home page
      */
     async goTo() {
-        private readonly baseURL = process.env.WEBDRIVERIO_SHOP || 'https://shop.webdriver.io';
-
-        async goTo() {
-            await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to the page: "${this.baseURL}"`, async () => {
-                await this.page.goto(this.baseURL);
-            });
-        }
+        const baseURL = process.env.WEBDRIVERIO_SHOP || 'https://shop.webdriver.io';
+        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to the page: "${baseURL}"`, async () => {
+            await this.page.goto(baseURL);
+        });
+    }
 
     /**
      * Click in show all button and get the products
@@ -37,7 +34,6 @@ export class HomePage extends WebDriverBasePage {
         const responseText = JSON.parse(await promise.text());
         this.products = responseText.data;
     }
-
 
     /**
      * Select a random product with the image background, (name is not unique but image is unique)
