@@ -6,7 +6,7 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 # Example tests:
 
-[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-deque. Dashboard, videos with accessibility bugs and copy bugs (POC).
+[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-core® for thorough accessibility checks. Axe-core® https://github.com/dequelabs/axe-core is a trademark of Deque Systems, Inc https://www.deque.com/. in the US and other countries. Includes dashboard, videos with accessibility bugs and copy bugs (POC).
 
 [AI](./tests/AI): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
 
@@ -87,3 +87,7 @@ Or you can run with the Visual Code Extension
 You can see the reporter on the GitHub Pages:
 
 https://apis3445.github.io/Playwright/
+
+Video with some explanation
+
+https://youtu.be/0n1F_eMkUqE?si=m6sJGV42GgHnfpcs

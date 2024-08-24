@@ -21,6 +21,7 @@ jobs:
       ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
       PAT_TOKEN_PACKAGE: ${{secrets.PAT_TOKEN_PACKAGE}}
       PAGE_URL: ${{vars.PAGE_URL}}
+      WEBDRIVERIO_SHOP: ${{vars.WEBDRIVERIO_SHOP}}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4

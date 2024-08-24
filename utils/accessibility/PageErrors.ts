@@ -104,6 +104,7 @@ export class PageErrors {
         const pageTemplate = fs.readFileSync(path.resolve(__dirname, 'templates', templateFile), {
             encoding: 'utf8',
         });
+
         const htmlPageContent = mustache.render(pageTemplate,
             {
                 axeErrors: currentAxeErrors,

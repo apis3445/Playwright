@@ -30,17 +30,31 @@ export class AccessibilityHelper {
         this.annotationHelper.addAnnotation(AnnotationType.Assert, stepDescription);
         // eslint-disable-next-line playwright/valid-title
         await test.step(stepDescription, async () => {
-            const page = this.page;
-            const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-            this.currentUrl = accessibilityScanResults.url;
-            const axeErrors = new AxeErrors(this.currentUrl, annotations);
-            const accessibilityErrors = accessibilityScanResults.violations;
-            this.currentAxeErrors = axeErrors.mapElements(keyPage, accessibilityErrors);
-            this.totalErrors += this.currentAxeErrors.length;
-            await this.addAnnotations();
+
+            const accessibilityErrors = await this.processAccessibilityErrors(keyPage, annotations);
             await this.pageErrors.attachBugsByPage(keyPage, this.currentAxeErrors);
             expect.soft(accessibilityErrors.length, 'Accessibility errors should be 0').toBe(0);
         });
+    }
+
+    /**
+     * Process accessibility errors
+     */
+    async processAccessibilityErrors(keyPage: string, annotations: Annotation[]) {
+        const accessibilityErrors = await this.getAccessibilityScanResults(keyPage, annotations);
+        await this.addAnnotations();
+        return accessibilityErrors;
+    }
+
+    async getAccessibilityScanResults(keyPage: string, annotations: Annotation[]) {
+        const page = this.page;
+        const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+        this.currentUrl = accessibilityScanResults.url;
+        const axeErrors = new AxeErrors(this.currentUrl, annotations);
+        const accessibilityErrors = accessibilityScanResults.violations;
+        this.currentAxeErrors = axeErrors.mapElements(keyPage, accessibilityErrors);
+        this.totalErrors += this.currentAxeErrors.length;
+        return accessibilityErrors;
     }
 
     /**
@@ -49,7 +63,7 @@ export class AccessibilityHelper {
     async addAnnotations() {
         await test.step('Add accessibility annotations', async () => {
             // eslint-disable-next-line playwright/no-conditional-in-test
-            const pause = process.env.DEBUG_PAUSE ? +process.env.DEBUG_PAUSE : 2000;
+            const pause = process.env.DEBUG_PAUSE || 2000;
             for (const axeError of this.currentAxeErrors) {
                 const targetLocator = this.page.locator(axeError.target).first();
                 const type = `${axeError.errorNumber}.${axeError.id}`;
@@ -58,10 +72,10 @@ export class AccessibilityHelper {
                 await this.annotationHelper.removeDescription();
                 const fileName = axeError.screenshot;
                 await this.annotationHelper.addScreenshot(targetLocator, fileName, this.testInfo);
-                await this.annotationHelper.addDescription(targetLocator, stepDescription, axeError.impact);
+                await this.annotationHelper.addErrorDescription(targetLocator, stepDescription, axeError.impact);
                 this.annotationHelper.addAnnotation(type, howToFix);
                 // eslint-disable-next-line playwright/no-wait-for-timeout
-                await this.page.waitForTimeout(pause);
+                await this.page.waitForTimeout(+pause);
                 expect.soft(axeError.id, stepDescription).toBeNull();
             }
         });

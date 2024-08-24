@@ -22,45 +22,43 @@ export class AnnotationHelper {
         this.annotations = [];
     }
 
+    async addDescription(stepDescription: string, backgroundColor: ImpactType = ImpactType.noImpact) {
+        const debugElementId = 'playright-debug';
+        await this.page.evaluate(([description, debugElementId, backgroundColor]) => {
+            let debugElement = document.getElementById(debugElementId);
+            if (!debugElement) {
+                debugElement = document.createElement('div');
+                debugElement.id = debugElementId;
+                debugElement.style.backgroundColor = backgroundColor;
+                debugElement.style.color = '#fff';
+                debugElement.style.position = 'fixed';
+                debugElement.style.left = '0';
+                debugElement.style.right = '0';
+                debugElement.style.bottom = '0';
+                debugElement.style.padding = '15px 30px';
+                debugElement.style.opacity = '0.8';
+                debugElement.style.zIndex = '1000';
+                document.body.appendChild(debugElement);
+            }
+            debugElement.innerHTML = description;
+        }, [stepDescription, debugElementId, backgroundColor]);
+    }
+
     /**
      * Add error description at the bottom
      * @param locator locator to highlight
      * @param description Description of the error
      * @param backgroundColor Background color
      */
-    async addDescription(locator: Locator, description: string, backgroundColor: ImpactType) {
+    async addErrorDescription(locator: Locator, description: string, backgroundColor: ImpactType) {
         await test.step('Add Description', async () => {
-            const params = {
-                description: description,
-                backgroundColor: backgroundColor,
-                debugElement: this.debugElement
-            };
             const element = locator.first();
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (await element.isVisible()) {
                 await element.focus();
                 await this.addBorderFocusedElement(backgroundColor);
             }
-            await this.page.evaluate(params => {
-                let debugElement = document.getElementById(params.debugElement);
-                if (!debugElement) {
-                    debugElement = document.createElement('div');
-                    debugElement.id = params.debugElement;
-                    debugElement.style.color = '#fff';
-                    debugElement.style.fontSize = '24px';
-                    debugElement.style.position = 'fixed';
-                    debugElement.style.left = '0';
-                    debugElement.style.right = '0';
-                    debugElement.style.bottom = '0';
-                    debugElement.style.padding = '20px';
-                    debugElement.style.paddingBottom = '70px';
-                    debugElement.style.opacity = '0.8';
-                    debugElement.style.zIndex = '3000';
-                    document.body.appendChild(debugElement);
-                }
-                debugElement.style.backgroundColor = params.backgroundColor;
-                debugElement.innerHTML = params.description;
-            }, params);
+            await this.addDescription(description, backgroundColor);
         });
     }
 
