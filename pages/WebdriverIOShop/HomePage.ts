@@ -19,11 +19,13 @@ export class HomePage extends WebDriverBasePage {
      * Go to the WebDriver shop home page
      */
     async goTo() {
-        const baseURL = process.env.WEBDRIVERIO_SHOP ? process.env.WEBDRIVERIO_SHOP : 'https://shop.webdriver.io';
-        await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the page: "' + baseURL + '"', async () => {
-            await this.page.goto(baseURL);
-        });
-    }
+        private readonly baseURL = process.env.WEBDRIVERIO_SHOP || 'https://shop.webdriver.io';
+
+        async goTo() {
+            await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to the page: "${this.baseURL}"`, async () => {
+                await this.page.goto(this.baseURL);
+            });
+        }
 
     /**
      * Click in show all button and get the products
