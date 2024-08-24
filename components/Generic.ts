@@ -14,4 +14,5 @@ export class Generic extends BaseComponent {
         super(page, annotationHelper, locator);
         this.text = name;
     }
+
 }
