@@ -30,7 +30,7 @@
     "@axe-core/playwright": "^4.9.1",
     "@microsoft/mpt-reporter": "0.1.0-19072024-private-preview",
     "@playwright/test": "^1.46.0",
-    "checkly": "^4.5.2",
+    "checkly": "^4.8.1",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "mustache": "^4.2.0",
