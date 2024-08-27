@@ -61,7 +61,7 @@ const config: PlaywrightTestConfig = {
                 uploadAttachments: true,
                 rootSuiteTitle: 'Playwright tests'
             }],
-        ['@microsoft/mpt-reporter'] // Microsoft Playwright Testing reporter 
+        ['@microsoft/mpt-reporter']
     ],
     /* Configure projects for major browsers */
     projects: [

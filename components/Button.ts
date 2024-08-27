@@ -13,11 +13,12 @@ export class Button extends BaseComponent {
      */
     constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
         let locator: Locator = page.getByRole('button', { name: name });
-        if (!byRole) 
+        if (!byRole)
             locator = page.locator(name);
         super(page, annotationHelper, locator);
         this.text = this.name;
-        this.label = name;
+        if (byRole)
+            this.label = name;
     }
 
     /**
