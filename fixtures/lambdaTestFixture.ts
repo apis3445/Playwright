@@ -22,7 +22,7 @@ const capabilities = {
         console: true,
         tunnel: false, // Add tunnel configuration if testing locally hosted webpage
         tunnelName: '', // Optional
-        geoLocation: 'V2', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
+        geoLocation: 'US', // country code can be fetched from https://www.lambdatest.com/capabilities-generator/
     },
 };
 
