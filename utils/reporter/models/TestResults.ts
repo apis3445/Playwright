@@ -10,6 +10,6 @@ export interface TestResults {
     statusIcon: string,
     videoPath?: string,
     screenshotPaths?: string[],
-    attachments?: string[],
+    attachments?: { path: string, name: string }[],
     errors?: string[]
 }

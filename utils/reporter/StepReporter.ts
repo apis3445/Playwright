@@ -48,9 +48,10 @@ class StepReporter implements Reporter {
         const screenshotPaths: string[] = result.attachments
             .filter(attachment => attachment.name === 'screenshot')
             .map(attachment => attachment.path ?? '') ?? [];
-        const attachments: string[] = result.attachments
+        const attachments: { path: string, name: string }[] = result.attachments
             .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video')
-            .map(attachment => attachment.path ?? '') ?? [];
+            .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
+
         // Capture errors
         const errors = result.errors.map(error => this.stripAnsiCodes(error.message ?? 'No errors')) ?? [];
 

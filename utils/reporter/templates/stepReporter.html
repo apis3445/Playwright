@@ -104,13 +104,13 @@
                 {{#screenshotPaths}}
                     <img src="{{.}}" alt="Screenshot" alt="playwright screenshots">
                 {{/screenshotPaths}}
-            </div>
-            <h2>Attachments:</h2>
-            <div class="screenshots">
+            </div>  
+            <h2>Attachments</h2>
+            <ul>
                 {{#attachments}}
-                    <img src="{{.}}" alt="Screenshot" alt="playwright screenshots">
+                <li><a href="{{path}}" target="_blank">{{name}}</a></li>
                 {{/attachments}}
-            </div>
+            </ul>
         </div>
     </div>
     <h2>Errors</h2>
