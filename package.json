@@ -1,6 +1,6 @@
 {
   "name": "playwright_framework",
-  "version": "12.0.0",
+  "version": "0.13.0",
   "description": "Playwright Framework Boilerplate",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   "dependencies": {
     "@axe-core/playwright": "^4.9.1",
     "@microsoft/mpt-reporter": "0.1.0-19072024-private-preview",
-    "@playwright/test": "^1.46.0",
+    "@playwright/test": "^1.46.1",
     "checkly": "^4.5.2",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",

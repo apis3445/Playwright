@@ -5,7 +5,9 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Login', () => {
     // eslint-disable-next-line playwright/expect-expect
-    test('Login with valid user load inventory page', async ({ page, loginPage }) => {
+    test('Login with valid user load inventory page', {
+        tag: ['@Fixture'],
+    }, async ({ page, loginPage }) => {
         await loginPage.goTo();
         //For security is better add your user info in environment variables or some Key Value service 
         await loginPage.loginWithUser(process.env.USER_NAME!, process.env.PASSWORD!);

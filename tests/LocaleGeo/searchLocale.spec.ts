@@ -12,7 +12,9 @@ test.describe('Locale translations', () => {
         timezoneId: localeInfo.timezoneId,
     });
 
-    test('Translations with locale and time zone id', async ({ page }) => {
+    test('Translations with locale and time zone id', {
+        tag: ['@LocaleGeo'],
+    }, async ({ page }) => {
         const homePage = new HomePage(page);
         //Go to google home page in the locale
         await homePage.goTo();

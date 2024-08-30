@@ -15,6 +15,7 @@
         ".eslintrc.js",
         "playwright.config.ts",
         "playwright.service.config.ts",
+        "stepReporter.ts",
         "checkly.config.ts"
     ]
 }
