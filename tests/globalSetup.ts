@@ -27,7 +27,7 @@ async function globalSetup() {
         Code: 0
     };
     await setStorage(page, userLogin, 'admin.json');
-    await browser.close();
+    await context.close();
 }
 
 /**
