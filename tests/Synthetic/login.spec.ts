@@ -3,7 +3,9 @@ import { test } from '@playwright/test';
 test.describe('Synthetic login testing', () => {
 
     // eslint-disable-next-line playwright/expect-expect
-    test('Should show dashboard', async ({ page }) => {
+    test('Should show dashboard', {
+        tag: ['@PerfAgents'],
+    }, async ({ page }) => {
         await page.goto('https://effizientedemo.azurewebsites.net');
         await page.getByLabel('Company').fill(process.env.EFFIZIENTE_COMPANY!);
         await page.getByLabel('User').fill(process.env.EFFIZIENTE_NORMAL_USER!);
