@@ -7,8 +7,7 @@ const baseUrl = process.env.EFFIZIENTE_URL!;
 
 async function globalSetup() {
     const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
+    const page = await browser.newPage();
     await page.goto(baseUrl);
     let userLogin: Login = {
         Company: process.env.EFFIZIENTE_COMPANY!,
@@ -27,7 +26,7 @@ async function globalSetup() {
         Code: 0
     };
     await setStorage(page, userLogin, 'admin.json');
-    await context.close();
+    await browser.close();
 }
 
 /**
