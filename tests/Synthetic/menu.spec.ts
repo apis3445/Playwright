@@ -20,7 +20,9 @@ test.describe('Synthetic testing', () => {
         token = responseBody.Token;
     });
 
-    test('Should show dashboard', async ({ page }) => {
+    test('Should show dashboard', {
+        tag: ['@PerfAgents'],
+    }, async ({ page }) => {
         const dashboardPageUrl = baseURL + '/AccountsReceivable/dashboard';
         const stepDescription = 'Go to:' + baseURL;
         await test.step(stepDescription, async () => {

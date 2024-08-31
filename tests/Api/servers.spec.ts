@@ -9,7 +9,9 @@ test.describe('Servers', () => {
     let id = 0;
     test.use({ storageState: 'auth/admin.json' });
 
-    test('Should add a server', async ({ page }, testInfo) => {
+    test('Should add a server', {
+        tag: ['@API'],
+    }, async ({ page }, testInfo) => {
         const serversPage = new ServersPage(page, testInfo);
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
@@ -36,7 +38,9 @@ test.describe('Servers', () => {
     });
 
     // eslint-disable-next-line playwright/expect-expect
-    test('Should edit a server', async ({ page }, testInfo) => {
+    test('Should edit a server', {
+        tag: ['@API'],
+    }, async ({ page }, testInfo) => {
         const serversPage = new ServersPage(page, testInfo);
         const key = faker.number.int({ min: 2, max: 999_998 });
         const newKey = key + 1;

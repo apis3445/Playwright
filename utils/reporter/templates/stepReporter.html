@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Test Steps</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .test { margin-bottom: 20px; }
+        .chip {
+            display: inline-block;
+            padding: 0 25px;
+            height: 32px;
+            font-size: 16px;
+            line-height: 32px;
+            border-radius: 25px;
+            background-color: #f1f1f1;
+        }
+        .desktop-webkit {
+            background-color: #42062a;
+            color: #ff9bce;
+            border: 1px solid #ff9bce;
+        }
+        .desktop-chromium {
+            background-color: #0C5406;
+            color: #9BFFB1;
+            border: 1px solid #9BFFB1;
+        }
+        .desktop-firefox {
+            background-color: #040f71;
+            color: #5dcce7;
+            border: 3px solid #5dcce7;
+        }
+        .status {
+            border-radius: 50%;
+            padding: 5px;
+        }
+        .status.passed {
+            color: green;
+        }
+        .status.failed {
+            color: red;
+        }
+        .status.flaky {
+            color: gold;
+        }
+        .tags { font-style: italic; 
+            background-color: #051d4d;
+            color: #388bfd;
+            border: 3px solid #388bfd;
+        }
+        img {
+            max-width: 100%; height: auto
+        }
+    </style>
+</head>
+<body>
+    {{#results}}
+    <div class="test">
+        <h1>
+            <span class="status {{status}}">
+                <i class="material-symbols-outlined">{{statusIcon}}</i>
+            </span>
+            {{title}}
+        </h1>
+        <div>
+            <span class="chip {{browser}}">{{browser}}</span>
+            <span class="chip tags">{{tags}}</span>
+        </div>
+        {{#description}}
+        <h2>Description</h2>
+        <p>{{description}}</p>
+        {{/description}}
+        <div class="annotations">
+            <h2>Pre conditions:</h2>
+            <ol>
+                {{#preConditions}}
+                <li>{{.}}</li>
+                {{/preConditions}}
+            </ol>
+            <h2>Steps:</h2>
+            <ol>
+                {{#steps}}
+                <li>{{.}}</li>
+                {{/steps}}
+            </ol>
+            
+            <h2>Post conditions:</h2>
+            <ol>
+                {{#postConditions}}
+                <li>{{.}}</li>
+                {{/postConditions}}
+            </ol>
+            
+            <h2>Video:</h2>
+            <video controls>
+                <source src="{{videoPath}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h2>Screenshots:</h2>
+            <div class="screenshots">
+                {{#screenshotPaths}}
+                    <img src="{{.}}" alt="Screenshot" alt="playwright screenshots">
+                {{/screenshotPaths}}
+            </div>  
+            <h2>Attachments</h2>
+            <ul>
+                {{#attachments}}
+                <li><a href="{{path}}" target="_blank">{{name}}</a></li>
+                {{/attachments}}
+            </ul>
+        </div>
+    </div>
+    <h2>Errors</h2>
+    <ol>
+        {{#errors}}
+        <li>{{.}}</li>
+        {{/errors}}
+    </ol>
+    {{/results}}
+</body>
+</html>

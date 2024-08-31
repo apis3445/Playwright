@@ -5,7 +5,9 @@ import { AccountReceivableApi } from '../../api/Effiziente/AccountsReceivable.ap
 test.describe('Check Dashboard', () => {
     test.use({ storageState: 'auth/user.json' });
     // eslint-disable-next-line playwright/expect-expect
-    test('Should show dashboard', async ({ page }) => {
+    test('Should show dashboard', {
+        tag: ['@VisualTesting'],
+    }, async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
         const accountReceivableApi = new AccountReceivableApi(page);
         //Replace api with fixed data because the dashboard changes every day

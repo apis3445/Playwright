@@ -41,27 +41,34 @@ const config: PlaywrightTestConfig = {
         baseURL: process.env.BASE_URL,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'retain-on-failure',
+        trace: 'on',
 
         video: 'retain-on-failure',
 
-        screenshot: 'only-on-failure',
+        screenshot: 'on',
 
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['html'],
-        ['playwright-qase-reporter',
-            {
-                apiToken: process.env.QASE_TOKEN,
-                projectCode: process.env.QASE_PROJECT_CODE,
-                runComplete: true,
-                basePath: 'https://api.qase.io/v1',
-                logging: true,
-                uploadAttachments: true,
-                rootSuiteTitle: 'Playwright tests'
-            }],
-        ['@microsoft/mpt-reporter']
+        // [
+        //     'playwright-qase-reporter',
+        //     {
+        //         debug: true,
+        //         testops: {
+        //             api: {
+        //                 token: process.env.QASE_TOKEN,
+        //             },
+        //             project: process.env.QASE_PROJECT_CODE,
+        //             uploadAttachments: true,
+        //             run: {
+        //                 complete: true,
+        //             },
+        //         },
+        //     },
+        // ],
+        // ['@microsoft/mpt-reporter'],
+        ['./utils/reporter/StepReporter.ts']
     ],
     /* Configure projects for major browsers */
     projects: [

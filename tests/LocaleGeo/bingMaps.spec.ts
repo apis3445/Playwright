@@ -5,11 +5,13 @@ import { AnnotationType } from '../../utils/annotations/AnnotationType';
 test.describe('Geo Location Test', () => {
     //You need the longitude, latitude and geolocation permission to access to the geolocation
     test.use({
-        geolocation: { longitude: 11.57549 , latitude: 48.13743 },
+        geolocation: { longitude: 11.57549, latitude: 48.13743 },
         permissions: ['geolocation'],
     });
-      
-    test('The bing maps is located to munich', async ({ page, browserName }) => {
+
+    test('The bing maps is located to munich', {
+        tag: ['@LocaleGeo'],
+    }, async ({ page, browserName }) => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName == 'firefox', 'Geolocation not work in firefox');
 
@@ -22,7 +24,7 @@ test.describe('Geo Location Test', () => {
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (await bingMapsPage.unCollapse.locator.isVisible())
             await bingMapsPage.unCollapse.click();
-        const assertionDescription = 'Geo name is equal to:' + geoName; 
+        const assertionDescription = 'Geo name is equal to:' + geoName;
         //Add the assertion to the html reporter annotations
         bingMapsPage.addAnnotation(AnnotationType.Assert, assertionDescription);
         //Check the current geolocation label is set to Munich
