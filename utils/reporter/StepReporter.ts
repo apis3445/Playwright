@@ -55,6 +55,12 @@ class StepReporter implements Reporter {
         return htmlText;
     }
 
+    private getFilenameWithTestNo(fileName: string, id: number): string {
+        const onlyName = path.basename(fileName);
+        const extension = path.extname(fileName);
+        return onlyName + id + extension;
+    }
+
     // Helper function to copy files
     private copyFileToResults(srcPath: string, destFolder: string) {
         const fileName = path.basename(srcPath);
@@ -73,8 +79,9 @@ class StepReporter implements Reporter {
         const results: TestResults[] = [];
 
         this.testNo++;
-        const fileName = `test_${this.testNo}.html`;
-        const filePath = path.join(this.folderResults, fileName);
+        const folderTest = this.folderResults + this.testNo;
+        const fileName = 'index.html';
+        const filePath = path.join(folderTest, fileName);
 
         const tags = test.tags.map(tag => tag.replace('@', '')) ?? [];
         const statusIcon = TestStatusIcon[result.status as keyof typeof TestStatusIcon];
@@ -101,10 +108,10 @@ class StepReporter implements Reporter {
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
 
         // Copy video and screenshot files to folderResults
-        const copiedVideoPath = videoPath ? this.copyFileToResults(videoPath, this.folderResults) : undefined;
-        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.copyFileToResults(screenshotPath, this.folderResults));
+        const copiedVideoPath = videoPath ? this.copyFileToResults(videoPath, folderTest) : undefined;
+        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.copyFileToResults(screenshotPath, folderTest));
         const copiedAttachments = attachments.map(attachment => ({
-            path: this.copyFileToResults(attachment.path, this.folderResults),
+            path: this.copyFileToResults(attachment.path, folderTest),
             name: attachment.name
         }));
 
