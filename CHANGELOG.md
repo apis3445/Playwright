@@ -1,3 +1,10 @@
+# 0.13.0 (2024-08-24)
+
+### Features
+
+- Added a new custom reporter with description, pre conditions, post conditions , steps, video, attachments
+- Change github pages to show the custom reporter
+
 # 0.12.0 (2024-08-24)
 
 ### Features
