@@ -8,7 +8,7 @@ import { TestResults } from './models/TestResults';
 
 class StepReporter implements Reporter {
     private testNo = 0;
-    private folderResults = 'test-results/';
+    private folderResults = 'report/';
 
     // Helper function to strip ANSI escape codes
     private stripAnsiCodes(text: string): string {
