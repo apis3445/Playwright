@@ -51,23 +51,23 @@ const config: PlaywrightTestConfig = {
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['html'],
-        // [
-        //     'playwright-qase-reporter',
-        //     {
-        //         debug: true,
-        //         testops: {
-        //             api: {
-        //                 token: process.env.QASE_TOKEN,
-        //             },
-        //             project: process.env.QASE_PROJECT_CODE,
-        //             uploadAttachments: true,
-        //             run: {
-        //                 complete: true,
-        //             },
-        //         },
-        //     },
-        // ],
-        // ['@microsoft/mpt-reporter'],
+        [
+            'playwright-qase-reporter',
+            {
+                debug: true,
+                testops: {
+                    api: {
+                        token: process.env.QASE_TOKEN,
+                    },
+                    project: process.env.QASE_PROJECT_CODE,
+                    uploadAttachments: true,
+                    run: {
+                        complete: true,
+                    },
+                },
+            },
+        ],
+        ['@microsoft/mpt-reporter'],
         ['./utils/reporter/StepReporter.ts']
     ],
     /* Configure projects for major browsers */
