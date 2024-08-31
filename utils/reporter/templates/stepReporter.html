@@ -54,6 +54,15 @@
         img {
             max-width: 100%; height: auto
         }
+        .black { color: black; }
+        .red { color: red; }
+        .green { color: green; }
+        .yellow { color: yellow; }
+        .blue { color: blue; }
+        .magenta { color: magenta; }
+        .cyan { color: cyan; }
+        .white { color: white; }
+        .dim { color: darkblue }
     </style>
 </head>
 <body>
@@ -116,7 +125,7 @@
     <h2>Errors</h2>
     <ol>
         {{#errors}}
-        <li>{{.}}</li>
+        <li>{{{.}}}</li>
         {{/errors}}
     </ol>
     {{/results}}

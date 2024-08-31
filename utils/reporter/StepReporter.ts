@@ -11,10 +11,48 @@ class StepReporter implements Reporter {
     private folderResults = 'report/';
 
     // Helper function to strip ANSI escape codes
-    private stripAnsiCodes(text: string): string {
-        // eslint-disable-next-line no-control-regex
-        const strippedText = text.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
-        return strippedText;
+    // Helper function to map ANSI escape codes to HTML styles
+    private ansiToHtml(text: string): string {
+        const ansiToHtmlMap: Record<string, string> = {
+            '\u001b[30m': '<span class="black">',
+            '\u001b[31m': '<span class="red">',
+            '\u001b[32m': '<span class="green">',
+            '\u001b[33m': '<span class="yellow">',
+            '\u001b[34m': '<span class="blue">',
+            '\u001b[35m': '<span class="magenta">',
+            '\u001b[36m': '<span class="cyan">',
+            '\u001b[37m': '<span class="white">',
+            '\u001b[0m': '</span>', // Reset
+            '\u001b[2m': '<span class="dim">', // Dim
+            '\u001b[22m': '</span>', // Reset dim
+            '\u001b[39m': '</span>', // Reset color
+            // Add more mappings as needed
+        };
+
+        let htmlText = text;
+        const openTags: string[] = [];
+
+        for (const [ansiCode, htmlTag] of Object.entries(ansiToHtmlMap)) {
+            if (htmlTag.startsWith('<span')) {
+                openTags.push(htmlTag);
+            } else if (htmlTag === '</span>') {
+                if (openTags.length > 0) {
+                    openTags.pop();
+                } else {
+                    // If there is no matching opening tag, skip this closing tag
+                    continue;
+                }
+            }
+            htmlText = htmlText.split(ansiCode).join(htmlTag);
+        }
+
+        // Close any remaining open tags
+        while (openTags.length > 0) {
+            htmlText += '</span>';
+            openTags.pop();
+        }
+
+        return htmlText;
     }
 
     onTestEnd(test: TestCase, result: TestResult) {
@@ -53,7 +91,7 @@ class StepReporter implements Reporter {
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
 
         // Capture errors
-        const errors = result.errors.map(error => this.stripAnsiCodes(error.message ?? 'No errors')) ?? [];
+        const errors = result.errors.map(error => this.ansiToHtml(error.message ?? 'No errors')) ?? [];
 
         results.push({
             title: test.title,
