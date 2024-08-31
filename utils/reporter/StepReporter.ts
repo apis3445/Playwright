@@ -66,7 +66,7 @@ class StepReporter implements Reporter {
         }
 
         fs.copyFileSync(srcPath, destFile);
-        return destFile;
+        return fileName;
     }
 
     onTestEnd(test: TestCase, result: TestResult) {
