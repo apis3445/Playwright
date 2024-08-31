@@ -49,7 +49,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run playwright tests
-        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/LocaleGeo test/Qase test/Synthetic test/VisualTesting --reporter=html,junit,./utils/reporter/StepReporter.ts
+        run: PLAYWRIGHT_HTML_REPORT=report PLAYWRIGHT_JUNIT_OUTPUT_NAME=report/results.xml npx playwright test tests/AI tests/Api tests/Basic tests/Excel test/Fixture-LambdaTest test/LocaleGeo test/Qase test/Synthetic test/VisualTesting --reporter=html,junit,./utils/reporter/StepReporter.ts
 
       - name: Upload html report as artifact
         uses: actions/upload-artifact@v4
@@ -57,6 +57,14 @@ jobs:
         with:
           name: playwright-report
           path: report/
+          retention-days: 5
+
+      - name: Upload html steps as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: steps-report
+          path: steps-report/
           retention-days: 5
 
       - name: Publish html reporter to Github Pages
@@ -68,13 +76,14 @@ jobs:
 
       - name: Upload xml junit result as artifact
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: java-junit
           path: ${{ github.workspace }}/report/results.xml
 
       - name: Generate Junit Report in Github
         uses: dorny/test-reporter@v1
-        if: success() || failure() #run this step even if previous step failed
+        if: always()
         with:
           name: Junit Tests # Name of the check run which will be created
           path: ${{ github.workspace }}/report/*.xml # Path to test results
