@@ -7,6 +7,7 @@ report/
 logs/
 *.env
 auth/
+steps-report/
 
 results.xml
 .husky/pre-commit
