@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <title>Accessibility Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .error-list {
+            margin: 20px 0;
+        }
+        .error-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error-item h3 {
+            margin-top: 0;
+        }
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .chip {
+            display: inline-block;
+            padding: 0 10px;
+            height: 24px;
+            font-size: 14px;
+            line-height: 24px;
+            border-radius: 16px;
+            background-color: #e0e0e0;
+            margin-right: 5px;
+        }
+        .severity {
+            font-weight: bold;
+        }
+        .moderate {
+            background-color: #8e15ca;
+            color: white;
+        }
+        .minor {
+            background-color: #f04ecd;
+            color: white;
+        }
+        .serious {
+            background-color: #e78412;
+            color: white;
+        }
+        .critical {
+            background-color: #e11912;
+            color: white;
+        }
+        .suggestion {
+            margin-top: 10px;
+            background-color: #dff0d8;
+            padding: 5px;
+            border-left: 5px solid #3c763d;
+        }
+        .error-details {
+            background-color: #fcf8e3;
+            padding: 5px;
+            border-left: 5px solid #8a6d3b;
+        }
+        .error-details p {
+            margin: 5px 0;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 10px;
+            background-color: #1d26d7;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header {
+            background-color: #e78412;
+            color: white;
+        }
+        footer i {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .score {
+            text-align: left;
+        }
+        .header h2 {
+            flex: 1 1 100%;
+            margin: 0;
+        }
+        @media (min-width: 600px) {
+            .header h2 {
+                flex: 1 1 45%;
+            }
+            .score {
+                text-align: right;
+            }
+        }
+        .page {
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Accessibility Report</h1>  
+    </header>
+
+    <div class="header">
+        <h2 class="page">Page: {{data.pageKey}}</h2>
+        <h2 class="score">Accessibility Score: {{data.accessibilityScore}}</h2>
+    </div>
+    <div class="error-list" id="error-list">
+        <!-- Error items will be injected here -->
+    </div>
+    {{#data.errors}}
+    <div class="error-item">
+        <h3>{{description}}</h3>
+        <div class="error-details">
+            <p>
+                <span class="chip">{{guideline}}</span>
+                <a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
+                <span class="chip">{{id}}</span>
+                <span class="chip severity {{severity}}">{{severity}}</span>
+            </p>
+        </div>
+        <div class="suggestion">
+            <p><strong>How to Fix:</strong> {{help}}</p>
+        </div>
+        {{#target}}
+        <div class="target-element">
+            <p><strong>Element:</strong> {{element}}</p>
+            <img class="screenshot" src="{{screenshot}}" alt="Screenshot of the issue">
+        </div>
+        {{/target}}
+    </div>
+    {{/data.errors}}
+    <footer>
+        &copy; Made with <i class="material-icons">favorite</i> by Abi =)
+    </footer>
+</body>
+</html>

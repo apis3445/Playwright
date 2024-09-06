@@ -5,5 +5,6 @@ export enum AnnotationType {
     GoTo = 'Go To',
     Step = 'Step',
     Assert = 'Assert',
-    Mock = 'Mock'
+    Mock = 'Mock',
+    Data = 'Data'
 }

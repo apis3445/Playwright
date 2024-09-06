@@ -3,7 +3,6 @@ import { AnnotationType } from './AnnotationType';
 import { Annotation } from './Annotation';
 import fs from 'fs';
 import path from 'path';
-import { ImpactType } from '../accessibility/models/ImpactType';
 
 export class AnnotationHelper {
 
@@ -22,7 +21,7 @@ export class AnnotationHelper {
         this.annotations = [];
     }
 
-    async addDescription(stepDescription: string, backgroundColor: ImpactType = ImpactType.noImpact) {
+    async addDescription(stepDescription: string, backgroundColor: string) {
         const debugElementId = 'playright-debug';
         await this.page.evaluate(([description, debugElementId, backgroundColor]) => {
             let debugElement = document.getElementById(debugElementId);
@@ -50,7 +49,7 @@ export class AnnotationHelper {
      * @param description Description of the error
      * @param backgroundColor Background color
      */
-    async addErrorDescription(locator: Locator, description: string, backgroundColor: ImpactType) {
+    async addErrorDescription(locator: Locator, description: string, backgroundColor: string) {
         await test.step('Add Description', async () => {
             const element = locator.first();
             // eslint-disable-next-line playwright/no-conditional-in-test
