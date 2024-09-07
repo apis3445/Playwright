@@ -25,6 +25,9 @@ class AccessibilityReporter implements Reporter {
             if (videoPath) {
                 const videoFileName = path.basename(videoPath);
                 const destination = path.join(folderTest, videoFileName);
+                if (!fs.existsSync(destination)) {
+                    fs.mkdirSync(destination, { recursive: true });
+                }
                 fs.copyFileSync(videoPath, destination);
                 reportData.video = destination;
             }
