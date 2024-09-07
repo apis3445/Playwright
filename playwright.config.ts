@@ -68,7 +68,8 @@ const config: PlaywrightTestConfig = {
             },
         ],
         ['@microsoft/mpt-reporter'],
-        ['./utils/reporter/StepReporter.ts']
+        ['./utils/reporter/StepReporter.ts'],
+        ['./utils/accessibility/AccessibilityReporter.ts']
     ],
     /* Configure projects for major browsers */
     projects: [

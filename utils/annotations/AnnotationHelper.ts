@@ -3,7 +3,6 @@ import { AnnotationType } from './AnnotationType';
 import { Annotation } from './Annotation';
 import fs from 'fs';
 import path from 'path';
-import { ImpactType } from '../accessibility/models/ImpactType';
 
 export class AnnotationHelper {
 
@@ -22,45 +21,31 @@ export class AnnotationHelper {
         this.annotations = [];
     }
 
-    async addDescription(stepDescription: string, backgroundColor: ImpactType = ImpactType.noImpact) {
-        const debugElementId = 'playright-debug';
-        await this.page.evaluate(([description, debugElementId, backgroundColor]) => {
-            let debugElement = document.getElementById(debugElementId);
-            if (!debugElement) {
-                debugElement = document.createElement('div');
-                debugElement.id = debugElementId;
-                debugElement.style.backgroundColor = backgroundColor;
-                debugElement.style.color = '#fff';
-                debugElement.style.position = 'fixed';
-                debugElement.style.left = '0';
-                debugElement.style.right = '0';
-                debugElement.style.bottom = '0';
-                debugElement.style.padding = '15px 30px';
-                debugElement.style.opacity = '0.8';
-                debugElement.style.zIndex = '1000';
-                document.body.appendChild(debugElement);
+    async addDescription(stepDescription: string, backgroundColor: string) {
+        await this.page.evaluate(([description, backgroundColor]) => {
+            const descriptionElementId = 'playwright-footer';
+            let footerElement = document.getElementById(descriptionElementId);
+            if (!footerElement) {
+                footerElement = document.createElement('div');
+                footerElement.style.backgroundColor = backgroundColor;
+                footerElement.style.color = '#fff';
+                footerElement.style.position = 'fixed';
+                footerElement.style.left = '0';
+                footerElement.style.right = '0';
+                footerElement.style.bottom = '0';
+                footerElement.style.padding = '10px';
+                footerElement.style.zIndex = '1000';
+                footerElement.style.fontSize = '14px';
+                footerElement.style.overflowY = 'auto';
+                footerElement.style.maxHeight = '150px';
+                footerElement.style.opacity = '0.8';
+                document.body.appendChild(footerElement);
             }
-            debugElement.innerHTML = description;
-        }, [stepDescription, debugElementId, backgroundColor]);
+            footerElement.innerHTML = description;
+        }, [stepDescription, backgroundColor]);
     }
 
-    /**
-     * Add error description at the bottom
-     * @param locator locator to highlight
-     * @param description Description of the error
-     * @param backgroundColor Background color
-     */
-    async addErrorDescription(locator: Locator, description: string, backgroundColor: ImpactType) {
-        await test.step('Add Description', async () => {
-            const element = locator.first();
-            // eslint-disable-next-line playwright/no-conditional-in-test
-            if (await element.isVisible()) {
-                await element.focus();
-                await this.addBorderFocusedElement(backgroundColor);
-            }
-            await this.addDescription(description, backgroundColor);
-        });
-    }
+
 
     /**
      * Add border to focused element
@@ -76,43 +61,6 @@ export class AnnotationHelper {
                 activeElement['style'].border = '2px solid ' + params.borderColor;
             }
         }, params);
-    }
-
-    /**
-     * Add description to focused element
-     * @param description description to add
-     * @param backgroundColor background color
-     */
-    async addDescriptionToFocusedElement(description: string, backgroundColor: string) {
-        // eslint-disable-next-line playwright/expect-expect
-        await test.step('Add Description', async () => {
-            const params = {
-                description: description,
-                backgroundColor: backgroundColor,
-                elementId: 'tab' + description
-            };
-            await this.page.evaluate(params => {
-                const activeElement = document.activeElement as HTMLElement;
-                let debugElement = document.getElementById(params.elementId);
-                debugElement = document.createElement('div');
-                debugElement.id = params.elementId;
-                debugElement.style.top = `${activeElement.offsetTop}px`;
-                debugElement.style.left = `${activeElement.offsetLeft}px`;
-                debugElement.style.color = '#fff';
-                debugElement.style.fontSize = '16px';
-                debugElement.style.fontWeight = 'bold';
-                debugElement.style.position = 'absolute';
-                debugElement.style.width = '30px';
-                debugElement.style.textAlign = 'center';
-                debugElement.style.opacity = '0.8';
-                debugElement.style.zIndex = '3000';
-                debugElement.style.width = '20px';
-                debugElement.style.pointerEvents = 'none';
-                debugElement.style.backgroundColor = params.backgroundColor;
-                debugElement.innerHTML = params.description;
-                activeElement?.parentNode?.appendChild(debugElement);
-            }, params);
-        });
     }
 
     /**

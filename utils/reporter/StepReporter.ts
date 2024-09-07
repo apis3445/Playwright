@@ -51,14 +51,7 @@ class StepReporter implements Reporter {
             htmlText += '</span>';
             openTags.pop();
         }
-
         return htmlText;
-    }
-
-    private getFilenameWithTestNo(fileName: string, id: number): string {
-        const onlyName = path.basename(fileName);
-        const extension = path.extname(fileName);
-        return onlyName + id + extension;
     }
 
     // Helper function to copy files
@@ -88,8 +81,9 @@ class StepReporter implements Reporter {
         const steps = test.annotations.filter(annotation =>
             annotation.type != AnnotationType.Precondition
             && annotation.type != AnnotationType.PostCondition
-            && annotation.type != AnnotationType.Description)
-            .map(annotation => annotation.description ?? 'No description');
+            && annotation.type != AnnotationType.Description
+            && annotation.type != 'A11y')
+            .map(annotation => annotation.description ?? 'No steps');
         const preConditions = test.annotations.filter(annotation => annotation.type == AnnotationType.Precondition)
             .map(annotation => annotation.description ?? 'No pre conditions');
         const postConditions = test.annotations.filter(annotation => annotation.type == AnnotationType.PostCondition)

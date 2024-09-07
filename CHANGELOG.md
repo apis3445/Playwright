@@ -1,3 +1,12 @@
+# 0.14.0 (2024-09-07)
+
+### Features
+
+- Integrated Axe and Lighthouse for enhanced accessibility testing in Playwright.
+- Implemented `AccessibilityReporter` to generate detailed HTML reports for accessibility tests.
+- Added new TypeScript interfaces to structure accessibility data and updated Playwright configuration accordingly.
+- Enhanced error handling and reporting for accessibility violations, including screenshots and detailed descriptions.
+
 # 0.13.0 (2024-08-24)
 
 ### Features
