@@ -18,8 +18,8 @@ jobs:
       DEBUG_PAUSE: ${{ inputs.DEBUG_PAUSE }}
       PAT_TOKEN_PACKAGE: ${{secrets.PAT_TOKEN_PACKAGE}}
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
 
       - name: Install dependencies
         run: |
@@ -30,7 +30,7 @@ jobs:
       - run: npx playwright install --with-deps
 
       - name: Run accessibility tests
-        run: npx playwright test tests/Accessibility/pageAccessibility --project=desktop-chromium --workers=1
+        run: npx playwright test tests/Accessibility/pageAccessibility --project=desktop-chromium --workers=1 --reporter=html,junit,./utils/reporter/StepReporter.ts,./utils/accessibility/AccessibilityReporter
 
       - name: Upload reporter as artifact
         uses: actions/upload-artifact@v4

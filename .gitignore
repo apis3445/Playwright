@@ -17,3 +17,5 @@ servers.xlsx
 tests/__screenshots__/VisualTesting/dashboard.spec.ts/linux/dashboard.png
 tests/.DS_Store
 utils/.DS_Store
+region-0.png
+region-1.png
