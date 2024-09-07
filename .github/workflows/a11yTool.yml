@@ -29,7 +29,7 @@ jobs:
       - run: npx playwright install --with-deps
 
       - name: Run accessibility tests
-        run: PLAYWRIGHT_HTML_REPORT=chromium npx playwright test tests/Accessibility/pageAccessibility --project=chromium --workers=1
+        run: PLAYWRIGHT_HTML_REPORT=chromium npx playwright test tests/Accessibility/pageAccessibility --project=desktop-chromium --workers=1
 
       - uses: actions/upload-artifact@v3
         if: always()
