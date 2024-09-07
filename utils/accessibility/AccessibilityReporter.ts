@@ -48,8 +48,23 @@ class AccessibilityReporter implements Reporter {
                     target.screenshot = path.basename(sourcePath);
                 });
             });
+
         }
     }
+
+    private copyFileToResults(srcPath: string, destFolder: string) {
+        const fileName = path.basename(srcPath);
+        const destDir = path.resolve(__dirname, '..', '..', destFolder);
+        const destFile = path.join(destDir, fileName);
+
+        if (!fs.existsSync(destDir)) {
+            fs.mkdirSync(destDir, { recursive: true });
+        }
+
+        fs.copyFileSync(srcPath, destFile);
+        return fileName;
+    }
+
 
 }
 

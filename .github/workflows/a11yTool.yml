@@ -32,14 +32,6 @@ jobs:
       - name: Run accessibility tests
         run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium --workers=1
 
-      - name: Upload html report as artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: report/
-          retention-days: 5
-
       - name: Upload reporter as artifact
         uses: actions/upload-artifact@v4
         if: always()
