@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Page } from '@playwright/test';
 import { BasePage } from '../basePage';
 import { Button } from '../../components/Button';
@@ -17,7 +18,7 @@ export class HomePage extends BasePage {
         //With pipeline can be replaced by parameters.
         const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US';
         //Load the json with custom locators and values
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
+
         const localeInfo = require(`../../data/${locale}.json`);
         //Get the elements by locale 
         this.search = new InputText(this.page, this.annotationHelper, `[aria-label="${localeInfo.search}"]`, false);
