@@ -5,7 +5,7 @@ import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { A11yError } from '../../utils/accessibility/models/A11yError';
 import { ReportData } from '../../utils/accessibility/models/Report';
 import { Target } from '../../utils/accessibility/models/Target';
-import AxeBuilder from '@axe-core/playwright';
+import { AxeBuilder } from '@axe-core/playwright';
 import playwright from 'playwright';
 import path from 'path';
 
@@ -44,7 +44,7 @@ test.describe('Test Accessibility By Page', {
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
         expect.soft(
-            violationsLength,
+            [violationsLength],
             `Expected no accessibility violations, but found ${violationsLength}`
         ).toBe(0);
         const lighthouseReport = await playAudit({
@@ -62,9 +62,17 @@ test.describe('Test Accessibility By Page', {
         const violations = accessibilityScanResults.violations;
         const errors: A11yError[] = [];
 
+        // Define a mapping between severity levels and border colors
+        const severityColors: Record<string, string> = {
+            'critical': '#e11912',
+            'serious': '#d66f08',
+            'moderate': '#8e15ca',
+            'minor': '#f04ecd'
+        };
+
         for (const violation of violations) {
             let errorNumber = 0;
-            const wcagTags = violation.tags.filter(tag => tag.startsWith('wcag'));
+            const wcagTags = violation.tags.filter((tag: string) => tag.startsWith('wcag'));
             const targets: Target[] = [];
 
             for (const node of violation.nodes) {
@@ -80,6 +88,17 @@ test.describe('Test Accessibility By Page', {
                             screenshot: screenshotPath
                         });
                     }
+
+                    // Highlight the element with the appropriate border color
+                    const borderColor = severityColors[violation.impact ?? ''] || 'black'; // Default to black if severity is not found
+                    await page.evaluate(([element, borderColor]) => {
+                        const el = document.querySelector(element) as HTMLElement;
+                        if (el) {
+                            el.style.border = `2px solid ${borderColor}`;
+                        }
+                    }, [element, borderColor]);
+                    const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
+                    await annotationHelper.addDescription(stepDescription, borderColor);
                 }
             }
 
@@ -100,7 +119,8 @@ test.describe('Test Accessibility By Page', {
         const reportData: ReportData = {
             pageKey: pageToTest,
             accessibilityScore: accessibilityScore,
-            errors: errors
+            errors: errors,
+            video: '',
         };
 
         annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));

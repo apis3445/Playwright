@@ -8,5 +8,5 @@ export interface A11yError {
     help: string;
     helpUrl: string;
     guideline: string;
-    target: Target[]
+    target: Target[];
 }

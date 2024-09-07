@@ -17,11 +17,17 @@ class AccessibilityReporter implements Reporter {
         const fileName = 'a11y.html';
         const filePath = path.join(folderTest, fileName);
 
-
         // Extract and handle reportData from annotations
         const reportDataAnnotation = test.annotations.find(annotation => annotation.type === 'A11y');
         if (reportDataAnnotation) {
             const reportData: ReportData = JSON.parse(reportDataAnnotation.description!);
+            const videoPath = result.attachments.find(attachment => attachment.name === 'video')?.path;
+            if (videoPath) {
+                const videoFileName = path.basename(videoPath);
+                const destination = path.join(folderTest, videoFileName);
+                fs.copyFileSync(videoPath, destination);
+                reportData.video = destination;
+            }
             const templatePath = path.join(__dirname, 'templates', 'byPage.html');
             const template = fs.readFileSync(templatePath, 'utf-8');
             const htmlContent = mustache.render(template, { data: reportData });
@@ -30,6 +36,7 @@ class AccessibilityReporter implements Reporter {
                 fs.mkdirSync(pathSteps, { recursive: true });
             }
             fs.writeFileSync(filePath, htmlContent);
+
 
             // Copy screenshots to folderTest path
             reportData.errors.forEach((error: A11yError) => {

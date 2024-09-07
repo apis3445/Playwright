@@ -64,7 +64,7 @@
             color: white;
         }
         .serious {
-            background-color: #e78412;
+            background-color: #d66f08;
             color: white;
         }
         .critical {
@@ -163,6 +163,11 @@
         {{/target}}
     </div>
     {{/data.errors}}
+    <h2>Video:</h2>
+            <video controls>
+                <source src="{{data.video}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
     <footer>
         &copy; Made with <i class="material-icons">favorite</i> by Abi =)
     </footer>
