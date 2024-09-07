@@ -14,6 +14,7 @@
         // the "parserOptions.project" error
         ".eslintrc.js",
         "playwright.config.ts",
+        "playwright.a11y.config.ts",
         "playwright.service.config.ts",
         "stepReporter.ts",
         "checkly.config.ts"
