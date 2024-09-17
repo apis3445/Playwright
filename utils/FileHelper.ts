@@ -6,7 +6,8 @@ export class FileHelper {
 
     folderResults = 'steps-report/';
 
-    copyFileToResults(srcPath: string, destFolder: string) {
+    copyFileToResults(destFolder: string, srcPath: string) {
+
         const fileName = path.basename(srcPath);
         const destDir = path.resolve(__dirname, '..', '..', destFolder);
         const destFile = path.join(destDir, fileName);
@@ -21,8 +22,10 @@ export class FileHelper {
 
     copyVideo(result: TestResult, folderTest: string) {
         const videoPath = result.attachments.find(attachment => attachment.name === 'video')?.path;
-        const copiedVideoPath = this.copyFileToResults(videoPath!, folderTest);
-        return copiedVideoPath;
-
+        if (videoPath) {
+            const copiedVideoPath = this.copyFileToResults(folderTest, videoPath);
+            return copiedVideoPath;
+        }
+        return '';
     }
 }

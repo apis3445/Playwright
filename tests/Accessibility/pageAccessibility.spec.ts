@@ -43,10 +43,7 @@ test.describe('Test Accessibility By Page', {
         await page.goto(pageToTest);
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
-        expect.soft(
-            [violationsLength],
-            `Expected no accessibility violations, but found ${violationsLength}`
-        ).toBe(0);
+        expect.soft([violationsLength], `Expected no accessibility violations, but found ${violationsLength}`).toBe(0);
         const lighthouseReport = await playAudit({
             page: page,
             port: 9222,

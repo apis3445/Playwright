@@ -83,13 +83,13 @@ class StepReporter implements Reporter {
         const screenshotPaths: string[] = result.attachments
             .filter(attachment => attachment.name === 'screenshot')
             .map(attachment => attachment.path ?? '') ?? [];
-        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.fileHelper.copyFileToResults(screenshotPath, folderTest));
+        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.fileHelper.copyFileToResults(folderTest, screenshotPath));
 
         const attachments: { path: string, name: string }[] = result.attachments
             .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video')
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
         const copiedAttachments = attachments.map(attachment => ({
-            path: this.fileHelper.copyFileToResults(attachment.path, folderTest),
+            path: this.fileHelper.copyFileToResults(folderTest, attachment.path),
             name: attachment.name
         }));
 
