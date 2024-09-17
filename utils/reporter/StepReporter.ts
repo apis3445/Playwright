@@ -1,14 +1,15 @@
 import { Reporter, TestCase, TestResult } from '@playwright/test/reporter';
-import * as fs from 'fs';
 import * as path from 'path';
+import * as fs from 'fs';
 import * as mustache from 'mustache';
 import { AnnotationType } from '../annotations/AnnotationType';
 import { TestStatusIcon } from './models/TestStatusIcon';
 import { TestResults } from './models/TestResults';
+import { FileHelper } from '../FileHelper';
 
 class StepReporter implements Reporter {
     private testNo = 0;
-    private folderResults = 'steps-report/';
+    private fileHelper: FileHelper = new FileHelper();
 
     // Helper function to strip ANSI escape codes
     // Helper function to map ANSI escape codes to HTML styles
@@ -54,25 +55,11 @@ class StepReporter implements Reporter {
         return htmlText;
     }
 
-    // Helper function to copy files
-    private copyFileToResults(srcPath: string, destFolder: string) {
-        const fileName = path.basename(srcPath);
-        const destDir = path.resolve(__dirname, '..', '..', destFolder);
-        const destFile = path.join(destDir, fileName);
-
-        if (!fs.existsSync(destDir)) {
-            fs.mkdirSync(destDir, { recursive: true });
-        }
-
-        fs.copyFileSync(srcPath, destFile);
-        return fileName;
-    }
-
     onTestEnd(test: TestCase, result: TestResult) {
         const results: TestResults[] = [];
 
         this.testNo++;
-        const folderTest = this.folderResults + this.testNo;
+        const folderTest = this.fileHelper.folderResults + this.testNo;
         const fileName = 'index.html';
         const filePath = path.join(folderTest, fileName);
 
@@ -93,21 +80,20 @@ class StepReporter implements Reporter {
         const browser = test.parent.project()?.name ?? 'No browser';
 
         // Capture video and screenshot paths
-        const videoPath = result.attachments.find(attachment => attachment.name === 'video')?.path;
         const screenshotPaths: string[] = result.attachments
             .filter(attachment => attachment.name === 'screenshot')
             .map(attachment => attachment.path ?? '') ?? [];
+        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.fileHelper.copyFileToResults(screenshotPath, folderTest));
+
         const attachments: { path: string, name: string }[] = result.attachments
             .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video')
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
-
-        // Copy video and screenshot files to folderResults
-        const copiedVideoPath = videoPath ? this.copyFileToResults(videoPath, folderTest) : undefined;
-        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.copyFileToResults(screenshotPath, folderTest));
         const copiedAttachments = attachments.map(attachment => ({
-            path: this.copyFileToResults(attachment.path, folderTest),
+            path: this.fileHelper.copyFileToResults(attachment.path, folderTest),
             name: attachment.name
         }));
+
+        const copiedVideoPath = this.fileHelper.copyVideo(result, folderTest);
 
         // Capture errors
         const errors = result.errors.map(error => this.ansiToHtml(error.message ?? 'No errors')) ?? [];
