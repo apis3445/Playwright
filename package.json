@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@axe-core/playwright": "^4.10.0",
-    "@playwright/test": "^1.47.0",
+    "@playwright/test": "^1.47.1",
     "axe-core": "^4.10.0",
     "axe-playwright": "^2.0.2",
     "checkly": "^4.9.0",
