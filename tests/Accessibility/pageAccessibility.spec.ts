@@ -77,7 +77,7 @@ test.describe('Test Accessibility By Page', {
             let errorNumber = 0;
             const wcagTags = violation.tags.filter((tag: string) => tag.startsWith('wcag'));
             const targets: Target[] = [];
-
+            const pause = process.env.DEBUG_PAUSE ?? 2000;
             for (const node of violation.nodes) {
                 for (const target of node.target) {
                     const element = target.toString();
@@ -102,6 +102,8 @@ test.describe('Test Accessibility By Page', {
                     }, [element, borderColor]);
                     const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
                     await annotationHelper.addDescription(stepDescription, borderColor);
+                    // eslint-disable-next-line playwright/no-wait-for-timeout
+                    await page.waitForTimeout(+pause);
                 }
             }
 
@@ -115,7 +117,6 @@ test.describe('Test Accessibility By Page', {
                 wcagRule: wcagTags.length > 0 ? violation.tags[2] : violation.tags[1],
                 target: targets
             };
-
             errors.push(error);
         }
 

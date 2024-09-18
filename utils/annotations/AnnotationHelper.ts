@@ -22,27 +22,28 @@ export class AnnotationHelper {
     }
 
     async addDescription(stepDescription: string, backgroundColor: string) {
-        await this.page.evaluate(([description, backgroundColor]) => {
-            const descriptionElementId = 'playwright-footer';
-            let footerElement = document.getElementById(descriptionElementId);
-            if (!footerElement) {
-                footerElement = document.createElement('div');
-                footerElement.style.backgroundColor = backgroundColor;
-                footerElement.style.color = '#fff';
-                footerElement.style.position = 'fixed';
-                footerElement.style.left = '0';
-                footerElement.style.right = '0';
-                footerElement.style.bottom = '0';
-                footerElement.style.padding = '10px';
-                footerElement.style.zIndex = '1000';
-                footerElement.style.fontSize = '14px';
-                footerElement.style.overflowY = 'auto';
-                footerElement.style.maxHeight = '150px';
-                footerElement.style.opacity = '0.8';
-                document.body.appendChild(footerElement);
-            }
-            footerElement.innerHTML = description;
-        }, [stepDescription, backgroundColor]);
+        await this.page.evaluate(
+            ([description, backgroundColor]) => {
+                const descriptionElementId = 'playwright-footer';
+                let footerElement = document.getElementById(descriptionElementId);
+                if (!footerElement) {
+                    footerElement = document.createElement('div');
+                    footerElement.style.backgroundColor = backgroundColor;
+                    footerElement.style.color = '#fff';
+                    footerElement.style.position = 'fixed';
+                    footerElement.style.left = '0';
+                    footerElement.style.right = '0';
+                    footerElement.style.bottom = '0';
+                    footerElement.style.padding = '10px';
+                    footerElement.style.zIndex = '1000';
+                    footerElement.style.fontSize = '14px';
+                    footerElement.style.overflowY = 'auto';
+                    footerElement.style.maxHeight = '150px';
+                    footerElement.style.opacity = '0.8';
+                    document.body.appendChild(footerElement);
+                }
+                footerElement.innerHTML = description;
+            }, [stepDescription, backgroundColor]);
     }
 
 
