@@ -9,7 +9,7 @@ export class FileHelper {
     copyFileToResults(destFolder: string, srcPath: string) {
 
         const fileName = path.basename(srcPath);
-        const destDir = path.resolve(__dirname, '..', '..', destFolder);
+        const destDir = path.resolve(__dirname, '..', destFolder);
         const destFile = path.join(destDir, fileName);
 
         if (!fs.existsSync(destDir)) {

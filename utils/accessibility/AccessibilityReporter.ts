@@ -29,9 +29,8 @@ class AccessibilityReporter implements Reporter {
             const templatePath = path.join(__dirname, 'templates', 'byPage.html');
             const template = fs.readFileSync(templatePath, 'utf-8');
             const htmlContent = mustache.render(template, { data: reportData });
-            const pathSteps = path.dirname(filePath);
-            if (!fs.existsSync(pathSteps)) {
-                fs.mkdirSync(pathSteps, { recursive: true });
+            if (!fs.existsSync(folderTest)) {
+                fs.mkdirSync(folderTest, { recursive: true });
             }
             fs.writeFileSync(filePath, htmlContent);
 

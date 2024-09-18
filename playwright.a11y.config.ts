@@ -7,10 +7,10 @@ const config: PlaywrightTestConfig = {
         browserName: 'chromium', // Use Chromium for a11y tests
         headless: true, // Run tests in headless mode
         ignoreHTTPSErrors: true,
-        video: 'on', // Record video on first retry
+        video: 'on'
     },
     reporter: [
-        ['list'],
+        ['html'],
         ['./utils/accessibility/AccessibilityReporter.ts'], // Custom reporter for a11y tests
     ],
     projects: [

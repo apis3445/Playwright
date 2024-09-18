@@ -1,5 +1,5 @@
 /* eslint-disable playwright/no-conditional-in-test */
-import { expect, test } from '@playwright/test';
+import { expect, Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { A11yError } from '../../utils/accessibility/models/A11yError';
@@ -17,6 +17,7 @@ test.describe('Test Accessibility By Page', {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let playAudit: any;
+    let page: Page;
 
     test.beforeAll(async () => {
         // Dynamically import playAudit
@@ -28,7 +29,7 @@ test.describe('Test Accessibility By Page', {
     * This example demonstrates how to test an entire page for automatically detectable accessibility violations. 
     * @see https://playwright.dev/docs/accessibility-testing
     */
-    test('Check Page accessibility', async ({ browserName }) => {
+    test('Check Page accessibility', async ({ browserName }, testInfo) => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Lighthouse only works in chrome');
         //You can test any page in environment variable
@@ -36,8 +37,13 @@ test.describe('Test Accessibility By Page', {
         const browser = await playwright['chromium'].launch({
             args: ['--remote-debugging-port=9222'],
         });
-        const context = await browser.newContext();
-        const page = await context.newPage();
+        const context = await browser.newContext({
+            recordVideo: {
+                dir: testInfo.outputPath('videos'),
+            }
+        });
+        //With manual context or page is needed to setup the video
+        page = await context.newPage();
         const annotationHelper = new AnnotationHelper(page, pageToTest);
         annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
@@ -122,4 +128,18 @@ test.describe('Test Accessibility By Page', {
 
         annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));
     });
+
+    test.afterAll(async ({ }, testInfo) => {
+        const videoPath = testInfo.outputPath('allyVideo.webm');
+        await Promise.all([
+            page.video()?.saveAs(videoPath),
+            page.close()
+        ]);
+        testInfo.attachments.push({
+            name: 'video',
+            path: videoPath,
+            contentType: 'video/webm'
+        });
+    });
+
 });

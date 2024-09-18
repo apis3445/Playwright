@@ -36,6 +36,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: steps-report
+          name: a11y-report
           path: steps-report/
           retention-days: 5
