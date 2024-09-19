@@ -24,29 +24,30 @@ export class AnnotationHelper {
     async addDescription(stepDescription: string, backgroundColor: string) {
         await this.page.evaluate(
             ([description, backgroundColor]) => {
-                const descriptionElementId = 'playwright-footer';
-                let footerElement = document.getElementById(descriptionElementId);
-                if (!footerElement) {
-                    footerElement = document.createElement('div');
-                    footerElement.style.backgroundColor = backgroundColor;
-                    footerElement.style.color = '#fff';
-                    footerElement.style.position = 'fixed';
-                    footerElement.style.left = '0';
-                    footerElement.style.right = '0';
-                    footerElement.style.bottom = '0';
-                    footerElement.style.padding = '10px';
-                    footerElement.style.zIndex = '1000';
-                    footerElement.style.fontSize = '14px';
-                    footerElement.style.overflowY = 'auto';
-                    footerElement.style.maxHeight = '150px';
-                    footerElement.style.opacity = '0.8';
-                    document.body.appendChild(footerElement);
+                const descriptionElementId = 'playwright-description';
+                let descriptionElement = document.getElementById(descriptionElementId);
+                if (!descriptionElement) {
+                    descriptionElement = document.createElement('div');
+                    descriptionElement.id = descriptionElementId;
+                    descriptionElement.style.cssText = `
+                        background-color: ${backgroundColor};
+                        color: #fff;
+                        position: fixed;
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        padding: 10px;
+                        z-index: 1000;
+                        font-size: 14px;
+                        overflow-y: auto;
+                        max-height: 150px;
+                        opacity: 0.8;
+                    `;
+                    document.body.appendChild(descriptionElement);
                 }
-                footerElement.innerHTML = description;
+                descriptionElement.innerText = description;
             }, [stepDescription, backgroundColor]);
     }
-
-
 
     /**
      * Add border to focused element

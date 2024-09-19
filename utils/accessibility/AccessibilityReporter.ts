@@ -1,10 +1,10 @@
 import { Reporter, TestCase, TestResult } from '@playwright/test/reporter';
 import { ReportData } from './models/Report';
+import { A11yError } from './models/A11yError';
+import { FileHelper } from '../FileHelper';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as mustache from 'mustache';
-import { A11yError } from './models/A11yError';
-import { FileHelper } from '../FileHelper';
 
 class AccessibilityReporter implements Reporter {
     private testNo = 0;
