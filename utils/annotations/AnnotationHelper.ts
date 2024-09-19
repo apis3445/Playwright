@@ -41,7 +41,8 @@ export class AnnotationHelper {
                         font-size: 14px;
                         overflow-y: auto;
                         max-height: 150px;
-                        opacity: 0.8;
+                        opacity: 0.9;
+                        font-weight: bold;
                     `;
                     document.body.appendChild(descriptionElement);
                 }
