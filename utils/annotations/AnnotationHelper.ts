@@ -38,7 +38,7 @@ export class AnnotationHelper {
                         top: 0;
                         padding: 10px;
                         z-index: 1000;
-                        font-size: 14px;
+                        font-size: 18px;
                         overflow-y: auto;
                         max-height: 150px;
                         opacity: 0.9;
