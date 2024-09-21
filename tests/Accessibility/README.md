@@ -18,7 +18,7 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 # Report
 
 ![Reporter](./images/reporter.png)
-![Video](./videos/![Reporter](./images/reporter.png))
+![Video](./videos/allyVideo.webm)
 
 
 ## Articles
