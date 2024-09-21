@@ -67,7 +67,7 @@ export class FileHelper {
 
     copyImages(result: TestResult, destFolder: string) {
         const imagePaths: ImagePath[] = result.attachments
-            .filter(attachment => attachment.name.endsWith(".png"))
+            .filter(attachment => attachment.name.endsWith('.png'))
             .map(attachment => ({
                 srcPath: attachment.path ?? '',
                 fileName: attachment.name

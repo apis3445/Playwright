@@ -43,7 +43,7 @@ class StepReporter implements Reporter {
         }));
 
         const videoPath = this.fileHelper.copyVideo(result, folderTest);
-        const screenshotPaths = this.fileHelper.copyScreenshots(result, folderTest)
+        const screenshotPaths = this.fileHelper.copyScreenshots(result, folderTest);
 
         // Capture errors
         const errors = result.errors.map(error => this.htmlHelper.ansiToHtml(error.message ?? 'No errors')) ?? [];

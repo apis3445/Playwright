@@ -63,9 +63,9 @@ export class AccessibilityHelper {
                         const target: Target = {
                             element: element,
                             screenshot: screenshotFile
-                        }
+                        };
                         targets.push(target);
-                        this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo)
+                        await this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo);
                     }
 
                     // Highlight the element with the appropriate border color

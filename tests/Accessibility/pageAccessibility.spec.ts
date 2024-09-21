@@ -1,4 +1,4 @@
-/* eslint-disable playwright/no-conditional-in-test */
+ 
 import { Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';

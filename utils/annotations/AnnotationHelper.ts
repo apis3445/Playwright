@@ -109,7 +109,7 @@ export class AnnotationHelper {
      * @param testInfo 
      */
     async attachPageScreenshot(fileName: string, testInfo: TestInfo) {
-        // eslint-disable-next-line playwright/expect-expect
+         
         await test.step('Add Page screenshot', async () => {
             const file = path.join(this.resultsFolder, fileName);
             const screenshot = await this.page.screenshot({ path: file, fullPage: true });

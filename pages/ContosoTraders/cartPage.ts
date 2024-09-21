@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import { Page } from '@playwright/test';
 import { ContosoBasePage } from './contosoBasePage';
 import { CartItem } from './sections/cartItem';

@@ -19,7 +19,7 @@ export class VisualHelper {
     async checkPageSnapshot(snapshotName: string, timeout = 5_000, maxDiffPixelsRatio = 0.1) {
         const stepDescription = 'Compare snapshot: ' + snapshotName + ' with maxDiffPixelsRatio: ' + maxDiffPixelsRatio;
         await this.annotationHelper.addAnnotation(AnnotationType.Step, stepDescription);
-        // eslint-disable-next-line playwright/valid-title
+         
         await test.step(stepDescription, async () => {
             await expect(this.page, stepDescription).toHaveScreenshot(snapshotName,
                 {

@@ -12,11 +12,11 @@
         "fixtures",
         // add all files in which you see
         // the "parserOptions.project" error
-        ".eslintrc.js",
-        "playwright.config.ts",
+        "eslint.config.mjs",
         "playwright.a11y.config.ts",
         "playwright.service.config.ts",
         "stepReporter.ts",
-        "checkly.config.ts"
+        "checkly.config.ts",
+
     ]
 }
