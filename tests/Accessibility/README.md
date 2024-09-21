@@ -20,7 +20,9 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 ![Reporter](./images/reporter.png)
 [Video](https://github.com/user-attachments/assets/79c2a52c-d6a0-4b3d-a5c6-ceeb521daa54)
 
+https://github.com/user-attachments/assets/79c2a52c-d6a0-4b3d-a5c6-ceeb521daa54
 
+&nbsp;
 ## Articles
 
 [Tools for accessibility testing](https://abigailarmijo.substack.com/p/tools-for-accessibility-testing)
