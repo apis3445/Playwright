@@ -37,6 +37,7 @@ export default [{
 
     rules: {
         '@typescript-eslint/no-floating-promises': 'error',
+        '@typescript-eslint/no-unused-vars': 'error',
 
         indent: ['error', 4, {
             SwitchCase: 1,
