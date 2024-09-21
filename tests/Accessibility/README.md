@@ -18,10 +18,8 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 # Report
 
 ![Reporter](./images/reporter.png)
+![Video](./videos/![Reporter](./images/reporter.png))
 
-<video width="320" height="240" controls>
-  <source src="videos/allyVideo.webm" type="video/webm">
-</video>
 
 ## Articles
 
