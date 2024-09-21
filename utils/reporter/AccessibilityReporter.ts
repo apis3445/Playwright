@@ -21,7 +21,7 @@ class AccessibilityReporter implements Reporter {
         // Extract and handle reportData from annotations
         const reportDataAnnotation = test.annotations.find(annotation => annotation.type === 'A11y');
         if (reportDataAnnotation) {
-            const reportData: ReportData = JSON.parse(reportDataAnnotation.description!);
+            const reportData: ReportData = JSON.parse(reportDataAnnotation.description ?? '{}');
             this.fileHelper.copyVideo(result, folderTest);
             this.fileHelper.copyScreenshots(result, folderTest);
             this.fileHelper.copyImages(result, folderTest);
