@@ -32,8 +32,7 @@ test.describe('Test Accessibility By Page', {
         const annotationHelper = new AnnotationHelper(page, pageToTest);
         annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
-        const accessibilityHelper = new AccessibilityHelper(page, annotationHelper);
-        await accessibilityHelper.init(); // Initialize the AccessibilityHelper
+        const accessibilityHelper = new AccessibilityHelper(page, testInfo, annotationHelper);
         await accessibilityHelper.checkAccessibility('byParameter', page);
     });
 

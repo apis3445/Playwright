@@ -68,7 +68,7 @@ const config: PlaywrightTestConfig = {
             },
         ],
         ['./utils/reporter/StepReporter.ts'],
-        ['./utils/accessibility/AccessibilityReporter.ts']
+        ['./utils/reporter/AccessibilityReporter.ts']
     ],
     /* Configure projects for major browsers */
     projects: [
@@ -77,7 +77,6 @@ const config: PlaywrightTestConfig = {
             testMatch: /.*LambdaTestFixture.spec.ts/,
             use: {
                 viewport: { width: 1920, height: 1080 },
-
             },
         },
         {
@@ -85,7 +84,6 @@ const config: PlaywrightTestConfig = {
             testMatch: /.*LambdaTestFixture.spec.ts/,
             use: {
                 viewport: { width: 1920, height: 1080 },
-
             },
         },
         {
@@ -93,7 +91,6 @@ const config: PlaywrightTestConfig = {
             testMatch: /.*LambdaTestFixture.spec.ts/,
             use: {
                 viewport: { width: 1280, height: 720 },
-
             },
         },
         {

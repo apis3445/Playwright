@@ -1,7 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import path from 'path';
 import { Page } from 'playwright';
-import { expect } from 'playwright/test';
+import { expect, TestInfo } from 'playwright/test';
 import { AnnotationHelper } from '../annotations/AnnotationHelper';
 import { A11yError } from './models/A11yError';
 import { ReportData } from './models/Report';
@@ -12,18 +12,16 @@ export class AccessibilityHelper {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     playAudit: any;
 
-    constructor(private page: Page, private annotationHelper: AnnotationHelper) {
+    constructor(private page: Page, private testInfo: TestInfo, private annotationHelper: AnnotationHelper) {
         // Constructor remains empty
     }
 
-    async init() {
-        // Dynamically import playAudit
-        const module = await import('playwright-lighthouse');
-        this.playAudit = module.playAudit;
-    }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async checkAccessibility(pageKey: string, page: any) {
+        // Dynamically import playAudit
+        const module = await import('playwright-lighthouse');
+        this.playAudit = module.playAudit;
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
         expect.soft([violationsLength], `Expected no accessibility violations, but found ${violationsLength}`).toBe(0);
@@ -61,12 +59,13 @@ export class AccessibilityHelper {
                     const targetLocator = this.page.locator(element);
 
                     if (await targetLocator.isVisible()) {
-                        const screenshotPath = path.join(`${violation.id}-${errorNumber++}.png`);
-                        await targetLocator.screenshot({ path: screenshotPath });
-                        targets.push({
+                        const screenshotFile = path.join(`${violation.id}-${errorNumber++}.png`);
+                        const target: Target = {
                             element: element,
-                            screenshot: screenshotPath
-                        });
+                            screenshot: screenshotFile
+                        }
+                        targets.push(target);
+                        this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo)
                     }
 
                     // Highlight the element with the appropriate border color
@@ -79,8 +78,15 @@ export class AccessibilityHelper {
                     }, [element, borderColor]);
                     const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
                     await this.annotationHelper.addDescription(stepDescription, borderColor);
+
                     // eslint-disable-next-line playwright/no-wait-for-timeout
                     await this.page.waitForTimeout(+pause);
+                    await this.page.evaluate(([element]) => {
+                        const el = document.querySelector(element) as HTMLElement;
+                        if (el) {
+                            el.style.border = '';
+                        }
+                    }, [element]);
                 }
             }
 
@@ -101,7 +107,7 @@ export class AccessibilityHelper {
             pageKey: pageKey,
             accessibilityScore: accessibilityScore,
             errors: errors,
-            video: '',
+            video: 'allyVideo.webm',
         };
 
         this.annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));

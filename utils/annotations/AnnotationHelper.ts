@@ -29,7 +29,9 @@ export class AnnotationHelper {
                 if (!descriptionElement) {
                     descriptionElement = document.createElement('div');
                     descriptionElement.id = descriptionElementId;
-                    descriptionElement.style.cssText = `
+                    document.body.appendChild(descriptionElement);
+                }
+                descriptionElement.style.cssText = `
                         background-color: ${backgroundColor};
                         color: #fff;
                         position: fixed;
@@ -44,8 +46,6 @@ export class AnnotationHelper {
                         opacity: 0.9;
                         font-weight: bold;
                     `;
-                    document.body.appendChild(descriptionElement);
-                }
                 descriptionElement.innerText = description;
             }, [stepDescription, backgroundColor]);
     }
