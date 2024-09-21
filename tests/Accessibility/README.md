@@ -18,7 +18,7 @@ DEBUG_PAUSE=2000 Milliseconds to highlight elements with accessibility issues.
 # Report
 
 ![Reporter](./images/reporter.png)
-https://github.com/user-attachments/assets/79c2a52c-d6a0-4b3d-a5c6-ceeb521daa54
+![Video](https://github.com/user-attachments/assets/79c2a52c-d6a0-4b3d-a5c6-ceeb521daa54)
 
 
 ## Articles
