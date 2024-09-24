@@ -6,6 +6,14 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <title>Accessibility Report</title>
     <style>
+
+        :root {
+            --critical-color: {{data.criticalColor}};
+            --serious-color: {{data.seriousColor}};
+            --moderate-color: {{data.moderateColor}};;
+            --minor-color: {{data.minorColor}};
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -56,19 +64,19 @@
             font-weight: bold;
         }
         .moderate {
-            background-color: #8e15ca;
+            background-color: var(--moderate-color);;
             color: white;
         }
         .minor {
-            background-color: #f04ecd;
+            background-color: var(--minor-color);
             color: white;
         }
         .serious {
-            background-color: #d66f08;
+            background-color: var(--serious-color);
             color: white;
         }
         .critical {
-            background-color: #e11912;
+            background-color: var(--critical-color);
             color: white;
         }
         .suggestion {

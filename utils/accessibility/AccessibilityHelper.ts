@@ -6,6 +6,7 @@ import { AnnotationHelper } from '../annotations/AnnotationHelper';
 import { A11yError } from './models/A11yError';
 import { ReportData } from './models/Report';
 import { Target } from './models/Target';
+import { Severity } from './models/Severity';
 
 export class AccessibilityHelper {
 
@@ -15,7 +16,6 @@ export class AccessibilityHelper {
     constructor(private page: Page, private testInfo: TestInfo, private annotationHelper: AnnotationHelper) {
         // Constructor remains empty
     }
-
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async checkAccessibility(pageKey: string, page: any) {
@@ -40,14 +40,6 @@ export class AccessibilityHelper {
         const violations = accessibilityScanResults.violations;
         const errors: A11yError[] = [];
 
-        // Define a mapping between severity levels and border colors
-        const severityColors: Record<string, string> = {
-            'critical': '#e11912',
-            'serious': '#d66f08',
-            'moderate': '#8e15ca',
-            'minor': '#f04ecd'
-        };
-
         for (const violation of violations) {
             let errorNumber = 0;
             const wcagTags = violation.tags.filter((tag: string) => tag.startsWith('wcag'));
@@ -58,6 +50,18 @@ export class AccessibilityHelper {
                     const element = target.toString();
                     const targetLocator = this.page.locator(element);
 
+                    // Highlight the element with the appropriate border color
+                    const borderColor = Severity[violation.impact as keyof typeof Severity] || 'black'; // Default to black if severity is not found
+                    await this.page.evaluate(([element, borderColor]) => {
+                        const el = document.querySelector(element) as HTMLElement;
+                        if (el) {
+                            el.style.border = `2px solid ${borderColor}`;
+                        }
+                    }, [element, borderColor]);
+
+                    const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
+                    await this.annotationHelper.addDescription(stepDescription, borderColor);
+
                     if (await targetLocator.isVisible()) {
                         const screenshotFile = path.join(`${violation.id}-${errorNumber++}.png`);
                         const target: Target = {
@@ -67,17 +71,6 @@ export class AccessibilityHelper {
                         targets.push(target);
                         await this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo);
                     }
-
-                    // Highlight the element with the appropriate border color
-                    const borderColor = severityColors[violation.impact ?? ''] || 'black'; // Default to black if severity is not found
-                    await this.page.evaluate(([element, borderColor]) => {
-                        const el = document.querySelector(element) as HTMLElement;
-                        if (el) {
-                            el.style.border = `2px solid ${borderColor}`;
-                        }
-                    }, [element, borderColor]);
-                    const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
-                    await this.annotationHelper.addDescription(stepDescription, borderColor);
 
                     // eslint-disable-next-line playwright/no-wait-for-timeout
                     await this.page.waitForTimeout(+pause);
@@ -108,6 +101,10 @@ export class AccessibilityHelper {
             accessibilityScore: accessibilityScore,
             errors: errors,
             video: 'allyVideo.webm',
+            criticalColor: Severity.critical,
+            seriousColor: Severity.serious,
+            moderateColor: Severity.moderate,
+            minorColor: Severity.minor
         };
 
         this.annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));
