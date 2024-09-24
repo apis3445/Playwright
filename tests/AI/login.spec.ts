@@ -1,4 +1,4 @@
-/* eslint-disable playwright/expect-expect */
+ 
 import { expect, test } from '@playwright/test';
 import { ai } from '@zerostep/playwright';
 

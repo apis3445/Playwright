@@ -2,32 +2,33 @@
 
 ### Features
 
-- Integrated Axe and Lighthouse for enhanced accessibility testing in Playwright.
-- Implemented `AccessibilityReporter` to generate detailed HTML reports for accessibility tests.
-- Added new TypeScript interfaces to structure accessibility data and updated Playwright configuration accordingly.
-- Enhanced error handling and reporting for accessibility violations, including screenshots and detailed descriptions.
+- Create an Accessibility Helper to check with axe-deque and lighthouse.
+- Create FileHelper to refactor and improve the reporter.
+- Updated to ESLint 9.
+- Fix the issue of attaching the video to the accessibility report.
+- Update to use the beta version of Microsoft Playwright Reporter.
 
 # 0.13.0 (2024-08-24)
 
 ### Features
 
-- Added a new custom reporter with description, pre conditions, post conditions , steps, video, attachments
-- Change github pages to show the custom reporter
+- Added a new custom reporter with description, pre-conditions, post-conditions, steps, video, and attachments.
+- Change GitHub pages to show the custom reporter
 
 # 0.12.0 (2024-08-24)
 
 ### Features
 
-- Introduced new page classes for WebdriverIO Shop including HomePage, CartPage, and ProductDetailPage.
-- Added ProductsApi class for handling product-related API calls.
+- Introduced new page classes for WebdriverIO Shop, including HomePage, CartPage, and ProductDetailPage.
+- Added the ProductsApi class to handle product-related API calls.
 - Implemented Select component for dropdown interactions.
 - Updated addToCart test to use new WebdriverIO Shop pages and components.
 - Refactored accessibility and annotation helpers for better error processing.
-- Change the yml to include the new url for the webdriver shop
+- Change the yml to include the new URL for the webdriver shop
 
 ### Documentation
 
-- Improve the readme to include youtube video and change to axe-core® to be compliant with Deque trademark
+- Improve the readme to include YouTube video and change to axe-core® to be compliant with the Deque trademark
 
 # 0.11.2 (2024-08-10)
 

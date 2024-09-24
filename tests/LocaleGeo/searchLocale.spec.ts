@@ -3,7 +3,8 @@ import { HomePage } from '../../pages/Google/homePage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 
 const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const localeInfo = require(`../../data/${locale}.json`);
 
 test.describe('Locale translations', () => {

@@ -1,4 +1,4 @@
-/* eslint-disable playwright/no-conditional-in-test */
+ 
 import { Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
@@ -32,8 +32,7 @@ test.describe('Test Accessibility By Page', {
         const annotationHelper = new AnnotationHelper(page, pageToTest);
         annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
-        const accessibilityHelper = new AccessibilityHelper(page, annotationHelper);
-        await accessibilityHelper.init(); // Initialize the AccessibilityHelper
+        const accessibilityHelper = new AccessibilityHelper(page, testInfo, annotationHelper);
         await accessibilityHelper.checkAccessibility('byParameter', page);
     });
 

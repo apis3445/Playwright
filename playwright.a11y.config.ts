@@ -11,7 +11,7 @@ const config: PlaywrightTestConfig = {
     },
     reporter: [
         ['html'],
-        ['./utils/accessibility/AccessibilityReporter.ts'], // Custom reporter for a11y tests
+        ['./utils/reporter/AccessibilityReporter.ts'], // Custom reporter for a11y tests
     ],
     projects: [
         {

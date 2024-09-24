@@ -1,12 +1,12 @@
 {
   "name": "playwright_framework",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Playwright Framework Boilerplate",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
     "test:lt": "npx playwright test --project='*@lambdatest'",
-    "lint": "eslint . --ext .ts",
+    "lint": "npx eslint",
     "prepare": "husky"
   },
   "keywords": [],
@@ -14,32 +14,34 @@
   "license": "MIT",
   "devDependencies": {
     "@azure/microsoft-playwright-testing": "^1.0.0-beta.3",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.11.0",
     "@faker-js/faker": "^9.0.1",
+    "@types/eslint__js": "^8.42.3",
     "@types/mustache": "^4.2.5",
     "@types/node": "^20.14.2",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.14.1",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
     "@zerostep/playwright": "^0.1.5",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.56.0",
+    "eslint": "^9.11.0",
     "eslint-plugin-playwright": "^1.6.2",
     "husky": "^9.1.6",
     "lighthouse": "^12.2.1",
     "playwright": "^1.47.1",
     "playwright-lighthouse": "^4.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "5.3.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "^1.47.1",
     "axe-core": "^4.10.0",
-    "axe-playwright": "^2.0.2",
     "checkly": "^4.9.0",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "mustache": "^4.2.0",
-    "playwright-qase-reporter": "^2.0.12"
+    "playwright-qase-reporter": "^2.0.13"
   },
   "config": {
     "commitizen": {

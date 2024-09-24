@@ -1,61 +1,16 @@
 import { Reporter, TestCase, TestResult } from '@playwright/test/reporter';
-import * as path from 'path';
-import * as fs from 'fs';
-import * as mustache from 'mustache';
 import { AnnotationType } from '../annotations/AnnotationType';
 import { TestStatusIcon } from './models/TestStatusIcon';
 import { TestResults } from './models/TestResults';
 import { FileHelper } from '../FileHelper';
+import { HtmlHelper } from '../HtmlHelper';
+import * as path from 'path';
 
 class StepReporter implements Reporter {
     private testNo = 0;
     private fileHelper: FileHelper = new FileHelper();
-
-    // Helper function to strip ANSI escape codes
-    // Helper function to map ANSI escape codes to HTML styles
-    private ansiToHtml(text: string): string {
-        const ansiToHtmlMap: Record<string, string> = {
-            '\u001b[30m': '<span class="black">',
-            '\u001b[31m': '<span class="red">',
-            '\u001b[32m': '<span class="green">',
-            '\u001b[33m': '<span class="yellow">',
-            '\u001b[34m': '<span class="blue">',
-            '\u001b[35m': '<span class="magenta">',
-            '\u001b[36m': '<span class="cyan">',
-            '\u001b[37m': '<span class="white">',
-            '\u001b[0m': '</span>', // Reset
-            '\u001b[2m': '<span class="dim">', // Dim
-            '\u001b[22m': '</span>', // Reset dim
-            '\u001b[39m': '</span>', // Reset color
-            // Add more mappings as needed
-        };
-
-        let htmlText = text;
-        const openTags: string[] = [];
-
-        for (const [ansiCode, htmlTag] of Object.entries(ansiToHtmlMap)) {
-            if (htmlTag.startsWith('<span')) {
-                openTags.push(htmlTag);
-            } else if (htmlTag === '</span>') {
-                if (openTags.length > 0) {
-                    openTags.pop();
-                } else {
-                    // If there is no matching opening tag, skip this closing tag
-                    continue;
-                }
-            }
-            htmlText = htmlText.split(ansiCode).join(htmlTag);
-        }
-
-        // Close any remaining open tags
-        while (openTags.length > 0) {
-            htmlText += '</span>';
-            openTags.pop();
-        }
-        return htmlText;
-    }
-
-    onTestEnd(test: TestCase, result: TestResult) {
+    private htmlHelper: HtmlHelper = new HtmlHelper();
+    async onTestEnd(test: TestCase, result: TestResult) {
         const results: TestResults[] = [];
 
         this.testNo++;
@@ -79,12 +34,6 @@ class StepReporter implements Reporter {
         const description = descriptionAnnotation?.description ?? 'No Description';
         const browser = test.parent.project()?.name ?? 'No browser';
 
-        // Capture video and screenshot paths
-        const screenshotPaths: string[] = result.attachments
-            .filter(attachment => attachment.name === 'screenshot')
-            .map(attachment => attachment.path ?? '') ?? [];
-        const copiedScreenshotPaths = screenshotPaths.map(screenshotPath => this.fileHelper.copyFileToResults(folderTest, screenshotPath));
-
         const attachments: { path: string, name: string }[] = result.attachments
             .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video')
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
@@ -93,10 +42,11 @@ class StepReporter implements Reporter {
             name: attachment.name
         }));
 
-        const copiedVideoPath = this.fileHelper.copyVideo(result, folderTest);
+        const videoPath = this.fileHelper.copyVideo(result, folderTest);
+        const screenshotPaths = this.fileHelper.copyScreenshots(result, folderTest);
 
         // Capture errors
-        const errors = result.errors.map(error => this.ansiToHtml(error.message ?? 'No errors')) ?? [];
+        const errors = result.errors.map(error => this.htmlHelper.ansiToHtml(error.message ?? 'No errors')) ?? [];
 
         results.push({
             title: test.title,
@@ -108,20 +58,13 @@ class StepReporter implements Reporter {
             steps: steps,
             postConditions: postConditions,
             statusIcon: statusIcon,
-            videoPath: copiedVideoPath,
-            screenshotPaths: copiedScreenshotPaths,
+            videoPath: videoPath,
+            screenshotPaths: screenshotPaths,
             attachments: copiedAttachments,
             errors: errors
         });
 
-        const templatePath = path.join(__dirname, 'templates', 'stepReporter.html');
-        const template = fs.readFileSync(templatePath, 'utf-8');
-        const htmlContent = mustache.render(template, { results: results });
-        const pathSteps = path.dirname(filePath);
-        if (!fs.existsSync(pathSteps)) {
-            fs.mkdirSync(pathSteps, { recursive: true });
-        }
-        fs.writeFileSync(filePath, htmlContent);
+        await this.htmlHelper.replaceTags('stepReporter.html', { results: results }, folderTest, filePath);
     }
 }
 

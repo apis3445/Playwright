@@ -6,7 +6,7 @@ import { CartPage } from '../../pages/WebdriverIOShop/CartPage';
 
 test.describe('WebdriverIO Shop', () => {
 
-    // eslint-disable-next-line playwright/expect-expect
+     
     test('Should add an item to the cart', {
         tag: ['@API'],
     }, async ({ page }) => {

@@ -64,7 +64,7 @@ export class BasePage {
     async goToDefault() {
         const stepDescription = 'Go to default page';
         this.addAnnotation(AnnotationType.GoTo, stepDescription);
-        // eslint-disable-next-line playwright/expect-expect
+         
         await test.step(stepDescription + '', async () => {
             await this.page.goto('/');
         });

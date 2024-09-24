@@ -64,7 +64,7 @@ export class ApiHelper {
      * @param data data to post
      * @returns 
      */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     async put(url: string, data: any): Promise<APIResponse> {
         const apiRequest = await this.createRequest(this.baseUrl);
         return await apiRequest.put(url, { data: data });
@@ -80,7 +80,7 @@ export class ApiHelper {
         return await apiRequest.delete(url);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     async mockApi(description: string, url: string, jsonData: any) {
         this.annotationHelper.addAnnotation(AnnotationType.Mock, description);
         await test.step(description, async () => {

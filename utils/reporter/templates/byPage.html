@@ -86,6 +86,9 @@
             margin: 5px 0;
         }
         footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
             margin-top: 40px;
             padding: 10px;
             background-color: #1d26d7;
@@ -165,7 +168,7 @@
     {{/data.errors}}
     <h2>Video:</h2>
             <video controls>
-                <source src="{{data.video}}" type="video/mp4">
+                <source src="{{data.video}}" type="video/webm">
                 Your browser does not support the video tag.
             </video>
     <footer>
