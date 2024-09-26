@@ -51,22 +51,6 @@ export class AnnotationHelper {
     }
 
     /**
-     * Add border to focused element
-     * @param borderColor Border color
-     */
-    async addBorderFocusedElement(borderColor: string) {
-        const params = {
-            borderColor: borderColor
-        };
-        await this.page.evaluate(params => {
-            const activeElement = document.activeElement as HTMLElement;
-            if (activeElement) {
-                activeElement['style'].border = '2px solid ' + params.borderColor;
-            }
-        }, params);
-    }
-
-    /**
      * Remove Description
      */
     async removeDescription() {
@@ -109,7 +93,7 @@ export class AnnotationHelper {
      * @param testInfo 
      */
     async attachPageScreenshot(fileName: string, testInfo: TestInfo) {
-         
+
         await test.step('Add Page screenshot', async () => {
             const file = path.join(this.resultsFolder, fileName);
             const screenshot = await this.page.screenshot({ path: file, fullPage: true });
@@ -159,5 +143,32 @@ export class AnnotationHelper {
             fs.mkdirSync(pathAttachments, { recursive: true });
         await fs.promises.writeFile(attachmentFile, screenshot);
         await testInfo.attach(fileName, { contentType: 'image/png', path: attachmentFile });
+    }
+
+    /** Add a border to the specified element with the given border color.
+    * @param element The CSS selector of the element to which the border will be added
+    * @param borderColor The color of the border to be applied
+    */
+    async addBorderToElement(element: string, borderColor: string) {
+        await this.page.evaluate(([element, borderColor]) => {
+            const el = document.querySelector(element) as HTMLElement;
+            if (el) {
+                el.style.border = `2px solid ${borderColor}`;
+            }
+        }, [element, borderColor]);
+    }
+
+    /**
+     * Add a border to the specified element with the given border color.
+     * @param element The CSS selector of the element to which the border will be added
+     * @param borderColor The color of the border to be applied
+     */
+    async removeBorder(element: string) {
+        await this.page.evaluate(([element]) => {
+            const el = document.querySelector(element) as HTMLElement;
+            if (el) {
+                el.style.border = '';
+            }
+        }, [element]);
     }
 }
