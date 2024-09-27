@@ -87,6 +87,7 @@ export class AccessibilityHelper {
                 help: violation.help,
                 guideline: violation.tags[1],
                 wcagRule: wcagTags.length > 0 ? violation.tags[2] : violation.tags[1],
+                total: targets.length,
                 target: targets
             };
             errors.push(error);

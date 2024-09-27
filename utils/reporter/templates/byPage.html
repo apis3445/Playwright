@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <title>Accessibility Report</title>
     <style>
         :root {
             --critical-color: {{data.criticalColor}};
             --serious-color: {{data.seriousColor}};
             --moderate-color: {{data.moderateColor}};
-            --minor-color: {{data.minorColor}};
+            --minor-color: {{ data.minorColor }};
             --footer-height: 60px;
         }
 
@@ -20,21 +22,28 @@
             background-color: #f9f9f9;
             color: #333;
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             color: #333;
         }
+
         h1 {
             font-size: 2em;
             margin-bottom: 20px;
             text-align: center;
         }
+
         h2 {
             font-size: 1.5em;
             margin-bottom: 15px;
         }
+
         .error-list {
             margin: 20px 0;
         }
+
         .error-item {
             border: 1px solid #ccc;
             padding: 15px;
@@ -42,55 +51,70 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .error-item h3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin: 0;
         }
+
         .screenshot {
             max-width: 100%;
             height: auto;
             margin-top: 10px;
         }
+
         .chip {
-            display: inline-block;
-            padding: 0 10px;
-            height: 24px;
-            font-size: 14px;
-            line-height: 24px;
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 10px;
             border-radius: 16px;
             background-color: #e0e0e0;
             margin-right: 5px;
+            white-space: normal; /* Allow text to wrap */
+            line-height: 1.2; 
         }
+
         .severity {
             font-weight: bold;
         }
+
         .moderate {
             background-color: var(--moderate-color);
             color: white;
         }
+
         .minor {
             background-color: var(--minor-color);
             color: white;
         }
+
         .serious {
             background-color: var(--serious-color);
             color: white;
         }
+
         .critical {
             background-color: var(--critical-color);
             color: white;
         }
+
         .suggestion {
             margin-top: 10px;
             background-color: #dff0d8;
             padding: 10px;
         }
+
         .error-details {
             background-color: #fcf8e3;
             padding: 10px;
         }
+
         .error-details p {
             margin: 5px 0;
         }
+
         footer {
             position: fixed;
             bottom: 0;
@@ -104,6 +128,7 @@
             justify-content: center;
             align-items: center;
         }
+
         header {
             position: fixed;
             top: 0;
@@ -117,25 +142,31 @@
             justify-content: center;
             align-items: center;
         }
+
         header h1 {
             color: #fff;
             margin: 0;
         }
+
         footer i {
             margin-left: 5px;
             vertical-align: middle;
         }
+
         .score {
             text-align: left;
         }
+
         @media (min-width: 600px) {
             .header h2 {
                 flex: 1 1 45%;
             }
+
             .score {
                 text-align: right;
             }
         }
+
         .page {
             text-align: left;
         }
@@ -158,45 +189,56 @@
             background-color: white;
             overflow: hidden;
         }
+
         main {
             margin-top: var(--footer-height);
         }
+
         section {
             display: block;
             justify-content: space-between;
             margin-bottom: 10px;
         }
+
         section h2 {
             flex: 1 1 100%;
             margin: 0;
         }
+
         section.header {
-            display: flex!important;
+            display: flex !important;
         }
+
         video {
             margin-bottom: var(--footer-height);
             width: 100%;
         }
-    .accordion {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 
-    .accordion .material-icons {
-        transition: transform 0.4s;
-    }
+        .accordion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .accordion[aria-expanded="true"] .expand-icon {
-        transform: rotate(180deg);
-    }
+        .accordion .material-icons {
+            transition: transform 0.4s;
+        }
+
+        .accordion[aria-expanded="true"] .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .right {
+            margin-left: auto;
+        }
     </style>
 </head>
-<body> 
+
+<body>
     <header>
         <h1>Accessibility Report</h1>
-    </header>    
-    <main> 
+    </header>
+    <main>
         <section class="header">
             <h2 class="page">Page: {{data.pageKey}}</h2>
             <h2 class="score">Accessibility Score: {{data.accessibilityScore}}</h2>
@@ -204,9 +246,10 @@
         {{#data.errors}}
         <section class="error-item">
             <h3>
+                <a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
                 {{description}}
-                <a href="{{helpUrl}}" target="_blank" class="chip">[{{wcagRule}}] {{id}}</a>
-                <span class="chip severity {{severity}}">{{severity}}</span>
+                <a href="{{helpUrl}}" target="_blank" class="chip">{{id}}</a>
+                <span class="chip right severity {{severity}}">{{total}} {{severity}}</span>
             </h3>
             <div class="suggestion">
                 <strong>How to Fix:</strong> {{help}}
@@ -218,23 +261,23 @@
             </button>
             <div class="panel">
                 <strong>Description:</strong> {{description}}
-                <br/><strong>Steps to Reproduce:
-                <ol>
-                    {{#steps}}
-                    <li>{{.}}</li>
-                    {{/steps}}
-                </ol>
-                </p>
-                <br/><strong>How to Fix:</strong> {{help}}
-                <br/><strong>Impact:</strong> {{severity}}
-                <br/><strong>WCAG Rule:</strong><a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
-                <img class="screenshot" src="{{screenshot}}" alt="Screenshot of the issue">
+                <br /><strong>Steps to Reproduce:
+                    <ol>
+                        {{#steps}}
+                        <li>{{.}}</li>
+                        {{/steps}}
+                    </ol>
+                    </p>
+                    <br /><strong>How to Fix:</strong> {{help}}
+                    <br /><strong>Impact:</strong> {{severity}}
+                    <br /><strong>WCAG Rule:</strong><a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
+                    <img class="screenshot" src="{{screenshot}}" alt="Screenshot of the issue">
             </div>
             {{/target}}
         </section>
         {{/data.errors}}
     </main>
-    <hr/>
+    <hr />
     <h2>Video</h2>
     <video controls>
         <source src="{{data.video}}" type="video/webm">
@@ -244,10 +287,10 @@
         &copy; Made with <i class="material-icons">favorite</i> by Abi =)
     </footer>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var acc = document.getElementsByClassName("accordion");
             for (var i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
+                acc[i].addEventListener("click", function () {
                     this.classList.toggle("active");
                     var panel = this.nextElementSibling;
                     var isExpanded = this.getAttribute("aria-expanded") === "true";
@@ -262,4 +305,5 @@
         });
     </script>
 </body>
+
 </html>

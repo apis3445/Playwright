@@ -8,5 +8,6 @@ export interface A11yError {
     help: string;
     helpUrl: string;
     guideline: string;
+    total: number;
     target: Target[];
 }
