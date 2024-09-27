@@ -79,7 +79,9 @@ test.describe('Servers', () => {
     test.afterEach(async ({ page }) => {
         //Delete the server created after each test 
         const addServerPage = new AddServerPage(page);
-        if (id > 0)
+        if (id > 0) {
+            addServerPage.addAnnotation(AnnotationType.PostCondition, 'Delete the server with API requests');
             await addServerPage.serverApi.deleteServer(id);
+        }
     });
 });
