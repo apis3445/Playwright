@@ -11,6 +11,10 @@ test.describe('Servers', () => {
 
     test('Should add a server', {
         tag: ['@API'],
+        annotation: [
+            { type: AnnotationType.Description, description: 'An admin user can add a server' },
+            { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
+        ],
     }, async ({ page }, testInfo) => {
         const serversPage = new ServersPage(page, testInfo);
         const addServerPage = new AddServerPage(page);
@@ -40,6 +44,10 @@ test.describe('Servers', () => {
     // eslint-disable-next-line playwright/expect-expect
     test('Should edit a server', {
         tag: ['@API'],
+        annotation: [
+            { type: AnnotationType.Description, description: 'An admin user can edit a server' },
+            { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
+        ],
     }, async ({ page }, testInfo) => {
         const serversPage = new ServersPage(page, testInfo);
         const key = faker.number.int({ min: 2, max: 999_998 });
