@@ -53,12 +53,15 @@ export class AccessibilityHelper {
                     const severityColor = Severity[violation.impact as keyof typeof Severity] || 'black'; // Default to black if severity is not found
                     const stepDescription = `[${element}] ${violation.id} - ${violation.description} - ${violation.help}`;
                     await this.annotationHelper.addDescription(stepDescription, severityColor);
+                    const excludedTypes = new Set([
+                        AnnotationType.Precondition,
+                        AnnotationType.PostCondition,
+                        AnnotationType.Description,
+                        'A11y'
+                    ]);
+
                     const steps: string[] = this.annotationHelper.getAnnotations()
-                        .filter(annotation =>
-                            annotation.type !== AnnotationType.Precondition
-                            && annotation.type !== AnnotationType.PostCondition
-                            && annotation.type !== AnnotationType.Description
-                            && annotation.type !== 'A11y')
+                        .filter(annotation => !excludedTypes.has(annotation.type))
                         .map(annotation => annotation.description ?? 'No steps');
                     if (await targetLocator.isVisible()) {
                         await this.annotationHelper.addBorderToElement(element, severityColor);
