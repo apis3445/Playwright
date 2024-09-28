@@ -1,3 +1,17 @@
+# 0.15.0 (2024-09-28)
+
+### Enhancements
+
+- Refactored AccessibilityHelper for improved element highlighting and annotation handling.
+- Enhanced accessibility report template with better styling and usability features.
+- Updated Playwright configuration to use environment variables and improved test settings.
+- Simplified GitHub workflow for the accessibility tool by removing unnecessary commands.
+
+### Features
+
+- Added Azure DevOps pipeline integration for accessibility reporting.
+- Updated several development dependencies in `package.json`.
+
 # 0.14.0 (2024-09-07)
 
 ### Features
