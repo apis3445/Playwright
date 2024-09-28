@@ -86,7 +86,7 @@ Or you can run with the Visual Code Extension
 
 You can see the reporter on the GitHub Pages:
 
-https://apis3445.github.io/Playwright/1/
+https://apis3445.github.io/Playwright/3/
 
 Video with some explanation
 

@@ -23,14 +23,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm config set @microsoft:registry=https://npm.pkg.github.com
-          npm set //npm.pkg.github.com/:_authToken ${{secrets.PAT_TOKEN_PACKAGE}}
           npm ci
 
       - run: npx playwright install --with-deps
 
       - name: Run accessibility tests
-        run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium --workers=1
+        run: PLAYWRIGHT_HTML_REPORT=report npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium
 
       - name: Upload reporter as artifact
         uses: actions/upload-artifact@v4

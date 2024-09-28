@@ -1,3 +1,18 @@
+# 0.15.0 (2024-09-28)
+
+### Enhancements
+
+- Refactored AccessibilityHelper for improved element highlighting and annotation handling.
+- Enhanced accessibility report template with better styling and usability features.
+- Updated Playwright configuration to use environment variables and improved test settings.
+- Remove alpha version of microsoft azure playwright reporting
+- A11y report nows has better UI and include the option to show the bugs
+
+### Features
+
+- Added Azure DevOps pipeline integration for accessibility reporting.
+- Updated to latest version of Playwright.
+
 # 0.14.0 (2024-09-07)
 
 ### Features

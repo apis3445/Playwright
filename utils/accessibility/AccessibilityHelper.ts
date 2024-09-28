@@ -7,6 +7,7 @@ import { A11yError } from './models/A11yError';
 import { ReportData } from './models/Report';
 import { Target } from './models/Target';
 import { Severity } from './models/Severity';
+import { AnnotationType } from '../annotations/AnnotationType';
 
 export class AccessibilityHelper {
 
@@ -49,24 +50,27 @@ export class AccessibilityHelper {
                 for (const target of node.target) {
                     const element = target.toString();
                     const targetLocator = this.page.locator(element);
+                    const severityColor = Severity[violation.impact as keyof typeof Severity] || 'black'; // Default to black if severity is not found
+                    const stepDescription = `[${element}] ${violation.id} - ${violation.description} - ${violation.help}`;
+                    await this.annotationHelper.addDescription(stepDescription, severityColor);
+                    const excludedTypes = new Set([
+                        AnnotationType.Precondition,
+                        AnnotationType.PostCondition,
+                        AnnotationType.Description,
+                        'A11y'
+                    ]);
 
-                    // Highlight the element with the appropriate border color
-                    const borderColor = Severity[violation.impact as keyof typeof Severity] || 'black'; // Default to black if severity is not found
-                    await this.page.evaluate(([element, borderColor]) => {
-                        const el = document.querySelector(element) as HTMLElement;
-                        if (el) {
-                            el.style.border = `2px solid ${borderColor}`;
-                        }
-                    }, [element, borderColor]);
-
-                    const stepDescription = `${violation.id} - ${violation.description} - ${violation.help}`;
-                    await this.annotationHelper.addDescription(stepDescription, borderColor);
-
+                    const steps: string[] = this.annotationHelper.getAnnotations()
+                        .filter(annotation => !excludedTypes.has(annotation.type))
+                        .map(annotation => annotation.description ?? 'No steps');
                     if (await targetLocator.isVisible()) {
+                        await this.annotationHelper.addBorderToElement(element, severityColor);
+                        await targetLocator.highlight();
                         const screenshotFile = path.join(`${violation.id}-${errorNumber++}.png`);
                         const target: Target = {
                             element: element,
-                            screenshot: screenshotFile
+                            screenshot: screenshotFile,
+                            steps: steps
                         };
                         targets.push(target);
                         await this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo);
@@ -74,12 +78,7 @@ export class AccessibilityHelper {
 
                     // eslint-disable-next-line playwright/no-wait-for-timeout
                     await this.page.waitForTimeout(+pause);
-                    await this.page.evaluate(([element]) => {
-                        const el = document.querySelector(element) as HTMLElement;
-                        if (el) {
-                            el.style.border = '';
-                        }
-                    }, [element]);
+                    await this.annotationHelper.removeBorder(element);
                 }
             }
 
@@ -91,6 +90,7 @@ export class AccessibilityHelper {
                 help: violation.help,
                 guideline: violation.tags[1],
                 wcagRule: wcagTags.length > 0 ? violation.tags[2] : violation.tags[1],
+                total: targets.length,
                 target: targets
             };
             errors.push(error);
@@ -106,8 +106,6 @@ export class AccessibilityHelper {
             moderateColor: Severity.moderate,
             minorColor: Severity.minor
         };
-
         this.annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));
-
     }
 }

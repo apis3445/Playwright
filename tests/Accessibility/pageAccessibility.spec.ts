@@ -1,4 +1,4 @@
- 
+
 import { Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
@@ -6,7 +6,7 @@ import playwright from 'playwright';
 import { AccessibilityHelper } from '../../utils/accessibility/AccessibilityHelper';
 
 test.describe('Test Accessibility By Page', {
-    tag: ['@PageAccessibility'],
+    tag: ['@PageAccessibility', '@[1]'],
 }, () => {
     // All tests in this describe group will get 0 retry attempts
     test.describe.configure({ retries: 0 });
@@ -33,7 +33,7 @@ test.describe('Test Accessibility By Page', {
         annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to: ' + pageToTest);
         await page.goto(pageToTest);
         const accessibilityHelper = new AccessibilityHelper(page, testInfo, annotationHelper);
-        await accessibilityHelper.checkAccessibility('byParameter', page);
+        await accessibilityHelper.checkAccessibility(pageToTest, page);
     });
 
     test.afterAll(async ({ }, testInfo) => {

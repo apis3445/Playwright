@@ -33,6 +33,7 @@ export class ServerApi {
      * @param {number} id Server id
      */
     async deleteServer(id: number) {
+
         return await test.step(`Delete server with Id: "${id}"`, async () => {
             return await this.apiHelper.delete(`${this.api}/${id}`);
         });

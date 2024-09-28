@@ -1,3 +1,4 @@
+import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
@@ -50,7 +51,7 @@ const config: PlaywrightTestConfig = {
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
-        ['html'],
+        ['html', { outputFolder: 'playwright-report', open: 'never' }],
         [
             'playwright-qase-reporter',
             {
@@ -66,6 +67,28 @@ const config: PlaywrightTestConfig = {
                     },
                 },
             },
+        ],
+        [
+            '@alex_neo/playwright-azure-reporter',
+            {
+                orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
+                token: process.env.ADO_TOKEN,
+                planId: 442,
+                projectName: 'Playwright',
+                environment: 'QA',
+                logging: true,
+                testRunTitle: 'Playwright Test Run',
+                publishTestResultsMode: 'testRun',
+                uploadAttachments: true,
+                attachmentsType: ['screenshot', 'video', 'trace'],
+                testRunConfig: {
+                    owner: {
+                        displayName: 'Abigail Armijo',
+                    },
+                    comment: 'Playwright Test Run',
+                    configurationIds: [12],
+                },
+            } as AzureReporterOptions
         ],
         ['./utils/reporter/StepReporter.ts'],
         ['./utils/reporter/AccessibilityReporter.ts']
