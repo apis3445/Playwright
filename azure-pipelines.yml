@@ -8,7 +8,7 @@ parameters:
   - name: pageUrl
     displayName: Page to test
     type: string
-    default: https://www.google.com
+    default: ''
   - name: debugPause
     displayName: Miliseconds to pause
     type: number
