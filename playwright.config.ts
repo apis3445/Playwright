@@ -50,7 +50,7 @@ const config: PlaywrightTestConfig = {
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
-        ['html'],
+        ['html', { outputFolder: 'playwright-report', open: 'never' }],
         [
             'playwright-qase-reporter',
             {
