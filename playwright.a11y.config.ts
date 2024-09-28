@@ -1,4 +1,5 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
+import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
@@ -50,7 +51,33 @@ const config: PlaywrightTestConfig = {
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['./utils/reporter/StepReporter.ts'],
-        ['./utils/reporter/AccessibilityReporter.ts']
+        ['./utils/reporter/AccessibilityReporter.ts'],
+        [
+            '@alex_neo/playwright-azure-reporter',
+            {
+                orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
+                token: process.env.ADO_TOKEN,
+                planId: 442,
+                projectName: 'Playground',
+                environment: 'QA',
+                logging: true,
+                testRunTitle: 'Playwright Test Run',
+                publishTestResultsMode: 'testRun',
+                uploadAttachments: true,
+                attachmentsType: ['screenshot', 'video', 'trace'],
+                testRunConfig: {
+                    owner: {
+                        displayName: 'Marcus Felling',
+                    },
+                    comment: 'Playwright Test Run',
+                    // the configuration ids of this test run, use 
+                    // https://dev.azure.com/{organization}/{project}/_apis/test/configurations to get the ids of  your project.
+                    // if multiple configuration ids are used in one run a testPointMapper should be used to pick the correct one, 
+                    // otherwise the results are pushed to all.
+                    configurationIds: [12],
+                },
+            } as AzureReporterOptions
+        ]
     ],
     /* Configure projects for major browsers */
     projects: [
