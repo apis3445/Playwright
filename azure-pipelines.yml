@@ -1,6 +1,3 @@
-trigger:
-- main
-
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -44,3 +41,8 @@ steps:
       PAGE_URL: $(pageUrl)
       DEBUG_PAUSE: $(debugPause)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'playwright-report'
+      ArtifactName: 'playwright-report-user3'
+      publishLocation: 'Container'
