@@ -6,18 +6,11 @@ parameters:
     displayName: Page to test
     type: string
     default: ''
+
   - name: debugPause
     displayName: Miliseconds to pause
     type: number
-    default: 2000
-  - name: environment
-    displayName: Environment
-    type: string
-    default: 'dev'
-    values:
-      - dev
-      - staging
-      - production
+    default: '2000'
 
 variables:
   pageURL: ${{ parameters.pageUrl }}
@@ -45,7 +38,7 @@ steps:
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: 'playwright-report'
+      PathtoPublish: 'test-results'
       ArtifactName: 'playwright-report-user3'
       publishLocation: 'Container'
 

@@ -50,7 +50,7 @@ const config: PlaywrightTestConfig = {
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
-        ['junit', { outputFile: 'playwright-report/junit.xml' }],
+        ['junit', { outputFile: 'test-results/results.xml' }],
         ['./utils/reporter/StepReporter.ts'],
         ['./utils/reporter/AccessibilityReporter.ts'],
         [
