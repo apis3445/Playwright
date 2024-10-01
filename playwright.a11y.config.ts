@@ -50,6 +50,7 @@ const config: PlaywrightTestConfig = {
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
+        ['junit', { outputFile: 'playwright-report/junit.xml' }],
         ['./utils/reporter/StepReporter.ts'],
         ['./utils/reporter/AccessibilityReporter.ts'],
         [
@@ -67,7 +68,7 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: 'Marcus Felling',
+                        displayName: 'Azure Devops Testing',
                     },
                     comment: 'Playwright Test Run',
                     // the configuration ids of this test run, use 

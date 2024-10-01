@@ -41,8 +41,17 @@ steps:
       PAGE_URL: $(pageUrl)
       DEBUG_PAUSE: $(debugPause)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
+
   - task: PublishBuildArtifacts@1
+    condition: always()
     inputs:
       PathtoPublish: 'playwright-report'
       ArtifactName: 'playwright-report-user3'
       publishLocation: 'Container'
+
+  - task: PublishTestResults@2
+    condition: always()
+    inputs:
+      testResultsFiles: '**/results.xml'
+      testRunTitle: 'Playwright Junit Test Results'
+      mergeTestResults: true 
