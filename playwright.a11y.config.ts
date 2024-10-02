@@ -48,7 +48,7 @@ const config: PlaywrightTestConfig = {
         screenshot: 'on',
 
         contextOptions: {
-            permissions: ['microphone'],
+            permissions: [], // Add specific permissions only if needed
         },
 
     },
