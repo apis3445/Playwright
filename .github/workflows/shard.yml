@@ -35,6 +35,12 @@ jobs:
       PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
       PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
       WEBDRIVERIO_SHOP: ${{vars.WEBDRIVERIO_SHOP}}
+      ADO_TOKEN: ${{ secrets.ADO_TOKEN}}
+      ADO_ORGANIZATION: ${{vars.ADO_ORGANIZATION}}
+      ADO_PROJECT: ${{vars.ADO_PROJECT}}
+      ADO_PLAN_ID: ${{vars.ADO_PLAN_ID}}
+      TEST_OWNER: ${{vars.TEST_OWNER}}
+      ADO_CONFIG_IDS: ${{vars.ADO_CONFIG_IDS}}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

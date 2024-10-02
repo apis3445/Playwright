@@ -76,7 +76,7 @@ const config: PlaywrightTestConfig = {
             {
                 orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
                 token: process.env.ADO_TOKEN,
-                planId: 398,
+                planId: process.env.ADO_PLAN_ID ?? 1,
                 projectName: process.env.ADO_PROJECT,
                 environment: 'QA',
                 logging: true,
@@ -86,10 +86,10 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: 'Abigail Armijo',
+                        displayName: process.env.TEST_OWNER ?? 'Abigail Armijo',
                     },
                     comment: 'Playwright Test Run',
-                    configurationIds: [46],
+                    configurationIds: [process.env.ADO_CONFIG_IDS ?? 1],
                 },
             } as AzureReporterOptions
         ],
