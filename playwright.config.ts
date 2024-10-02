@@ -48,9 +48,7 @@ const config: PlaywrightTestConfig = {
 
         screenshot: 'only-on-failure',
 
-        contextOptions: {
-            permissions: ['microphone'],
-        },
+
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
