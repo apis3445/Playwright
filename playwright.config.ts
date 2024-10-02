@@ -42,12 +42,15 @@ const config: PlaywrightTestConfig = {
         baseURL: process.env.BASE_URL,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'on',
+        trace: 'retain-on-failure',
 
-        video: 'on',
+        video: 'retain-on-failure',
 
-        screenshot: 'on',
+        screenshot: 'only-on-failure',
 
+        contextOptions: {
+            permissions: ['microphone'],
+        },
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
@@ -73,8 +76,8 @@ const config: PlaywrightTestConfig = {
             {
                 orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
                 token: process.env.ADO_TOKEN,
-                planId: 442,
-                projectName: 'Playwright',
+                planId: 398,
+                projectName: process.env.ADO_PROJECT,
                 environment: 'QA',
                 logging: true,
                 testRunTitle: 'Playwright Test Run',
@@ -86,7 +89,7 @@ const config: PlaywrightTestConfig = {
                         displayName: 'Abigail Armijo',
                     },
                     comment: 'Playwright Test Run',
-                    configurationIds: [12],
+                    configurationIds: [46],
                 },
             } as AzureReporterOptions
         ],

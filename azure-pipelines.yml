@@ -32,7 +32,6 @@ steps:
     displayName: 'Run Playwright tests'
     env:
       PAGE_URL: $(pageUrl)
-      DEBUG_PAUSE: $(debugPause)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
 
   - task: PublishBuildArtifacts@1
