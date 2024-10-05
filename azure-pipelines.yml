@@ -27,9 +27,9 @@ steps:
       npx playwright install --with-deps
     displayName: "Install dependencies"
 
-  - script: |
-      npm install -g allure-commandline  
-    displayName: "Install Allure"
+  #- script: |
+  #    npm install -g allure-commandline  
+  #  displayName: "Install Allure"
 
   - script: |
       npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium
@@ -38,10 +38,10 @@ steps:
       PAGE_URL: $(pageUrl)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
 
-  - script: |
-      allure generate ./allure-results -o ./allure-report
-    displayName: 'Generate allure report'
-    condition: always()
+  # - script: |
+  #    allure generate ./allure-results -o ./allure-report
+  #  displayName: 'Generate allure report'
+  #  condition: always()
 
   - task: PublishBuildArtifacts@1
     condition: always()
