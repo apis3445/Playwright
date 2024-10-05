@@ -1,7 +1,20 @@
 import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
+import { OrtoniReportConfig } from 'ortoni-report';
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import os from 'node:os';
 import dotenv from 'dotenv';
+
+const reportConfig: OrtoniReportConfig = {
+    preferredTheme: 'light',
+    filename: 'index',
+    projectName: 'Playwright Example',
+    testType: 'Release',
+    title: 'Playwright report',
+    base64Image: true,
+    folderPath: 'report',
+    showProject: false
+};
 
 /**
  * Read environment variables from file.
@@ -92,7 +105,34 @@ const config: PlaywrightTestConfig = {
             } as AzureReporterOptions
         ],
         ['./utils/reporter/StepReporter.ts'],
-        ['./utils/reporter/AccessibilityReporter.ts']
+        ['./utils/reporter/AccessibilityReporter.ts'],
+        ['ortoni-report', reportConfig],
+        ['allure-playwright',
+            {
+                detail: false,
+                suiteTitle: false,
+                links: {
+                    link: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/blob/main/%s',
+                    },
+                    issue: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/issues/%s',
+                        nameTemplate: 'ISSUE-%s',
+                    },
+                },
+                environmentInfo: {
+                    OS: os.platform(),
+                    Architecture: os.arch(),
+                    NodeVersion: process.version,
+                },
+                categories: [
+                    {
+                        name: 'Missing file errors',
+                        messageRegex: /^ENOENT: no such file or directory/,
+                    },
+                ],
+            }
+        ]
     ],
     /* Configure projects for major browsers */
     projects: [

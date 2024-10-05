@@ -1,16 +1,16 @@
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: "ubuntu-latest"
 
 parameters:
   - name: pageUrl
     displayName: Page to test
     type: string
-    default: ''
+    default: ""
 
   - name: debugPause
     displayName: Miliseconds to pause
     type: number
-    default: '2000'
+    default: "2000"
 
 variables:
   pageURL: ${{ parameters.pageUrl }}
@@ -19,17 +19,17 @@ variables:
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: '>=20.0.0'
-    displayName: 'Install Node.js>20'
+      versionSpec: ">=20.0.0"
+    displayName: "Install Node.js>20"
 
   - script: |
       npm install
       npx playwright install
-    displayName: 'Install dependencies'
+    displayName: "Install dependencies"
 
   - script: |
       npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium
-    displayName: 'Run Playwright tests'
+    displayName: "Run Playwright tests"
     env:
       PAGE_URL: $(pageUrl)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
@@ -37,13 +37,19 @@ steps:
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: 'test-results'
-      ArtifactName: 'playwright-report-user3'
-      publishLocation: 'Container'
+      PathtoPublish: "test-results"
+      ArtifactName: "playwright-report-user3"
+      publishLocation: "Container"
 
   - task: PublishTestResults@2
     condition: always()
     inputs:
-      testResultsFiles: '**/results.xml'
-      testRunTitle: 'Playwright Junit Test Results'
-      mergeTestResults: true 
+      testResultsFiles: "**/results.xml"
+      testRunTitle: "Playwright Junit Test Results"
+      mergeTestResults: true
+
+  - task: PublishAllureReport@1
+    displayName: Publish Report
+    inputs:
+      allureVersion: 2.27.0
+      testResultsDir: allure-results

@@ -22,6 +22,7 @@ test.describe('Normal user', () => {
 
 test.describe('Admin user', () => {
     test.use({ storageState: 'auth/admin.json' });
+
     test('Should returns admin menu', {
         tag: ['@Basic'],
         annotation: [
@@ -29,6 +30,7 @@ test.describe('Admin user', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin user' },
         ],
     }, async ({ page }) => {
+
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();

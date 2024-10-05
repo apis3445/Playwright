@@ -23,7 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
     "@zerostep/playwright": "^0.1.5",
-
+    "allure-playwright": "^3.0.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.12.0",
     "eslint-plugin-playwright": "^1.6.2",
@@ -43,6 +43,7 @@
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "mustache": "^4.2.0",
+    "ortoni-report": "^2.0.3",
     "playwright-qase-reporter": "^2.0.15"
   },
   "config": {
