@@ -1,3 +1,13 @@
+# 0.16.0 (2024-10-05)
+
+### Enhancements
+
+- Accessibility Testing from VS Code now includes speech synthesis. The audio is not saved in playwright video because playwright is not storing audio.
+- Now the time for the video in accessibility testing is defined with a formula to give enough time to read the error
+- Added option to create the bug in Azure Devops, for now is storing the token in the HTML file but I will change to include some external api to connect to azure devops
+- Updated workflows to remove the previous alpha version for Microsoft Playwright Reporter
+- Updated documentation
+
 # 0.15.0 (2024-09-28)
 
 ### Enhancements

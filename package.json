@@ -1,7 +1,7 @@
 {
-  "name": "playwright_framework",
-  "version": "0.17.0",
-  "description": "Playwright Framework Boilerplate",
+  "name": "playwright",
+  "version": "0.16.0",
+  "description": "Playwright Example Demo for AI, API, Accessibility testing",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
