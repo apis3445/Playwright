@@ -2,6 +2,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
 import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
+import os from 'node:os';
 
 /**
  * Read environment variables from file.
@@ -81,6 +82,32 @@ const config: PlaywrightTestConfig = {
                     configurationIds: [46],
                 },
             } as AzureReporterOptions
+        ],
+        ['allure-playwright',
+            {
+                detail: false,
+                suiteTitle: false,
+                links: {
+                    link: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/blob/main/%s',
+                    },
+                    issue: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/issues/%s',
+                        nameTemplate: 'ISSUE-%s',
+                    },
+                },
+                environmentInfo: {
+                    OS: os.platform(),
+                    Architecture: os.arch(),
+                    NodeVersion: process.version,
+                },
+                categories: [
+                    {
+                        name: 'Missing file errors',
+                        messageRegex: /^ENOENT: no such file or directory/,
+                    },
+                ],
+            }
         ]
     ],
     /* Configure projects for major browsers */
