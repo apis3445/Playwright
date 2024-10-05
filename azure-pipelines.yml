@@ -24,7 +24,7 @@ steps:
 
   - script: |
       npm install
-      npx playwright install
+      npx playwright install --with-deps
       npm install -g allure-commandline  
     displayName: "Install dependencies"
 
