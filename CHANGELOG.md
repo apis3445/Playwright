@@ -1,4 +1,4 @@
-# 0.16.0 (2024-10-05)
+# 0.17.0 (2024-10-05)
 
 ### Enhancements
 
@@ -6,9 +6,12 @@
 - Now the time for the video in accessibility testing is defined with a formula to give enough time to read the error
 - Added option to create the bug in Azure Devops, for now is storing the token in the HTML file but I will change to include some external api to connect to azure devops
 - Updated workflows to remove the previous alpha version for Microsoft Playwright Reporter
-- Updated documentation
 
-# 0.15.0 (2024-09-28)
+### Documentation
+
+- Updated readme file to remove the DEBUG_PAUSE
+
+# 0.16.0 (2024-09-28)
 
 ### Enhancements
 
@@ -22,6 +25,24 @@
 
 - Added Azure DevOps pipeline integration for accessibility reporting.
 - Updated to latest version of Playwright.
+
+# 0.15.0 (2024-09-20)
+
+# Enhancements
+
+- Improved accessibility report template with enhanced styling and usability features.
+- Refactored AccessibilityHelper for better element highlighting and annotation handling.
+- Updated Playwright configuration to use environment variables and enhanced test settings.
+- Simplified GitHub workflow for the accessibility tool by removing unnecessary commands.
+
+# Features
+
+- Added Azure DevOps pipeline integration for accessibility reporting.
+- Enhanced server tests with annotations and post-conditions for improved clarity.
+
+# Documentation
+
+- Updated README with the new GitHub Pages link for the reporter.
 
 # 0.14.0 (2024-09-07)
 
