@@ -58,6 +58,7 @@ steps:
       mergeTestResults: true
 
   - task: PublishAllureReport@1
+    condition: always()
     displayName: Publish Allure Report
     inputs:
       allureVersion: 2.27.0
