@@ -40,18 +40,16 @@ export class AccessibilityHelper {
 
         const violations = accessibilityScanResults.violations;
         const errors: A11yError[] = [];
-
         for (const violation of violations) {
             let errorNumber = 0;
             const wcagTags = violation.tags.filter((tag: string) => tag.startsWith('wcag'));
             const targets: Target[] = [];
-            const pause = process.env.DEBUG_PAUSE ?? 2000;
             for (const node of violation.nodes) {
                 for (const target of node.target) {
                     const element = target.toString();
                     const targetLocator = this.page.locator(element);
                     const severityColor = Severity[violation.impact as keyof typeof Severity] || 'black'; // Default to black if severity is not found
-                    const stepDescription = `[${element}] ${violation.id} - ${violation.description} - ${violation.help}`;
+                    const stepDescription = `[${element}] ${violation.id} - ${violation.help}`;
                     await this.annotationHelper.addDescription(stepDescription, severityColor);
                     const excludedTypes = new Set([
                         AnnotationType.Precondition,
@@ -66,18 +64,21 @@ export class AccessibilityHelper {
                     if (await targetLocator.isVisible()) {
                         await this.annotationHelper.addBorderToElement(element, severityColor);
                         await targetLocator.highlight();
+
+                        await this.annotationHelper.readDescription(stepDescription);
                         const screenshotFile = path.join(`${violation.id}-${errorNumber++}.png`);
+                        const buffer = await this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo);
                         const target: Target = {
                             element: element,
                             screenshot: screenshotFile,
-                            steps: steps
+                            steps: steps,
+                            stepsJson: JSON.stringify(steps),
+                            screenshotBase64: buffer.toString('base64')
                         };
                         targets.push(target);
-                        await this.annotationHelper.attachPageScreenshot(screenshotFile, this.testInfo);
+
                     }
 
-                    // eslint-disable-next-line playwright/no-wait-for-timeout
-                    await this.page.waitForTimeout(+pause);
                     await this.annotationHelper.removeBorder(element);
                 }
             }
@@ -91,11 +92,10 @@ export class AccessibilityHelper {
                 guideline: violation.tags[1],
                 wcagRule: wcagTags.length > 0 ? violation.tags[2] : violation.tags[1],
                 total: targets.length,
-                target: targets
+                target: targets,
             };
             errors.push(error);
         }
-
         const reportData: ReportData = {
             pageKey: pageKey,
             accessibilityScore: accessibilityScore,
@@ -104,7 +104,10 @@ export class AccessibilityHelper {
             criticalColor: Severity.critical,
             seriousColor: Severity.serious,
             moderateColor: Severity.moderate,
-            minorColor: Severity.minor
+            minorColor: Severity.minor,
+            adoOrganization: process.env.ADO_ORGANIZATION ?? '',
+            adoProject: process.env.ADO_PROJECT ?? '',
+            adoPat: process.env.ADO_TOKEN ?? ''
         };
         this.annotationHelper.addAnnotation('A11y', JSON.stringify(reportData));
     }

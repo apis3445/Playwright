@@ -6,7 +6,7 @@ import playwright from 'playwright';
 import { AccessibilityHelper } from '../../utils/accessibility/AccessibilityHelper';
 
 test.describe('Test Accessibility By Page', {
-    tag: ['@PageAccessibility', '@[1]'],
+    tag: ['@PageAccessibility', '@[395]'],
 }, () => {
     // All tests in this describe group will get 0 retry attempts
     test.describe.configure({ retries: 0 });
@@ -24,8 +24,9 @@ test.describe('Test Accessibility By Page', {
         });
         const context = await browser.newContext({
             recordVideo: {
-                dir: testInfo.outputPath('videos'),
-            }
+                dir: testInfo.outputPath('videos')
+            },
+
         });
         //With manual context or page is needed to setup the video
         page = await context.newPage();

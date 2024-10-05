@@ -42,11 +42,12 @@ const config: PlaywrightTestConfig = {
         baseURL: process.env.BASE_URL,
 
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-        trace: 'on',
+        trace: 'retain-on-failure',
 
-        video: 'on',
+        video: 'retain-on-failure',
 
-        screenshot: 'on',
+        screenshot: 'only-on-failure',
+
 
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -73,8 +74,8 @@ const config: PlaywrightTestConfig = {
             {
                 orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
                 token: process.env.ADO_TOKEN,
-                planId: 442,
-                projectName: 'Playwright',
+                planId: process.env.ADO_PLAN_ID ?? 1,
+                projectName: process.env.ADO_PROJECT,
                 environment: 'QA',
                 logging: true,
                 testRunTitle: 'Playwright Test Run',
@@ -83,10 +84,10 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: 'Abigail Armijo',
+                        displayName: process.env.TEST_OWNER ?? 'Abigail Armijo',
                     },
                     comment: 'Playwright Test Run',
-                    configurationIds: [12],
+                    configurationIds: [process.env.ADO_CONFIG_IDS ?? 1],
                 },
             } as AzureReporterOptions
         ],

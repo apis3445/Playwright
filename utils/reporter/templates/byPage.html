@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <title>Accessibility Report</title>
     <style>
         :root {
             --critical-color: {{data.criticalColor}};
+
             --serious-color: {{data.seriousColor}};
+
             --moderate-color: {{data.moderateColor}};
-            --minor-color: {{ data.minorColor }};
+
+            --minor-color: {{data.minorColor}};
+
             --footer-height: 60px;
         }
 
@@ -66,14 +72,16 @@
         }
 
         .chip {
+            font-size: medium;
             display: inline-flex;
             align-items: center;
             padding: 5px 10px;
             border-radius: 16px;
             background-color: #e0e0e0;
             margin-right: 5px;
-            white-space: normal; /* Allow text to wrap */
-            line-height: 1.2; 
+            white-space: normal;
+            /* Allow text to wrap */
+            line-height: 1.2;
         }
 
         .severity {
@@ -232,6 +240,135 @@
             margin-left: auto;
         }
     </style>
+    <script>
+      
+        async function uploadScreenshot(screenshotBase64, fileName) {
+            const organization = '{{data.adoOrganization}}';
+            const project = '{{data.adoProject}}';
+            const apiVersion = '7.1';
+            const pat = '{{data.adoPat}}';
+
+            const url = `https://dev.azure.com/${organization}/${project}/_apis/wit/attachments?fileName=${fileName}&api-version=${apiVersion}`;
+            const binaryString = atob(screenshotBase64);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+            }
+            const blob = new Blob([bytes], { type: 'application/octet-stream' });
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/octet-stream',
+                        'Authorization': `Basic ${btoa(':' + pat)}`
+                    },
+                    body: blob
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.url;
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error uploading screenshot: ${errorData.message}`);
+                    return null;
+                }
+            } catch (error) {
+                console.error('Error uploading screenshot:', error);
+                alert('Error uploading screenshot. Check console for details.');
+                return null;
+            }
+        }
+
+        async function createAzureDevOpsBug(description, wcagRule, help, severity, stepsJson, screenshotBase64) {
+            const organization = '{{data.adoOrganization}}';
+            const project = '{{data.adoProject}}';
+            const apiVersion = '7.1';
+            const pat = '{{data.adoPat}}';
+
+            const url = `https://dev.azure.com/${organization}/${project}/_apis/wit/workitems/$Bug?api-version=${apiVersion}`;
+            // Format the steps array into a string
+            const steps = JSON.parse(stepsJson);
+            const stepsHtml = steps.map(step => `<li>${step}</li>`).join('');
+            const stepsOrderedList = `<ol>${stepsHtml}</ol>`;
+
+            // Upload the screenshot and get the URL
+            const screenshotUrl = await uploadScreenshot(screenshotBase64, 'screenshot.png');
+
+
+            const bugData = [
+                {
+                    "op": "add",
+                    "path": "/fields/System.Title",
+                    "value": `${description}`
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/Microsoft.VSTS.TCM.ReproSteps",
+                    "value": stepsOrderedList
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/System.Description",
+                    "value": `${description}<br><b>Impact:</b> ${severity}<br><b>WCAG Rule:</b> ${wcagRule}`
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/Microsoft.VSTS.Common.Priority",
+                    "value": severity === 'critical' ? 1 : severity === 'serious' ? 2 : severity === 'moderate' ? 3 : 4
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/Microsoft.VSTS.Common.Activity",
+                    "value": 'Development'
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/Microsoft.VSTS.Common.AcceptanceCriteria",
+                    "value": help
+                },
+                {
+                    "op": "add",
+                    "path": "/fields/System.Tags",
+                    "value": "accessibility"
+                },
+                {
+                    "op": "add",
+                    "path": "/relations/-",
+                    "value": {
+                        "rel": "AttachedFile",
+                        "url": screenshotUrl,
+                        "attributes": {
+                            "comment": "Screenshot of the issue"
+                        }
+                    }
+                }
+            ];
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json-patch+json',
+                        'Authorization': `Basic ${btoa(':' + pat)}`
+                    },
+                    body: JSON.stringify(bugData)
+                });
+
+                if (response.ok) {
+                    alert('Bug created successfully in Azure DevOps!');
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error creating bug: ${errorData.message}`);
+                }
+            } catch (error) {
+                console.error('Error creating bug:', error);
+                alert('Error creating bug. Check console for details.');
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -246,9 +383,9 @@
         {{#data.errors}}
         <section class="error-item">
             <h3>
-                <a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
+                <a href="{{helpUrl}}" target="_blank" class="chip" rel="noopener">{{wcagRule}}</a>
                 {{description}}
-                <a href="{{helpUrl}}" target="_blank" class="chip">{{id}}</a>
+                <a href="{{helpUrl}}" target="_blank" class="chip" rel="noopener">{{id}}</a>
                 <span class="chip right severity {{severity}}">{{total}} {{severity}}</span>
             </h3>
             <div class="suggestion">
@@ -260,18 +397,24 @@
                 <i class="material-icons expand-icon">expand_more</i>
             </button>
             <div class="panel">
-                <strong>Description:</strong> {{description}}
+                <button class="btn btn-primary" onclick="createAzureDevOpsBug('{{element}} - {{id}} - {{description}}',
+                 '{{wcagRule}}', 
+                 '{{help}}', 
+                 '{{severity}}',
+                  '{{stepsJson}}', 
+                  '{{screenshotBase64}}')">Create Bug in Azure DevOps</button>
+                <br /><strong>Description:</strong> {{description}}
                 <br /><strong>Steps to Reproduce:
                     <ol>
                         {{#steps}}
                         <li>{{.}}</li>
                         {{/steps}}
                     </ol>
-                    </p>
                     <br /><strong>How to Fix:</strong> {{help}}
                     <br /><strong>Impact:</strong> {{severity}}
-                    <br /><strong>WCAG Rule:</strong><a href="{{helpUrl}}" target="_blank" class="chip">{{wcagRule}}</a>
-                    <img class="screenshot" src="{{screenshot}}" alt="Screenshot of the issue">
+                    <br /><strong>WCAG Rule:</strong><a href="{{helpUrl}}" target="_blank" class="chip"
+                        rel="noopener">{{wcagRule}}</a>
+                    <img class="screenshot" src="{{screenshot}}" alt="Screenshot of the accessibility issue" />
             </div>
             {{/target}}
         </section>
@@ -303,7 +446,11 @@
                 });
             }
         });
+
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

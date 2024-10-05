@@ -1,3 +1,4 @@
+
 import { Locator, Page, TestInfo, test } from '@playwright/test';
 import { AnnotationType } from './AnnotationType';
 import { Annotation } from './Annotation';
@@ -9,6 +10,8 @@ export class AnnotationHelper {
     private debugElement = 'playwright-debug';
     private annotations: Annotation[] = [];
     private resultsFolder = 'test-results';
+    private mediaRecorder: unknown;
+    private recordedChunks: Blob[] = [];
 
     constructor(protected page: Page, protected keyPage: string) {
 
@@ -47,7 +50,30 @@ export class AnnotationHelper {
                         font-weight: bold;
                     `;
                 descriptionElement.innerText = description;
+
             }, [stepDescription, backgroundColor]);
+    }
+
+    async readDescription(stepDescription: string) {
+        await this.page.evaluate(
+            async (stepDescription) => {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(stepDescription);
+                    utterance.lang = 'en-US';
+
+                    window.speechSynthesis.speak(utterance);
+
+                    const wordsPerMinute = 105;
+                    const words = stepDescription.split(/\s+/).length;
+                    const durationInSeconds = (words / wordsPerMinute) * 60;
+
+                    await new Promise(resolve => setTimeout(resolve, durationInSeconds * 1000));
+
+                } else {
+                    console.error('Speech synthesis or media recording not supported in this browser.');
+                    return null;
+                }
+            }, stepDescription);
     }
 
     /**
@@ -65,10 +91,10 @@ export class AnnotationHelper {
     }
 
     /**
-     * Add annotation
-     * @param type Type of the annotation (shows in bold)
-     * @param description Description for the annotation
-     */
+* Add annotation
+* @param type Type of the annotation (shows in bold)
+* @param description Description for the annotation
+*/
     addAnnotation(type: AnnotationType | string, description: string) {
         const annotation: Annotation = {
             type: type.toString(),
@@ -80,9 +106,9 @@ export class AnnotationHelper {
     }
 
     /**
-     * Get list of annotations
-     * @returns List of annotations
-     */
+* Get list of annotations
+* @returns List of annotations
+*/
     getAnnotations() {
         return this.annotations;
     }
@@ -94,11 +120,12 @@ export class AnnotationHelper {
      */
     async attachPageScreenshot(fileName: string, testInfo: TestInfo) {
 
-        await test.step('Add Page screenshot', async () => {
+        return await test.step('Add Page screenshot', async () => {
             const file = path.join(this.resultsFolder, fileName);
             const screenshot = await this.page.screenshot({ path: file, fullPage: true });
             await fs.promises.writeFile(file, screenshot);
             await testInfo.attach(fileName, { contentType: 'image/png', path: file });
+            return screenshot;
         });
     }
 

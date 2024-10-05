@@ -9,4 +9,7 @@ export interface ReportData {
     seriousColor: string;
     moderateColor: string;
     minorColor: string;
+    adoOrganization: string,
+    adoProject: string,
+    adoPat: string
 }

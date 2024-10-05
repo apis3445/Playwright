@@ -47,6 +47,10 @@ const config: PlaywrightTestConfig = {
 
         screenshot: 'on',
 
+        contextOptions: {
+            permissions: [], // Add specific permissions only if needed
+        },
+
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
@@ -56,11 +60,10 @@ const config: PlaywrightTestConfig = {
         [
             '@alex_neo/playwright-azure-reporter',
             {
-                orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
+                orgUrl: 'https://dev.azure.com/' + process.env.ADO_ORGANIZATION,
                 token: process.env.ADO_TOKEN,
-                planId: 442,
-                projectName: 'Playground',
-                environment: 'QA',
+                planId: 398,
+                projectName: process.env.ADO_PROJECT,
                 logging: true,
                 testRunTitle: 'Playwright Test Run',
                 publishTestResultsMode: 'testRun',
@@ -68,14 +71,14 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: 'Azure Devops Testing',
+                        displayName: 'Abigail Armijo',
                     },
                     comment: 'Playwright Test Run',
                     // the configuration ids of this test run, use 
                     // https://dev.azure.com/{organization}/{project}/_apis/test/configurations to get the ids of  your project.
                     // if multiple configuration ids are used in one run a testPointMapper should be used to pick the correct one, 
                     // otherwise the results are pushed to all.
-                    configurationIds: [12],
+                    configurationIds: [46],
                 },
             } as AzureReporterOptions
         ]
@@ -85,7 +88,7 @@ const config: PlaywrightTestConfig = {
         {
             name: 'desktop-chromium',
             use: {
-                ...devices['Desktop Chrome']
+                ...devices['Desktop Chrome'],
             }
         }
     ],
