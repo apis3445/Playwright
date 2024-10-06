@@ -38,10 +38,10 @@ steps:
       PAGE_URL: $(pageUrl)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
 
-  # - script: |
-  #    allure generate ./allure-results -o ./allure-report
-  #  displayName: 'Generate allure report'
-  #  condition: always()
+  - script: |
+      allure generate --single-file allure-results
+    displayName: 'Generate allure report'
+    condition: always()
 
   - task: PublishBuildArtifacts@1
     condition: always()
@@ -56,6 +56,13 @@ steps:
       testResultsFiles: "**/results.xml"
       testRunTitle: "Playwright Junit Test Results"
       mergeTestResults: true
+
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: "./allure-report"  # Ensure this path matches where the report is generated
+      ArtifactName: "allure-report"
+      publishLocation: "Container"
 
   - task: PublishAllureReport@1
     condition: always()
