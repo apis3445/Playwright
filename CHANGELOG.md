@@ -1,3 +1,12 @@
+# 0.18.0 (2024-10-07)
+
+### Enhancements
+
+- Accessibility report by page now ask for the ADO token with a modal dialog. Future release will improve the dialog and UX
+- Added reports
+  Ortoni Report
+  Allure report
+
 # 0.17.0 (2024-10-05)
 
 ### Enhancements
