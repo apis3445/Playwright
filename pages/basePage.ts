@@ -1,6 +1,7 @@
 import { Page, test, expect } from '@playwright/test';
 import { AnnotationType } from '../utils/annotations/AnnotationType';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
+import * as allure from 'allure-js-commons';
 
 export class BasePage {
 
@@ -17,9 +18,11 @@ export class BasePage {
      * Go to the base Address
      */
     public async goTo() {
-        const url = process.env.BASE_URL ?? 'https://www.saucedemo.com';
-        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"');
-        await this.page.goto(url);
+        await allure.step('Step 1', async () => {
+            const url = process.env.BASE_URL ?? 'https://www.saucedemo.com';
+            this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"');
+            await this.page.goto(url);
+        });
     }
 
     /**
@@ -64,7 +67,7 @@ export class BasePage {
     async goToDefault() {
         const stepDescription = 'Go to default page';
         this.addAnnotation(AnnotationType.GoTo, stepDescription);
-         
+
         await test.step(stepDescription + '', async () => {
             await this.page.goto('/');
         });
