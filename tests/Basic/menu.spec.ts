@@ -26,7 +26,7 @@ test.describe('Admin user', () => {
     test('Should returns admin menu', {
         tag: ['@Basic'],
         annotation: [
-            { type: AnnotationType.Description, description: 'LLogin to effiziente demo with a admin user, the user will see the menu for admin users' },
+            { type: AnnotationType.Description, description: 'Login to effiziente demo with a admin user, the user will see the menu for admin users' },
             { type: AnnotationType.Precondition, description: 'A valid admin user' },
         ],
     }, async ({ page }) => {
