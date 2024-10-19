@@ -1,3 +1,15 @@
+# 0.19.0 (2024-10-19)
+
+### Enhancements
+
+- Added parameterized tests for improved test coverage and flexibility.
+- Integrated environment variables for Azure DevOps pipeline configuration.
+- Updated packages, including Playwright and Lighthouse, for enhanced performance and compatibility.
+
+### Features
+
+- Introduced Allure report parameters to enhance test reporting capabilities.
+
 # 0.18.0 (2024-10-07)
 
 ### Enhancements
