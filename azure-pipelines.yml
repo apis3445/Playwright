@@ -1,15 +1,6 @@
 pool:
   vmImage: "ubuntu-latest"
 
-parameters:
-  - name: pageUrl
-    displayName: Page to test
-    type: string
-    default: ""
-
-variables:
-  pageURL: ${{ parameters.pageUrl }}
-
 steps:
   - task: NodeTool@0
     inputs:
