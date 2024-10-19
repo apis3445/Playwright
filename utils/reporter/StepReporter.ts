@@ -35,9 +35,7 @@ class StepReporter implements Reporter {
         const browser = test.parent.project()?.name ?? 'No browser';
 
         const attachments: { path: string, name: string }[] = result.attachments
-            .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video'
-                && attachment.path !== undefined
-            )
+            .filter(attachment => attachment.name !== 'screenshot' && attachment.name !== 'video')
             .map(attachment => ({ path: attachment.path ?? '', name: attachment.name ?? '' })) ?? [];
         const copiedAttachments = attachments.map(attachment => ({
             path: this.fileHelper.copyFileToResults(folderTest, attachment.path),
