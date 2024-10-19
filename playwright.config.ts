@@ -85,11 +85,10 @@ const config: PlaywrightTestConfig = {
         [
             '@alex_neo/playwright-azure-reporter',
             {
-                orgUrl: 'https://dev.azure.com/wbi1521/Playwright',
+                orgUrl: `https://dev.azure.com/${process.env.ADO_ORGANIZATION}`,
                 token: process.env.ADO_TOKEN,
-                planId: process.env.ADO_PLAN_ID ?? 1,
+                planId: 398,
                 projectName: process.env.ADO_PROJECT,
-                environment: 'QA',
                 logging: true,
                 testRunTitle: 'Playwright Test Run',
                 publishTestResultsMode: 'testRun',
@@ -97,10 +96,14 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: process.env.TEST_OWNER ?? 'Abigail Armijo',
+                        displayName: process.env.TEST_OWNER,
                     },
                     comment: 'Playwright Test Run',
-                    configurationIds: [process.env.ADO_CONFIG_IDS ?? 1],
+                    // the configuration ids of this test run, use 
+                    // https://dev.azure.com/{organization}/{project}/_apis/test/configurations to get the ids of  your project.
+                    // if multiple configuration ids are used in one run a testPointMapper should be used to pick the correct one, 
+                    // otherwise the results are pushed to all.
+                    configurationIds: [46],
                 },
             } as AzureReporterOptions
         ],

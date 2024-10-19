@@ -6,7 +6,7 @@ import playwright from 'playwright';
 import { AccessibilityHelper } from '../../utils/accessibility/AccessibilityHelper';
 
 test.describe('Test Accessibility By Page', {
-    tag: ['@PageAccessibility', '@[395]'],
+    tag: ['@PageAccessibility'],
 }, () => {
     // All tests in this describe group will get 0 retry attempts
     test.describe.configure({ retries: 0 });

@@ -14,7 +14,7 @@ class StepReporter implements Reporter {
         const results: TestResults[] = [];
 
         this.testNo++;
-        const folderTest = this.fileHelper.folderResults + this.testNo;
+        const folderTest = path.join(this.fileHelper.folderResults, this.testNo.toString());
         const fileName = 'index.html';
         const filePath = path.join(folderTest, fileName);
 

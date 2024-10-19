@@ -14,7 +14,7 @@ export class HtmlHelper {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async replaceTags(templateFile: string, objectToReplace: any, folderTest: string, fileName: string) {
         const templatePath = path.join(__dirname, 'reporter', 'templates', templateFile);
-        const template = fs.readFileSync(templatePath, 'utf-8');
+        const template = fs.readFileSync(templatePath, 'utf8');
         const htmlContent = mustache.render(template, objectToReplace);
         if (!fs.existsSync(folderTest)) {
             fs.mkdirSync(folderTest, { recursive: true });

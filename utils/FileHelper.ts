@@ -15,7 +15,8 @@ export class FileHelper {
      * @returns {string | undefined} - The path to the copied video file, or undefined if no video attachment is found.
      */
     copyFileToResults(destFolder: string, srcPath: string) {
-
+        if (srcPath == '')
+            return '';
         const fileName = path.basename(srcPath);
         const destDir = path.resolve(__dirname, '..', destFolder);
         const destFile = path.join(destDir, fileName);

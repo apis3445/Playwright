@@ -72,7 +72,7 @@ const config: PlaywrightTestConfig = {
                 attachmentsType: ['screenshot', 'video', 'trace'],
                 testRunConfig: {
                     owner: {
-                        displayName: 'Abigail Armijo',
+                        displayName: process.env.TEST_OWNER,
                     },
                     comment: 'Playwright Test Run',
                     // the configuration ids of this test run, use 
