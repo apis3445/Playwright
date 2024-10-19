@@ -8,11 +8,9 @@ import { ReportData } from './models/Report';
 import { Target } from './models/Target';
 import { Severity } from './models/Severity';
 import { AnnotationType } from '../annotations/AnnotationType';
+import { playAudit } from 'playwright-lighthouse';
 
 export class AccessibilityHelper {
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    playAudit: any;
 
     constructor(private page: Page, private testInfo: TestInfo, private annotationHelper: AnnotationHelper) {
         // Constructor remains empty
@@ -20,13 +18,10 @@ export class AccessibilityHelper {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async checkAccessibility(pageKey: string, page: any) {
-        // Dynamically import playAudit
-        const module = await import('playwright-lighthouse');
-        this.playAudit = module.playAudit;
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
         expect.soft([violationsLength], `Expected no accessibility violations, but found ${violationsLength}`).toBe(0);
-        const lighthouseReport = await this.playAudit({
+        const lighthouseReport = await playAudit({
             page: this.page,
             port: 9222,
             thresholds: {

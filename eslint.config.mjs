@@ -22,12 +22,12 @@ export default [{
     'plugin:playwright/recommended',
 ), {
     plugins: {
-        '@typescript-eslint': typescriptEslint,
+        '@typescript-eslint': typescriptEslint
     },
 
     languageOptions: {
         parser: tsParser,
-        ecmaVersion: 5,
+        ecmaVersion: "latest",
         sourceType: 'module',
 
         parserOptions: {

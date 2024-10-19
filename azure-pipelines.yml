@@ -26,7 +26,7 @@ steps:
     displayName: "Install Allure"
 
   - script: |
-      npx playwright test --config=playwright.a11y.config.ts tests/Accessibility/pageAccessibility.spec.ts --project=desktop-chromium
+      npx playwright test --config=playwright.config.ts tests/Basic/parameterized.spec.ts --project=desktop-chromium
     displayName: "Run Playwright tests"
     env:
       PAGE_URL: $(pageUrl)

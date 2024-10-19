@@ -13,7 +13,7 @@ test.describe('Login with Parameters', () => {
     ].forEach(({ userName }) => {
         // eslint-disable-next-line playwright/expect-expect
         test(`Login with "${userName}" from parameters will load inventory page`, {
-            tag: ['@Basic'],
+            tag: ['@Basic', '@[395]'],
             annotation: [
                 { type: AnnotationType.Description, description: 'Login with valid user in saucedemo' },
                 { type: AnnotationType.Precondition, description: 'A valid username and password' },
