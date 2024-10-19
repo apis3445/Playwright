@@ -18,6 +18,7 @@ steps:
 
   - script: |
       npx playwright test --reporter=html,junit
+    workingDirectory:  $(build.sourcesdirectory)/tests
     displayName: "Run Playwright tests"
     env:
       CI: 'true'
