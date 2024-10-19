@@ -20,26 +20,22 @@ export class AccessibilityHelper {
     async checkAccessibility(pageKey: string, page: any) {
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
+        let accessibilityScore = 0;
         expect.soft([violationsLength], `Expected no accessibility violations, but found ${violationsLength}`).toBe(0);
         try {
-          const lighthouseReport = await playAudit({
-              page: this.page,
-              port: 9222,
-              thresholds: {
-          // ... rest of the configuration
-          });
-          // Process the report
+            const lighthouseReport = await playAudit({
+                page: this.page,
+                port: 9222,
+                thresholds: {
+                    accessibility: 0,
+                    'best-practices': 0,
+                }
+            });
+            accessibilityScore = lighthouseReport.lhr.categories.accessibility.score! * 100;
         } catch (error) {
-          console.error('Lighthouse audit failed:', error);
-          // Optionally, you can choose to fail the test or continue
+            console.error('Lighthouse audit failed:', error);
+            // Optionally, you can choose to fail the test or continue
         }
-                accessibility: 0,
-                'best-practices': 0,
-            }
-        });
-
-        // Extract and log the accessibility score
-        const accessibilityScore = lighthouseReport.lhr.categories.accessibility.score! * 100;
 
         const violations = accessibilityScanResults.violations;
         const errors: A11yError[] = [];
