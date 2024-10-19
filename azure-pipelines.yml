@@ -26,7 +26,7 @@ steps:
     displayName: "Install Allure"
 
   - script: |
-      npx playwright test tests/Basic/parameterized.spec.ts
+      npx playwright test
     displayName: "Run Playwright tests"
     env:
       PAGE_URL: $(pageUrl)
