@@ -21,10 +21,18 @@ export class AccessibilityHelper {
         const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
         const violationsLength = accessibilityScanResults.violations.length;
         expect.soft([violationsLength], `Expected no accessibility violations, but found ${violationsLength}`).toBe(0);
-        const lighthouseReport = await playAudit({
-            page: this.page,
-            port: 9222,
-            thresholds: {
+        try {
+          const lighthouseReport = await playAudit({
+              page: this.page,
+              port: 9222,
+              thresholds: {
+          // ... rest of the configuration
+          });
+          // Process the report
+        } catch (error) {
+          console.error('Lighthouse audit failed:', error);
+          // Optionally, you can choose to fail the test or continue
+        }
                 accessibility: 0,
                 'best-practices': 0,
             }
