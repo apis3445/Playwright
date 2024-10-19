@@ -20,7 +20,6 @@ steps:
       npx playwright test --reporter=html,junit
     displayName: "Run Playwright tests"
     env:
-      PAGE_URL: $(pageUrl)
       ADO_TOKEN: $(ADO_TOKEN)
 
   - script: |
