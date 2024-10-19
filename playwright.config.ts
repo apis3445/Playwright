@@ -26,7 +26,7 @@ dotenv.config();
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-    testDir: './tests',
+    testDir: '/tests',
     globalSetup: require.resolve('./tests/globalSetup'),
     /* Maximum time one test can run for. */
     timeout: 50 * 1000,
