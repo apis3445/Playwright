@@ -8,7 +8,7 @@ steps:
     displayName: "Install Node.js>20"
 
   - script: |
-      npm install
+      npm ci
       npx playwright install --with-deps
     displayName: "Install dependencies"
 
@@ -20,6 +20,7 @@ steps:
       npx playwright test --reporter=html,junit
     displayName: "Run Playwright tests"
     env:
+      CI: 'true'
       ADO_TOKEN: $(ADO_TOKEN)
 
   - script: |
