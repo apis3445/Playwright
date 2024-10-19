@@ -31,6 +31,7 @@ steps:
     env:
       PAGE_URL: $(pageUrl)
       PAT_TOKEN_PACKAGE: $(patTokenPackage)
+      ADO_TOKEN: $(ADO_TOKEN)
 
   - script: |
       allure generate --single-file allure-results
