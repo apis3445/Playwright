@@ -17,7 +17,7 @@ steps:
     displayName: "Install Allure"
 
   - script: |
-      npx playwright test
+      npx playwright test --reporter=html,junit
     displayName: "Run Playwright tests"
     env:
       PAGE_URL: $(pageUrl)
