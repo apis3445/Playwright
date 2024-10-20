@@ -46,14 +46,14 @@ steps:
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: "/allure-report"  # Ensure this path matches where the report is generated
+      PathtoPublish: "allure-report"  # Ensure this path matches where the report is generated
       ArtifactName: "allure-report"
       publishLocation: "Container"
 
   - task: PublishBuildArtifacts@1
     condition: always()
     inputs:
-      PathtoPublish: "./report"  # Ensure this path matches where the report is generated
+      PathtoPublish: "report"  # Ensure this path matches where the report is generated
       ArtifactName: ortoni_report"
       publishLocation: "Container"
 
