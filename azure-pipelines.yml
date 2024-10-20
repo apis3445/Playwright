@@ -64,7 +64,6 @@ steps:
   - task: PublishAllureReport@1
     displayName: 'Publish alure report extension'
     condition: always()
-    displayName: Publish Allure Report
     inputs:
       allureVersion: 2.27.0
       testResultsDir: allure-results
