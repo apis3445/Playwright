@@ -7,7 +7,7 @@ test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Login', () => {
     // eslint-disable-next-line playwright/expect-expect
-    test('Login with valid user load inventory page', {
+    test.only('Login with valid user load inventory page', {
         tag: ['@Basic'],
         annotation: [
             { type: AnnotationType.Description, description: 'Login with valid user in saucedemo' },

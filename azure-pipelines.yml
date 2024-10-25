@@ -33,7 +33,7 @@ steps:
     displayName: 'Publish Playwright report'
     condition: always()
     inputs:
-      PathtoPublish: "test-results"
+      PathtoPublish: "$(Build.SourcesDirectory)/**/test-results"
       ArtifactName: "playwright-report"
       publishLocation: "Container"
 
@@ -41,7 +41,7 @@ steps:
     displayName: 'Publish Junit xml results'
     condition: always()
     inputs:
-      testResultsFiles: "test-results/results.xml"
+      testResultsFiles: "$(Build.SourcesDirectory)/**/results.xml"
       testRunTitle: "Playwright Junit Test Results"
       mergeTestResults: true
 
@@ -49,7 +49,7 @@ steps:
     displayName: 'Publish allure results'
     condition: always()
     inputs:
-      PathtoPublish: "allure-results"  # Ensure this path matches where the report is generated
+      PathtoPublish: "$(Build.SourcesDirectory)/**/allure-results"  # Ensure this path matches where the report is generated
       ArtifactName: "allure-report"
       publishLocation: "Container"
 
@@ -57,13 +57,13 @@ steps:
     displayName: 'Publish ortoni report'
     condition: always()
     inputs:
-      PathtoPublish: "report"  # Ensure this path matches where the report is generated
+      PathtoPublish: "$(Build.SourcesDirectory)/**/report"  # Ensure this path matches where the report is generated
       ArtifactName: ortoni_report"
       publishLocation: "Container"
 
   - task: PublishAllureReport@1
-    displayName: 'Publish alure report extension'
+    displayName: 'Publish allure report extension'
     condition: always()
     inputs:
       allureVersion: 2.27.0
-      testResultsDir: allure-results
+      testResultsDir: $(Build.SourcesDirectory)/**/allure-results
