@@ -35,7 +35,7 @@ steps:
     inputs:
       searchFolder: 'test-results'
       testResultsFormat: 'JUnit'
-      testResultsFiles: 'results.xml'
+      testResultsFiles: '$(build.sourcesdirectory)/results.xml'
       mergeTestResults: true
       failTaskOnFailedTests: true
       testRunTitle: 'My End-To-End Tests'
@@ -43,7 +43,7 @@ steps:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: 'test-results'
+      targetPath: '$(build.sourcesdirectory)/test-results'
       artifact: playwright-report
       publishLocation: 'pipeline'
     condition: succeededOrFailed()
