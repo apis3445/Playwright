@@ -6,7 +6,7 @@ import { AnnotationType } from '../../utils/annotations/AnnotationType';
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Login', () => {
-    // eslint-disable-next-line playwright/expect-expect
+    // eslint-disable-next-line playwright/expect-expect, playwright/no-focused-test
     test.only('Login with valid user load inventory page', {
         tag: ['@Basic'],
         annotation: [
