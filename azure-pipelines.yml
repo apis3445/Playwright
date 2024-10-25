@@ -43,30 +43,28 @@ steps:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: playwright-report
+      targetPath: 'test-results'
       artifact: playwright-report
       publishLocation: 'pipeline'
     condition: succeededOrFailed()
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish allure results'
-    condition: always()
+  - task: PublishPipelineArtifact@1
     inputs:
-      PathtoPublish: "$(Build.SourcesDirectory)/allure-results"  # Ensure this path matches where the report is generated
-      ArtifactName: "allure-report"
-      publishLocation: "Container"
+      targetPath: 'allure-results'
+      artifact: allure-report
+      publishLocation: 'pipeline'
+    condition: succeededOrFailed()
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish ortoni report'
-    condition: always()
+  - task: PublishPipelineArtifact@1
     inputs:
-      PathtoPublish: "$(Build.SourcesDirectory)/report"  # Ensure this path matches where the report is generated
-      ArtifactName: ortoni_report"
-      publishLocation: "Container"
+      targetPath: 'report'
+      artifact: ortoni-report
+      publishLocation: 'pipeline'
+    condition: succeededOrFailed()
 
   - task: PublishAllureReport@1
     displayName: 'Publish allure report extension'
     condition: always()
     inputs:
       allureVersion: 2.27.0
-      testResultsDir: $(Build.SourcesDirectory)/allure-results
+      testResultsDir: allure-results
