@@ -48,23 +48,23 @@ steps:
       publishLocation: 'pipeline'
     condition: succeededOrFailed()
 
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: 'allure-results'
-      artifact: allure-report
-      publishLocation: 'pipeline'
-    condition: succeededOrFailed()
+  # - task: PublishPipelineArtifact@1
+  #   inputs:
+  #     targetPath: 'allure-results'
+  #     artifact: allure-report
+  #     publishLocation: 'pipeline'
+  #   condition: succeededOrFailed()
 
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: 'report'
-      artifact: ortoni-report
-      publishLocation: 'pipeline'
-    condition: succeededOrFailed()
+  # - task: PublishPipelineArtifact@1
+  #   inputs:
+  #     targetPath: 'report'
+  #     artifact: ortoni-report
+  #     publishLocation: 'pipeline'
+  #   condition: succeededOrFailed()
 
-  - task: PublishAllureReport@1
-    displayName: 'Publish allure report extension'
-    condition: always()
-    inputs:
-      allureVersion: 2.27.0
-      testResultsDir: allure-results
+  # - task: PublishAllureReport@1
+  #   displayName: 'Publish allure report extension'
+  #   condition: always()
+  #   inputs:
+  #     allureVersion: 2.27.0
+  #     testResultsDir: allure-results
