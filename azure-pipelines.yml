@@ -19,54 +19,46 @@ steps:
       npm install -g allure-commandline  
     displayName: "Install Allure"
 
-  - script: |
-      npx playwright test
-    workingDirectory:  $(build.sourcesdirectory)/tests
+  - script: npx playwright test
     displayName: "Run Playwright tests"
     env:
-      CI: 'true'
       ADO_TOKEN: $(ADO_TOKEN)
 
   - script: |
       allure generate --single-file allure-results
     displayName: 'Generate allure report'
-    workingDirectory:  $(build.sourcesdirectory)
     condition: always()
 
   - task: PublishTestResults@2
     displayName: 'Publish Junit results'
+    condition: always()
     inputs:
-      searchFolder: 'test-results'
-      testResultsFormat: 'JUnit'
-      testResultsFiles: 'results.xml'
-      mergeTestResults: true
-      failTaskOnFailedTests: true
-      testRunTitle: 'My End-To-End Tests'
-    condition: succeededOrFailed()
+      testResultsFiles: "results.xml"
+      testRunTitle: "Playwright Junit Test Results"
 
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Playwright HTML report'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish HTML Playwright report'
+    condition: always()
     inputs:
-      targetPath: 'playwright-report'
-      artifact: playwright-report
-      publishLocation: 'pipeline'
-    condition: succeededOrFailed()
+      PathtoPublish: "playwright-report"
+      ArtifactName: "playwright-report"
+      publishLocation: "Container"
 
-  - task: PublishPipelineArtifact@1
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish Allure report'
+    condition: always()
     inputs:
-      targetPath: 'allure-results'
-      artifact: allure-report
-      publishLocation: 'pipeline'
-    condition: succeededOrFailed()
+      PathtoPublish: "allure-results"
+      ArtifactName: "allure-results"
+      publishLocation: "Container"
 
-  - task: PublishPipelineArtifact@1
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish Ortoni report'
+    condition: always()
     inputs:
-      targetPath: 'report'
-      artifact: ortoni-report
-      publishLocation: 'pipeline'
-    condition: succeededOrFailed()
+      PathtoPublish: "report"
+      ArtifactName: "ortoni-report"
+      publishLocation: "Container"
 
   - task: PublishAllureReport@1
     displayName: 'Publish report to the allure report extension'
