@@ -35,7 +35,7 @@ steps:
     inputs:
       searchFolder: 'test-results'
       testResultsFormat: 'JUnit'
-      testResultsFiles: '$(build.sourcesdirectory)/results.xml'
+      testResultsFiles: 'results.xml'
       mergeTestResults: true
       failTaskOnFailedTests: true
       testRunTitle: 'My End-To-End Tests'
@@ -43,28 +43,28 @@ steps:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(build.sourcesdirectory)/test-results'
+      targetPath: 'playwright-report'
       artifact: playwright-report
       publishLocation: 'pipeline'
     condition: succeededOrFailed()
 
-  # - task: PublishPipelineArtifact@1
-  #   inputs:
-  #     targetPath: 'allure-results'
-  #     artifact: allure-report
-  #     publishLocation: 'pipeline'
-  #   condition: succeededOrFailed()
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'allure-results'
+      artifact: allure-report
+      publishLocation: 'pipeline'
+    condition: succeededOrFailed()
 
-  # - task: PublishPipelineArtifact@1
-  #   inputs:
-  #     targetPath: 'report'
-  #     artifact: ortoni-report
-  #     publishLocation: 'pipeline'
-  #   condition: succeededOrFailed()
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'report'
+      artifact: ortoni-report
+      publishLocation: 'pipeline'
+    condition: succeededOrFailed()
 
-  # - task: PublishAllureReport@1
-  #   displayName: 'Publish allure report extension'
-  #   condition: always()
-  #   inputs:
-  #     allureVersion: 2.27.0
-  #     testResultsDir: allure-results
+  - task: PublishAllureReport@1
+    displayName: 'Publish allure report extension'
+    condition: always()
+    inputs:
+      allureVersion: 2.27.0
+      testResultsDir: allure-results
