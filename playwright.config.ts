@@ -2,7 +2,7 @@ import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/p
 import { OrtoniReportConfig } from 'ortoni-report';
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
-//import os from 'node:os';
+import os from 'node:os';
 import dotenv from 'dotenv';
 
 const reportConfig: OrtoniReportConfig = {
@@ -112,32 +112,32 @@ const config: PlaywrightTestConfig = {
         ['./utils/reporter/StepReporter.ts'],
         ['./utils/reporter/AccessibilityReporter.ts'],
         ['ortoni-report', reportConfig],
-        // ['allure-playwright',
-        //     {
-        //         detail: false,
-        //         suiteTitle: false,
-        //         links: {
-        //             link: {
-        //                 urlTemplate: 'https://github.com/allure-framework/allure-js/blob/main/%s',
-        //             },
-        //             issue: {
-        //                 urlTemplate: 'https://github.com/allure-framework/allure-js/issues/%s',
-        //                 nameTemplate: 'ISSUE-%s',
-        //             },
-        //         },
-        //         environmentInfo: {
-        //             OS: os.platform(),
-        //             Architecture: os.arch(),
-        //             NodeVersion: process.version,
-        //         },
-        //         categories: [
-        //             {
-        //                 name: 'Missing file errors',
-        //                 messageRegex: /^ENOENT: no such file or directory/,
-        //             },
-        //         ],
-        //     }
-        // ]
+        ['allure-playwright',
+            {
+                detail: false,
+                suiteTitle: false,
+                links: {
+                    link: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/blob/main/%s',
+                    },
+                    issue: {
+                        urlTemplate: 'https://github.com/allure-framework/allure-js/issues/%s',
+                        nameTemplate: 'ISSUE-%s',
+                    },
+                },
+                environmentInfo: {
+                    OS: os.platform(),
+                    Architecture: os.arch(),
+                    NodeVersion: process.version,
+                },
+                categories: [
+                    {
+                        name: 'Missing file errors',
+                        messageRegex: /^ENOENT: no such file or directory/,
+                    },
+                ],
+            }
+        ]
     ],
     /* Configure projects for major browsers */
     projects: [
