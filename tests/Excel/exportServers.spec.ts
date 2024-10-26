@@ -1,4 +1,4 @@
- 
+
 import { expect, test } from '@playwright/test';
 import { ServersPage } from '../../pages/Effiziente/serversPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
@@ -16,6 +16,6 @@ test.describe('Servers', () => {
         const gridRows = await serversPage.table.getRowsValues();
         const assertDescription = 'The excel file rows are equal to the grid rows';
         serversPage.addAnnotation(AnnotationType.Assert, assertDescription);
-        await expect(excelRows).toStrictEqual(gridRows);
+        expect(excelRows).toStrictEqual(gridRows);
     });
 });

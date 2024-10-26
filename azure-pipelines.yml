@@ -24,10 +24,10 @@ steps:
     env:
       ADO_TOKEN: $(ADO_TOKEN)
 
-  - script: |
-      allure generate --single-file allure-results
-    displayName: 'Generate allure report'
-    condition: always()
+  # - script: |
+  #     allure generate --single-file allure-results
+  #   displayName: 'Generate allure report'
+  #   condition: always()
 
   - task: PublishTestResults@2
     displayName: 'Publish Junit results'
@@ -44,13 +44,13 @@ steps:
       ArtifactName: "playwright-report"
       publishLocation: "Container"
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Allure report'
-    condition: always()
-    inputs:
-      PathtoPublish: "allure-results"
-      ArtifactName: "allure-results"
-      publishLocation: "Container"
+  # - task: PublishBuildArtifacts@1
+  #   displayName: 'Publish Allure report'
+  #   condition: always()
+  #   inputs:
+  #     PathtoPublish: "allure-results"
+  #     ArtifactName: "allure-results"
+  #     publishLocation: "Container"
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Ortoni report'
@@ -60,9 +60,9 @@ steps:
       ArtifactName: "ortoni-report"
       publishLocation: "Container"
 
-  - task: PublishAllureReport@1
-    displayName: 'Publish report to the allure report extension'
-    condition: always()
-    inputs:
-      allureVersion: 2.27.0
-      testResultsDir: allure-results
+  # - task: PublishAllureReport@1
+  #   displayName: 'Publish report to the allure report extension'
+  #   condition: always()
+  #   inputs:
+  #     allureVersion: 2.27.0
+  #     testResultsDir: allure-results

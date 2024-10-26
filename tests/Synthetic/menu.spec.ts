@@ -41,7 +41,7 @@ test.describe('Synthetic testing', () => {
         const topMenuLocator = 'app-menu > p-menubar > .p-menubar > p-menubarsub > ul > li > .p-menuitem-content > a > .p-menuitem-text';
         const menusInPage = await page.locator(topMenuLocator).allInnerTexts();
         const menus = ['AccountsReceivable', 'Config'];
-        await expect(menusInPage).toEqual(menus);
+        expect(menusInPage).toEqual(menus);
     });
 
 });
