@@ -9,8 +9,11 @@ steps:
 
   - script: |
       npm ci
-      npx playwright install --with-deps
     displayName: "Install dependencies"
+
+  - script: |
+      npx playwright install --with-deps
+    displayName: "Install Playwright"
 
   - script: |
       npm install -g allure-commandline  
