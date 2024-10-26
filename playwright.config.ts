@@ -6,6 +6,7 @@ import { devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
 const reportConfig: OrtoniReportConfig = {
+    open: 'never',
     preferredTheme: 'light',
     filename: 'index',
     projectName: 'Playwright Example',
