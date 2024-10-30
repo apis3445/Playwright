@@ -13,7 +13,7 @@ steps:
 
   - script: |
       npx playwright install --with-deps
-    displayName: "Install Playwright"
+    displayName: "Install Playwright Browsers"
 
   - script: |
       npm install -g allure-commandline  
