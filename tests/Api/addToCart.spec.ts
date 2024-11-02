@@ -11,7 +11,7 @@ test.describe('WebdriverIO Shop', () => {
         tag: ['@API'],
     }, async ({ page }) => {
         await allure.feature('API features');
-        await allure.suite('Add item to the cart');
+        await allure.suite(test.info().title);
         const homePage = new HomePage(page);
         await homePage.goTo();
         await homePage.showAllClick();

@@ -14,7 +14,7 @@ test.describe('Normal user', () => {
         ],
     }, async ({ page }) => {
         await allure.feature('Essential features');
-        await allure.suite('Valid menu');
+        await allure.suite(test.info().title);
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();
@@ -34,7 +34,7 @@ test.describe('Admin user', () => {
         ],
     }, async ({ page }) => {
         await allure.feature('Essential features');
-        await allure.suite('Valid Admin menu');
+        await allure.suite(test.info().title);
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();

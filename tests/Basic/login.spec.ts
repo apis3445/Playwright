@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { LoginPage } from '../../pages/SauceDemo/loginPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import * as allure from 'allure-js-commons';
 
 // doesn't share the logged-in session
 test.use({ storageState: { cookies: [], origins: [] } });
@@ -14,6 +15,8 @@ test.describe('Login', () => {
             { type: AnnotationType.Precondition, description: 'A valid username and password' },
         ],
     }, async ({ page }) => {
+        await allure.feature('Essential features');
+        await allure.suite(test.info().title);
         const loginPage = new LoginPage(page);
         await loginPage.goTo();
         //For security is better add your user info in environment variables or some Key Value service 

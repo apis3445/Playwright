@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
 import { AccountReceivableApi } from '../../api/Effiziente/AccountsReceivable.api';
+import * as allure from 'allure-js-commons';
 
 test.describe('Check Dashboard', () => {
     test.use({ storageState: 'auth/user.json' });
@@ -8,6 +9,8 @@ test.describe('Check Dashboard', () => {
     test('Should show dashboard', {
         tag: ['@VisualTesting'],
     }, async ({ page }) => {
+        await allure.feature('Visual Testing');
+        await allure.suite(test.info().title);
         const dashboardPage = new DashboardPage(page);
         const accountReceivableApi = new AccountReceivableApi(page);
         //Replace api with fixed data because the dashboard changes every day

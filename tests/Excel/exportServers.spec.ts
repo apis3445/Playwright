@@ -2,6 +2,7 @@
 import { expect, test } from '@playwright/test';
 import { ServersPage } from '../../pages/Effiziente/serversPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import * as allure from 'allure-js-commons';
 
 test.describe('Servers', () => {
     test.use({ storageState: 'auth/admin.json' });
@@ -9,6 +10,8 @@ test.describe('Servers', () => {
     test('Should export servers to excel', {
         tag: ['@Excel'],
     }, async ({ page }, testInfo) => {
+        await allure.feature('Excel feature');
+        await allure.suite(test.info().title);
         const serversPage = new ServersPage(page, testInfo);
         await serversPage.goTo();
         await serversPage.exportToExcel.click('servers.xlsx');

@@ -4,6 +4,7 @@ import { Server } from '../../api/models/Effiziente/Server';
 import { ServersPage } from '../../pages/Effiziente/serversPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { AddServerPage } from '../../pages/Effiziente/addServerPage';
+import * as allure from 'allure-js-commons';
 
 test.describe('Servers', () => {
     let id = 0;
@@ -16,6 +17,8 @@ test.describe('Servers', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
         ],
     }, async ({ page }, testInfo) => {
+        await allure.feature('API features');
+        await allure.suite(test.info().title);
         const serversPage = new ServersPage(page, testInfo);
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
@@ -49,6 +52,8 @@ test.describe('Servers', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
         ],
     }, async ({ page }, testInfo) => {
+        await allure.feature('API features');
+        await allure.suite(test.info().title);
         const serversPage = new ServersPage(page, testInfo);
         const key = faker.number.int({ min: 2, max: 999_998 });
         const newKey = key + 1;

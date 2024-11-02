@@ -1,6 +1,7 @@
 import test, { expect } from '@playwright/test';
 import { BingMapsPage } from '../../pages/Google/bingMapsPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import * as allure from 'allure-js-commons';
 
 test.describe('Geo Location Test', () => {
     //You need the longitude, latitude and geolocation permission to access to the geolocation
@@ -12,6 +13,8 @@ test.describe('Geo Location Test', () => {
     test('The bing maps is located to munich', {
         tag: ['@LocaleGeo'],
     }, async ({ page, browserName }) => {
+        await allure.feature('Locale Geo feature');
+        await allure.suite(test.info().title);
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName == 'firefox', 'Geolocation not work in firefox');
 

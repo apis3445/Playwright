@@ -1,6 +1,7 @@
- 
+
 import { expect, test } from '@playwright/test';
 import { ai } from '@zerostep/playwright';
+import * as allure from 'allure-js-commons';
 
 test.describe('AI Zero Step', () => {
     test('Should show dashboard after login', {
@@ -8,6 +9,8 @@ test.describe('AI Zero Step', () => {
     }, async ({ page, browserName }) => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Zero Steps only works in chromium');
+        await allure.feature('AI features');
+        await allure.suite(test.info().title);
 
         const baseURL = process.env.EFFIZIENTE_URL!;
         const company = process.env.EFFIZIENTE_COMPANY;

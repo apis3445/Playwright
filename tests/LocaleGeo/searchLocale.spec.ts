@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { HomePage } from '../../pages/Google/homePage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import * as allure from 'allure-js-commons';
 
 const locale = process.env.LOCALE ? process.env.LOCALE : 'en-US';
 
@@ -16,6 +17,8 @@ test.describe('Locale translations', () => {
     test('Should display correct translations for specified locale and timezone', {
         tag: ['@LocaleGeo'],
     }, async ({ page }) => {
+        await allure.feature('Locale Geo feature');
+        await allure.suite(test.info().title);
         const homePage = new HomePage(page);
         //Go to google home page in the locale
         await homePage.goTo();

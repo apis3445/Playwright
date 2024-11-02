@@ -20,7 +20,7 @@ test.describe('Login with Parameters', () => {
             ],
         }, async ({ page }) => {
             await allure.feature('Essential features');
-            await allure.suite('Valid login');
+            await allure.suite(test.info().title);
             await allure.parameter('userName', userName);
             const loginPage = new LoginPage(page);
             await loginPage.goTo();
