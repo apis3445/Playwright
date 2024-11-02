@@ -19,8 +19,8 @@ test.describe('Login with Parameters', () => {
                 { type: AnnotationType.Precondition, description: 'A valid username and password' },
             ],
         }, async ({ page }) => {
-            await allure.feature('Essential features');
-            await allure.suite(test.info().title);
+            await allure.feature('Basic');
+            await allure.suite('Sauce demo');
             await allure.parameter('userName', userName);
             const loginPage = new LoginPage(page);
             await loginPage.goTo();

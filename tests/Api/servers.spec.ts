@@ -17,8 +17,8 @@ test.describe('Servers', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
         ],
     }, async ({ page }, testInfo) => {
-        await allure.feature('API features');
-        await allure.suite(test.info().title);
+        await allure.feature('API');
+        await allure.suite('Effiziente Servers');
         const serversPage = new ServersPage(page, testInfo);
         const addServerPage = new AddServerPage(page);
         await serversPage.goTo();
@@ -52,8 +52,8 @@ test.describe('Servers', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin username and password is logged' },
         ],
     }, async ({ page }, testInfo) => {
-        await allure.feature('API features');
-        await allure.suite(test.info().title);
+        await allure.feature('API');
+        await allure.suite('Effiziente Servers');
         const serversPage = new ServersPage(page, testInfo);
         const key = faker.number.int({ min: 2, max: 999_998 });
         const newKey = key + 1;

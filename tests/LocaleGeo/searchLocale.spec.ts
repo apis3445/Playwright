@@ -17,8 +17,8 @@ test.describe('Locale translations', () => {
     test('Should display correct translations for specified locale and timezone', {
         tag: ['@LocaleGeo'],
     }, async ({ page }) => {
-        await allure.feature('Locale Geo feature');
-        await allure.suite(test.info().title);
+        await allure.feature('Locale Geo');
+        await allure.suite('Google');
         const homePage = new HomePage(page);
         //Go to google home page in the locale
         await homePage.goTo();

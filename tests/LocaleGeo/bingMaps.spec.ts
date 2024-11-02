@@ -13,8 +13,8 @@ test.describe('Geo Location Test', () => {
     test('The bing maps is located to munich', {
         tag: ['@LocaleGeo'],
     }, async ({ page, browserName }) => {
-        await allure.feature('Locale Geo feature');
-        await allure.suite(test.info().title);
+        await allure.feature('Locale Geo');
+        await allure.suite('Bing Maps');
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName == 'firefox', 'Geolocation not work in firefox');
 

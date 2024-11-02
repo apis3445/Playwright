@@ -33,8 +33,8 @@ test.describe('Admin user', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin user' },
         ],
     }, async ({ page }) => {
-        await allure.feature('Essential features');
-        await allure.suite(test.info().title);
+        await allure.feature('Basic');
+        await allure.suite('Effiziente');
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();

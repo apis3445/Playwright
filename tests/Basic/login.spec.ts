@@ -15,8 +15,8 @@ test.describe('Login', () => {
             { type: AnnotationType.Precondition, description: 'A valid username and password' },
         ],
     }, async ({ page }) => {
-        await allure.feature('Essential features');
-        await allure.suite(test.info().title);
+        await allure.feature('Basic');
+        await allure.suite('Effiziente');
         const loginPage = new LoginPage(page);
         await loginPage.goTo();
         //For security is better add your user info in environment variables or some Key Value service 

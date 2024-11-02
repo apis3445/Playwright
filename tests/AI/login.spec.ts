@@ -9,8 +9,8 @@ test.describe('AI Zero Step', () => {
     }, async ({ page, browserName }) => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Zero Steps only works in chromium');
-        await allure.feature('AI features');
-        await allure.suite(test.info().title);
+        await allure.feature('AI');
+        await allure.suite('Zero Step');
 
         const baseURL = process.env.EFFIZIENTE_URL!;
         const company = process.env.EFFIZIENTE_COMPANY;

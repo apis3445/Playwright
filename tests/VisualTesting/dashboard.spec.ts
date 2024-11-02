@@ -10,7 +10,7 @@ test.describe('Check Dashboard', () => {
         tag: ['@VisualTesting'],
     }, async ({ page }) => {
         await allure.feature('Visual Testing');
-        await allure.suite(test.info().title);
+        await allure.suite('Effiziente');
         const dashboardPage = new DashboardPage(page);
         const accountReceivableApi = new AccountReceivableApi(page);
         //Replace api with fixed data because the dashboard changes every day
