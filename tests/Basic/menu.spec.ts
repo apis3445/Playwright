@@ -2,6 +2,7 @@
 import { test } from '@playwright/test';
 import { DashboardPage } from '../../pages/Effiziente/dashboardPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
+import * as allure from 'allure-js-commons';
 
 test.describe('Normal user', () => {
     test.use({ storageState: 'auth/user.json' });
@@ -12,6 +13,8 @@ test.describe('Normal user', () => {
             { type: AnnotationType.Precondition, description: 'A valid normal user' },
         ],
     }, async ({ page }) => {
+        await allure.feature('Essential features');
+        await allure.suite('Valid menu');
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();
@@ -30,7 +33,8 @@ test.describe('Admin user', () => {
             { type: AnnotationType.Precondition, description: 'A valid admin user' },
         ],
     }, async ({ page }) => {
-
+        await allure.feature('Essential features');
+        await allure.suite('Valid Admin menu');
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();

@@ -78,7 +78,7 @@ export class BaseComponent {
         if (this.isHighlightEnabled) {
             await test.step('Highlight: ' + stepDescription, async () => {
                 await this.locator.highlight();
-                await this.annotationHelper.addDescription(stepDescription);
+                await this.annotationHelper.addDescription(stepDescription, '#00008B');
             });
         }
     }

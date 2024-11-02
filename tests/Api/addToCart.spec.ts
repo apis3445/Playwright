@@ -3,13 +3,15 @@ import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { HomePage } from '../../pages/WebdriverIOShop/HomePage';
 import { ProductDetailPage } from '../../pages/WebdriverIOShop/ProductDetailPage';
 import { CartPage } from '../../pages/WebdriverIOShop/CartPage';
+import * as allure from 'allure-js-commons';
 
 test.describe('WebdriverIO Shop', () => {
 
-     
     test('Should add an item to the cart', {
         tag: ['@API'],
     }, async ({ page }) => {
+        await allure.feature('API features');
+        await allure.suite('Add item to the cart');
         const homePage = new HomePage(page);
         await homePage.goTo();
         await homePage.showAllClick();

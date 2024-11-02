@@ -16,6 +16,6 @@ test.describe('Servers', () => {
         const gridRows = await serversPage.table.getRowsValues();
         const assertDescription = 'The excel file rows are equal to the grid rows';
         serversPage.addAnnotation(AnnotationType.Assert, assertDescription);
-        expect(excelRows).toStrictEqual(gridRows);
+        expect(excelRows, 'The rows on the excel are equal to the rows on the grid').toStrictEqual(gridRows);
     });
 });

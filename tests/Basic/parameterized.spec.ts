@@ -15,10 +15,12 @@ test.describe('Login with Parameters', () => {
         test(`Login with "${userName}" from parameters will load inventory page`, {
             tag: ['@Basic', '@[395]'],
             annotation: [
-                { type: AnnotationType.Description, description: 'Login with valid user in saucedemo' },
+                { type: AnnotationType.Description, description: 'Login with valid user on Sauce Demo' },
                 { type: AnnotationType.Precondition, description: 'A valid username and password' },
             ],
         }, async ({ page }) => {
+            await allure.feature('Essential features');
+            await allure.suite('Valid login');
             await allure.parameter('userName', userName);
             const loginPage = new LoginPage(page);
             await loginPage.goTo();
