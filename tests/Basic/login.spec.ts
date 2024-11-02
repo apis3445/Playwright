@@ -11,7 +11,7 @@ test.describe('Login', () => {
     test('Login with valid user load inventory page', {
         tag: ['@Basic'],
         annotation: [
-            { type: AnnotationType.Description, description: 'Login with valid user in saucedemo' },
+            { type: AnnotationType.Description, description: 'Login with valid user on sauce demo' },
             { type: AnnotationType.Precondition, description: 'A valid username and password' },
         ],
     }, async ({ page }) => {

@@ -14,7 +14,7 @@ test.describe('Normal user', () => {
         ],
     }, async ({ page }) => {
         await allure.feature('Essential features');
-        await allure.suite(test.info().title);
+        await allure.suite('Effiziente');
         const dashboardPage = new DashboardPage(page);
         await dashboardPage.goTo();
         const menuInPage = await dashboardPage.menu.getTopMenus();
