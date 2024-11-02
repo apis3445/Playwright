@@ -15,11 +15,14 @@ steps:
       npx playwright install --with-deps
     displayName: "Install Playwright Browsers"
 
+  - bash: curl -fsSL https://github.com/allure-framework/allurectl/releases/latest/download/allurectl_linux_amd64 -o allurectl && chmod +x allurectl
+    displayName: Download allurectl
+
   - script: |
       npm install -g allure-commandline  
     displayName: "Install Allure"
 
-  - script: npx playwright test
+  - script: ./allurectl watch -- npx playwright test
     displayName: "Run Playwright tests"
     env:
       ADO_TOKEN: $(ADO_TOKEN)
