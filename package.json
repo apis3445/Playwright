@@ -1,6 +1,6 @@
 {
   "name": "playwright",
-  "version": "0.18.0",
+  "version": "0.19.1",
   "description": "Playwright Example Demo for AI, API, Accessibility testing",
   "main": "index.js",
   "scripts": {

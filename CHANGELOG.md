@@ -1,3 +1,11 @@
+# 0.19.0 (2024-11-2)
+
+### Enhancements
+
+- Improve Allure Suites and Parameters
+- Change Azure DevOps pipeline to connect Allure on the cloud
+- Minor fixes on AddDescription to include the color for the description
+
 # 0.19.0 (2024-10-19)
 
 ### Enhancements
