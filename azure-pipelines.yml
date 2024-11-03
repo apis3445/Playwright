@@ -1,3 +1,11 @@
+schedules:
+  - cron: "0 12 * * *"
+    displayName: "Daily at 7 AM Central Time"
+    branches:
+      include:
+        - main
+    always: "true"
+
 pool:
   vmImage: "ubuntu-latest"
 
