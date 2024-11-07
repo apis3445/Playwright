@@ -135,6 +135,14 @@ const config: PlaywrightTestConfig = {
                         name: 'Missing file errors',
                         messageRegex: /^ENOENT: no such file or directory/,
                     },
+                    {
+                        name: 'Internal Server Error',
+                        messageRegex: /^Internal Server Error/,
+                    },
+                    {
+                        name: 'Timeout errors',
+                        messageRegex: /timeout/i, // Matches any message containing 'timeout', case-insensitive
+                    },
                 ],
             }
         ]
