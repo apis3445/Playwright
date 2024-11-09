@@ -4,7 +4,6 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import os from 'node:os';
 import dotenv from 'dotenv';
-import { name } from 'mustache';
 
 const reportConfig: OrtoniReportConfig = {
     open: 'never',

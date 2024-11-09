@@ -15,6 +15,6 @@ test.describe('Login', () => {
         //For security is better add your user info in environment variables or some Key Value service 
         await loginPage.loginWithUser(process.env.USER_NAME!, process.env.PASSWORD!);
         const expectedPage = loginPage.BASE_URL + '/inventory.html';
-        loginPage.AssertEqual(expectedPage, page.url(), 'Check URL Page equal to: "' + expectedPage + '"');
+        await loginPage.AssertEqual(expectedPage, page.url(), 'Check URL Page equal to: "' + expectedPage + '"');
     });
 });
