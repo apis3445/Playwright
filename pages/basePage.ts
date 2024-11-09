@@ -5,7 +5,6 @@ import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 export class BasePage {
 
     public stepDescription = '';
-
     protected isAnnotationEnabled = true;
     protected annotationHelper = new AnnotationHelper(this.page, this.keyPage);
 
@@ -18,7 +17,7 @@ export class BasePage {
      */
     public async goTo() {
         const url = process.env.BASE_URL ?? 'https://www.saucedemo.com';
-        const stepDescription = 'Go to the page: "' + url + '"';
+        const stepDescription = `Go to: "${url}"`;
         await this.addStepWithAnnotation(AnnotationType.GoTo, stepDescription, async () => {
             await this.page.goto(url);
         });
@@ -67,7 +66,7 @@ export class BasePage {
         const stepDescription = 'Go to default page';
         this.addAnnotation(AnnotationType.GoTo, stepDescription);
 
-        await test.step(stepDescription + '', async () => {
+        await test.step(stepDescription, async () => {
             await this.page.goto('/');
         });
     }
@@ -103,9 +102,10 @@ export class BasePage {
      * @param actual Actual Value
      * @param assertMessage  Message to assert
      */
-    public AssertEqual(expected: string, actual: string, assertMessage: string) {
-        this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
-        expect(expected, assertMessage).toEqual(actual);
+    public async AssertEqual(expected: string, actual: string, assertMessage: string) {
+        await this.addStepWithAnnotation(AnnotationType.Assert, assertMessage, async () => {
+            expect(expected, assertMessage).toEqual(actual);
+        });
     }
 
     /**

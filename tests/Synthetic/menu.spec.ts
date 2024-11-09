@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import * as allure from 'allure-js-commons';
 
 test.describe('Synthetic testing', () => {
     const baseURL = process.env.EFFIZIENTE_URL!;
@@ -23,8 +24,10 @@ test.describe('Synthetic testing', () => {
     test('Should show dashboard', {
         tag: ['@PerfAgents'],
     }, async ({ page }) => {
+        await allure.feature('Synthetic');
+        await allure.suite('PerfAgents');
         const dashboardPageUrl = baseURL + '/AccountsReceivable/dashboard';
-        const stepDescription = 'Go to:' + baseURL;
+        const stepDescription = `Go to: "${baseURL}"`;
         await test.step(stepDescription, async () => {
             test.info().annotations.push({ type: 'Navigation', description: stepDescription });
             await page.goto(baseURL);

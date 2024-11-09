@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import * as allure from 'allure-js-commons';
 
 test.describe('Synthetic login testing', () => {
 
@@ -6,6 +7,8 @@ test.describe('Synthetic login testing', () => {
     test('Should show dashboard', {
         tag: ['@PerfAgents'],
     }, async ({ page }) => {
+        await allure.feature('Synthetic');
+        await allure.suite('PerfAgents');
         await page.goto('https://effizientedemo.azurewebsites.net');
         await page.getByLabel('Company').fill(process.env.EFFIZIENTE_COMPANY!);
         await page.getByLabel('User').fill(process.env.EFFIZIENTE_NORMAL_USER!);

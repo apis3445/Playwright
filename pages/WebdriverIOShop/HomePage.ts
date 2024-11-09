@@ -19,7 +19,7 @@ export class HomePage extends WebDriverBasePage {
      */
     async goTo() {
         const baseURL = process.env.WEBDRIVERIO_SHOP || 'https://shop.webdriver.io';
-        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to the page: "${baseURL}"`, async () => {
+        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to: "${baseURL}"`, async () => {
             await this.page.goto(baseURL);
         });
     }
@@ -44,7 +44,7 @@ export class HomePage extends WebDriverBasePage {
         const productName = product.name;
         const stepDescription = `Click in the product: "${productName}"`;
         return this.addStepWithAnnotation(AnnotationType.Step, stepDescription, async () => {
-            await this.page.locator('p[title="' + productName + '"]').click();
+            await this.page.locator(`p[title="${productName}"]`).click();
             return product;
         });
     }

@@ -16,11 +16,11 @@ export class HomePage extends ContosoBasePage {
     }
 
     /**
-     * Go to contoso url
+     * Go to Contoso traders url
      */
     async goTo() {
         const url = process.env.CONTOSO_URL ?? 'https://cloudtesting.contosotraders.com';
-        await this.addStepWithAnnotation(AnnotationType.GoTo, 'Go to the page: "' + url + '"', async () => {
+        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to: "${url}"`, async () => {
             await this.page.goto(url);
         });
     }
@@ -41,7 +41,7 @@ export class HomePage extends ContosoBasePage {
     async selectRandomProduct() {
         const productIndex = Math.floor(Math.random() * this.products.length);
         this.product = this.products[productIndex];
-        await this.page.locator('div[style*="'+ this.product.imageUrl+'"]').click();
+        await this.page.locator(`div[style*="${this.product.imageUrl}"]`).click();
     }
 
 }

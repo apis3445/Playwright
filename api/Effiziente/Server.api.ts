@@ -54,8 +54,8 @@ export class ServerApi {
      * @returns API response
      */
     async getServerByKey(key: string) {
-        return await test.step('Get server with the key:' + key, async () => {
-            const apiResponse = await this.apiHelper.get(`${this.api}/ByKey/${key}`);
+        return await test.step(`Get the server with the key: "${key}"`, async () => {
+            const apiResponse = await this.apiHelper.get(`${this.api} / ByKey / ${key}`);
             return apiResponse;
         });
     }

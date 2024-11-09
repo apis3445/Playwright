@@ -27,7 +27,7 @@ test.describe('Geo Location Test', () => {
         // eslint-disable-next-line playwright/no-conditional-in-test
         if (await bingMapsPage.unCollapse.locator.isVisible())
             await bingMapsPage.unCollapse.click();
-        const assertionDescription = 'Geo name is equal to:' + geoName;
+        const assertionDescription = `Geo name is equal to: "${geoName}"`;
         //Add the assertion to the html reporter annotations
         bingMapsPage.addAnnotation(AnnotationType.Assert, assertionDescription);
         //Check the current geolocation label is set to Munich

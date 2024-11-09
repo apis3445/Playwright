@@ -4,6 +4,7 @@ import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 import os from 'node:os';
 import dotenv from 'dotenv';
+import { name } from 'mustache';
 
 const reportConfig: OrtoniReportConfig = {
     open: 'never',
@@ -114,35 +115,30 @@ const config: PlaywrightTestConfig = {
         ['ortoni-report', reportConfig],
         ['allure-playwright',
             {
-                detail: false,
+                detail: false, //false to don't include the code as sub step
                 suiteTitle: false,
-                links: {
-                    link: {
-                        urlTemplate: 'https://github.com/allure-framework/allure-js/blob/main/%s',
-                    },
-                    issue: {
-                        urlTemplate: 'https://github.com/allure-framework/allure-js/issues/%s',
-                        nameTemplate: 'ISSUE-%s',
-                    },
-                },
                 environmentInfo: {
-                    OS: os.platform(),
-                    Architecture: os.arch(),
-                    NodeVersion: process.version,
+                    OS: os.platform(), //os name for example darwin
+                    Architecture: os.arch(), //architecture for example arm64
+                    NodeVersion: process.version, //node version
                 },
-                categories: [
+                categories: [ //To classify errors by category
                     {
                         name: 'Missing file errors',
-                        messageRegex: /^ENOENT: no such file or directory/,
+                        messageRegex: '.*ENOENT: no such file or directory.*'
                     },
                     {
                         name: 'Internal Server Error',
-                        messageRegex: /^Internal Server Error/,
+                        messageRegex: '.*Internal Server Error.*',
                     },
                     {
                         name: 'Timeout errors',
-                        messageRegex: /timeout/i, // Matches any message containing 'timeout', case-insensitive
+                        messageRegex: '.*timeout.*'
                     },
+                    {
+                        name: 'Accessibility',
+                        messageRegex: '.*accessibility.*'
+                    }
                 ],
             }
         ]

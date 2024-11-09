@@ -27,7 +27,8 @@ test.describe('Login with Parameters', () => {
             //For security is better add your user info in environment variables or some Key Value service 
             await loginPage.loginWithUser(userName, process.env.PASSWORD!);
             const expectedPage = loginPage.BASE_URL + '/inventory.html';
-            loginPage.AssertEqual(expectedPage, page.url(), 'Check URL Page is equal to: "' + expectedPage + '"');
+            const stepDescription = `Check URL Page is equal to: ${expectedPage}"`;
+            await loginPage.AssertEqual(expectedPage, page.url(), stepDescription);
         });
     });
 });

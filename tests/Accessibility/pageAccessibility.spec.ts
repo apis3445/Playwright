@@ -4,6 +4,7 @@ import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import playwright from 'playwright';
 import { AccessibilityHelper } from '../../utils/accessibility/AccessibilityHelper';
+import * as allure from 'allure-js-commons';
 
 test.describe('Test Accessibility By Page', {
     tag: ['@PageAccessibility'],
@@ -15,6 +16,8 @@ test.describe('Test Accessibility By Page', {
 
     // eslint-disable-next-line playwright/expect-expect
     test('Check Page accessibility', async ({ browserName }, testInfo) => {
+        await allure.feature('Accessibility');
+        await allure.suite('Custom Page');
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Lighthouse only works in chrome');
         //You can test any page in environment variable

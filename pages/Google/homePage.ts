@@ -30,7 +30,7 @@ export class HomePage extends BasePage {
      * Go to google home page
      */
     public async goTo() {
-        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + this.BASE_URL + '"');
+        this.annotationHelper.addAnnotation(AnnotationType.GoTo, `Go to: "${this.BASE_URL}"`);
         await this.page.goto(this.BASE_URL);
     }
 
