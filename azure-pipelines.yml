@@ -63,8 +63,8 @@ steps:
     displayName: 'Publish Allure report'
     condition: always()
     inputs:
-      PathtoPublish: "allure-results"
-      ArtifactName: "allure-results"
+      PathtoPublish: "allure-report"
+      ArtifactName: "allure-report"
       publishLocation: "Container"
 
   - task: PublishBuildArtifacts@1
