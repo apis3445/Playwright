@@ -113,14 +113,13 @@ export class BaseComponent {
 
     /**
      * Get the text content of the component
-     * @returns Promise with button text
      */
     async getText(): Promise<string> {
         return await test.step('Get the Text', async () => {
-            if (this.label)
-                return this.label;
-            this.label = await this.locator.textContent() ?? '';
-            return this.label;
+            if (this.text)
+                return this.text;
+            this.text = await this.locator.textContent() ?? '';
+            return this.text;
         });
     }
 }

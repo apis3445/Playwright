@@ -33,7 +33,7 @@ test.describe('WebdriverIO Shop', () => {
             await expect(cartPage.cartItem.name, assertDescription).toHaveText(product.name);
         });
         assertDescription = `The price of the item in the cart is: "${productPrice}"`;
-        const priceItem = await cartPage.cartItem.unitPrice;
+        const priceItem = cartPage.cartItem.unitPrice;
         await cartPage.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
             await expect(priceItem, assertDescription).toHaveText(productPrice);
         });

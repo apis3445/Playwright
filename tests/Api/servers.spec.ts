@@ -72,9 +72,10 @@ test.describe('Servers', () => {
             id = await serversPage.createServer(server);
         }
         else {
-            //Get the id for the server key with id 3 to delete and isolate the test
-            const responseText = JSON.parse(await response.text());
-            id = +responseText.Id;
+            //Get the id for the server to delete it
+            const responseText = await response.text();
+            const responseObject = JSON.parse(responseText);
+            id = +responseObject.Id;
         }
         const newName = faker.company.name();
         const newUrl = faker.internet.url();
