@@ -29,9 +29,10 @@ export class DashboardPage extends EffizienteBasePage {
      */
     public async goTo() {
         const dashboardPage = this.baseURL + '/AccountsReceivable/dashboard';
-        this.annotationHelper.addAnnotation(AnnotationType.GoTo, 'Go to the page: "' + dashboardPage + '"');
-        await this.page.goto(dashboardPage);
-        await this.title.locator.waitFor({ timeout: 30_000 });
+        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to: "${dashboardPage}"`, async () => {
+            await this.page.goto(dashboardPage);
+            await this.title.locator.waitFor({ timeout: 30_000 });
+        });
     }
 
     /**

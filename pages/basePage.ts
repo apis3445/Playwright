@@ -114,8 +114,9 @@ export class BasePage {
      * @param actual Actual array
      * @param assertMessage Assert message for the html reporter
      */
-    public AssertArrayEqual(expected: string[], actual: string[], assertMessage: string) {
-        this.annotationHelper.addAnnotation(AnnotationType.Assert, assertMessage);
-        expect(expected, assertMessage).toEqual(actual);
+    public async AssertArrayEqual(expected: string[], actual: string[], assertMessage: string) {
+        await this.addStepWithAnnotation(AnnotationType.Assert, assertMessage, async () => {
+            expect(expected, assertMessage).toEqual(actual);
+        });
     }
 }
