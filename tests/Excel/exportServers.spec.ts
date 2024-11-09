@@ -18,7 +18,8 @@ test.describe('Servers', () => {
         const excelRows = await serversPage.exportToExcel.getExcelRows();
         const gridRows = await serversPage.table.getRowsValues();
         const assertDescription = 'The excel file rows are equal to the grid rows';
-        serversPage.addAnnotation(AnnotationType.Assert, assertDescription);
-        expect(excelRows, 'The rows on the excel are equal to the rows on the grid').toStrictEqual(gridRows);
+        await serversPage.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
+            expect(excelRows, 'The rows on the excel are equal to the rows on the grid').toStrictEqual(gridRows);
+        });
     });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable playwright/no-conditional-in-test */
 import { Locator, Page, test } from '@playwright/test';
 import { AnnotationHelper } from '../utils/annotations/AnnotationHelper';
 
@@ -88,24 +89,26 @@ export class BaseComponent {
      * @returns Promise with input label
      */
     async getInputLabel(): Promise<string> {
-        if (this.label)
-            return this.label;
+        return await test.step('Get the label for the input', async () => {
+            if (this.label)
+                return this.label;
 
-        const id = await this.locator.getAttribute('id');
-        if (id) {
-            const labelElement = this.page.locator(`label[for="${id}"]`);
-            if (await labelElement.isVisible())
-                return await labelElement.innerText();
-        }
+            const id = await this.locator.getAttribute('id');
+            if (id) {
+                const labelElement = this.page.locator(`label[for="${id}"]`);
+                if (await labelElement.isVisible())
+                    return await labelElement.innerText();
+            }
 
-        const placeHolderAttribute = await this.locator.getAttribute('placeholder');
-        if (placeHolderAttribute)
-            return placeHolderAttribute;
+            const placeHolderAttribute = await this.locator.getAttribute('placeholder');
+            if (placeHolderAttribute)
+                return placeHolderAttribute;
 
-        const ariaLabelAttribute = await this.locator.getAttribute('aria-label');
-        if (ariaLabelAttribute)
-            return ariaLabelAttribute;
-        return '';
+            const ariaLabelAttribute = await this.locator.getAttribute('aria-label');
+            if (ariaLabelAttribute)
+                return ariaLabelAttribute;
+            return '';
+        });
     }
 
     /**
@@ -113,9 +116,11 @@ export class BaseComponent {
      * @returns Promise with button text
      */
     async getText(): Promise<string> {
-        if (this.label)
+        return await test.step('Get the Text', async () => {
+            if (this.label)
+                return this.label;
+            this.label = await this.locator.textContent() ?? '';
             return this.label;
-        this.label = await this.locator.textContent() ?? '';
-        return this.label;
+        });
     }
 }

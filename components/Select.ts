@@ -25,7 +25,9 @@ export class Select extends BaseComponent {
      * @param value Value to select
      */
     async selectOption(value: string) {
-        await this.locator.selectOption(value);
+        await this.addStepWithAnnotation(`Select the option ${value}`, async () => {
+            await this.locator.selectOption(value);
+        });
     }
 
     /**
@@ -34,29 +36,33 @@ export class Select extends BaseComponent {
      * when the out of stock is added to some size or colors
      */
     async selectRandomOptionWithoutText(textToExclude: string) {
-        await this.locator.waitFor();
-        const optionsLocator = await this.locator.locator('option').allInnerTexts();
-        const cleanedOptions = optionsLocator.map(option => option.trim());
-        // Filter out options that contain "out of stock"
-        const availableOptions = cleanedOptions.filter(option =>
-            !option.includes(textToExclude));
-        if (availableOptions.length === 0) {
-            throw new Error('No available options found');
-        }
-        const productIndex = Math.floor(Math.random() * availableOptions.length);
-        // Select the first available option
-        await this.selectOption(availableOptions[productIndex]);
+        await this.addStepWithAnnotation('Select a random option', async () => {
+            await this.locator.waitFor();
+            const optionsLocator = await this.locator.locator('option').allInnerTexts();
+            const cleanedOptions = optionsLocator.map(option => option.trim());
+            // Filter out options that contain "out of stock"
+            const availableOptions = cleanedOptions.filter(option =>
+                !option.includes(textToExclude));
+            if (availableOptions.length === 0) {
+                throw new Error('No available options found');
+            }
+            const productIndex = Math.floor(Math.random() * availableOptions.length);
+            // Select the first available option
+            await this.selectOption(availableOptions[productIndex]);
+        });
     }
 
     /**
      * Select a random option in the combo
      */
     async selectRandomOption() {
-        const optionsLocator = await this.locator.locator('option').allInnerTexts();
-        // Clean up the options by trimming whitespace
-        const cleanedOptions = optionsLocator.map(option => option.trim());
-        const productIndex = Math.floor(Math.random() * optionsLocator.length);
-        // Select the first available option
-        await this.selectOption(cleanedOptions[productIndex]);
+        await this.addStepWithAnnotation('Select a random option', async () => {
+            const optionsLocator = await this.locator.locator('option').allInnerTexts();
+            // Clean up the options by trimming whitespace
+            const cleanedOptions = optionsLocator.map(option => option.trim());
+            const productIndex = Math.floor(Math.random() * optionsLocator.length);
+            // Select the first available option
+            await this.selectOption(cleanedOptions[productIndex]);
+        });
     }
 }

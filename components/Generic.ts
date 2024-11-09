@@ -13,6 +13,7 @@ export class Generic extends BaseComponent {
         const locator = page.locator(selector);
         super(page, annotationHelper, locator);
         this.text = name;
+        this.label = name;
     }
 
 }

@@ -24,9 +24,10 @@ test.describe('Locale translations', () => {
         await homePage.goTo();
         const assertDescription = `Search button text is equal to: "${localeInfo.googleSearch}"`;
         //Add the assertion to the html reporter
-        homePage.addAnnotation(AnnotationType.Assert, assertDescription);
-        //Check that the google search includes the translated text
-        await expect(homePage.googleSearch.locator, assertDescription).toHaveText(localeInfo.googleSearch);
+        await homePage.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
+            //Check that the google search includes the translated text
+            await expect(homePage.googleSearch.locator, assertDescription).toHaveText(localeInfo.googleSearch);
+        });
     });
 });
 

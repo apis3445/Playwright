@@ -1,9 +1,10 @@
-import test, { Page } from '@playwright/test';
+import { Page } from '@playwright/test';
 import { EffizienteBasePage } from './effizienteBasePage';
 import { Heading } from '../../components/Heading';
 import { InputText } from '../../components/InputText';
 import { Button } from '../../components/Button';
 import { ServerApi } from '../../api/Effiziente/Server.api';
+import { AnnotationType } from '../../utils/annotations/AnnotationType';
 
 export class AddServerPage extends EffizienteBasePage {
     title: Heading = new Heading(this.page, this.annotationHelper, 'Servers');
@@ -24,7 +25,7 @@ export class AddServerPage extends EffizienteBasePage {
      * @returns Server id
      */
     async saveClick() {
-        return await test.step('Save server and return server id from api', async () => {
+        return await this.addStepWithAnnotation(AnnotationType.Step, 'Save server and return server id from api', async () => {
             const responseCreatePromise = this.serverApi.waitForCreateServer();
             const responseGetPromise = this.serverApi.waitForGetServers();
             await this.save.click();
