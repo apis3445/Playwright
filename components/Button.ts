@@ -16,7 +16,6 @@ export class Button extends BaseComponent {
         if (!byRole)
             locator = page.locator(name);
         super(page, annotationHelper, locator);
-        this.text = this.name;
         if (byRole)
             this.label = name;
     }

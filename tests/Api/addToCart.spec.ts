@@ -19,7 +19,7 @@ test.describe('WebdriverIO Shop', () => {
         const productDetailPage = new ProductDetailPage(page);
         await productDetailPage.color.selectRandomOptionWithoutText('Select one');
         await productDetailPage.selectAvailableSize();
-        const productPrice = (await productDetailPage.productPrice.getText()).trim();
+        const productPrice = await productDetailPage.getProductPrice();
         await productDetailPage.addToCart.click();
         let assertDescription = 'There is one item in the bag';
         await productDetailPage.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {

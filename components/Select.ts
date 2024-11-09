@@ -8,16 +8,18 @@ export class Select extends BaseComponent {
      * Constructor
      * @param page Playwright page
      * @param annotationHelper Annotation helper
-     * @param name Name for the combobox
+     * @param name Name for the Combo box
      * @param byRole By default will search by role = combobox, if you set to false will search by css selector
      */
-    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true) {
+    constructor(page: Page, annotationHelper: AnnotationHelper, private name: string, byRole = true, label = '') {
         let locator: Locator = page.getByRole('combobox', { name: name });
         if (!byRole)
             locator = page.locator(name);
         super(page, annotationHelper, locator);
-        this.text = this.name;
-        this.label = name;
+        if (byRole)
+            this.label = name;
+        if (label)
+            this.label = label;
     }
 
     /**
@@ -25,7 +27,8 @@ export class Select extends BaseComponent {
      * @param value Value to select
      */
     async selectOption(value: string) {
-        await this.addStepWithAnnotation(`Select the option ${value}`, async () => {
+        this.label = await this.getInputLabel();
+        await this.addStepWithAnnotation(`On "${this.label}" select the option ${value}`, async () => {
             await this.locator.selectOption(value);
         });
     }
@@ -36,7 +39,8 @@ export class Select extends BaseComponent {
      * when the out of stock is added to some size or colors
      */
     async selectRandomOptionWithoutText(textToExclude: string) {
-        await this.addStepWithAnnotation('Select a random option', async () => {
+        this.label = await this.getInputLabel();
+        await this.addStepWithAnnotation(`On "${this.label}" select any option`, async () => {
             await this.locator.waitFor();
             const optionsLocator = await this.locator.locator('option').allInnerTexts();
             const cleanedOptions = optionsLocator.map(option => option.trim());
