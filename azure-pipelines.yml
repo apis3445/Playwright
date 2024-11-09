@@ -38,6 +38,7 @@ steps:
       ALLURE_PROJECT_ID: 1
       ALLURE_RESULTS: allure-results
       ALLURE_TOKEN: $(ALLURE_TOKEN)
+      LT_ACCESS_KEY: $(LT_ACCESS_KEY)
 
   - script: |
       allure generate --single-file allure-results
