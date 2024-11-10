@@ -122,4 +122,22 @@ export class BaseComponent {
             return this.text;
         });
     }
+
+    /**
+     * Get the text or aria-label for the button
+     * @returns Button text
+     */
+    async getButtonText(): Promise<string> {
+        return await test.step('Get the button text', async () => {
+            if (this.label)
+                return this.label;
+            this.label = await this.locator.textContent() ?? '';
+            if (!this.label || this.label == '')
+                this.label = await this.locator.getAttribute('aria-label') ?? '';
+            if (!this.label || this.label == '')
+                this.label = await this.locator.getAttribute('title') ?? '';
+            return this.label;
+        });
+    }
+
 }

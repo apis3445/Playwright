@@ -24,9 +24,15 @@ export class Button extends BaseComponent {
      * Click in a button
      */
     async click() {
-        const stepDescription = 'Click: "' + await this.getText() + '"';
+        const stepDescription = `Click: "${await this.getButtonText()}`;
         await this.addStepWithAnnotation(stepDescription, async () => {
             await this.locator.click();
+        });
+    }
+
+    async IsVisible(): Promise<boolean> {
+        return await this.addStepWithAnnotation('Check if the button is visible', async () => {
+            return this.locator.isVisible();
         });
     }
 

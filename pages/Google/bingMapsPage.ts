@@ -21,8 +21,8 @@ export class BingMapsPage extends BasePage {
      * Go to bing maps
      */
     public async goTo() {
-        this.annotationHelper.addAnnotation(AnnotationType.GoTo, `Go to: "${this.BASE_URL}"`);
-        await this.page.goto(this.BASE_URL);
+        await this.addStepWithAnnotation(AnnotationType.GoTo, `Go to: "${this.BASE_URL}"`, async () => {
+            await this.page.goto(this.BASE_URL);
+        });
     }
-
 }
