@@ -24,7 +24,7 @@ export class Button extends BaseComponent {
      * Click in a button
      */
     async click() {
-        const stepDescription = `Click: "${await this.getButtonText()}`;
+        const stepDescription = `Click: "${await this.getButtonText()}"`;
         await this.addStepWithAnnotation(stepDescription, async () => {
             await this.locator.click();
         });
