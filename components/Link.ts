@@ -40,14 +40,11 @@ export class Link extends BaseComponent {
      * @returns Link text content
      */
     override async getText(): Promise<string> {
-        const stepDescription = 'Get label for the link';
-        return await this.addStep(stepDescription, async () => {
-            if (!this.label) {
-                const linkText = await this.locator.textContent();
-                if (linkText)
-                    this.label = linkText;
-            }
-            return this.label;
-        });
+        if (!this.label) {
+            const linkText = await this.locator.textContent();
+            if (linkText)
+                this.label = linkText;
+        }
+        return this.label ?? '';
     }
 }

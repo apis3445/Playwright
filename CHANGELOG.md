@@ -1,4 +1,11 @@
-# 0.19.0 (2024-11-2)
+# 0.19.2 (2024-11-09)
+
+### Enhancements
+
+- Improved test steps descriptions and annotations for better traceability and debugging.
+- Simplified methods by removing redundant annotations and enhancing logic.
+
+# 0.19.1 (2024-11-2)
 
 ### Enhancements
 

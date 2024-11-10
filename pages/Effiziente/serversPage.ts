@@ -73,16 +73,19 @@ export class ServersPage extends EffizienteBasePage {
     async checkRow(key: number, name: string, url: string) {
         const row = await this.table.getRowByKey(key);
         let assertDescription = `Server with the key: "${key}" exists in the table`;
-        this.addAnnotation(AnnotationType.Assert, assertDescription);
-        expect(row, assertDescription).not.toBeNull();
+        await this.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
+            expect(row, assertDescription).not.toBeNull();
+        });
         //Get the row values as a object the header title are the property of the object
         const rowValues = await this.table.getRowValues(row);
         assertDescription = `The server name for the key: "${key}" is: "${name}"`;
-        await this.addAnnotation(AnnotationType.Assert, assertDescription);
-        expect(rowValues.Name, assertDescription).toBe(name);
+        await this.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
+            expect(rowValues.Name, assertDescription).toBe(name);
+        });
         assertDescription = `The server url for the key: "${key}" is: "${url}"`;
-        await this.addAnnotation(AnnotationType.Assert, assertDescription);
-        expect(rowValues.Url, assertDescription).toBe(url);
+        await this.addStepWithAnnotation(AnnotationType.Assert, assertDescription, async () => {
+            expect(rowValues.Url, assertDescription).toBe(url);
+        });
     }
 
     /**
@@ -90,12 +93,14 @@ export class ServersPage extends EffizienteBasePage {
      * @param key Server key to delete
      */
     async deleteServerByKey(key: string) {
-        const response = await this.serverApi.getServerByKey(key);
-        if (response.status() == 200) {
-            const responseText = JSON.parse(await response.text());
-            const id = +responseText.Id;
-            await this.serverApi.deleteServer(id);
-        }
+        await this.addStepWithAnnotation(AnnotationType.PostCondition, `Delete server with the key: "${key}" if exists`, async () => {
+            const response = await this.serverApi.getServerByKey(key);
+            if (response.status() == 200) {
+                const responseText = JSON.parse(await response.text());
+                const id = +responseText.Id;
+                await this.serverApi.deleteServer(id);
+            }
+        });
     }
 
     /**

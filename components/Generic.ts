@@ -12,7 +12,7 @@ export class Generic extends BaseComponent {
     constructor(page: Page, annotationHelper: AnnotationHelper, public selector: string, public name: string) {
         const locator = page.locator(selector);
         super(page, annotationHelper, locator);
-        this.text = name;
+        this.label = name;
     }
 
 }

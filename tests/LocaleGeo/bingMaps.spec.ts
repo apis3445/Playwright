@@ -25,12 +25,13 @@ test.describe('Geo Location Test', () => {
         //With click in the locate button the map will be centered in your current geolocation
         await bingMapsPage.locateMe.click();
         // eslint-disable-next-line playwright/no-conditional-in-test
-        if (await bingMapsPage.unCollapse.locator.isVisible())
+        if (await bingMapsPage.unCollapse.IsVisible())
             await bingMapsPage.unCollapse.click();
         const assertionDescription = `Geo name is equal to: "${geoName}"`;
         //Add the assertion to the html reporter annotations
-        bingMapsPage.addAnnotation(AnnotationType.Assert, assertionDescription);
-        //Check the current geolocation label is set to Munich
-        await expect(bingMapsPage.geoName.locator, assertionDescription).toHaveText(geoName);
+        await bingMapsPage.addStepWithAnnotation(AnnotationType.Assert, assertionDescription, async () => {
+            //Check the current geolocation label is set to Munich
+            await expect(bingMapsPage.geoName.locator, assertionDescription).toHaveText(geoName);
+        });
     });
 });
