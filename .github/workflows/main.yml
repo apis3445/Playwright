@@ -1,9 +1,7 @@
 name: Tests HTML & Junit Reporter
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  schedule:
+    - cron: "30 5 * * *" # Execute every day at 5:30 AM (UTC)
 jobs:
   test:
     timeout-minutes: 60
@@ -70,12 +68,12 @@ jobs:
           path: steps-report/
           retention-days: 5
 
-      - name: Publish html reporter to Github Pages
+      - name: Publish HTML reporter to Github Pages
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}/steps-report/
+          publish_dir: ${{ github.workspace }}/report/
 
       - name: Upload xml junit result as artifact
         uses: actions/upload-artifact@v4

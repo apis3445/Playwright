@@ -1,6 +1,5 @@
 import test, { expect } from '@playwright/test';
 import { BingMapsPage } from '../../pages/Google/bingMapsPage';
-import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import * as allure from 'allure-js-commons';
 
 test.describe('Geo Location Test', () => {
@@ -29,9 +28,9 @@ test.describe('Geo Location Test', () => {
             await bingMapsPage.unCollapse.click();
         const assertionDescription = `Geo name is equal to: "${geoName}"`;
         //Add the assertion to the html reporter annotations
-        await bingMapsPage.addStepWithAnnotation(AnnotationType.Assert, assertionDescription, async () => {
-            //Check the current geolocation label is set to Munich
-            await expect(bingMapsPage.geoName.locator, assertionDescription).toHaveText(geoName);
-        });
+        //await bingMapsPage.addStepWithAnnotation(AnnotationType.Assert, assertionDescription, async () => {
+        //Check the current geolocation label is set to Munich
+        await expect(bingMapsPage.geoName.locator, assertionDescription).toHaveText(geoName);
+        //});
     });
 });
