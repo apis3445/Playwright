@@ -38,10 +38,10 @@
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "^1.48.2",
     "axe-core": "^4.10.2",
-    "checkly": "^4.9.1",
+    "checkly": "^4.10.0",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
-    "lighthouse": "^12.2.1",
+    "lighthouse": "^12.2.2",
     "mustache": "^4.2.0",
     "ortoni-report": "^2.0.8",
     "playwright-qase-reporter": "^2.0.16"

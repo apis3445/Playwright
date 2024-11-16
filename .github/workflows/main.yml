@@ -1,4 +1,4 @@
-name: Tests HTML & Junit Reporter
+name: Tests HTML & Junit Reporter Daily
 on:
   schedule:
     - cron: "30 5 * * *" # Execute every day at 5:30 AM (UTC)
