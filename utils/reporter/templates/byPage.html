@@ -326,7 +326,7 @@
             const organization = '{{data.adoOrganization}}';
             const project = '{{data.adoProject}}';
             const apiVersion = '7.1';
-            const pat = '{{data.adoPat}}';
+            const pat = sessionStorage.getItem('userToken');
 
             const url = `https://dev.azure.com/${organization}/${project}/_apis/wit/workitems/$Bug?api-version=${apiVersion}`;
             // Format the steps array into a string
