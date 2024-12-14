@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PAGE_URL: ${{ inputs.PAGE_URL }}
+      ADO_ORGANIZATION: ${{ vars.ADO_ORGANIZATION }}
+      ADO_PROJECT: ${{ vars.ADO_PROJECT }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
