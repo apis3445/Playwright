@@ -336,8 +336,6 @@
 
             // Upload the screenshot and get the URL
             const screenshotUrl = await uploadScreenshot(screenshotBase64, 'screenshot.png');
-
-
             const bugData = [
                 {
                     "op": "add",
@@ -374,17 +372,17 @@
                     "path": "/fields/System.Tags",
                     "value": "accessibility"
                 },
-                {
-                    "op": "add",
-                    "path": "/relations/-",
-                    "value": {
-                        "rel": "AttachedFile",
-                        "url": screenshotUrl,
-                        "attributes": {
-                            "comment": "Screenshot of the issue"
-                        }
-                    }
-                }
+                // {
+                //     "op": "add",
+                //     "path": "/relations/-",
+                //     "value": {
+                //         "rel": "AttachedFile",
+                //         "url": screenshotUrl,
+                //         "attributes": {
+                //             "comment": "Screenshot of the issue"
+                //         }
+                //     }
+                // }
             ];
 
             try {
