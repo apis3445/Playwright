@@ -11,8 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2]
-        shardTotal: [2]
+        shardIndex: [1, 2, 3]
+        shardTotal: [3]
     env:
       BASE_URL: ${{vars.BASE_URL}}
       CONTOSO_URL: ${{vars.CONTOSO_URL}}
