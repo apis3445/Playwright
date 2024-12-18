@@ -1,16 +1,16 @@
 [![Tests](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml/badge.svg)](https://github.com/apis3445/PlaywrightFramework/actions/workflows/main.yml)
 
-# POC for accessibility testing tool and end-to-end tests with Playwright.
+# POC Accessibility testing tool and end-to-end tests with Playwright.
 
 This boilerplate includes demos to test different testing scenarios with Playwright and an accessibility tool that generates reports for the accessibility bugs and options to copy the bugs.
 
 # Example tests:
 
-[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-core® for thorough accessibility checks. Axe-core® https://github.com/dequelabs/axe-core is a trademark of Deque Systems, Inc https://www.deque.com/. in the US and other countries. Includes dashboard, videos with accessibility bugs and copy bugs (POC).
+[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-core® for thorough accessibility checks. Axe-core® https://github.com/dequelabs/axe-core is a trademark of Deque Systems, Inc https://www.deque.com/ in the US and other countries. This includes a dashboard, videos with accessibility bugs, and copy bugs (POC).
 
 [AI](./tests/AI): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
 
-[API](./tests/Api): Test to select a random item from an e-commerce and generate pre-conditions or post-conditions with API. Includes fakerJS to generate random data for your tests.
+[API](./tests/Api): Test to select a random item from e-commerce and generate pre-conditions or post-conditions with API. Includes fakerJS to generate random data for your tests.
 
 [Basic](./tests/Basic): Basic login test to show the Page object model, test steps descriptions, reuse authenticated state by different users with global setup, and assertions.
 
@@ -18,7 +18,7 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 [Fixture and LambdaTest](./tests/Fixture-LambdaTest): Use a fixture to connect your test with Lambdatest to test in different countries and browsers.
 
-[Locale and Geo](./tests/LocaleGeo): Emulates another country for example: de-DE.
+[Locale and Geo](./tests/LocaleGeo): Emulates another country, for example, de-DE.
 
 [Qase](./tests/Qase): Modern test management tool for manual, automated tests and AI.
 
@@ -68,7 +68,7 @@ EFFIZIENTE_ADMIN_PASSWORD='Admin'
 
 ## Run tests
 
-Execute the next command to run your tests:
+Execute the following command to run your tests:
 
 Run tests
 
@@ -76,13 +76,13 @@ Run tests
 npx playwright test
 ```
 
-Run the test with UI mode
+Run the test with UI mode.
 
 ```console
 npx playwright test --ui
 ```
 
-Or you can run with the Visual Code Extension
+You can also run it with the Visual Code Extension.
 
 You can see the reporter on the GitHub Pages:
 
