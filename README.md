@@ -6,11 +6,11 @@ This boilerplate includes demos to test different testing scenarios with Playwri
 
 # Example tests:
 
-[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-core® for thorough accessibility checks. Axe-core® https://github.com/dequelabs/axe-core is a trademark of Deque Systems, Inc https://www.deque.com/. in the US and other countries. Includes dashboard, videos with accessibility bugs and copy bugs (POC).
+[Accessibility](./tests/Accessibility): Tool for accessibility testing with axe-core® for thorough accessibility checks. Axe-core® https://github.com/dequelabs/axe-core is a trademark of Deque Systems, Inc https://www.deque.com/ in the US and other countries. Includes dashboard, videos with accessibility bugs and copy bugs (POC).
 
 [AI](./tests/AI): ZeroStep allows you to create your test with plain text: Fill out the form with realistic values.
 
-[API](./tests/Api): Test to select a random item from an e-commerce and generate pre-conditions or post-conditions with API. Includes fakerJS to generate random data for your tests.
+[API](./tests/Api): Test to select a random item from e-commerce and generate pre-conditions or post-conditions with API. Includes fakerJS to generate random data for your tests.
 
 [Basic](./tests/Basic): Basic login test to show the Page object model, test steps descriptions, reuse authenticated state by different users with global setup, and assertions.
 
