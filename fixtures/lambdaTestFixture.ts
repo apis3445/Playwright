@@ -42,12 +42,6 @@ const modifyCapabilities = (configName: string, testName: string) => {
     capabilities['LT:Options']['name'] = testName;
 };
 
-const getErrorMessage = (obj, keys) =>
-    keys.reduce(
-        (obj, key) => (typeof obj == 'object' ? obj[key] : undefined),
-        obj
-    );
-
 const testPages = baseTest.extend<pages>({
 
     page: async ({ }, use, testInfo) => {
@@ -59,21 +53,19 @@ const testPages = baseTest.extend<pages>({
             );
             const browser = await chromium.connect(`wss://cdp.lambdatest.com/playwright?capabilities=
         ${encodeURIComponent(JSON.stringify(capabilities))}`);
-            const context = await browser.newContext(testInfo.project.use);
-            const ltPage = await context.newPage();
+            const ltPage = await browser.newPage(testInfo.project.use);
             await use(ltPage);
             const testStatus = {
                 action: 'setTestStatus',
                 arguments: {
                     status: testInfo.status,
-                    remark: getErrorMessage(testInfo, ['error', 'message']),
+                    remark: testInfo.error?.stack || testInfo.error?.message,
                 },
             };
             // eslint-disable-next-line @typescript-eslint/no-empty-function
             await ltPage.evaluate(() => { },
                 `lambdatest_action: ${JSON.stringify(testStatus)}`);
             await ltPage.close();
-            await context.close();
             await browser.close();
         } else {
             const browser = await chromium.launch();
