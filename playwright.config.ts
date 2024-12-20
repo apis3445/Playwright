@@ -66,6 +66,7 @@ const config: PlaywrightTestConfig = {
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
+        ['blob'],
         ['junit', { outputFile: 'results.xml' }],
         ['html', { outputFolder: 'playwright-report', open: 'never' }],
         [
