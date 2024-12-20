@@ -52,7 +52,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test tests/AI tests/Api tests/Basic tests/Excel tests/Fixture-LambdaTest tests/LocaleGeo tests/Synthetic tests/VisualTesting --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob
+        run: npx playwright test tests/AI tests/Api tests/Basic tests/Excel tests/Fixture-LambdaTest tests/LocaleGeo tests/Synthetic tests/VisualTesting --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --reporter=blob,junit
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
@@ -60,6 +60,14 @@ jobs:
         with:
           name: blob-report-${{ matrix.shardIndex }}
           path: blob-report
+          retention-days: 5
+
+      - name: Upload JUnit report to GitHub Actions Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-report-${{ matrix.shardIndex }}
+          path: junit-report-${{ matrix.shardIndex }}.xml
           retention-days: 5
 
   merge-reports:
@@ -92,3 +100,29 @@ jobs:
           name: html-report-${{ github.run_attempt }}
           path: playwright-report
           retention-days: 3
+
+      - name: Download JUnit reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: all-junit-reports
+          pattern: junit-report-*
+
+      - name: Merge JUnit reports
+        run: |
+          mkdir -p merged-reports
+          npx junit-merge -d all-junit-reports -o merged-reports/merged-junit-report.xml
+
+      - name: Upload merged JUnit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-junit-report
+          path: merged-reports/merged-junit-report.xml
+          retention-days: 3
+
+      - name: Generate Junit Report in Github
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Junit Tests # Name of the check run which will be created
+          path: ${{ github.workspace }}/report/*.xml # Path to test results
+          reporter: java-junit # Format of test results
