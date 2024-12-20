@@ -41,7 +41,7 @@ jobs:
     displayName: "Install Allure"
 
   #- script: ./allurectl watch -- npx playwright test --shard=$(shardIndex)/2 --reporter=blob,junit
-  - script: npx playwright test --shard=$(shardIndex)/2 --reporter=blob,junit
+  - script: npx playwright test --shard=$(shardIndex)/2 
     displayName: "Run Playwright tests"
     env:
       ADO_TOKEN: $(ADO_TOKEN)
@@ -126,7 +126,7 @@ jobs:
       targetPath: 'all-blob-reports'
 
   - script: |
-      npx playwright merge-reports --reporter html --open never ./all-blob-reports
+      W_TEST_HTML_REPORT_OPEN='never' npx playwright merge-reports --reporter html ./all-blob-reports
     displayName: 'Merge into HTML Report'
 
   - task: PublishBuildArtifacts@1
