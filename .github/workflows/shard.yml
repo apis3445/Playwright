@@ -125,5 +125,5 @@ jobs:
         if: always()
         with:
           name: Junit Tests # Name of the check run which will be created
-          path: ${{ github.workspace }}/report/*.xml # Path to test results
+          path: ${{ github.workspace }}/merged-reports/*.xml # Path to test results
           reporter: java-junit # Format of test results
