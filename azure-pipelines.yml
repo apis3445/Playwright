@@ -9,7 +9,17 @@ schedules:
 pool:
   vmImage: "ubuntu-latest"
 
-steps:
+jobs:
+- job: playwright_tests
+  displayName: 'Run Playwright Tests'
+  strategy:
+    matrix:
+      shard-1:
+        shardIndex: 1
+      shard-2:
+        shardIndex: 2
+
+  steps:
   - task: NodeTool@0
     inputs:
       versionSpec: ">=20.0.0"
@@ -30,7 +40,7 @@ steps:
       npm install -g allure-commandline  
     displayName: "Install Allure"
 
-  - script: ./allurectl watch -- npx playwright test
+  - script: ./allurectl watch -- npx playwright test --shard=$(shardIndex)/2 --reporter=blob,junit
     displayName: "Run Playwright tests"
     env:
       ADO_TOKEN: $(ADO_TOKEN)
@@ -52,14 +62,13 @@ steps:
       testResultsFiles: "results.xml"
       testRunTitle: "Playwright Junit Test Results"
 
-  - task: PublishBuildArtifacts@1
+  - task: PublishPipelineArtifact@1
     displayName: 'Publish HTML Playwright report'
     condition: always()
     inputs:
-      PathtoPublish: "playwright-report"
-      ArtifactName: "playwright-report"
-      publishLocation: "Container"
-
+      targetPath: 'blob-report'
+      artifactName: 'blob-report-$(shardIndex)'
+      publishLocation: 'pipeline'
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Allure report'
     condition: always()
@@ -82,3 +91,44 @@ steps:
     inputs:
       allureVersion: 2.27.0
       testResultsDir: allure-results
+
+- job: merge_reports
+  displayName: 'Merge Reports into HTML'
+  dependsOn: playwright_tests
+  condition: always()
+
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - checkout: self
+  - task: NodeTool@0
+    inputs:
+      versionSpec: ">=20.0.0"
+    displayName: "Install Node.js>20"
+
+  - script: |
+      npm ci
+    displayName: 'Install dependencies'
+
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifactName: 'blob-report-1'
+      targetPath: 'all-blob-reports'
+
+  - script: ls -la all-blob-reports
+
+  - task: DownloadPipelineArtifact@2
+    inputs:
+      artifactName: 'blob-report-2'
+      targetPath: 'all-blob-reports'
+
+  - script: |
+      npx playwright merge-reports --reporter html ./all-blob-reports
+    displayName: 'Merge into HTML Report'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'playwright-report'
+      artifactName: 'html-report-$(Build.BuildId)-attempt-$(System.JobAttempt)'
+      publishLocation: 'pipeline'
