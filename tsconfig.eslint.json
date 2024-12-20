@@ -15,6 +15,7 @@
         "eslint.config.mjs",
         "playwright.a11y.config.ts",
         "playwright.service.config.ts",
+        "playwright.merge.config.ts",
         "stepReporter.ts",
         "checkly.config.ts",
 
