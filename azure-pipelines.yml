@@ -126,7 +126,7 @@ jobs:
       targetPath: 'all-blob-reports'
 
   - script: |
-      npx playwright -c playwright.merge.config.ts merge-reports --reporter html ./all-blob-reports
+      npx playwright merge-reports --config=playwright.merge.config.ts ./all-blob-reports
     displayName: 'Merge into HTML Report'
 
   - task: PublishBuildArtifacts@1
