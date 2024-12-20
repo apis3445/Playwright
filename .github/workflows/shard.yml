@@ -82,6 +82,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          npm install -g junit-report-merger
           npm ci
 
       - name: Download blob reports from GitHub Actions Artifacts

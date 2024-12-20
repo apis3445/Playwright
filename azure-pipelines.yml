@@ -63,13 +63,14 @@ jobs:
       testResultsFiles: "results.xml"
       testRunTitle: "Playwright Junit Test Results"
 
-  - task: PublishPipelineArtifact@1
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish HTML Playwright report'
     condition: always()
     inputs:
-      targetPath: 'blob-report'
-      artifactName: 'blob-report-$(shardIndex)'
-      publishLocation: 'pipeline'
+      PathtoPublish: 'blob-report'
+      ArtifactName: 'blob-report-$(shardIndex)'
+      publishLocation: "Container"
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Allure report'
     condition: always()
@@ -128,8 +129,10 @@ jobs:
       npx playwright merge-reports --reporter html --open never ./all-blob-reports
     displayName: 'Merge into HTML Report'
 
-  - task: PublishPipelineArtifact@1
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish HTML merged report'
+    condition: always()
     inputs:
-      targetPath: 'playwright-report'
-      artifactName: 'html-report-$(Build.BuildId)-attempt-$(System.JobAttempt)'
-      publishLocation: 'pipeline'
+      PathtoPublish: "playwright-report"
+      ArtifactName: 'html-report-$(Build.BuildId)-attempt-$(System.JobAttempt)'
+      publishLocation: "Container"
