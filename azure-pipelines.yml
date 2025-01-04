@@ -61,7 +61,7 @@ jobs:
     condition: always()
     inputs:
       testResultsFiles: "results.xml"
-      testRunTitle: "Playwright Junit Test Results"
+      testRunTitle: "Playwright Junit Test Results Part $(shardIndex)"
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish HTML Playwright report'
