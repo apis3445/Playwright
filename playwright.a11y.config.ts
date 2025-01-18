@@ -1,6 +1,5 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
 import { AzureReporterOptions } from '@alex_neo/playwright-azure-reporter/dist/playwright-azure-reporter';
-import { devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 import os from 'node:os';
 
@@ -13,7 +12,7 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig = {
+export default defineConfig({
     testDir: './tests',
     /* Maximum time one test can run for. */
     timeout: 80 * 1000,
@@ -123,6 +122,5 @@ const config: PlaywrightTestConfig = {
     /* Folder for test artifacts such as screenshots, videos, traces, etc. */
     outputDir: 'test-results/',
 
-};
+});
 
-export default config;

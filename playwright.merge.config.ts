@@ -1,5 +1,4 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
 /**
@@ -11,7 +10,7 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config: PlaywrightTestConfig = {
+export default defineConfig({
     testDir: 'tests',
     globalSetup: './tests/globalSetup.ts',
     /* Maximum time one test can run for. */
@@ -100,6 +99,5 @@ const config: PlaywrightTestConfig = {
     /* Folder for test artifacts such as screenshots, videos, traces, etc. */
     outputDir: 'test-results/',
 
-};
+});
 
-export default config;
