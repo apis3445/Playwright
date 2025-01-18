@@ -91,10 +91,10 @@ export class AnnotationHelper {
     }
 
     /**
-* Add annotation
-* @param type Type of the annotation (shows in bold)
-* @param description Description for the annotation
-*/
+    * Add annotation
+    * @param type Type of the annotation (shows in bold)
+    * @param description Description for the annotation
+    */
     addAnnotation(type: AnnotationType | string, description: string) {
         const annotation: Annotation = {
             type: type.toString(),
@@ -106,9 +106,9 @@ export class AnnotationHelper {
     }
 
     /**
-* Get list of annotations
-* @returns List of annotations
-*/
+    * Get list of annotations
+    * @returns List of annotations
+    */
     getAnnotations() {
         return this.annotations;
     }

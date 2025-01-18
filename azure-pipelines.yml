@@ -40,8 +40,7 @@ jobs:
       npm install -g allure-commandline  
     displayName: "Install Allure"
 
-  #- script: ./allurectl watch -- npx playwright test --shard=$(shardIndex)/2 --reporter=blob,junit
-  - script: npx playwright test --shard=$(shardIndex)/2 
+  - script: ./allurectl watch -- npx playwright test --shard=$(shardIndex)/2 
     displayName: "Run Playwright tests"
     env:
       ADO_TOKEN: $(ADO_TOKEN)

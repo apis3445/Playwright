@@ -76,9 +76,7 @@ export class AccessibilityHelper {
                             screenshotBase64: buffer.toString('base64')
                         };
                         targets.push(target);
-
                     }
-
                     await this.annotationHelper.removeBorder(element);
                 }
             }
