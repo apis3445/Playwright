@@ -51,7 +51,7 @@ export default defineConfig({
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
         ['blob'],
-        ['junit', { outputFile: 'results.xml' }],
+        ['junit', { outputFolder: 'junit-report' }],
         ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ],
     /* Configure projects for major browsers */
