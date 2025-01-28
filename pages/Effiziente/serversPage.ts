@@ -4,7 +4,7 @@ import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { Heading } from '../../components/Heading';
 import { Button } from '../../components/Button';
 import { Table } from '../../components/Table';
-import { Server } from '../../api/models/Effiziente/Server';
+import { Server } from '../../api/Effiziente/Server';
 import { ServerApi } from '../../api/Effiziente/Server.api';
 import { InputText } from '../../components/InputText';
 import { Generic } from '../../components/Generic';

@@ -1,6 +1,6 @@
 import test, { Page } from '@playwright/test';
 import { ApiHelper } from '../../utils/ApiHelper';
-import { Server } from '../models/Effiziente/Server';
+import { Server } from './Server';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 
 export class ServerApi {

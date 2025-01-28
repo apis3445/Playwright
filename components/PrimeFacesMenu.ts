@@ -9,7 +9,7 @@ import { BaseComponent } from './BaseComponent';
 export class PrimeFacesMenu extends BaseComponent implements Menu {
 
     constructor(protected page: Page, protected annotationHelper: AnnotationHelper) {
-        const topMenuLocator = 'app-menu > p-menubar > .p-menubar > p-menubarsub > ul > li > .p-menuitem-content > a > .p-menuitem-text';
+        const topMenuLocator = '[aria-level="1"][role="menuitem"]';
         const locator: Locator = page.locator(topMenuLocator);
         super(page, annotationHelper, locator);
     }

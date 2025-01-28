@@ -1,6 +1,6 @@
 import { Page, chromium } from '@playwright/test';
 import { LoginApi } from '../api/Effiziente/Login.api';
-import { Login } from '../api/models/Login';
+import { Login } from '../api/Effiziente/Login';
 
 const authFolder = 'auth';
 const baseUrl = process.env.EFFIZIENTE_URL!;

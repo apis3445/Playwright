@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import { ApiHelper } from '../../utils/ApiHelper';
-import { Login } from '../models/Login';
+import { Login } from './Login';
 import { AnnotationHelper } from '../../utils/annotations/AnnotationHelper';
 
 export class LoginApi {

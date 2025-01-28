@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { faker } from '@faker-js/faker';
-import { Server } from '../../api/models/Effiziente/Server';
+import { Server } from '../../api/Effiziente/Server';
 import { ServersPage } from '../../pages/Effiziente/serversPage';
 import { AnnotationType } from '../../utils/annotations/AnnotationType';
 import { AddServerPage } from '../../pages/Effiziente/addServerPage';
@@ -64,10 +64,10 @@ test.describe('Servers', () => {
         if (response.status() == 204) {
             //Create and server by api to test edit to remove dependencies for the create with UI
             const server: Server = {
-                Clave: key,
-                Nombre: faker.company.name(),
+                Key: key,
+                Name: faker.company.name(),
                 Url: faker.internet.url(),
-                Activo: true
+                Active: true
             };
             id = await serversPage.createServer(server);
         }
