@@ -50,6 +50,7 @@ export default defineConfig({
     },
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: [
+        ['blob'],
         ['junit', { outputFile: 'results.xml' }],
         ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ],
@@ -57,13 +58,6 @@ export default defineConfig({
     projects: [
         {
             name: 'chrome:latest:MacOS Catalina@lambdatest',
-            testMatch: /.*LambdaTestFixture.spec.ts/,
-            use: {
-                viewport: { width: 1920, height: 1080 },
-            },
-        },
-        {
-            name: 'pw-webkit:latest:MacOS Monterey@lambdatest',
             testMatch: /.*LambdaTestFixture.spec.ts/,
             use: {
                 viewport: { width: 1920, height: 1080 },
