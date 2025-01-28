@@ -25,3 +25,5 @@ link-in-text-block-0.png
 allure-report/
 allure-results/
 .taskkey
+.qodo/history.sqlite
+blob-report/report-desktop-firefox-desktop-webkit.zip

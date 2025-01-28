@@ -21,7 +21,8 @@ export class PrimeFacesMenu extends BaseComponent implements Menu {
     getTopMenus(): Promise<string[]> {
         const stepDescription = 'Get top menus';
         return this.addStepWithAnnotation(stepDescription, async () => {
-            return await this.locator.allInnerTexts();
+            const menuTexts = await this.locator.allInnerTexts();
+            return menuTexts.map(text => text.replace(/\n/g, ''));
         });
     }
 }

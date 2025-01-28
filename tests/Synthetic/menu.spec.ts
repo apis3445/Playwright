@@ -42,7 +42,8 @@ test.describe('Synthetic testing', () => {
         await expect(page.locator('#top5DaysDelay canvas')).toBeVisible({ timeout: timeout });
         await expect(page.locator('#summaryExpiration canvas')).toBeVisible({ timeout: timeout });
         const topMenuLocator = '[aria-level="1"][role="menuitem"]';
-        const menusInPage = await page.locator(topMenuLocator).allInnerTexts();
+        let menusInPage = await page.locator(topMenuLocator).allInnerTexts();
+        menusInPage = menusInPage.map(text => text.replace(/\n/g, ''));
         const menus = ['AccountsReceivable', 'Config'];
         expect(menusInPage).toEqual(menus);
     });
