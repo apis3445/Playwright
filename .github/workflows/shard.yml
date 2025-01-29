@@ -107,6 +107,7 @@ jobs:
         with:
           path: all-junit-reports
           pattern: junit-report-*
+          merge-multiple: true
 
       - name: List JUnit report files
         run: |
@@ -115,7 +116,7 @@ jobs:
 
       - name: Merge JUnit reports
         run: |
-          jrm ./merged-reports/merged-junit-report.xml ./all-junit-reports/*.xml
+          jrm ./merged-reports/merged-junit-report.xml ./all-junit-reports/../*.xml
 
       - name: Upload merged JUnit report
         uses: actions/upload-artifact@v4
