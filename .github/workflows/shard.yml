@@ -109,10 +109,6 @@ jobs:
           pattern: junit-report-*
           merge-multiple: true
 
-      - name: List JUnit report files
-        run: |
-          ls -R ./all-junit-reports
-
       - name: Merge JUnit reports
         run: |
           mkdir -p merged-reports
