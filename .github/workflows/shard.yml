@@ -66,8 +66,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: junit-report-${{ matrix.shardIndex }}
-          path: junit-report/*.xml
+          name: junit-report-${{ matrix.shardIndex }}.xml
+          path: junit-report/junit-report-${{ matrix.shardIndex }}.xml
           retention-days: 5
 
   merge-reports:
