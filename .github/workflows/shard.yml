@@ -52,7 +52,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test tests/AI tests/Api tests/Basic tests/Excel tests/Fixture-LambdaTest tests/LocaleGeo tests/Synthetic tests/VisualTesting --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --config=playwright.merge.config.ts
+        run: PLAYWRIGHT_JUNIT_OUTPUT_NAME=junit-report/junit-report-${{ matrix.shardIndex }}.xml npx playwright test tests/AI tests/Api tests/Basic tests/Excel tests/Fixture-LambdaTest tests/LocaleGeo tests/Synthetic tests/VisualTesting --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} --config=playwright.merge.config.ts
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
@@ -66,8 +66,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: junit-report-${{ matrix.shardIndex }}.xml
-          path: junit-report/results.xml
+          name: junit-report-${{ matrix.shardIndex }}
+          path: junit-report/*.xml
           retention-days: 5
 
   merge-reports:
@@ -105,8 +105,7 @@ jobs:
       - name: Download JUnit reports from GitHub Actions Artifacts
         uses: actions/download-artifact@v4
         with:
-          path: all-junit-reports
-          pattern: junit-report-*
+          name: junit-report-*
           merge-multiple: true
 
       - name: List JUnit report files
