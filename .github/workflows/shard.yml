@@ -105,7 +105,8 @@ jobs:
       - name: Download JUnit reports from GitHub Actions Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: junit-report-*
+          path: all-junit-reports
+          pattern: junit-report-*
           merge-multiple: true
 
       - name: List JUnit report files
