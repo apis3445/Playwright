@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: junit-report-${{ matrix.shardIndex }}.xml
-          path: junit-report
+          path: junit-report/results.xml
           retention-days: 5
 
   merge-reports:
@@ -109,11 +109,12 @@ jobs:
           pattern: junit-report-*
 
       - name: List JUnit report files
-        run: ls -la ./all-junit-reports
+        run: |
+          ls -la ./all-junit-reports
+          mkdir -p merged-reports
 
       - name: Merge JUnit reports
         run: |
-          mkdir -p merged-reports
           jrm ./merged-reports/merged-junit-report.xml ./all-junit-reports/*.xml
 
       - name: Upload merged JUnit report
