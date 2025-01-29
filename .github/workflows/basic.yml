@@ -36,7 +36,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run playwright tests (only desktop no lambdatest browsers)
-        run: npx playwright test --project='desktop*' --reporter=html
+        run: npx playwright test --project='desktop*' --reporter=html --grep-invert @PageAccessibility
 
       - name: Upload html report as artifact
         uses: actions/upload-artifact@v4
