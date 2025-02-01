@@ -1,10 +1,10 @@
 {
-    "PorcientoPorVencer": 58,
-    "PorcientoLimite1": 14,
-    "PorcientoLimite2": 20,
-    "PorcientoLimite3": 8,
-    "PorVencer": 77480.00,
-    "Limite1": 19135.44,
-    "Limite2": 26122.56,
-    "Limite3": 10788
+    "PercentageToExpire": 58,
+    "LimitPercentage1": 14,
+    "LimitPercentage2": 20,
+    "LimitPercentage3": 8,
+    "ToExpire": 77480.00,
+    "Limit1": 19135.44,
+    "Limit2": 26122.56,
+    "Limit3": 10788
 }

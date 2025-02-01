@@ -1,32 +1,32 @@
 [
     {
-        "ClienteId": 8,
-        "Cliente": "Electronics Depot",
+        "ClientId": 8,
+        "Client": "Electronics Depot",
         "Total": 3480,
-        "Atraso": 69
+        "DaysOverdue": 69
     },
     {
-        "ClienteId": 7,
-        "Cliente": "ACME",
+        "ClientId": 7,
+        "Client": "ACME",
         "Total": 2668,
-        "Atraso": 64
+        "DaysOverdue": 64
     },
     {
-        "ClienteId": 4,
-        "Cliente": "Comercio Mineiro",
+        "ClientId": 4,
+        "Client": "Comercio Mineiro",
         "Total": 2900,
-        "Atraso": 37
+        "DaysOverdue": 37
     },
     {
-        "ClienteId": 5,
-        "Cliente": "Ana Trujillo Cruz",
+        "ClientId": 5,
+        "Client": "Ana Trujillo Cruz",
         "Total": 1345.6,
-        "Atraso": 36
+        "DaysOverdue": 36
     },
     {
-        "ClienteId": 6,
-        "Cliente": "Carlos González Alvarado",
+        "ClientId": 6,
+        "Client": "Carlos González Alvarado",
         "Total": 10382,
-        "Atraso": 35
+        "DaysOverdue": 35
     }
 ]

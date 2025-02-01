@@ -1,14 +1,14 @@
 [
     {
-        "ClienteId": 8,
-        "Cliente": "Electronics Depot",
+        "ClientId": 8,
+        "Client": "Electronics Depot",
         "Total": 3480,
-        "Atraso": 71
+        "DaysOverdue": 71
     },
     {
-        "ClienteId": 7,
-        "Cliente": "ACME",
+        "ClientId": 7,
+        "Client": "ACME",
         "Total": 2668,
-        "Atraso": 66
+        "DaysOverdue": 66
     }
 ]
