@@ -1,32 +1,32 @@
 [
     {
-        "ClienteId": 17,
-        "Cliente": "Jorge Peréz Mendieta",
+        "ClientId": 17,
+        "Client": "Jorge Peréz Mendieta",
         "Total": 23148.40,
-        "Atraso": 32
+        "DaysOverdue": 32
     },
     {
-        "ClienteId": 11,
-        "Cliente": "Tom's Club",
+        "ClientId": 11,
+        "Client": "Tom's Club",
         "Total": 11498,
-        "Atraso": 20
+        "DaysOverdue": 20
     },
     {
-        "ClienteId": 6,
-        "Cliente": "Carlos González Alvarado",
+        "ClientId": 6,
+        "Client": "Carlos González Alvarado",
         "Total": 10382,
-        "Atraso": 35
+        "DaysOverdue": 35
     },
     {
-        "ClienteId": 19,
-        "Cliente": "Diseño Web Barcelona",
+        "ClientId": 19,
+        "Client": "Diseño Web Barcelona",
         "Total": 6148,
-        "Atraso": 2
+        "DaysOverdue": 2
     },
     {
-        "ClienteId": 14,
-        "Cliente": "Ferretería Especializada",
+        "ClientId": 14,
+        "Client": "Ferretería Especializada",
         "Total": 4640,
-        "Atraso": 9
+        "DaysOverdue": 9
     }
 ]

@@ -26,7 +26,7 @@ export class AccountReceivableApi {
      */
     async mockSummary() {
         const stepDescription = 'Modify the summary with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Resumen', summary);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Summary', summary);
     }
 
     /**
@@ -34,7 +34,7 @@ export class AccountReceivableApi {
      */
     async mockSummaryExpiration() {
         const stepDescription = 'Modify the "Sumary Expiration" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/ResumenVencimientos', summaryExpiration);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/DueDateSummary', summaryExpiration);
     }
 
     /**
@@ -42,7 +42,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Delay() {
         const stepDescription = 'Modify the "Top 5 delay" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top5Atraso', top5Delay);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top5DDO', top5Delay);
     }
 
     /**
@@ -50,7 +50,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Total() {
         const stepDescription = 'Modify the "Top 5 total" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top5Total', top5Total);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top5Total', top5Total);
     }
 
     /**
@@ -58,7 +58,7 @@ export class AccountReceivableApi {
      */
     async mockTop5Type() {
         const stepDescription = 'Modify the "Top 5 type" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top5Tipo', top5Type);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top5Type', top5Type);
     }
 
     /**
@@ -66,7 +66,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit1() {
         const stepDescription = 'Modify the "Top 10 Limit 1" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top10Limite1', top10Limit1);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top10Limit1', top10Limit1);
     }
 
     /**
@@ -74,7 +74,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit2() {
         const stepDescription = 'Modify the "Top 10 Limit 2" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top10Limite2', top10Limit2);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top10Limit2', top10Limit2);
     }
 
     /**
@@ -82,7 +82,7 @@ export class AccountReceivableApi {
      */
     async mockTop10Limit3() {
         const stepDescription = 'Modify the "Top 10 Limit 3" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top10Limite3', top10Limit3);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top10Limit3', top10Limit3);
     }
 
     /**
@@ -90,7 +90,7 @@ export class AccountReceivableApi {
      */
     async mockTop10ToExpire() {
         const stepDescription = 'Modify the "Top 10 To Expire" with fixed data';
-        await this.apiHelper.mockApi(stepDescription, '/api/Cobranza/Top10PorVencer', top10ToExpire);
+        await this.apiHelper.mockApi(stepDescription, '/api/Collection/Top10ToExpire', top10ToExpire);
     }
 
     /**

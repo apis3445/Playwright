@@ -1,26 +1,26 @@
 [
     {
-        "ClienteId": 17,
-        "Cliente": "Jorge Peréz Mendieta",
+        "ClientId": 17,
+        "Client": "Jorge Peréz Mendieta",
         "Total": 23148.40,
-        "Atraso": 32
+        "DaysOverdue": 32
     },
     {
-        "ClienteId": 6,
-        "Cliente": "Carlos González Alvarado",
+        "ClientId": 6,
+        "Client": "Carlos González Alvarado",
         "Total": 10382,
-        "Atraso": 35
+        "DaysOverdue": 35
     },
     {
-        "ClienteId": 4,
-        "Cliente": "Comercio Mineiro",
+        "ClientId": 4,
+        "Client": "Comercio Mineiro",
         "Total": 2900,
-        "Atraso": 37
+        "DaysOverdue": 37
     },
     {
-        "ClienteId": 5,
-        "Cliente": "Ana Trujillo Cruz",
+        "ClientId": 5,
+        "Client": "Ana Trujillo Cruz",
         "Total": 1345.6,
-        "Atraso": 36
+        "DaysOverdue": 36
     }
 ]

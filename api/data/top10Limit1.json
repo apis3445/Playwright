@@ -1,38 +1,38 @@
 [
     {
-        "ClienteId": 11,
-        "Cliente": "Tom's Club",
+        "ClientId": 11,
+        "Client": "Tom's Club",
         "Total": 11498,
-        "Atraso": 20
+        "DaysOverdue": 20
     },
     {
-        "ClienteId": 19,
-        "Cliente": "Diseño Web Barcelona",
+        "ClientId": 19,
+        "Client": "Diseño Web Barcelona",
         "Total": 6148,
-        "Atraso": 2
+        "DaysOverdue": 2
     },
     {
-        "ClienteId": 14,
-        "Cliente": "Ferretería Especializada",
+        "ClientId": 14,
+        "Client": "Ferretería Especializada",
         "Total": 4640,
-        "Atraso": 9
+        "DaysOverdue": 9
     },
     {
-        "ClienteId": 15,
-        "Cliente": "Sistemas Axis",
+        "ClientId": 15,
+        "Client": "Sistemas Axis",
         "Total": 3480,
-        "Atraso": 8
+        "DaysOverdue": 8
     },
     {
-        "ClienteId": 2,
-        "Cliente": "Ricardo Adocicados",
+        "ClientId": 2,
+        "Client": "Ricardo Asociados",
         "Total": 2886,
-        "Atraso": 21
+        "DaysOverdue": 21
     },
     {
-        "ClienteId": 13,
-        "Cliente": "Fábrica de Pinturas",
+        "ClientId": 13,
+        "Client": "Fábrica de Pinturas",
         "Total": 1116,
-        "Atraso": 10
+        "DaysOverdue": 10
     }
 ]
