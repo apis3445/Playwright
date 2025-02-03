@@ -43,18 +43,18 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
 
+      - name: Login to Azure with AzPowershell (enableAzPSSession true)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
+
       # for playwright reporting service beta is needed the npm config
       - name: Install dependencies
         run: |
           npm ci
-
-      - name: Login to Azure with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }} # GitHub Open ID connect values copied in previous steps
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
 
       # - name: Install playwright browsers
       #   run: npx playwright install --with-deps
