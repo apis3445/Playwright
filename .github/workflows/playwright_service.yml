@@ -1,4 +1,4 @@
-name: Tests HTML & Junit Reporter Daily
+name: Playwright testing
 on:
   workflow_dispatch:
 jobs:
