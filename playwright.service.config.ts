@@ -10,6 +10,7 @@ export default defineConfig(
         exposeNetwork: '<loopback>',
         timeout: 30000,
         os: ServiceOS.LINUX,
+        useCloudHostedBrowsers: true
     }),
     {
         /* 

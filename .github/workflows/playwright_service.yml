@@ -1,0 +1,60 @@
+name: Tests HTML & Junit Reporter Daily
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    timeout-minutes: 60
+    name: Run Test
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{vars.BASE_URL}}
+      CONTOSO_URL: ${{vars.CONTOSO_URL}}
+      CONTOSO_API_URL: ${{vars.CONTOSO_API_URL}}
+      LOCALE: ${{vars.LOCALE}}
+      USER_NAME: ${{secrets.USER_NAME}}
+      PASSWORD: ${{secrets.PASSWORD}}
+      LT_USERNAME: ${{secrets.LT_USERNAME}}
+      LT_ACCESS_KEY: ${{secrets.LT_ACCESS_KEY}}
+      EFFIZIENTE_API_URL: ${{vars.EFFIZIENTE_API_URL}}
+      EFFIZIENTE_URL: ${{vars.EFFIZIENTE_URL}}
+      EFFIZIENTE_COMPANY: ${{secrets.EFFIZIENTE_COMPANY}}
+      EFFIZIENTE_NORMAL_USER: ${{secrets.EFFIZIENTE_NORMAL_USER}}
+      EFFIZIENTE_NORMAL_PASSWORD: ${{secrets.EFFIZIENTE_NORMAL_PASSWORD}}
+      EFFIZIENTE_ADMIN_USER: ${{secrets.EFFIZIENTE_ADMIN_USER}}
+      EFFIZIENTE_ADMIN_PASSWORD: ${{secrets.EFFIZIENTE_ADMIN_PASSWORD}}
+      ZEROSTEP_TOKEN: ${{secrets.ZEROSTEP_TOKEN}}
+      PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
+      PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
+      PLAYWRIGHT_SERVICE_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}-${{ github.sha }}
+      WEBDRIVERIO_SHOP: ${{vars.WEBDRIVERIO_SHOP}}
+      ADO_TOKEN: ${{ secrets.ADO_TOKEN}}
+      ADO_ORGANIZATION: ${{vars.ADO_ORGANIZATION}}
+      ADO_PROJECT: ${{vars.ADO_PROJECT}}
+      ADO_PLAN_ID: ${{vars.ADO_PLAN_ID}}
+      TEST_OWNER: ${{vars.TEST_OWNER}}
+      ADO_CONFIG_IDS: ${{vars.ADO_CONFIG_IDS}}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+
+      # for playwright reporting service beta is needed the npm config
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Login to Azure with AzPowershell (enableAzPSSession true)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }} # GitHub Open ID connect values copied in previous steps
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
+
+      # - name: Install playwright browsers
+      #   run: npx playwright install --with-deps
+
+      - name: Run playwright tests
+        run: npx playwright test --config=playwright.a11y.config.ts tests/Api/addToCart.spec --workers=20
