@@ -6,6 +6,9 @@ jobs:
     timeout-minutes: 60
     name: Run Test
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     env:
       BASE_URL: ${{vars.BASE_URL}}
       CONTOSO_URL: ${{vars.CONTOSO_URL}}
