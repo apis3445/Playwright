@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="50" failures="3" skipped="3" errors="0" time="190.634649">
-<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="chrome:latest:MacOS Catalina@lambdatest" tests="1" failures="1" skipped="0" time="2.802" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="2.802">
+<testsuites id="" name="" tests="50" failures="3" skipped="3" errors="0" time="185.456446">
+<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="chrome:latest:MacOS Catalina@lambdatest" tests="1" failures="1" skipped="0" time="3.276" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="3.276">
 <failure message="loginLambdaTestFixture.spec.ts:9:9 Login with valid user load inventory page" type="FAILURE">
 <![CDATA[  [chrome:latest:MacOS Catalina@lambdatest] › Fixture-LambdaTest/loginLambdaTestFixture.spec.ts:9:9 › Login › Login with valid user load inventory page @Fixture 
 
@@ -58,8 +58,8 @@
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="chrome:latest:Windows 10@lambdatest" tests="1" failures="1" skipped="0" time="2.485" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="2.485">
+<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="chrome:latest:Windows 10@lambdatest" tests="1" failures="1" skipped="0" time="2.889" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="2.889">
 <failure message="loginLambdaTestFixture.spec.ts:9:9 Login with valid user load inventory page" type="FAILURE">
 <![CDATA[  [chrome:latest:Windows 10@lambdatest] › Fixture-LambdaTest/loginLambdaTestFixture.spec.ts:9:9 › Login › Login with valid user load inventory page @Fixture 
 
@@ -117,12 +117,12 @@
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="AI/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="1" skipped="0" time="5.188" errors="0">
-<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="5.188">
+<testsuite name="AI/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="1" skipped="0" time="5.826" errors="0">
+<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="5.826">
 <failure message="login.spec.ts:7:9 Should show dashboard after login" type="FAILURE">
 <![CDATA[  [desktop-chromium] › AI/login.spec.ts:7:9 › AI Zero Step › Should show dashboard after login @AI_Zero_Step 
 
-    "zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-d38c-748e-ae43-ba36630eb6a5"
+    "zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952c2c-327b-7349-8810-00a051c0f2c9"
 
     attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
     test-results/AI-login-AI-Zero-Step-Should-show-dashboard-after-login-desktop-chromium/test-failed-1.png
@@ -142,7 +142,7 @@
 
     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
 
-    "zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e387-75f2-a38c-6ad11a5926de"
+    "zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952c2c-4504-7c35-9c7b-df99d86793ca"
 
     attachment #3: screenshot (image/png) ──────────────────────────────────────────────────────────
     test-results/AI-login-AI-Zero-Step-Should-show-dashboard-after-login-desktop-chromium-retry1/test-failed-1.png
@@ -177,328 +177,14 @@
 ]]>
 </system-out>
 <system-err>
-<![CDATA[zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-d38c-748e-ae43-ba36630eb6a5
-zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e387-75f2-a38c-6ad11a5926de
+<![CDATA[zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952c2c-327b-7349-8810-00a051c0f2c9
+zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952c2c-4504-7c35-9c7b-df99d86793ca
 ]]>
 </system-err>
 </testcase>
 </testsuite>
-<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="20.821" errors="0">
-<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="20.821">
-<properties>
-<property name="Go To" value="Go to: &quot;https://shop.webdriver.io&quot;">
-</property>
-<property name="Link" value="Click: &quot;Shop All&quot;">
-</property>
-<property name="Step" value="Click in the product: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
-</property>
-<property name="Select" value="On &quot;Color&quot; select any option">
-</property>
-<property name="Select" value="On &quot;Color&quot; select the option Asphalt">
-</property>
-<property name="Step" value="Select any available Size">
-</property>
-<property name="Select" value="On &quot;Size&quot; select any option">
-</property>
-<property name="Select" value="On &quot;Size&quot; select the option XL">
-</property>
-<property name="Step" value="Get the product price">
-</property>
-<property name="Button" value="Click: &quot; 
-		Add to Cart
-		 
-	$25.00
-&quot;">
-</property>
-<property name="Assert" value="There is one item in the bag">
-</property>
-<property name="Button" value="Click: &quot;
- 
-				1
-			 
-				items
-			&quot;">
-</property>
-<property name="Assert" value="The name of the item in the cart is: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
-</property>
-<property name="Assert" value="The price of the item in the cart is: &quot;$25.00&quot;">
-</property>
-<property name="Assert" value="The subtotal is: &quot;$25.00&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Api/servers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="13.551" errors="0">
-<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="6.455">
-<properties>
-<property name="Description" value="An admin user can add a server">
-</property>
-<property name="Pre Condition" value="A valid admin username and password is logged">
-</property>
-<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
-</property>
-<property name="Post Condition" value="Delete server with the key: &quot;97549&quot; if exists">
-</property>
-<property name="Button" value="Click: &quot;Add&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;97549&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;MacGyver - Jacobson&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://tight-invite.com&quot;">
-</property>
-<property name="Step" value="Save server and return server id from api">
-</property>
-<property name="Button" value="Click: &quot;Save&quot;">
-</property>
-<property name="Assert" value="Success message is visible">
-</property>
-<property name="Assert" value="Server id should be a number greater than 1">
-</property>
-<property name="Assert" value="Server with the key: &quot;97549&quot; exists in the table">
-</property>
-<property name="Assert" value="The server name for the key: &quot;97549&quot; is: &quot;MacGyver - Jacobson&quot;">
-</property>
-<property name="Assert" value="The server url for the key: &quot;97549&quot; is: &quot;https://tight-invite.com&quot;">
-</property>
-<property name="Post Condition" value="Delete the server with API request">
-</property>
-</properties>
-</testcase>
-<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="7.096">
-<properties>
-<property name="Description" value="An admin user can edit a server">
-</property>
-<property name="Pre Condition" value="A valid admin username and password is logged">
-</property>
-<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
-</property>
-<property name="Step" value="Create server with API">
-</property>
-<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
-</property>
-<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;351718&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Zulauf - Collier&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://insecure-retrospectivity.org&quot;">
-</property>
-<property name="Button" value="Click: &quot;Save&quot;">
-</property>
-<property name="Assert" value="Success message is visible">
-</property>
-<property name="Assert" value="Server with the key: &quot;351718&quot; exists in the table">
-</property>
-<property name="Assert" value="The server name for the key: &quot;351718&quot; is: &quot;Zulauf - Collier&quot;">
-</property>
-<property name="Assert" value="The server url for the key: &quot;351718&quot; is: &quot;https://insecure-retrospectivity.org&quot;">
-</property>
-<property name="Post Condition" value="Delete the server with API request">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Basic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="1.834" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="1.834">
-<properties>
-<property name="Description" value="Login with valid user on sauce demo">
-</property>
-<property name="Pre Condition" value="A valid username and password">
-</property>
-<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
-</property>
-<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
-</property>
-<property name="Button" value="Click: &quot;Login&quot;">
-</property>
-<property name="Assert" value="Check URL Page is equal to: &quot;https://www.saucedemo.com/inventory.html&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="12.025" errors="0">
-<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="5.918">
-<properties>
-<property name="Description" value="Login to effiziente demo with a normal user, the user will see the menu for normal users">
-</property>
-<property name="Pre Condition" value="A valid normal user">
-</property>
-<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
-</property>
-<property name="PrimeFacesMenu" value="Get top menus">
-</property>
-<property name="Assert" value="Menu are equal to: &quot;AccountsReceivable,Config&quot;">
-</property>
-</properties>
-</testcase>
-<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="6.107">
-<properties>
-<property name="Description" value="Login to effiziente demo with a admin user, the user will see the menu for admin users">
-</property>
-<property name="Pre Condition" value="A valid admin user">
-</property>
-<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
-</property>
-<property name="PrimeFacesMenu" value="Get top menus">
-</property>
-<property name="Assert" value="Menu are equal to: &quot;AccountsReceivable,Security,Config&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="3.977" errors="0">
-<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="1.945">
-<properties>
-<property name="Description" value="Login with valid user on Sauce Demo">
-</property>
-<property name="Pre Condition" value="A valid username and password">
-</property>
-<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
-</property>
-<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
-</property>
-<property name="Button" value="Click: &quot;Login&quot;">
-</property>
-<property name="Assert" value="Check URL Page is equal to: https://www.saucedemo.com/inventory.html&quot;">
-</property>
-</properties>
-</testcase>
-<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.032">
-<properties>
-<property name="Description" value="Login with valid user on Sauce Demo">
-</property>
-<property name="Pre Condition" value="A valid username and password">
-</property>
-<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;visual_user&quot;">
-</property>
-<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
-</property>
-<property name="Button" value="Click: &quot;Login&quot;">
-</property>
-<property name="Assert" value="Check URL Page is equal to: https://www.saucedemo.com/inventory.html&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.22" errors="0">
-<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="4.22">
-<properties>
-<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
-</property>
-<property name="ButtonExcel" value="Click: &quot;Export to Excel&quot;">
-</property>
-<property name="Assert" value="The excel file rows are equal to the grid rows">
-</property>
-</properties>
-<system-out>
-<![CDATA[
-[[ATTACHMENT|../test-results/Excel-exportServers-Servers-Should-export-servers-to-excel-desktop-chromium/attachments/servers-xlsx-b45414d1440b649c23868d9b19e0f22e5f012826.xlsx]]
-]]>
-</system-out>
-</testcase>
-</testsuite>
-<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="1.516" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.516">
-<properties>
-<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
-</property>
-<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
-</property>
-<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
-</property>
-<property name="Button" value="Click: &quot;Login&quot;">
-</property>
-<property name="Assert" value="Check URL Page equal to: &quot;https://www.saucedemo.com/inventory.html">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="14.696" errors="0">
-<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="14.696">
-<properties>
-<property name="Go To" value="Go to: &quot;https://www.bing.com/maps&quot;">
-</property>
-<property name="Button" value="Click: &quot;Locate me&quot;">
-</property>
-<property name="Button" value="Check if the button is visible">
-</property>
-<property name="Button" value="Click: &quot;Expand/Collapse Geochain&quot;">
-</property>
-<property name="Assert" value="Geo name is equal to: &quot;GermanyBavariaMunich (District)&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.934" errors="0">
-<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="4.934">
-<properties>
-<property name="Go To" value="Go to: &quot;https://www.google.com&quot;">
-</property>
-<property name="Assert" value="Search button text is equal to: &quot;Buscar con Google&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.915" errors="0">
-<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="4.915">
-</testcase>
-</testsuite>
-<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.887" errors="0">
-<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="4.887">
-<properties>
-<property name="Navigation" value="Go to: &quot;https://effizientedemo.azurewebsites.net&quot;">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.077" errors="0">
-<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="4.077">
-<properties>
-<property name="Mock" value="Modify the summary with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Sumary Expiration&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 5 delay&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 5 total&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 5 type&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 10 Limit 1&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 10 Limit 2&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 10 Limit 3&quot; with fixed data">
-</property>
-<property name="Mock" value="Modify the &quot;Top 10 To Expire&quot; with fixed data">
-</property>
-<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
-</property>
-<property name="Go To" value="Wait to charts are visible">
-</property>
-<property name="Step" value="Compare snapshot: dashboard.png with maxDiffPixelsRatio: 0.1">
-</property>
-</properties>
-</testcase>
-</testsuite>
-<testsuite name="AI/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="1" time="1.928" errors="0">
-<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="1.928">
-<properties>
-<property name="skip" value="Zero Steps only works in chromium">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="26.677" errors="0">
-<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="26.677">
+<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="18.44" errors="0">
+<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="18.44">
 <properties>
 <property name="Go To" value="Go to: &quot;https://shop.webdriver.io&quot;">
 </property>
@@ -508,7 +194,7 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Select" value="On &quot;Color&quot; select any option">
 </property>
-<property name="Select" value="On &quot;Color&quot; select the option Black/ White">
+<property name="Select" value="On &quot;Color&quot; select the option Navy">
 </property>
 <property name="Step" value="Select any available Size">
 </property>
@@ -538,8 +224,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Api/servers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="19.689" errors="0">
-<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="9.709">
+<testsuite name="Api/servers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="11.08" errors="0">
+<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="4.676">
 <properties>
 <property name="Description" value="An admin user can add a server">
 </property>
@@ -547,15 +233,15 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
-<property name="Post Condition" value="Delete server with the key: &quot;242130&quot; if exists">
+<property name="Post Condition" value="Delete server with the key: &quot;168773&quot; if exists">
 </property>
 <property name="Button" value="Click: &quot;Add&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;242130&quot;">
+<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;168773&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Schinner Inc&quot;">
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Osinski LLC&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://honored-coliseum.info&quot;">
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://unrealistic-kiss.info/&quot;">
 </property>
 <property name="Step" value="Save server and return server id from api">
 </property>
@@ -565,17 +251,17 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Assert" value="Server id should be a number greater than 1">
 </property>
-<property name="Assert" value="Server with the key: &quot;242130&quot; exists in the table">
+<property name="Assert" value="Server with the key: &quot;168773&quot; exists in the table">
 </property>
-<property name="Assert" value="The server name for the key: &quot;242130&quot; is: &quot;Schinner Inc&quot;">
+<property name="Assert" value="The server name for the key: &quot;168773&quot; is: &quot;Osinski LLC&quot;">
 </property>
-<property name="Assert" value="The server url for the key: &quot;242130&quot; is: &quot;https://honored-coliseum.info&quot;">
+<property name="Assert" value="The server url for the key: &quot;168773&quot; is: &quot;https://unrealistic-kiss.info/&quot;">
 </property>
 <property name="Post Condition" value="Delete the server with API request">
 </property>
 </properties>
 </testcase>
-<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="9.98">
+<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="6.404">
 <properties>
 <property name="Description" value="An admin user can edit a server">
 </property>
@@ -587,29 +273,29 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
-<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;554612&quot;">
+<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;997288&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Gottlieb Inc&quot;">
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Koelpin, Lueilwitz and Fritsch&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://unsung-brook.info/&quot;">
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://gifted-intent.biz/&quot;">
 </property>
 <property name="Button" value="Click: &quot;Save&quot;">
 </property>
 <property name="Assert" value="Success message is visible">
 </property>
-<property name="Assert" value="Server with the key: &quot;554612&quot; exists in the table">
+<property name="Assert" value="Server with the key: &quot;997288&quot; exists in the table">
 </property>
-<property name="Assert" value="The server name for the key: &quot;554612&quot; is: &quot;Gottlieb Inc&quot;">
+<property name="Assert" value="The server name for the key: &quot;997288&quot; is: &quot;Koelpin, Lueilwitz and Fritsch&quot;">
 </property>
-<property name="Assert" value="The server url for the key: &quot;554612&quot; is: &quot;https://unsung-brook.info/&quot;">
+<property name="Assert" value="The server url for the key: &quot;997288&quot; is: &quot;https://gifted-intent.biz/&quot;">
 </property>
 <property name="Post Condition" value="Delete the server with API request">
 </property>
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="2.157" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="2.157">
+<testsuite name="Basic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="2.129" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="2.129">
 <properties>
 <property name="Description" value="Login with valid user on sauce demo">
 </property>
@@ -628,8 +314,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="11.9" errors="0">
-<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="5.299">
+<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="10.201" errors="0">
+<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="5.051">
 <properties>
 <property name="Description" value="Login to effiziente demo with a normal user, the user will see the menu for normal users">
 </property>
@@ -643,7 +329,7 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 </properties>
 </testcase>
-<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="6.601">
+<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="5.15">
 <properties>
 <property name="Description" value="Login to effiziente demo with a admin user, the user will see the menu for admin users">
 </property>
@@ -658,8 +344,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="4.871" errors="0">
-<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.791">
+<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="2" failures="0" skipped="0" time="3.996" errors="0">
+<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="1.955">
 <properties>
 <property name="Description" value="Login with valid user on Sauce Demo">
 </property>
@@ -677,7 +363,7 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 </properties>
 </testcase>
-<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.08">
+<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.041">
 <properties>
 <property name="Description" value="Login with valid user on Sauce Demo">
 </property>
@@ -696,8 +382,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="6.049" errors="0">
-<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="6.049">
+<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="3.148" errors="0">
+<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="3.148">
 <properties>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
@@ -708,13 +394,13 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 <system-out>
 <![CDATA[
-[[ATTACHMENT|../test-results/Excel-exportServers-Servers-Should-export-servers-to-excel-desktop-firefox/attachments/servers-xlsx-b45414d1440b649c23868d9b19e0f22e5f012826.xlsx]]
+[[ATTACHMENT|../test-results/Excel-exportServers-Servers-Should-export-servers-to-excel-desktop-chromium/attachments/servers-xlsx-b45414d1440b649c23868d9b19e0f22e5f012826.xlsx]]
 ]]>
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="1.397" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.397">
+<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="1.615" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.615">
 <properties>
 <property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
 </property>
@@ -729,18 +415,24 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="1" time="0.621" errors="0">
-<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="0.621">
+<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="15.905" errors="0">
+<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="15.905">
 <properties>
-<property name="skip" value="Geolocation not work in firefox">
+<property name="Go To" value="Go to: &quot;https://www.bing.com/maps&quot;">
+</property>
+<property name="Button" value="Click: &quot;Locate me&quot;">
+</property>
+<property name="Button" value="Check if the button is visible">
+</property>
+<property name="Button" value="Click: &quot;Expand/Collapse Geochain&quot;">
+</property>
+<property name="Assert" value="Geo name is equal to: &quot;GermanyBavariaMunich (District)&quot;">
 </property>
 </properties>
-<skipped>
-</skipped>
 </testcase>
 </testsuite>
-<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="4.033" errors="0">
-<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="4.033">
+<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="3.349" errors="0">
+<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="3.349">
 <properties>
 <property name="Go To" value="Go to: &quot;https://www.google.com&quot;">
 </property>
@@ -749,20 +441,20 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="5.777" errors="0">
-<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="5.777">
+<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="5.46" errors="0">
+<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="5.46">
 </testcase>
 </testsuite>
-<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="6.948" errors="0">
-<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="6.948">
+<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="5.808" errors="0">
+<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="5.808">
 <properties>
 <property name="Navigation" value="Go to: &quot;https://effizientedemo.azurewebsites.net&quot;">
 </property>
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="5.618" errors="0">
-<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="5.618">
+<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-chromium" tests="1" failures="0" skipped="0" time="4.393" errors="0">
+<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="4.393">
 <properties>
 <property name="Mock" value="Modify the summary with fixed data">
 </property>
@@ -791,8 +483,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="AI/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="1" time="1.771" errors="0">
-<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="1.771">
+<testsuite name="AI/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="1" time="2.007" errors="0">
+<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="2.007">
 <properties>
 <property name="skip" value="Zero Steps only works in chromium">
 </property>
@@ -801,27 +493,31 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </skipped>
 </testcase>
 </testsuite>
-<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="29.542" errors="0">
-<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="29.542">
+<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="22.821" errors="0">
+<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="22.821">
 <properties>
 <property name="Go To" value="Go to: &quot;https://shop.webdriver.io&quot;">
 </property>
 <property name="Link" value="Click: &quot;Shop All&quot;">
 </property>
-<property name="Step" value="Click in the product: &quot;Cuffed Beanie&quot;">
+<property name="Step" value="Click in the product: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
 </property>
 <property name="Select" value="On &quot;Color&quot; select any option">
 </property>
-<property name="Select" value="On &quot;Color&quot; select the option Gold">
+<property name="Select" value="On &quot;Color&quot; select the option Black">
 </property>
 <property name="Step" value="Select any available Size">
+</property>
+<property name="Select" value="On &quot;Size&quot; select any option">
+</property>
+<property name="Select" value="On &quot;Size&quot; select the option XS">
 </property>
 <property name="Step" value="Get the product price">
 </property>
 <property name="Button" value="Click: &quot; 
 		Add to Cart
 		 
-	$15.50
+	$25.00
 &quot;">
 </property>
 <property name="Assert" value="There is one item in the bag">
@@ -833,17 +529,17 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 				items
 			&quot;">
 </property>
-<property name="Assert" value="The name of the item in the cart is: &quot;Cuffed Beanie&quot;">
+<property name="Assert" value="The name of the item in the cart is: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
 </property>
-<property name="Assert" value="The price of the item in the cart is: &quot;$15.50&quot;">
+<property name="Assert" value="The price of the item in the cart is: &quot;$25.00&quot;">
 </property>
-<property name="Assert" value="The subtotal is: &quot;$15.50&quot;">
+<property name="Assert" value="The subtotal is: &quot;$25.00&quot;">
 </property>
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Api/servers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="24.698" errors="0">
-<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="12.397">
+<testsuite name="Api/servers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="18.605" errors="0">
+<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="11.064">
 <properties>
 <property name="Description" value="An admin user can add a server">
 </property>
@@ -851,15 +547,15 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
-<property name="Post Condition" value="Delete server with the key: &quot;731824&quot; if exists">
+<property name="Post Condition" value="Delete server with the key: &quot;411932&quot; if exists">
 </property>
 <property name="Button" value="Click: &quot;Add&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;731824&quot;">
+<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;411932&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Roob - Casper&quot;">
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Gleichner - Pollich&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://pessimistic-atrium.com/&quot;">
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://leading-pulse.com&quot;">
 </property>
 <property name="Step" value="Save server and return server id from api">
 </property>
@@ -869,17 +565,17 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Assert" value="Server id should be a number greater than 1">
 </property>
-<property name="Assert" value="Server with the key: &quot;731824&quot; exists in the table">
+<property name="Assert" value="Server with the key: &quot;411932&quot; exists in the table">
 </property>
-<property name="Assert" value="The server name for the key: &quot;731824&quot; is: &quot;Roob - Casper&quot;">
+<property name="Assert" value="The server name for the key: &quot;411932&quot; is: &quot;Gleichner - Pollich&quot;">
 </property>
-<property name="Assert" value="The server url for the key: &quot;731824&quot; is: &quot;https://pessimistic-atrium.com/&quot;">
+<property name="Assert" value="The server url for the key: &quot;411932&quot; is: &quot;https://leading-pulse.com&quot;">
 </property>
 <property name="Post Condition" value="Delete the server with API request">
 </property>
 </properties>
 </testcase>
-<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="12.301">
+<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="7.541">
 <properties>
 <property name="Description" value="An admin user can edit a server">
 </property>
@@ -891,29 +587,29 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
-<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;438809&quot;">
+<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;544049&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Wintheiser - Hoeger&quot;">
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Green Group&quot;">
 </property>
-<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://alienated-anticodon.biz&quot;">
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://bleak-season.net/&quot;">
 </property>
 <property name="Button" value="Click: &quot;Save&quot;">
 </property>
 <property name="Assert" value="Success message is visible">
 </property>
-<property name="Assert" value="Server with the key: &quot;438809&quot; exists in the table">
+<property name="Assert" value="Server with the key: &quot;544049&quot; exists in the table">
 </property>
-<property name="Assert" value="The server name for the key: &quot;438809&quot; is: &quot;Wintheiser - Hoeger&quot;">
+<property name="Assert" value="The server name for the key: &quot;544049&quot; is: &quot;Green Group&quot;">
 </property>
-<property name="Assert" value="The server url for the key: &quot;438809&quot; is: &quot;https://alienated-anticodon.biz&quot;">
+<property name="Assert" value="The server url for the key: &quot;544049&quot; is: &quot;https://bleak-season.net/&quot;">
 </property>
 <property name="Post Condition" value="Delete the server with API request">
 </property>
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="4.105" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="4.105">
+<testsuite name="Basic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="2.358" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="2.358">
 <properties>
 <property name="Description" value="Login with valid user on sauce demo">
 </property>
@@ -932,8 +628,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="15.582" errors="0">
-<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="7.658">
+<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="11.841" errors="0">
+<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="5.919">
 <properties>
 <property name="Description" value="Login to effiziente demo with a normal user, the user will see the menu for normal users">
 </property>
@@ -947,7 +643,7 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 </properties>
 </testcase>
-<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="7.924">
+<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="5.922">
 <properties>
 <property name="Description" value="Login to effiziente demo with a admin user, the user will see the menu for admin users">
 </property>
@@ -962,8 +658,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="5.918" errors="0">
-<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="3.122">
+<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="2" failures="0" skipped="0" time="4.771" errors="0">
+<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.404">
 <properties>
 <property name="Description" value="Login with valid user on Sauce Demo">
 </property>
@@ -981,7 +677,7 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </property>
 </properties>
 </testcase>
-<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.796">
+<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.367">
 <properties>
 <property name="Description" value="Login with valid user on Sauce Demo">
 </property>
@@ -1000,8 +696,316 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="5.68" errors="0">
-<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="5.68">
+<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="5.458" errors="0">
+<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="5.458">
+<properties>
+<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
+</property>
+<property name="ButtonExcel" value="Click: &quot;Export to Excel&quot;">
+</property>
+<property name="Assert" value="The excel file rows are equal to the grid rows">
+</property>
+</properties>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../test-results/Excel-exportServers-Servers-Should-export-servers-to-excel-desktop-firefox/attachments/servers-xlsx-b45414d1440b649c23868d9b19e0f22e5f012826.xlsx]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="1.343" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.343">
+<properties>
+<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
+</property>
+<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
+</property>
+<property name="Button" value="Click: &quot;Login&quot;">
+</property>
+<property name="Assert" value="Check URL Page equal to: &quot;https://www.saucedemo.com/inventory.html">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="1" time="0.755" errors="0">
+<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="0.755">
+<properties>
+<property name="skip" value="Geolocation not work in firefox">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="3.313" errors="0">
+<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="3.313">
+<properties>
+<property name="Go To" value="Go to: &quot;https://www.google.com&quot;">
+</property>
+<property name="Assert" value="Search button text is equal to: &quot;Buscar con Google&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="6.26" errors="0">
+<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="6.26">
+</testcase>
+</testsuite>
+<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="6.206" errors="0">
+<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="6.206">
+<properties>
+<property name="Navigation" value="Go to: &quot;https://effizientedemo.azurewebsites.net&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-firefox" tests="1" failures="0" skipped="0" time="5.679" errors="0">
+<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="5.679">
+<properties>
+<property name="Mock" value="Modify the summary with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Sumary Expiration&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 5 delay&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 5 total&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 5 type&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 10 Limit 1&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 10 Limit 2&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 10 Limit 3&quot; with fixed data">
+</property>
+<property name="Mock" value="Modify the &quot;Top 10 To Expire&quot; with fixed data">
+</property>
+<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
+</property>
+<property name="Go To" value="Wait to charts are visible">
+</property>
+<property name="Step" value="Compare snapshot: dashboard.png with maxDiffPixelsRatio: 0.1">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="AI/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="1" time="0.869" errors="0">
+<testcase name="AI Zero Step › Should show dashboard after login" classname="AI/login.spec.ts" time="0.869">
+<properties>
+<property name="skip" value="Zero Steps only works in chromium">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="Api/addToCart.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="33.528" errors="0">
+<testcase name="WebdriverIO Shop › Should add an item to the cart" classname="Api/addToCart.spec.ts" time="33.528">
+<properties>
+<property name="Go To" value="Go to: &quot;https://shop.webdriver.io&quot;">
+</property>
+<property name="Link" value="Click: &quot;Shop All&quot;">
+</property>
+<property name="Step" value="Click in the product: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
+</property>
+<property name="Select" value="On &quot;Color&quot; select any option">
+</property>
+<property name="Select" value="On &quot;Color&quot; select the option Forest">
+</property>
+<property name="Step" value="Select any available Size">
+</property>
+<property name="Select" value="On &quot;Size&quot; select any option">
+</property>
+<property name="Select" value="On &quot;Size&quot; select the option S">
+</property>
+<property name="Step" value="Get the product price">
+</property>
+<property name="Button" value="Click: &quot; 
+		Add to Cart
+		 
+	$25.00
+&quot;">
+</property>
+<property name="Assert" value="There is one item in the bag">
+</property>
+<property name="Button" value="Click: &quot;
+ 
+				1
+			 
+				items
+			&quot;">
+</property>
+<property name="Assert" value="The name of the item in the cart is: &quot;WebdriverIO T-Shirt - Robot Shining&quot;">
+</property>
+<property name="Assert" value="The price of the item in the cart is: &quot;$25.00&quot;">
+</property>
+<property name="Assert" value="The subtotal is: &quot;$25.00&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Api/servers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="20.757" errors="0">
+<testcase name="Servers › Should add a server" classname="Api/servers.spec.ts" time="9.877">
+<properties>
+<property name="Description" value="An admin user can add a server">
+</property>
+<property name="Pre Condition" value="A valid admin username and password is logged">
+</property>
+<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
+</property>
+<property name="Post Condition" value="Delete server with the key: &quot;570519&quot; if exists">
+</property>
+<property name="Button" value="Click: &quot;Add&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Key:&quot; with the value: &quot;570519&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Kuhic - Bernier&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://well-off-violin.info&quot;">
+</property>
+<property name="Step" value="Save server and return server id from api">
+</property>
+<property name="Button" value="Click: &quot;Save&quot;">
+</property>
+<property name="Assert" value="Success message is visible">
+</property>
+<property name="Assert" value="Server id should be a number greater than 1">
+</property>
+<property name="Assert" value="Server with the key: &quot;570519&quot; exists in the table">
+</property>
+<property name="Assert" value="The server name for the key: &quot;570519&quot; is: &quot;Kuhic - Bernier&quot;">
+</property>
+<property name="Assert" value="The server url for the key: &quot;570519&quot; is: &quot;https://well-off-violin.info&quot;">
+</property>
+<property name="Post Condition" value="Delete the server with API request">
+</property>
+</properties>
+</testcase>
+<testcase name="Servers › Should edit a server" classname="Api/servers.spec.ts" time="10.88">
+<properties>
+<property name="Description" value="An admin user can edit a server">
+</property>
+<property name="Pre Condition" value="A valid admin username and password is logged">
+</property>
+<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
+</property>
+<property name="Step" value="Create server with API">
+</property>
+<property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
+</property>
+<property name="InputText" value="Fill &quot;key:&quot; with the value: &quot;384269&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Name:&quot; with the value: &quot;Kihn LLC&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Url:&quot; with the value: &quot;https://spiteful-apricot.net/&quot;">
+</property>
+<property name="Button" value="Click: &quot;Save&quot;">
+</property>
+<property name="Assert" value="Success message is visible">
+</property>
+<property name="Assert" value="Server with the key: &quot;384269&quot; exists in the table">
+</property>
+<property name="Assert" value="The server name for the key: &quot;384269&quot; is: &quot;Kihn LLC&quot;">
+</property>
+<property name="Assert" value="The server url for the key: &quot;384269&quot; is: &quot;https://spiteful-apricot.net/&quot;">
+</property>
+<property name="Post Condition" value="Delete the server with API request">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Basic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="3.438" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Basic/login.spec.ts" time="3.438">
+<properties>
+<property name="Description" value="Login with valid user on sauce demo">
+</property>
+<property name="Pre Condition" value="A valid username and password">
+</property>
+<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
+</property>
+<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
+</property>
+<property name="Button" value="Click: &quot;Login&quot;">
+</property>
+<property name="Assert" value="Check URL Page is equal to: &quot;https://www.saucedemo.com/inventory.html&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Basic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="17.445" errors="0">
+<testcase name="Normal user › Should returns user menu" classname="Basic/menu.spec.ts" time="9.91">
+<properties>
+<property name="Description" value="Login to effiziente demo with a normal user, the user will see the menu for normal users">
+</property>
+<property name="Pre Condition" value="A valid normal user">
+</property>
+<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
+</property>
+<property name="PrimeFacesMenu" value="Get top menus">
+</property>
+<property name="Assert" value="Menu are equal to: &quot;AccountsReceivable,Config&quot;">
+</property>
+</properties>
+</testcase>
+<testcase name="Admin user › Should returns admin menu" classname="Basic/menu.spec.ts" time="7.535">
+<properties>
+<property name="Description" value="Login to effiziente demo with a admin user, the user will see the menu for admin users">
+</property>
+<property name="Pre Condition" value="A valid admin user">
+</property>
+<property name="Go To" value="Go to: &quot;https://effizientedemo.azurewebsites.net/AccountsReceivable/dashboard&quot;">
+</property>
+<property name="PrimeFacesMenu" value="Get top menus">
+</property>
+<property name="Assert" value="Menu are equal to: &quot;AccountsReceivable,Security,Config&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Basic/parameterized.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="2" failures="0" skipped="0" time="6.124" errors="0">
+<testcase name="Login with Parameters › Login with &quot;standard_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="2.713">
+<properties>
+<property name="Description" value="Login with valid user on Sauce Demo">
+</property>
+<property name="Pre Condition" value="A valid username and password">
+</property>
+<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;standard_user&quot;">
+</property>
+<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
+</property>
+<property name="Button" value="Click: &quot;Login&quot;">
+</property>
+<property name="Assert" value="Check URL Page is equal to: https://www.saucedemo.com/inventory.html&quot;">
+</property>
+</properties>
+</testcase>
+<testcase name="Login with Parameters › Login with &quot;visual_user&quot; from parameters will load inventory page" classname="Basic/parameterized.spec.ts" time="3.411">
+<properties>
+<property name="Description" value="Login with valid user on Sauce Demo">
+</property>
+<property name="Pre Condition" value="A valid username and password">
+</property>
+<property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
+</property>
+<property name="InputText" value="Fill &quot;Username:&quot; with the value: &quot;visual_user&quot;">
+</property>
+<property name="InputPassword" value="Fill &quot;Password&quot; with value: *****">
+</property>
+<property name="Button" value="Click: &quot;Login&quot;">
+</property>
+<property name="Assert" value="Check URL Page is equal to: https://www.saucedemo.com/inventory.html&quot;">
+</property>
+</properties>
+</testcase>
+</testsuite>
+<testsuite name="Excel/exportServers.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="5.679" errors="0">
+<testcase name="Servers › Should export servers to excel" classname="Excel/exportServers.spec.ts" time="5.679">
 <properties>
 <property name="Go To" value="Go to the servers page: &quot;https://effizientedemo.azurewebsites.net/Security/servers&apos;&quot;">
 </property>
@@ -1017,8 +1021,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </system-out>
 </testcase>
 </testsuite>
-<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="1.158" errors="0">
-<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.158">
+<testsuite name="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="1.049" errors="0">
+<testcase name="Login › Login with valid user load inventory page" classname="Fixture-LambdaTest/loginLambdaTestFixture.spec.ts" time="1.049">
 <properties>
 <property name="Go To" value="Go to: &quot;https://www.saucedemo.com&quot;">
 </property>
@@ -1033,8 +1037,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="24.74" errors="0">
-<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="24.74">
+<testsuite name="LocaleGeo/bingMaps.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="23.832" errors="0">
+<testcase name="Geo Location Test › The bing maps is located to munich" classname="LocaleGeo/bingMaps.spec.ts" time="23.832">
 <properties>
 <property name="Go To" value="Go to: &quot;https://www.bing.com/maps&quot;">
 </property>
@@ -1049,8 +1053,8 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="4.979" errors="0">
-<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="4.979">
+<testsuite name="LocaleGeo/searchLocale.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="3.985" errors="0">
+<testcase name="Locale translations › Should display correct translations for specified locale and timezone" classname="LocaleGeo/searchLocale.spec.ts" time="3.985">
 <properties>
 <property name="Go To" value="Go to: &quot;https://www.google.com&quot;">
 </property>
@@ -1059,20 +1063,20 @@ zerostep.error 'Account usage limit reached'. Version:v0.1.5 TaskId:01952706-e38
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="11.355" errors="0">
-<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="11.355">
+<testsuite name="Synthetic/login.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="11.751" errors="0">
+<testcase name="Synthetic login testing › Should show dashboard" classname="Synthetic/login.spec.ts" time="11.751">
 </testcase>
 </testsuite>
-<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="8.576" errors="0">
-<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="8.576">
+<testsuite name="Synthetic/menu.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="8.97" errors="0">
+<testcase name="Synthetic testing › Should show dashboard" classname="Synthetic/menu.spec.ts" time="8.97">
 <properties>
 <property name="Navigation" value="Go to: &quot;https://effizientedemo.azurewebsites.net&quot;">
 </property>
 </properties>
 </testcase>
 </testsuite>
-<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-21T05:41:47.719Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="8.313" errors="0">
-<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="8.313">
+<testsuite name="VisualTesting/dashboard.spec.ts" timestamp="2025-02-22T05:40:42.309Z" hostname="desktop-webkit" tests="1" failures="0" skipped="0" time="8.531" errors="0">
+<testcase name="Check Dashboard › Should show dashboard" classname="VisualTesting/dashboard.spec.ts" time="8.531">
 <properties>
 <property name="Mock" value="Modify the summary with fixed data">
 </property>
